@@ -1,4 +1,5 @@
 run: main
+	rm *.o
 	@./main
 
 main: main.o fonction.o ./GfxLib/libisentlib.a
@@ -9,9 +10,3 @@ main.o: main.c
 	
 fonction.o: fonction.c 
 	gcc -Wall -c fonction.c
-	
-clean:
-	rm main *.o
-	
-	
-
