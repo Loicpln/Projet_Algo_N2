@@ -11,6 +11,8 @@ int main(int argc, char **argv)
 
 void gestionEvenement(EvenementGfx evenement)
 {
+	static int p = 0;
+	int *page = &p;
 
 	switch (evenement)
 	{
@@ -23,25 +25,20 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case Affichage:
-		effaceFenetre(255, 255, 255);
+		effaceFenetre(0, 0, 0);
+		gestionPage(page);
 		break;
 
 	case Clavier:
-		switch (caractereClavier())
-		{
-		case 'Q':
-		case 'q':
-			termineBoucleEvenements();
-			break;
-		}
 		break;
 
 	case ClavierSpecial:
 		break;
 
 	case BoutonSouris:
-		switch (etatBoutonSouris() == GaucheAppuye)
+		if (etatBoutonSouris() == GaucheAppuye)
 		{
+			gereClic(page);
 		}
 		break;
 
@@ -52,8 +49,8 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case Redimensionnement:
-		//printf("Largeur : %d\t", largeurFenetre());
-		//printf("Hauteur : %d\n", hauteurFenetre());
+		// printf("Largeur : %d\t", largeurFenetre());
+		// printf("Hauteur : %d\n", hauteurFenetre());
 		break;
 	}
 }
