@@ -19,4 +19,4 @@ void gereClicAccueil(int *page);
 void gereClicJeu();
 void gereClicRegles();
 void pageJeu();
-void pageRegles();
+void pageRegles(int *page);
