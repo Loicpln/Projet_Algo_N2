@@ -1,9 +1,9 @@
-#include "fonction.h"
+#include "menu.h"
 
 int main(int argc, char **argv)
 {
 	initialiseGfx(argc, argv);
-	prepareFenetreGraphique("GfxLib", LargeurFenetre, HauteurFenetre);
+	prepareFenetreGraphique("Pong", LargeurFenetre, HauteurFenetre);
 	lanceBoucleEvenements();
 
 	return 0;
