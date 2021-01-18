@@ -9,4 +9,4 @@
 #include "../GfxLib/ESLib.h" 
 
 void pageJeu();
-void gereClicJeu();
+void gereClicJeu(int * page);

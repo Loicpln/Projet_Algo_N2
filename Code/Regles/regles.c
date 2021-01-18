@@ -3,10 +3,10 @@
 void pageRegles(int *page)
 {
     couleurCourante(255, 255, 255);
-    rectangle(2 * largeurFenetre() / 8, 9 * hauteurFenetre() / 12, 3 * largeurFenetre() / 4, 11 * hauteurFenetre() / 12);
+    rectangle(2 * largeurFenetre() / 8, 9 * hauteurFenetre() / 12, 3 * largeurFenetre() / 4, 11 * hauteurFenetre() / 12);//titre
     rectangle(3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6); //Retour
     couleurCourante(0, 0, 0);
-    rectangle(2 * largeurFenetre() / 8 + 1, 9 * hauteurFenetre() / 12 + 1, 3 * largeurFenetre() / 4 - 1, 11 * hauteurFenetre() / 12 - 1);
+    rectangle(2 * largeurFenetre() / 8 + 1, 9 * hauteurFenetre() / 12 + 1, 3 * largeurFenetre() / 4 - 1, 11 * hauteurFenetre() / 12 - 1);//titre
     rectangle(3 * largeurFenetre() / 4 + 1, hauteurFenetre() / 12 + 1, 15 * largeurFenetre() / 16 - 1, hauteurFenetre() / 6 - 1); //Retour
     couleurCourante(255, 255, 255);
     afficheChaine("Retour", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);

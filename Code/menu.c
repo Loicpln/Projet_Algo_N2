@@ -22,10 +22,12 @@ void pageAccueil() //Affichage page d'accueil
     rectangle(3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);              //Quitter
     rectangle(5 * largeurFenetre() / 16, 16 * hauteurFenetre() / 24, 11 * largeurFenetre() / 16, 19 * hauteurFenetre() / 24);  //jouer
     rectangle(11 * largeurFenetre() / 32, 11 * hauteurFenetre() / 24, 21 * largeurFenetre() / 32, 14 * hauteurFenetre() / 24); //reglement
+    
     couleurCourante(0, 0, 0);
     rectangle(3 * largeurFenetre() / 4 + 1, hauteurFenetre() / 12 + 1, 15 * largeurFenetre() / 16 - 1, hauteurFenetre() / 6 - 1);              //Quitter
     rectangle(5 * largeurFenetre() / 16 + 1, 2 * hauteurFenetre() / 3 + 1, 11 * largeurFenetre() / 16 - 1, 19 * hauteurFenetre() / 24 - 1);    //jouer
     rectangle(11 * largeurFenetre() / 32 + 1, 11 * hauteurFenetre() / 24 + 1, 21 * largeurFenetre() / 32 - 1, 14 * hauteurFenetre() / 24 - 1); //reglement
+    
     couleurCourante(255, 255, 255);
     afficheChaine("Jouer", 60, 13 * largeurFenetre() / 32, 83 * hauteurFenetre() / 120);
     afficheChaine("Reglement", 40, 3 * largeurFenetre() / 8, hauteurFenetre() / 2);
@@ -40,7 +42,7 @@ void gereClic(int *page) //gestion clic toute l'appli
         gereClicAccueil(page);
         break;
     case 1:
-        gereClicJeu();
+        gereClicJeu(page);
         break;
     case 2:
         gereClicRegles(page);

@@ -1,5 +1,10 @@
 #include "menu.h"
 
+//page 0 = Ecran d'accueil
+//page 1 = Ecran Jouer
+//page 2 = Reglement
+
+
 int main(int argc, char **argv)
 {
 	initialiseGfx(argc, argv);
