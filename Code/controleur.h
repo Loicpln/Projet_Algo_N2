@@ -7,15 +7,11 @@
 #include "./GfxLib/GfxLib.h"
 #include "./GfxLib/BmpLib.h"
 #include "./GfxLib/ESLib.h" 
-#include "./Jeu/jeu.h"
-#include "./Regles/regles.h"
+#include "./Affichage/gestion.h"
 
 #define LargeurFenetre 800
 #define HauteurFenetre 600
 
 
 void gestionPage(int *page);
-void gereClic(int *page);
-
-void pageAccueil();
-void gereClicAccueil(int *page);
+void gestionClic(int *page);

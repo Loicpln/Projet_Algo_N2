@@ -1,9 +1,8 @@
-#include "menu.h"
+#include "controleur.h"
 
 //page 0 = Ecran d'accueil
 //page 1 = Ecran Jouer
 //page 2 = Reglement
-
 
 int main(int argc, char **argv)
 {
@@ -41,10 +40,7 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case BoutonSouris:
-		if (etatBoutonSouris() == GaucheAppuye)
-		{
-			gereClic(page);
-		}
+		gestionClic(page);
 		break;
 
 	case Souris:
