@@ -5,7 +5,7 @@ void gestion(int *page, Gestion gestion) //gestion affichage pages
     switch (*page)
     {
     case 0:
-        gestion.f1();
+        gestion.f1(gestion.xBalle,gestion.yBalle);
         break;
     case 1:
         gestion.f2();
@@ -16,8 +16,8 @@ void gestion(int *page, Gestion gestion) //gestion affichage pages
     }
 }
 
-Gestion fAffiche(){
-    return (Gestion){AfficheAccueil,AfficheJeu,AfficheRegles};
+Gestion fAffiche(int xBalle,int yBalle){
+    return (Gestion){AfficheAccueil,AfficheJeu,AfficheRegles,xBalle,yBalle};
 }
 
 Gestion fClavier(){
