@@ -16,14 +16,14 @@ void gestion(int *page, Gestion gestion) //gestion affichage pages
     }
 }
 
-Gestion newAffiche(){
+Gestion fAffiche(){
     return (Gestion){AfficheAccueil,AfficheJeu,AfficheRegles};
 }
 
-Gestion newClavier(){
+Gestion fClavier(){
     return (Gestion){NULL,NULL,NULL};
 }
 
-Gestion newClick(){
+Gestion fClick(){
     return (Gestion){ClicAccueil,ClicJeu,ClicRegles};
 }

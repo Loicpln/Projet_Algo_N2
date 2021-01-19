@@ -30,18 +30,18 @@ void gestionEvenement(EvenementGfx evenement)
 
 	case Affichage:
 		effaceFenetre(0, 0, 0);
-		gestion(page,newAffiche());
+		gestion(page,fAffiche());
 		break;
 
 	case Clavier:
-		gestion(page,newClavier());
+		gestion(page,fClavier());
 		break;
 
 	case ClavierSpecial:
 		break;
 
 	case BoutonSouris:
-		gestion(page,newClick());
+		gestion(page,fClick());
 		break;
 
 	case Souris:

@@ -1,12 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <time.h>
-#include <unistd.h>
-#include "./GfxLib/GfxLib.h"
-#include "./GfxLib/BmpLib.h"
-#include "./GfxLib/ESLib.h" 
+#include "lib.h"
 #include "./Affichage/gestion.h"
 
 #define LargeurFenetre 800
@@ -20,6 +12,6 @@ typedef struct Gestion{
 
 void gestion(int *page, Gestion gestion);
 
-Gestion newAffiche();
-Gestion newClavier();
-Gestion newClick();
+Gestion fAffiche();
+Gestion fClavier();
+Gestion fClick();
