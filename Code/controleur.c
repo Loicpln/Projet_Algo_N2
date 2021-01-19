@@ -1,17 +1,29 @@
 #include "controleur.h"
 
-void gestion(int *page, void(*f1)() ,void(*f2)() ,void(*f3)()) //gestion affichage pages
+void gestion(int *page, Gestion gestion) //gestion affichage pages
 {
     switch (*page)
     {
     case 0:
-        f1();
+        gestion.f1();
         break;
     case 1:
-        f2();
+        gestion.f2();
         break;
     case 2:
-        f3();
+        gestion.f3();
         break;
     }
+}
+
+Gestion newAffiche(){
+    return (Gestion){AfficheAccueil,AfficheJeu,AfficheRegles};
+}
+
+Gestion newClavier(){
+    return (Gestion){NULL,NULL,NULL};
+}
+
+Gestion newClick(){
+    return (Gestion){ClicAccueil,ClicJeu,ClicRegles};
 }

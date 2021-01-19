@@ -12,5 +12,14 @@
 #define LargeurFenetre 800
 #define HauteurFenetre 600
 
+typedef struct Gestion{
+    void(*f1)();
+    void(*f2)();
+    void(*f3)();
+}Gestion;
 
-void gestion(int *page, void(*f1)(),void(*f2)(),void(*f3)());
+void gestion(int *page, Gestion gestion);
+
+Gestion newAffiche();
+Gestion newClavier();
+Gestion newClick();
