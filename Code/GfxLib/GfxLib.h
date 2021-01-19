@@ -147,6 +147,9 @@ void triangle(float xCoin1, float yCoin1, float xCoin2, float yCoin2, float xCoi
 /* Dessine un rectangle de couleur courante aux coordonnees donnees */
 void rectangle(float xCoin1, float yCoin1, float xCoin2, float yCoin2);
 
+// Fonction de trace de cercle
+void cercle(float centreX, float centreY, float rayon);
+
 /* Affiche une chaine de caracteres de taille donnee a la position specifiee */
 void afficheChaine(const char *chaine, float taille, float x, float y);
 

@@ -362,6 +362,24 @@ void rectangle(float xCoin1, float yCoin1, float xCoin2, float yCoin2)
 	glEnd();
 }
 
+/* Fonction de trace de cercle */
+void cercle(float centreX, float centreY, float rayon)
+{
+	const int Pas = 20; // Nombre de secteurs pour tracer le cercle
+	const double PasAngulaire = 2.*M_PI/Pas;
+	int index;
+	
+	for (index = 0; index < Pas; ++index) // Pour chaque secteur
+	{
+		const double angle = 2.*M_PI*index/Pas; // on calcule l'angle de depart du secteur
+		triangle(centreX, centreY,
+				 centreX+rayon*cos(angle), centreY+rayon*sin(angle),
+				 centreX+rayon*cos(angle+PasAngulaire), centreY+rayon*sin(angle+PasAngulaire));
+			// On trace le secteur a l'aide d'un triangle => approximation d'un cercle
+	}
+	
+}
+
 /* Affiche une chaine de caracteres de taille donnee a la position specifiee */
 void afficheChaine(const char *chaine, float taille, float x, float y)
 {
