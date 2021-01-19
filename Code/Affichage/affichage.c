@@ -1,6 +1,6 @@
 #include "gestion.h"
 
-void pageAccueil() //Affichage page d'accueil
+void AfficheAccueil() //Affichage page d'accueil
 {
     epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);
@@ -19,7 +19,7 @@ void pageAccueil() //Affichage page d'accueil
     afficheChaine("Quitter", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
 
-void pageJeu()
+void AfficheJeu()
 {
     srand(clock());
     epaisseurDeTrait(3);
@@ -46,7 +46,7 @@ void pageJeu()
     afficheChaine("PONG", 60, 13 * largeurFenetre() / 32, 21 * hauteurFenetre() / 24);
 }
 
-void pageRegles()
+void AfficheRegles()
 {
     epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);

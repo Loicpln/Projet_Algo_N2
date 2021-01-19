@@ -1,34 +1,17 @@
 #include "controleur.h"
 
-void gestionPage(int *page) //gestion affichage pages
+void gestion(int *page, void(*f1)() ,void(*f2)() ,void(*f3)()) //gestion affichage pages
 {
     switch (*page)
     {
     case 0:
-        pageAccueil();
+        f1();
         break;
     case 1:
-        pageJeu();
+        f2();
         break;
     case 2:
-        pageRegles(page);
+        f3();
         break;
     }
 }
-
-void gestionClic(int *page) //gestion clic toute l'appli
-{
-    switch (*page)
-    {
-    case 0:
-        gereClicAccueil(page);
-        break;
-    case 1:
-        gereClicJeu(page);
-        break;
-    case 2:
-        gereClicRegles(page);
-        break;
-    }
-}
-

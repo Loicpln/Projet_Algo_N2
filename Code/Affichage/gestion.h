@@ -8,11 +8,11 @@
 #include "../GfxLib/BmpLib.h"
 #include "../GfxLib/ESLib.h" 
 
-void pageAccueil();
-void pageJeu();
-void pageRegles();
+void AfficheAccueil();
+void AfficheJeu();
+void AfficheRegles();
 
 
-void gereClicAccueil(int *page);
-void gereClicJeu(int * page);
-void gereClicRegles(int *page);
+void ClicAccueil(int *page);
+void ClicJeu(int * page);
+void ClicRegles(int *page);

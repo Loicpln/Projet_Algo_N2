@@ -1,6 +1,6 @@
 #include "gestion.h"
 
-void gereClicAccueil(int *page) // gestion clic page d'accueil
+void ClicAccueil(int *page) // gestion clic page d'accueil
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
@@ -19,7 +19,7 @@ void gereClicAccueil(int *page) // gestion clic page d'accueil
     }
 }
 
-void gereClicJeu(int *page)
+void ClicJeu(int *page)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
@@ -42,7 +42,7 @@ void gereClicJeu(int *page)
     }
 }
 
-void gereClicRegles(int *page)
+void ClicRegles(int *page)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {

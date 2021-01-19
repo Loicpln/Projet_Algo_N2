@@ -13,5 +13,4 @@
 #define HauteurFenetre 600
 
 
-void gestionPage(int *page);
-void gestionClic(int *page);
+void gestion(int *page, void(*f1)(),void(*f2)(),void(*f3)());
