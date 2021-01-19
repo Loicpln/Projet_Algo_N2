@@ -17,44 +17,54 @@ void gestionEvenement(EvenementGfx evenement)
 {
 	static int p = 0;
 	int *page = &p;
-	static int xBalle;
-	static int yBalle;
-	static int vxBalle = 5;
-	static int vyBalle = -5;
+
+	static int xBalle[MAX];
+	static int yBalle[MAX];
+
+	static int vxBalle[MAX];
+	static int vyBalle[MAX];
 
 	switch (evenement)
 	{
 	case Initialisation:
-		xBalle = largeurFenetre()*valeurAleatoire();
-		yBalle = hauteurFenetre()*valeurAleatoire();
+		for (int i = 0; i < MAX; ++i)
+		{
+			xBalle[i] = largeurFenetre() * valeurAleatoire();
+			yBalle[i] = hauteurFenetre() * valeurAleatoire();
+			vxBalle[i] = 5;
+			vyBalle[i] = 5;
+		}
 		demandeTemporisation(20);
 		break;
 
 	case Temporisation:
-		xBalle += vxBalle;
-		yBalle += vyBalle;
+		for (int i = 0; i < MAX; ++i)
+		{
+			xBalle[i] += vxBalle[i];
+			yBalle[i] += vyBalle[i];
 
-		if (xBalle < 0 || xBalle >= largeurFenetre())
-			vxBalle = -vxBalle;
-		if (yBalle < 0 || yBalle >= hauteurFenetre())
-			vyBalle = -vyBalle;
+			if (xBalle[i] < 0 || xBalle[i] >= largeurFenetre())
+				vxBalle[i] = -vxBalle[i];
+			if (yBalle[i] < 0 || yBalle[i] >= hauteurFenetre())
+				vyBalle[i] = -vyBalle[i];
+		}
 		rafraichisFenetre();
 		break;
 
 	case Affichage:
-		effaceFenetre(0,0, 0);
-		gestion(page,fAffiche());
+		effaceFenetre(0, 0, 0);
+		gestion(page, xBalle, yBalle, vxBalle, vyBalle, fAffiche());
 		break;
 
 	case Clavier:
-		gestion(page,fClavier());
+		gestion(page, xBalle, yBalle, vxBalle, vyBalle, fClavier());
 		break;
 
 	case ClavierSpecial:
 		break;
 
 	case BoutonSouris:
-		gestion(page,fClick());
+		gestion(page, xBalle, yBalle, vxBalle, vyBalle, fClick());
 		break;
 
 	case Souris:
@@ -64,10 +74,13 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case Redimensionnement:
-		if (xBalle >= largeurFenetre())
-			xBalle = largeurFenetre()-1;
-		if (yBalle >= hauteurFenetre())
-			yBalle = hauteurFenetre()-1;
+		for (int i = 0; i < MAX; ++i)
+		{
+			if (xBalle[i] >= largeurFenetre())
+				xBalle[i] = largeurFenetre() - 1;
+			if (yBalle[i] >= hauteurFenetre())
+				yBalle[i] = hauteurFenetre() - 1;
+		}
 		// printf("Largeur : %d\t", largeurFenetre());
 		// printf("Hauteur : %d\n", hauteurFenetre());
 		break;

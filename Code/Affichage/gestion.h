@@ -1,6 +1,6 @@
 #include "../lib.h"
 
-void AfficheAccueil(int xBalle,int yBalle);
+void AfficheAccueil();
 void AfficheJeu();
 void AfficheRegles();
 
