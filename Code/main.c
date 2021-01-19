@@ -18,53 +18,56 @@ void gestionEvenement(EvenementGfx evenement)
 	static int p = 0;
 	int *page = &p;
 
-	static int xBalle[MAX];
-	static int yBalle[MAX];
-
-	static int vxBalle[MAX];
-	static int vyBalle[MAX];
+	static Balle tab[MAX_BALLE];
 
 	switch (evenement)
 	{
 	case Initialisation:
-		for (int i = 0; i < MAX; ++i)
+		for (int i = 0; i < MAX_BALLE; i++)
 		{
-			xBalle[i] = largeurFenetre() * valeurAleatoire();
-			yBalle[i] = hauteurFenetre() * valeurAleatoire();
-			vxBalle[i] = 5;
-			vyBalle[i] = 5;
+			tab[i].x = largeurFenetre() * valeurAleatoire();
+			tab[i].y = hauteurFenetre() * valeurAleatoire();
+			tab[i].r = 10;
+			tab[i].vx = -5;
+			tab[i].vy = -5;
+			if(rand()%2)
+				tab[i].vx = fabsf(tab[i].vx);
+			
+			if(rand()%2)
+				tab[i].vy = fabsf(tab[i].vy);
+			
 		}
 		demandeTemporisation(20);
 		break;
 
 	case Temporisation:
-		for (int i = 0; i < MAX; ++i)
+		for (int i = 0; i < MAX_BALLE; i++)
 		{
-			xBalle[i] += vxBalle[i];
-			yBalle[i] += vyBalle[i];
+			tab[i].x += tab[i].vx;
+			tab[i].y += tab[i].vy;
 
-			if (xBalle[i] < 0 || xBalle[i] >= largeurFenetre())
-				vxBalle[i] = -vxBalle[i];
-			if (yBalle[i] < 0 || yBalle[i] >= hauteurFenetre())
-				vyBalle[i] = -vyBalle[i];
+			if (tab[i].x < 0 || tab[i].x >= largeurFenetre())
+				tab[i].vx = -tab[i].vx;
+			if (tab[i].y < 0 || tab[i].y >= hauteurFenetre())
+				tab[i].vy = -tab[i].vy;
 		}
 		rafraichisFenetre();
 		break;
 
 	case Affichage:
 		effaceFenetre(0, 0, 0);
-		gestion(page, xBalle, yBalle, vxBalle, vyBalle, fAffiche());
+		gestion(page, tab, fAffiche());
 		break;
 
 	case Clavier:
-		gestion(page, xBalle, yBalle, vxBalle, vyBalle, fClavier());
+		gestion(page, tab, fClavier());
 		break;
 
 	case ClavierSpecial:
 		break;
 
 	case BoutonSouris:
-		gestion(page, xBalle, yBalle, vxBalle, vyBalle, fClick());
+		gestion(page, tab, fClick());
 		break;
 
 	case Souris:
@@ -74,15 +77,13 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case Redimensionnement:
-		for (int i = 0; i < MAX; ++i)
+		for (int i = 0; i < MAX_BALLE; i++)
 		{
-			if (xBalle[i] >= largeurFenetre())
-				xBalle[i] = largeurFenetre() - 1;
-			if (yBalle[i] >= hauteurFenetre())
-				yBalle[i] = hauteurFenetre() - 1;
+			if (tab[i].x >= largeurFenetre())
+				tab[i].x = largeurFenetre() - 1;
+			if (tab[i].y >= hauteurFenetre())
+				tab[i].y = hauteurFenetre() - 1;
 		}
-		// printf("Largeur : %d\t", largeurFenetre());
-		// printf("Hauteur : %d\n", hauteurFenetre());
 		break;
 	}
 }

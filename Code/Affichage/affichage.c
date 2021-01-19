@@ -1,7 +1,11 @@
 #include "gestion.h"
 
-void AfficheAccueil() //Affichage page d'accueil
+void AfficheAccueil(int *page, Balle *tab) //Affichage page d'accueil
 {
+    couleurCourante(255, 0, 0);
+    for (int i = 0; i < MAX_BALLE; i++)
+        cercle(tab[i].x, tab[i].y, tab[i].r);
+
     epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);
     rectangle(3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);              //Quitter
@@ -19,8 +23,12 @@ void AfficheAccueil() //Affichage page d'accueil
     afficheChaine("Quitter", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
 
-void AfficheJeu()
+void AfficheJeu(int *page, Balle *tab)
 {
+    couleurCourante(rand() % 255, rand() % 255, rand() % 255);
+    for (int i = 0; i < MAX_BALLE; i++)
+        cercle(tab[i].x, tab[i].y, tab[i].r);
+
     epaisseurDeTrait(3);
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
     rectangle(9 * largeurFenetre() / 32, 16 * hauteurFenetre() / 24, 24 * largeurFenetre() / 32, 19 * hauteurFenetre() / 24); //JcJ
@@ -43,11 +51,9 @@ void AfficheJeu()
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
     epaisseurDeTrait(8);
     afficheChaine("PONG", 60, 13 * largeurFenetre() / 32, 21 * hauteurFenetre() / 24);
-
-
 }
 
-void AfficheRegles()
+void AfficheRegles(int *page, Balle *tab)
 {
     epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);

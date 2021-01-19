@@ -1,30 +1,17 @@
 #include "controleur.h"
 
-void gestion(int *page, int *xBalle, int *yBalle, int *vxBalle, int *vyBalle, Gestion gestion) //gestion affichage pages
+void gestion(int *page, Balle *tab, Gestion gestion) //gestion affichage pages
 {
     switch (*page)
     {
     case 0:
-        gestion.f1();
-        couleurCourante(255, 0, 0);
-        for (int i = 0; i < MAX; ++i)
-            cercle(xBalle[i], yBalle[i], 10);
+        gestion.f1(page,tab);
         break;
     case 1:
-        gestion.f2();
-        couleurCourante(rand() % 255, rand() % 255, rand() % 255);
-        for (int i = 0; i < MAX; ++i)
-		{
-			xBalle[i] = largeurFenetre() * valeurAleatoire();
-			yBalle[i] = hauteurFenetre() * valeurAleatoire();
-			vxBalle[i] = 20;
-			vyBalle[i] = 20;
-		}
-        for (int i = 0; i < MAX; ++i)
-            cercle(xBalle[i], yBalle[i], 10);
+        gestion.f2(page,tab);
         break;
     case 2:
-        gestion.f3();
+        gestion.f3(page,tab);
         break;
     }
 }

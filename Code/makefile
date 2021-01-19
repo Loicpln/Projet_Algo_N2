@@ -1,5 +1,6 @@
 modules = controleur.o affichage.o souris.o
 lib = lib.h
+controleur = controleur.h
 
 run: main
 	rm *.o
@@ -8,15 +9,14 @@ run: main
 main: main.o $(modules) ./GfxLib/libisentlib.a
 	gcc -Wall main.o $(modules) -o main ./GfxLib/libisentlib.a -lm -lglut -lGL -lX11
 
-main.o: main.c $(lib)
+main.o: main.c $(controleur)
 	gcc -Wall -c main.c
 
-controleur.o: controleur.c controleur.h $(lib)
+controleur.o: controleur.c $(controleur) 
 	gcc -Wall -c controleur.c
 
-affichage.o: ./Affichage/affichage.c ./Affichage/gestion.h $(lib)
+affichage.o: ./Affichage/affichage.c $(controleur) 
 	gcc -Wall -c ./Affichage/affichage.c
 
-souris.o: ./Affichage/souris.c ./Affichage/gestion.h $(lib)
+souris.o: ./Affichage/souris.c $(controleur) 
 	gcc -Wall -c ./Affichage/souris.c
-	
