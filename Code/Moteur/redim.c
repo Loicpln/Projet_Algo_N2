@@ -2,7 +2,7 @@
 
 void RedimAccueil(Data *data) //Affichage page d'accueil
 {
-	for (int i = 0; i < MAX_BALLE; i++)
+    for (int i = 0; i < MAX_BALLE; i++)
     {
         if (data->balle[i].x >= largeurFenetre())
             data->balle[i].x = largeurFenetre() - 1;
@@ -13,7 +13,7 @@ void RedimAccueil(Data *data) //Affichage page d'accueil
 
 void RedimJeu(Data *data)
 {
-	for (int i = 0; i < MAX_BALLE; i++)
+    for (int i = 0; i < MAX_BALLE; i++)
     {
         if (data->balle[i].x >= largeurFenetre())
             data->balle[i].x = largeurFenetre() - 1;
@@ -23,5 +23,9 @@ void RedimJeu(Data *data)
 }
 
 void RedimRegles(Data *data)
+{
+}
+
+void RedimMenu(Data *data)
 {
 }

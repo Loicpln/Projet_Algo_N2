@@ -14,7 +14,7 @@ void TempoAccueil(Data *data) //Affichage page d'accueil
 	}
 }
 
-void TempoJeu(Data *data)
+void TempoMenu(Data *data)
 {
 	for (int i = 0; i < MAX_BALLE; i++)
 	{
@@ -30,4 +30,10 @@ void TempoJeu(Data *data)
 
 void TempoRegles(Data *data)
 {
+	
 }
+void TempoJeu(Data *data)
+{
+
+}
+

@@ -23,7 +23,7 @@ void AfficheAccueil(Data *data) //Affichage page d'accueil
     afficheChaine("Quitter", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
 
-void AfficheJeu(Data *data)
+void AfficheMenu(Data *data)
 {
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
     for (int i = 0; i < MAX_BALLE; i++)
@@ -69,6 +69,16 @@ void AfficheRegles(Data *data)
     afficheChaine("Reglement", 60, 5 * largeurFenetre() / 16, 19 * hauteurFenetre() / 24);
     afficheChaine("Le concept original de pong est une simulation simpliste ", 20, largeurFenetre() / 10, 7 * hauteurFenetre() / 12);
     afficheChaine("de tennis de table, les deux joueurs se passent la balle ", 20, largeurFenetre() / 10, 6 * hauteurFenetre() / 12);
-    afficheChaine("a l'aide de raquettes, le joueurs ayant le plus de points", 20, largeurFenetre() / 10, 5 * hauteurFenetre() / 12);
-    afficheChaine("gagne la partie", 20, largeurFenetre() / 10, 4 * hauteurFenetre() / 12);
+    afficheChaine("a l'aide de raquettes, le joueur ayant le plus de points", 20, largeurFenetre() / 10, 5 * hauteurFenetre() / 12);
+    afficheChaine("gagne la partie.", 20, largeurFenetre() / 10, 4 * hauteurFenetre() / 12);
+}
+void AfficheJeu(Data *data)
+{
+    epaisseurDeTrait(3);
+    couleurCourante(255, 255, 255);
+    rectangle(3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6); //Retour
+    couleurCourante(0, 0, 0);
+    rectangle(3 * largeurFenetre() / 4 + 1, hauteurFenetre() / 12 + 1, 15 * largeurFenetre() / 16 - 1, hauteurFenetre() / 6 - 1); //Retour
+    couleurCourante(255, 255, 255);
+    afficheChaine("Retour", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
