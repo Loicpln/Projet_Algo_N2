@@ -15,6 +15,9 @@
 #define nb_raquette 2
 #define DIM_PAGE 5
 
+#ifndef STRUCT
+#define STRUCT
+
 typedef struct
 {
     float x;
@@ -39,3 +42,5 @@ typedef struct
     Balle balle[MAX_BALLE];
     Raquette raquette[nb_raquette];
 } Data;
+
+#endif

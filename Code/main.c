@@ -24,7 +24,7 @@ void gestionEvenement(EvenementGfx evenement)
 	switch (evenement)
 	{
 	case Initialisation:
-		init(data);
+		d = init();
 		demandeTemporisation(20);
 		break;
 
