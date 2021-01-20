@@ -15,32 +15,13 @@ int main(int argc, char **argv)
 
 void gestionEvenement(EvenementGfx evenement)
 {
-	
 	static Data d;
 	Data *data = &d;
 
 	switch (evenement)
 	{
 	case Initialisation:
-		for (int i = 0; i < DIM_PAGE; i++)
-		{
-			data->page[i] = 0;
-		}
-	
-		
-		for (int i = 0; i < MAX_BALLE; i++)
-		{
-			data->balle[i].x = largeurFenetre() * valeurAleatoire();
-			data->balle[i].y = hauteurFenetre() * valeurAleatoire();
-			data->balle[i].r = 10;
-			data->balle[i].vx = -5;
-			data->balle[i].vy = -5;
-			if (rand() % 2)
-				data->balle[i].vx = fabsf(data->balle[i].vx);
-
-			if (rand() % 2)
-				data->balle[i].vy = fabsf(data->balle[i].vy);
-		}
+		init(data);
 		demandeTemporisation(20);
 		break;
 
@@ -62,7 +43,7 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case BoutonSouris:
-		gestion(data, fClick());
+		gestion(data, fClic());
 		break;
 
 	case Souris:
@@ -72,13 +53,7 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case Redimensionnement:
-		for (int i = 0; i < MAX_BALLE; i++)
-		{
-			if (data->balle[i].x >= largeurFenetre())
-				data->balle[i].x = largeurFenetre() - 1;
-			if (data->balle[i].y >= hauteurFenetre())
-				data->balle[i].y = hauteurFenetre() - 1;
-		}
+		gestion(data, fRedim());
 		break;
 	}
 }

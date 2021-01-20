@@ -1,4 +1,4 @@
-modules = controleur.o affichage.o souris.o tempo.o clavier.o
+modules = controleur.o affichage.o souris.o clavier.o tempo.o redim.o
 lib = lib.h
 controleur = controleur.h
 
@@ -26,3 +26,6 @@ clavier.o: ./Affichage/clavier.c $(controleur)
 
 tempo.o: ./Moteur/tempo.c $(controleur) 
 	gcc -Wall -c ./Moteur/tempo.c
+
+redim.o: ./Moteur/redim.c $(controleur) 
+	gcc -Wall -c ./Moteur/redim.c

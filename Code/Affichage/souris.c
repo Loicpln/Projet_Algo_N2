@@ -47,7 +47,7 @@ void ClicJeu(Data *data)
                 data->balle[i].vx /= 4;
                 data->balle[i].vy /= 4;
             }
-             data->page[0] = 0;
+            data->page[0] = 0;
         }
     }
 }
@@ -58,7 +58,7 @@ void ClicRegles(Data *data)
     {
         if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
-             data->page[0] = 0;
+            data->page[0] = 0;
         }
     }
 }
