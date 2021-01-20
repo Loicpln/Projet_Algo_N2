@@ -12,6 +12,8 @@
 #define HauteurFenetre 600
 
 #define MAX_BALLE 20
+#define nb_raquette 2
+#define DIM_PAGE 5
 
 typedef struct
 {
@@ -24,6 +26,17 @@ typedef struct
 
 typedef struct
 {
-    int *page;
+    float longueur;
+    float largeur;
+    float centre;
+    float vc;
+    
+} Raquette;
+
+
+typedef struct
+{
+    int page[DIM_PAGE];
     Balle balle[MAX_BALLE];
+    Raquette raquette[nb_raquette];
 } Data;

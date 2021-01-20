@@ -15,11 +15,11 @@ void ClicAccueil(Data *data) // gestion clic page d'accueil
                 data->balle[i].vx *= 4;
                 data->balle[i].vy *= 4;
             }
-            *data->page = 1;
+            data->page[0] = 1;
         }
         if (abscisseSouris() > 11 * largeurFenetre() / 32 && abscisseSouris() < 21 * largeurFenetre() / 32 && ordonneeSouris() > 11 * hauteurFenetre() / 24 && ordonneeSouris() < 14 * hauteurFenetre() / 24)
         {
-            *data->page = 2;
+            data->page[0] = 2;
         }
     }
 }
@@ -47,7 +47,7 @@ void ClicJeu(Data *data)
                 data->balle[i].vx /= 4;
                 data->balle[i].vy /= 4;
             }
-            *data->page = 0;
+             data->page[0] = 0;
         }
     }
 }
@@ -58,7 +58,7 @@ void ClicRegles(Data *data)
     {
         if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
-            *data->page = 0;
+             data->page[0] = 0;
         }
     }
 }

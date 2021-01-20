@@ -2,7 +2,7 @@
 
 void gestion(Data *data, Gestion gestion) //gestion affichage pages
 {
-    switch (*data->page)
+    switch (data->page[0])
     {
     case 0:
         gestion.f1(data);
@@ -14,6 +14,8 @@ void gestion(Data *data, Gestion gestion) //gestion affichage pages
         gestion.f3(data);
         break;
     }
+
+
 }
 
 Gestion fTempo()
@@ -28,7 +30,7 @@ Gestion fAffiche()
 
 Gestion fClavier()
 {
-    return (Gestion){NULL, NULL, NULL};
+    return (Gestion){ClavierAccueil, ClavierJeu,ClavierRegles};
 }
 
 Gestion fClick()

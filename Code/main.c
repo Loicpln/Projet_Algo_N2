@@ -15,14 +15,19 @@ int main(int argc, char **argv)
 
 void gestionEvenement(EvenementGfx evenement)
 {
-	static int p = 0;
+	
 	static Data d;
 	Data *data = &d;
 
 	switch (evenement)
 	{
 	case Initialisation:
-		data->page = &p;
+		for (int i = 0; i < DIM_PAGE; i++)
+		{
+			data->page[i] = 0;
+		}
+	
+		
 		for (int i = 0; i < MAX_BALLE; i++)
 		{
 			data->balle[i].x = largeurFenetre() * valeurAleatoire();

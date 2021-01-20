@@ -27,3 +27,8 @@ void AfficheRegles(Data *data);
 void ClicAccueil(Data *data);
 void ClicJeu(Data *data);
 void ClicRegles(Data *data);
+
+
+void ClavierAccueil(Data *data);
+void ClavierJeu(Data *data);
+void ClavierRegles(Data *data);
