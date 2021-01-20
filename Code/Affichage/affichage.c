@@ -82,3 +82,24 @@ void AfficheJeu(Data *data)
     couleurCourante(255, 255, 255);
     afficheChaine("Retour", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
+
+void Plateau (Data *data)
+{
+	
+	couleurCourante(255,255,255);
+	rectangle(largeurFenetre() / 40, hauteurFenetre() / 120, 39*largeurFenetre() / 40, 100*hauteurFenetre() / 120);
+	couleurCourante(0,0,0);
+	rectangle(largeurFenetre() / 30, hauteurFenetre() / 60, 29*largeurFenetre() / 30, 99*hauteurFenetre() / 120);
+	couleurCourante(255,255,255);
+	epaisseurDeTrait(3);
+
+	for (int i=0; i<10; i++)
+	{
+	ligne(largeurFenetre()/2, 100*hauteurFenetre()/120-i*hauteurFenetre()/6, largeurFenetre()/2, 90*hauteurFenetre()/120-i*hauteurFenetre()/6);
+	}
+	
+	epaisseurDeTrait(8);
+	couleurCourante(255,255,255);
+	afficheChaine("PONG", 95, 5 * largeurFenetre() / 16 + 1, 20.5* hauteurFenetre() / 24 + 1);
+
+}
