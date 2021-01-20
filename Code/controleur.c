@@ -29,7 +29,6 @@ void gestion(Data *data, Gestion gestion) //gestion affichage pages
         gestion.f1(data);
         break;
     case 1:
-
         switch (data->page[1])
         {
         case 0:
@@ -48,7 +47,6 @@ void gestion(Data *data, Gestion gestion) //gestion affichage pages
             gestion.f5(data);
             break;
         }
-
         break;
 
     case 2:
@@ -59,6 +57,6 @@ void gestion(Data *data, Gestion gestion) //gestion affichage pages
 
 Gestion fTempo() { return (Gestion){TempoAccueil, TempoMenu, TempoJeu, NULL, NULL, TempoRegles}; }
 Gestion fAffiche() { return (Gestion){AfficheAccueil, AfficheMenu, AfficheJeu, NULL, NULL, AfficheRegles}; }
-Gestion fClavier() { return (Gestion){ClavierAccueil, NULL, ClavierJeu, NULL, NULL, ClavierRegles}; }
+Gestion fClavier() { return (Gestion){ClavierAccueil, ClavierMenu, ClavierJeu, NULL, NULL, ClavierRegles}; }
 Gestion fClic() { return (Gestion){ClicAccueil, ClicMenu, ClicJeu, NULL, NULL, ClicRegles}; }
 Gestion fRedim() { return (Gestion){RedimAccueil, RedimMenu, RedimJeu, NULL, NULL, RedimRegles}; }

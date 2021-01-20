@@ -11,7 +11,7 @@ void RedimAccueil(Data *data) //Affichage page d'accueil
     }
 }
 
-void RedimJeu(Data *data)
+void RedimMenu(Data *data)
 {
     for (int i = 0; i < MAX_BALLE; i++)
     {
@@ -26,6 +26,6 @@ void RedimRegles(Data *data)
 {
 }
 
-void RedimMenu(Data *data)
+void RedimJeu(Data *data)
 {
 }

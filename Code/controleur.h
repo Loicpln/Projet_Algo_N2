@@ -33,6 +33,7 @@ void AfficheRegles(Data *data);
 void Plateau (Data *data);
 
 void ClavierAccueil(Data *data);
+void ClavierMenu(Data *data);
 void ClavierJeu(Data *data);
 void ClavierRegles(Data *data);
 
