@@ -1,10 +1,10 @@
-#include "gestion.h"
+#include "../controleur.h"
 
-void AfficheAccueil(int *page, Balle *tab) //Affichage page d'accueil
+void AfficheAccueil(Data *data) //Affichage page d'accueil
 {
     couleurCourante(255, 0, 0);
     for (int i = 0; i < MAX_BALLE; i++)
-        cercle(tab[i].x, tab[i].y, tab[i].r);
+        cercle(data->balle[i].x, data->balle[i].y, data->balle[i].r);
 
     epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);
@@ -23,11 +23,11 @@ void AfficheAccueil(int *page, Balle *tab) //Affichage page d'accueil
     afficheChaine("Quitter", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
 
-void AfficheJeu(int *page, Balle *tab)
+void AfficheJeu(Data *data)
 {
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
     for (int i = 0; i < MAX_BALLE; i++)
-        cercle(tab[i].x, tab[i].y, tab[i].r);
+        cercle(data->balle[i].x, data->balle[i].y, data->balle[i].r);
 
     epaisseurDeTrait(3);
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
@@ -53,7 +53,7 @@ void AfficheJeu(int *page, Balle *tab)
     afficheChaine("PONG", 60, 13 * largeurFenetre() / 32, 21 * hauteurFenetre() / 24);
 }
 
-void AfficheRegles(int *page, Balle *tab)
+void AfficheRegles(Data *data)
 {
     epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);

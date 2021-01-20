@@ -16,58 +16,48 @@ int main(int argc, char **argv)
 void gestionEvenement(EvenementGfx evenement)
 {
 	static int p = 0;
-	int *page = &p;
-
-	static Balle tab[MAX_BALLE];
+	static Data d;
+	Data *data = &d;
 
 	switch (evenement)
 	{
 	case Initialisation:
+		data->page = &p;
 		for (int i = 0; i < MAX_BALLE; i++)
 		{
-			tab[i].x = largeurFenetre() * valeurAleatoire();
-			tab[i].y = hauteurFenetre() * valeurAleatoire();
-			tab[i].r = 10;
-			tab[i].vx = -5;
-			tab[i].vy = -5;
-			if(rand()%2)
-				tab[i].vx = fabsf(tab[i].vx);
-			
-			if(rand()%2)
-				tab[i].vy = fabsf(tab[i].vy);
-			
+			data->balle[i].x = largeurFenetre() * valeurAleatoire();
+			data->balle[i].y = hauteurFenetre() * valeurAleatoire();
+			data->balle[i].r = 10;
+			data->balle[i].vx = -5;
+			data->balle[i].vy = -5;
+			if (rand() % 2)
+				data->balle[i].vx = fabsf(data->balle[i].vx);
+
+			if (rand() % 2)
+				data->balle[i].vy = fabsf(data->balle[i].vy);
 		}
 		demandeTemporisation(20);
 		break;
 
 	case Temporisation:
-		for (int i = 0; i < MAX_BALLE; i++)
-		{
-			tab[i].x += tab[i].vx;
-			tab[i].y += tab[i].vy;
-
-			if (tab[i].x < 0 || tab[i].x >= largeurFenetre())
-				tab[i].vx = -tab[i].vx;
-			if (tab[i].y < 0 || tab[i].y >= hauteurFenetre())
-				tab[i].vy = -tab[i].vy;
-		}
+		gestion(data, fTempo());
 		rafraichisFenetre();
 		break;
 
 	case Affichage:
 		effaceFenetre(0, 0, 0);
-		gestion(page, tab, fAffiche());
+		gestion(data, fAffiche());
 		break;
 
 	case Clavier:
-		gestion(page, tab, fClavier());
+		gestion(data, fClavier());
 		break;
 
 	case ClavierSpecial:
 		break;
 
 	case BoutonSouris:
-		gestion(page, tab, fClick());
+		gestion(data, fClick());
 		break;
 
 	case Souris:
@@ -79,10 +69,10 @@ void gestionEvenement(EvenementGfx evenement)
 	case Redimensionnement:
 		for (int i = 0; i < MAX_BALLE; i++)
 		{
-			if (tab[i].x >= largeurFenetre())
-				tab[i].x = largeurFenetre() - 1;
-			if (tab[i].y >= hauteurFenetre())
-				tab[i].y = hauteurFenetre() - 1;
+			if (data->balle[i].x >= largeurFenetre())
+				data->balle[i].x = largeurFenetre() - 1;
+			if (data->balle[i].y >= hauteurFenetre())
+				data->balle[i].y = hauteurFenetre() - 1;
 		}
 		break;
 	}

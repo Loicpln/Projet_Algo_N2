@@ -1,6 +1,6 @@
-#include "gestion.h"
+#include "../controleur.h"
 
-void ClicAccueil(int *page, Balle *tab) // gestion clic page d'accueil
+void ClicAccueil(Data *data) // gestion clic page d'accueil
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
@@ -12,19 +12,19 @@ void ClicAccueil(int *page, Balle *tab) // gestion clic page d'accueil
         {
             for (int i = 0; i < MAX_BALLE; i++)
             {
-                tab[i].vx *= 4;
-                tab[i].vy *= 4;
+                data->balle[i].vx *= 4;
+                data->balle[i].vy *= 4;
             }
-            *page = 1;
+            *data->page = 1;
         }
         if (abscisseSouris() > 11 * largeurFenetre() / 32 && abscisseSouris() < 21 * largeurFenetre() / 32 && ordonneeSouris() > 11 * hauteurFenetre() / 24 && ordonneeSouris() < 14 * hauteurFenetre() / 24)
         {
-            *page = 2;
+            *data->page = 2;
         }
     }
 }
 
-void ClicJeu(int *page, Balle *tab)
+void ClicJeu(Data *data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
@@ -44,21 +44,21 @@ void ClicJeu(int *page, Balle *tab)
         {
             for (int i = 0; i < MAX_BALLE; i++)
             {
-                tab[i].vx /= 4;
-                tab[i].vy /= 4;
+                data->balle[i].vx /= 4;
+                data->balle[i].vy /= 4;
             }
-            *page = 0;
+            *data->page = 0;
         }
     }
 }
 
-void ClicRegles(int *page, Balle *tab)
+void ClicRegles(Data *data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
         if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
-            *page = 0;
+            *data->page = 0;
         }
     }
 }
