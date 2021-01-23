@@ -12,8 +12,7 @@ void ClicAccueil(Data *data) // gestion clic page d'accueil
         {
             for (int i = 0; i < MAX_BALLE; i++)
             {
-                data->balle[i].vx *= 4;
-                data->balle[i].vy *= 4;
+                accelereBalle(data->balle + i, 4);
             }
             data->page[0] = 1;
         }
@@ -47,8 +46,7 @@ void ClicMenu(Data *data)
         {
             for (int i = 0; i < MAX_BALLE; i++)
             {
-                data->balle[i].vx /= 4;
-                data->balle[i].vy /= 4;
+                accelereBalle(data->balle + i, 0.25);
             }
             data->page[0] = 0;
         }

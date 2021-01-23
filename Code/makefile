@@ -1,7 +1,7 @@
-modules = controleur.o affichage.o souris.o clavier.o tempo.o redim.o
+modules = controleur.o affichage.o souris.o clavier.o tempo.o redim.o calcul.o
 lib = lib.h
 controleur = controleur.h
-gestion = ./Affichage/gestion.h
+gestion = ./Gestion/gestion.h
 moteur = ./Moteur/moteur.h
 
 run: main
@@ -17,17 +17,20 @@ main.o: main.c $(controleur)
 controleur.o: controleur.c $(controleur) 
 	gcc -Wall -c controleur.c
 
-affichage.o: ./Affichage/affichage.c $(gestion) 
-	gcc -Wall -c ./Affichage/affichage.c
+affichage.o: ./Gestion/affichage.c $(gestion) 
+	gcc -Wall -c ./Gestion/affichage.c
 
-souris.o: ./Affichage/souris.c $(gestion) 
-	gcc -Wall -c ./Affichage/souris.c
+souris.o: ./Gestion/souris.c $(gestion) 
+	gcc -Wall -c ./Gestion/souris.c
 
-clavier.o: ./Affichage/clavier.c $(gestion) 
-	gcc -Wall -c ./Affichage/clavier.c
+clavier.o: ./Gestion/clavier.c $(gestion) 
+	gcc -Wall -c ./Gestion/clavier.c
 
-tempo.o: ./Moteur/tempo.c $(moteur) 
-	gcc -Wall -c ./Moteur/tempo.c
+tempo.o: ./Gestion/tempo.c $(gestion) 
+	gcc -Wall -c ./Gestion/tempo.c
 
-redim.o: ./Moteur/redim.c $(moteur) 
-	gcc -Wall -c ./Moteur/redim.c
+redim.o: ./Gestion/redim.c $(gestion) 
+	gcc -Wall -c ./Gestion/redim.c
+	
+calcul.o: ./Moteur/calcul.c $(moteur) 
+	gcc -Wall -c ./Moteur/calcul.c

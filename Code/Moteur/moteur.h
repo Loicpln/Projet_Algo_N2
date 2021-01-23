@@ -1,11 +1,7 @@
 #include "../lib.h"
 
-void TempoAccueil(Data *data);
-void TempoMenu(Data *data);
-void TempoJeu(Data *data);
-void TempoRegles(Data *data);
-
-void RedimAccueil(Data *data);
-void RedimMenu(Data *data);
-void RedimJeu(Data *data);
-void RedimRegles(Data *data);
+void mouvementBalle(Balle *balle);
+void rebond(Balle *balle);
+void redimBalle(Balle *balle);
+void accelereBalle(Balle *balle, float a);
+void redimRaquette(Raquette *raquette);

@@ -54,6 +54,17 @@ Data init()
         if (rand() % 2)
             data.balle[i].vy = fabsf(data.balle[i].vy);
     }
+    for (int i = 0; i < NB_RAQUETTE; i++)
+    {
+        data.raquette[i].longueur = 100;
+        data.raquette[i].largeur = 10;
+        data.raquette[i].centre = (hauteurFenetre() / 60 + 99 * hauteurFenetre() / 120) / 2;
+        data.raquette[i].vc = 5;
+        if (i % 2 == 0)
+            data.raquette[i].side = true;
+        else
+            data.raquette[i].side = false;
+    }
     return data;
 }
 

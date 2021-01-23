@@ -10,9 +10,11 @@
 
 #define LargeurFenetre 800
 #define HauteurFenetre 600
+#define MAX_PLATEAU 99 * hauteurFenetre() / 120
+#define MIN_PLATEAU hauteurFenetre() / 60
 
-#define MAX_BALLE 20
-#define nb_raquette 2
+#define MAX_BALLE 50
+#define NB_RAQUETTE 2
 #define DIM_PAGE 5
 
 #ifndef STRUCT
@@ -33,14 +35,14 @@ typedef struct
     float largeur;
     float centre;
     float vc;
-
+    bool side;
 } Raquette;
 
 typedef struct
 {
     int page[DIM_PAGE];
     Balle balle[MAX_BALLE];
-    Raquette raquette[nb_raquette];
+    Raquette raquette[NB_RAQUETTE];
 } Data;
 
 #endif
