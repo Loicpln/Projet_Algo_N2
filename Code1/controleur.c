@@ -60,8 +60,6 @@ Data init()
         data.raquette[i].largeur = 10;
         data.raquette[i].centre = (hauteurFenetre() / 60 + 99 * hauteurFenetre() / 120) / 2;
         data.raquette[i].vc = 5;
-        data.raquette[i].bas = 1;
-        data.raquette[i].haut = 1;
     }
     return data;
 }

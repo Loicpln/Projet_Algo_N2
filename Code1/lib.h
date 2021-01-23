@@ -33,8 +33,6 @@ typedef struct
     float largeur;
     float centre;
     float vc;
-    float haut;
-    float bas;
 
 } Raquette;
 

@@ -110,3 +110,4 @@ void Plateau(Data *data)
     couleurCourante(255, 255, 255);
     afficheChaine("PONG", 95, 5 * largeurFenetre() / 16 + 1, 20.5 * hauteurFenetre() / 24 + 1);
 }
+
