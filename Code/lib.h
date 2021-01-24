@@ -7,6 +7,7 @@
 #include "./GfxLib/GfxLib.h"
 #include "./GfxLib/BmpLib.h"
 #include "./GfxLib/ESLib.h"
+#include "./Fmod/fmod.h"
 
 #define LargeurFenetre 800
 #define HauteurFenetre 600

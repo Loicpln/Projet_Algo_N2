@@ -46,13 +46,8 @@ Data init()
         data.balle[i].x = largeurFenetre() * valeurAleatoire();
         data.balle[i].y = hauteurFenetre() * valeurAleatoire();
         data.balle[i].r = 10;
-        data.balle[i].vx = -5;
-        data.balle[i].vy = -5;
-        if (rand() % 2)
-            data.balle[i].vx = fabsf(data.balle[i].vx);
-
-        if (rand() % 2)
-            data.balle[i].vy = fabsf(data.balle[i].vy);
+        data.balle[i].vx = (rand() % 2) ? 5 : -5;
+        data.balle[i].vy = (rand() % 2) ? 5 : -5;
     }
     for (int i = 0; i < NB_RAQUETTE; i++)
     {
@@ -60,10 +55,7 @@ Data init()
         data.raquette[i].largeur = 10;
         data.raquette[i].centre = (hauteurFenetre() / 60 + 99 * hauteurFenetre() / 120) / 2;
         data.raquette[i].vc = 5;
-        if (i % 2 == 0)
-            data.raquette[i].side = true;
-        else
-            data.raquette[i].side = false;
+        data.raquette[i].side = (i % 2) ? false : true;
     }
     return data;
 }

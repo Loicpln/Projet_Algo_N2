@@ -1,5 +1,5 @@
 modules = controleur.o affichage.o souris.o clavier.o tempo.o redim.o calcul.o
-lib = lib.h
+lib = ./GfxLib/libisentlib.a ./Fmod/libfmod.a
 controleur = controleur.h
 gestion = ./Gestion/gestion.h
 moteur = ./Moteur/moteur.h
@@ -8,8 +8,11 @@ run: main
 	rm *.o
 	@./main
 
-main: main.o $(modules) ./GfxLib/libisentlib.a
-	gcc -Wall main.o $(modules) -o main ./GfxLib/libisentlib.a -lm -lglut -lGL -lX11
+clear: 
+	rm *.o
+
+main: main.o $(modules) 
+	gcc -Wall main.o $(modules) -o main $(lib) -lm -lglut -lGL -lX11
 
 main.o: main.c $(controleur)
 	gcc -Wall -c main.c
