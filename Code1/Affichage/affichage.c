@@ -111,3 +111,85 @@ void Plateau(Data *data)
     afficheChaine("PONG", 95, 5 * largeurFenetre() / 16 + 1, 20.5 * hauteurFenetre() / 24 + 1);
 }
 
+void score(int *score)
+{
+	bool digit[7]=ZERO;
+	int i=0;
+	couleurCourante(255,255,255);
+	epaisseurDeTrait(5);
+	
+	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	i++;
+
+	//SCORE GAUCHE
+	//digit 1
+	ligne(
+		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50,
+		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50);
+	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	i++;
+	//digit 2
+	ligne(
+		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50,
+		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4);
+	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	i++;
+	//digit 3
+	ligne(
+		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50);
+	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	i++;
+	//digit 4
+	ligne(
+		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4);
+	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	i++;
+	//digit 5
+	ligne(
+		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	i++;
+	//digit 6
+	ligne(
+		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	i++;
+	//digit 7
+	ligne(
+		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50,
+		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+	//SCORE DROIT
+	//digit 1
+	ligne(
+		3*largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50,
+		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50);
+	//digit 2
+	ligne(
+		3*largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50,
+		3*largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4);
+	//digit 3
+	ligne(
+		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50);
+	//digit 4
+	ligne(
+		3*largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4);
+	//digit 5
+	ligne(
+		3*largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		3*largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+	//digit 6
+	ligne(
+		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+	//digit 7
+	ligne(
+		3*largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50,
+		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+
+}
