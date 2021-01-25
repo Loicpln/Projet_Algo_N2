@@ -9,56 +9,10 @@ void ClavierMenu(Data *data)
 }
 void ClavierJeu(Data *data)
 {
-	switch (caractereClavier())
+	for (int i = 0; i < NB_RAQUETTE; i++)
 	{
-	case 'Z':
-	case 'z':
-
-		if (data->raquette[0].centre + data->raquette[0].longueur / 2 <= MAX_Y_PLATEAU)
-		{
-			data->raquette[0].centre += data->raquette[0].vc;
-		}
-		else
-		{
-		}
-		break;
-
-	case 'S':
-	case 's':
-		if (data->raquette[0].centre - data->raquette[0].longueur / 2 >= MIN_Y_PLATEAU)
-		{
-			data->raquette[0].centre -= data->raquette[0].vc;
-		}
-
-		else
-		{
-		}
-		break;
-
-	case 'P':
-	case 'p':
-
-		if (data->raquette[1].centre + data->raquette[1].longueur / 2 <= MAX_Y_PLATEAU)
-		{
-			data->raquette[1].centre += data->raquette[1].vc;
-		}
-
-		else
-		{
-		}
-		break;
-
-	case 'M':
-	case 'm':
-		if (data->raquette[1].centre - data->raquette[1].longueur / 2 >= MIN_Y_PLATEAU)
-		{
-			data->raquette[1].centre -= data->raquette[1].vc;
-		}
-		else
-		{
-		}
-		break;
-	 }
+		touches(data->raquette + i);
+	}
 }
 void ClavierRegles(Data *data)
 {

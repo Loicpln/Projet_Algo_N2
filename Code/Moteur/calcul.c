@@ -6,19 +6,11 @@ void mouvementBalle(Balle *balle)
 	balle->y += balle->vy;
 }
 
-void rebond(Balle *balle)
+void rebond(Balle *balle, int min_x, int min_y, int max_x, int max_y)
 {
-	if (balle->x < 0 || balle->x > largeurFenetre())
+	if (balle->x < min_x || balle->x > max_x)
 		balle->vx = -balle->vx;
-	if (balle->y < 0 || balle->y > hauteurFenetre())
-		balle->vy = -balle->vy;
-}
-
-void rebondJeu(Balle *balle)
-{
-	if (balle->x < MIN_X_PLATEAU || balle->x > MAX_X_PLATEAU)
-		balle->vx = -balle->vx;
-	if (balle->y < MIN_Y_PLATEAU || balle->y > MAX_Y_PLATEAU)
+	if (balle->y < min_y || balle->y > max_y)
 		balle->vy = -balle->vy;
 }
 
@@ -42,4 +34,44 @@ void redimRaquette(Raquette *raquette)
 		raquette->centre = MAX_Y_PLATEAU - raquette->longueur / 2;
 	if (raquette->centre - raquette->longueur / 2 <= MIN_Y_PLATEAU)
 		raquette->centre = MIN_Y_PLATEAU + raquette->longueur / 2;
+}
+
+void touches(Raquette *raquette)
+{
+	if (caractereClavier() == raquette->up)
+	{
+		up(raquette);
+	}
+	else if (caractereClavier() == raquette->down)
+	{
+		down(raquette);
+	}
+}
+
+void up(Raquette *raquette)
+{
+	if (raquette->centre + raquette->vc + raquette->longueur / 2 >= MAX_Y_PLATEAU)
+	{
+		raquette->centre = MAX_Y_PLATEAU - raquette->longueur / 2;
+	}
+	else if (raquette->centre + raquette->longueur / 2 <= MAX_Y_PLATEAU)
+	{
+		raquette->centre += raquette->vc;
+	}
+}
+
+void down(Raquette *raquette)
+{
+	if (raquette->centre - raquette->vc - raquette->longueur / 2 <= MIN_Y_PLATEAU)
+	{
+		raquette->centre = MIN_Y_PLATEAU + raquette->longueur / 2;
+	}
+	else if (raquette->centre - raquette->longueur / 2 >= MIN_Y_PLATEAU)
+	{
+		raquette->centre -= raquette->vc;
+	}
+}
+
+void hitbox()
+{
 }

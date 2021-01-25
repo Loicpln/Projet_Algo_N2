@@ -39,6 +39,8 @@ typedef struct
     float centre;
     float vc;
     bool side;
+    char up;
+    char down;
 } Raquette;
 
 typedef struct

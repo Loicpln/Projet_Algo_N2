@@ -56,6 +56,8 @@ Data init()
         data.raquette[i].centre = (hauteurFenetre() / 60 + 99 * hauteurFenetre() / 120) / 2;
         data.raquette[i].vc = 35;
         data.raquette[i].side = (i % 2) ? false : true;
+        data.raquette[i].up = (data.raquette[i].side == false) ? 'p' : 'a';
+        data.raquette[i].down = (data.raquette[i].side == false) ? 'm' : 'q';
     }
     data.balleJeu->x = 400;
     data.balleJeu->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
