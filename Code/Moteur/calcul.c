@@ -14,6 +14,14 @@ void rebond(Balle *balle)
 		balle->vy = -balle->vy;
 }
 
+void rebondJeu(Balle *balle)
+{
+	if (balle->x < MIN_X_PLATEAU || balle->x > MAX_X_PLATEAU)
+		balle->vx = -balle->vx;
+	if (balle->y < MIN_Y_PLATEAU || balle->y > MAX_Y_PLATEAU)
+		balle->vy = -balle->vy;
+}
+
 void redimBalle(Balle *balle)
 {
 	if (balle->x >= largeurFenetre())
@@ -30,8 +38,8 @@ void accelereBalle(Balle *balle, float a)
 
 void redimRaquette(Raquette *raquette)
 {
-	if (raquette->centre + raquette->longueur / 2 >= MAX_PLATEAU)
-		raquette->centre = MAX_PLATEAU - raquette->longueur / 2;
-	if (raquette->centre - raquette->longueur / 2 <= MIN_PLATEAU)
-		raquette->centre = MIN_PLATEAU + raquette->longueur / 2;
+	if (raquette->centre + raquette->longueur / 2 >= MAX_Y_PLATEAU)
+		raquette->centre = MAX_Y_PLATEAU - raquette->longueur / 2;
+	if (raquette->centre - raquette->longueur / 2 <= MIN_Y_PLATEAU)
+		raquette->centre = MIN_Y_PLATEAU + raquette->longueur / 2;
 }

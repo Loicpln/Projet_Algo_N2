@@ -54,9 +54,14 @@ Data init()
         data.raquette[i].longueur = 100;
         data.raquette[i].largeur = 10;
         data.raquette[i].centre = (hauteurFenetre() / 60 + 99 * hauteurFenetre() / 120) / 2;
-        data.raquette[i].vc = 5;
+        data.raquette[i].vc = 35;
         data.raquette[i].side = (i % 2) ? false : true;
     }
+    data.balleJeu->x = 400;
+    data.balleJeu->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
+    data.balleJeu->r = 7;
+    data.balleJeu->vx = 5;
+    data.balleJeu->vy = 5;
     return data;
 }
 

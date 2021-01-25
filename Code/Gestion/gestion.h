@@ -8,7 +8,7 @@ void AfficheRegles(Data *data);
 
 void plateau();
 void raquette(Raquette raquette);
-
+void balle(Balle *balleJeu);
 
 void ClavierAccueil(Data *data);
 void ClavierMenu(Data *data);

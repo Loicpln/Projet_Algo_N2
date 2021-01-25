@@ -11,8 +11,10 @@
 
 #define LargeurFenetre 800
 #define HauteurFenetre 600
-#define MAX_PLATEAU 99 * hauteurFenetre() / 120
-#define MIN_PLATEAU hauteurFenetre() / 60
+#define MAX_X_PLATEAU 29 * largeurFenetre() / 30
+#define MIN_X_PLATEAU largeurFenetre() / 30
+#define MAX_Y_PLATEAU 99 * hauteurFenetre() / 120
+#define MIN_Y_PLATEAU hauteurFenetre() / 60
 
 #define MAX_BALLE 50
 #define NB_RAQUETTE 2
@@ -44,6 +46,7 @@ typedef struct
     int page[DIM_PAGE];
     Balle balle[MAX_BALLE];
     Raquette raquette[NB_RAQUETTE];
+    Balle balleJeu[1];
 } Data;
 
 #endif
