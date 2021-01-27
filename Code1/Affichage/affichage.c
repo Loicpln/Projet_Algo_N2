@@ -111,57 +111,124 @@ void Plateau(Data *data)
     afficheChaine("PONG", 95, 5 * largeurFenetre() / 16 + 1, 20.5 * hauteurFenetre() / 24 + 1);
 }
 
-void score(int *score)
+void nombre (int score, bool digit[])
 {
-	bool digit[7]=ZERO;
-	int i=0;
+	switch (score)
+	{
+	case 0: digit[0] = true; digit[1]= true; digit[2]= true; digit[3]= false; digit[4]= true; digit[5]= true; digit[6]= true; break;
+	case 1:digit[0] = false; digit[1]= false; digit[2]= true; digit[3]= false; digit[4]= false; digit[5]= true; digit[6]= false; break;
+	case 2:digit[0] = true; digit[1]= false; digit[2]= true; digit[3]= true; digit[4]= true; digit[5]= false; digit[6]= true; break;
+	case 3:digit[0] = true; digit[1]= false; digit[2]= true; digit[3]= true; digit[4]= false; digit[5]= true; digit[6]= true; break;
+	case 4:digit[0] = false; digit[1]= true; digit[2]= true; digit[3]= true; digit[4]= false; digit[5]= true; digit[6]= false; break;
+	case 5:digit[0] = true; digit[1]= true; digit[2]= false; digit[3]= true; digit[4]= false; digit[5]= true; digit[6]= true; break;
+	case 6:digit[0] = true; digit[1]= true; digit[2]= false; digit[3]= true; digit[4]= true; digit[5]= true; digit[6]= true; break;
+	case 7:digit[0] = true; digit[1]= false; digit[2]= true; digit[3]=false; digit[4]= false; digit[5]= true; digit[6]= false; break;
+	case 8:digit[0] = true; digit[1]= true; digit[2]= true; digit[3]= true; digit[4]= true; digit[5]= true; digit[6]= true; break;
+	case 9:digit[0] = true; digit[1]= true; digit[2]= true; digit[3]= true; digit[4]= false; digit[5]= true; digit[6]= true; break;
+	}
+}
+
+
+void score(int score)
+{
+	bool dizaine[7];
+	bool unite[7];
+	nombre(floor(score/10), dizaine);
+	nombre(score-10*floor(score/10), unite);
 	couleurCourante(255,255,255);
 	epaisseurDeTrait(5);
 	
-	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
-	i++;
+	
 
 	//SCORE GAUCHE
+	//UNITE
 	//digit 1
+	(unite[0]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
 	ligne(
 		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50,
 		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50);
-	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
-	i++;
+	
 	//digit 2
+	(unite[1]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
 	ligne(
 		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50,
 		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4);
-	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
-	i++;
+	
 	//digit 3
+	(unite[2]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
 	ligne(
 		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4,
 		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50);
-	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
-	i++;
+	
 	//digit 4
+	(unite[3]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
 	ligne(
 		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4,
 		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4);
-	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
-	i++;
+
 	//digit 5
+	(unite[4]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
 	ligne(
 		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4,
 		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
-	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
-	i++;
+
 	//digit 6
+	(unite[5]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
 	ligne(
 		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4,
 		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
-	(digit[i]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
-	i++;
+
 	//digit 7
+	(unite[6]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
 	ligne(
 		largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50,
 		largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+	//DIZAINE
+	//digit 1
+	(dizaine[0]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	ligne(
+		largeurFenetre() / 4- 4*largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50,
+		largeurFenetre() / 4- 2*largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50);
+	
+	//digit 2
+	(dizaine[1]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	ligne(
+		largeurFenetre() / 4- 4*largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50,
+		largeurFenetre() / 4- 4*largeurFenetre()/100, 3*hauteurFenetre() / 4);
+	
+	//digit 3
+	(dizaine[2]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	ligne(
+		largeurFenetre() / 4- 2*largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		largeurFenetre() / 4- 2*largeurFenetre()/100, 3*hauteurFenetre() / 4+ largeurFenetre()/50);
+	
+	//digit 4
+	(dizaine[3]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	ligne(
+		largeurFenetre() / 4- 4*largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		largeurFenetre() / 4- 2*largeurFenetre()/100, 3*hauteurFenetre() / 4);
+
+	//digit 5
+	(dizaine[4]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	ligne(
+		largeurFenetre() / 4- 4*largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		largeurFenetre() / 4- 4*largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+
+	//digit 6
+	(dizaine[5]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	ligne(
+		largeurFenetre() / 4- 2*largeurFenetre()/100, 3*hauteurFenetre() / 4,
+		largeurFenetre() / 4- 2*largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+
+	//digit 7
+	(dizaine[6]==true)? couleurCourante(255,255,255):couleurCourante(0,0,0);
+	ligne(
+		largeurFenetre() / 4- 4*largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50,
+		largeurFenetre() / 4- 2*largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+
+
+
+	/*couleurCourante(255,255,255);
 	//SCORE DROIT
 	//digit 1
 	ligne(
@@ -190,6 +257,6 @@ void score(int *score)
 	//digit 7
 	ligne(
 		3*largeurFenetre() / 4-largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50,
-		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);
+		3*largeurFenetre() / 4+largeurFenetre()/100, 3*hauteurFenetre() / 4-largeurFenetre()/50);*/
 
 }

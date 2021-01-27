@@ -15,3 +15,6 @@ void ClicAccueil(Data *data);
 void ClicMenu(Data *data);
 void ClicJeu(Data *data);
 void ClicRegles(Data *data);
+
+void nombre (int score, bool digit[]);
+void score(int score);
