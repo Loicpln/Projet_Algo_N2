@@ -169,20 +169,10 @@ void nombre(int score, bool digit[])
 }
 void hitbox(Balle *balle, Raquette *raquette)
 {
-	if (raquette->side)
+
+	if ((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 && balle->y < raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre - raquette->longueur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2 && balle->y < raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre - raquette->longueur / 2)
 	{
-		if (balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 && balle->y < raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre - raquette->longueur / 2)
-		{
-			balle->vx = -balle->vx;
-			balle->vy = balle->vy;
-		}
-	}
-	else
-	{
-		if (balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2 && balle->y < raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre - raquette->longueur / 2)
-		{
-			balle->vx = -balle->vx;
-			balle->vy = balle->vy;
-		}
+		balle->vx = -balle->vx;
+		balle->vy = balle->vy;
 	}
 }

@@ -110,8 +110,8 @@ void AfficheJeu(Data *data)
     plateau();
     for (int i = 0; i < NB_RAQUETTE; i++)
         raquette(data->raquette[i]);
-    score(data->score[0],true);
-    score(data->score[1],false);
+    score(data->score[0], true);
+    score(data->score[1], false);
     balle(data->balleJeu);
 }
 
@@ -140,9 +140,9 @@ void raquette(Raquette raquette)
 {
     couleurCourante(255, 255, 255); // Raquette gauche
     rectangle(
-        raquette.side ? largeurFenetre() / 30 + 10 - raquette.largeur / 2 : 29 * largeurFenetre() / 30 - 10 - raquette.largeur / 2,
+        (raquette.side) ? largeurFenetre() / 30 + 10 - raquette.largeur / 2 : 29 * largeurFenetre() / 30 - 10 - raquette.largeur / 2,
         raquette.centre + raquette.longueur / 2,
-        raquette.side ? largeurFenetre() / 30 + 10 + raquette.largeur / 2 : 29 * largeurFenetre() / 30 - 10 + raquette.largeur / 2,
+        (raquette.side) ? largeurFenetre() / 30 + 10 + raquette.largeur / 2 : 29 * largeurFenetre() / 30 - 10 + raquette.largeur / 2,
         raquette.centre - raquette.longueur / 2);
 }
 
@@ -152,7 +152,7 @@ void balle(Balle *balleJeu)
     cercle(balleJeu->x, balleJeu->y, balleJeu->r);
 }
 
-void score(int score, bool side)    
+void score(int score, bool side)
 {
     bool dizaine[7];
     bool unite[7];
