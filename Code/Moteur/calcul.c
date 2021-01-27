@@ -170,7 +170,22 @@ void nombre(int score, bool digit[])
 void hitbox(Balle *balle, Raquette *raquette)
 {
 
-	if ((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 && balle->y < raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre - raquette->longueur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2 && balle->y < raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre - raquette->longueur / 2)
+	if (((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2) && balle->y <= raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre + raquette->longueur / 4) //top quart
+	{
+		balle->vx = -balle->vx;
+		balle->vy = -balle->vy;
+	}
+	if (((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2) && balle->y <= raquette->centre + raquette->longueur / 4 && balle->y > raquette->centre) //low part of  top quart
+	{
+		balle->vx = -balle->vx;
+		balle->vy = balle->vy;
+	}
+	if (((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2) && balle->y <= raquette->centre && balle->y >= raquette->centre - raquette->longueur / 4) //top part of low quart
+	{
+		balle->vx = -balle->vx;
+		balle->vy = balle->vy;
+	}
+	if (((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2) && balle->y < raquette->centre - raquette->longueur / 4 && balle->y >= raquette->centre - raquette->longueur / 2) //low quart
 	{
 		balle->vx = -balle->vx;
 		balle->vy = balle->vy;
