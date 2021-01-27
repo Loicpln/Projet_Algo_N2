@@ -11,6 +11,8 @@
 
 #define LargeurFenetre 800
 #define HauteurFenetre 600
+#define MID_X largeurFenetre()/2
+#define MID_Y hauteurFenetre()/2
 #define MAX_X_PLATEAU 29 * largeurFenetre() / 30
 #define MIN_X_PLATEAU largeurFenetre() / 30
 #define MAX_Y_PLATEAU 99 * hauteurFenetre() / 120
@@ -49,6 +51,7 @@ typedef struct
     Balle balle[MAX_BALLE];
     Raquette raquette[NB_RAQUETTE];
     Balle balleJeu[1];
+    int score[2];
 } Data;
 
 #endif

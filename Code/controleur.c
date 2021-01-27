@@ -64,6 +64,8 @@ Data init()
     data.balleJeu->r = 7;
     data.balleJeu->vx = 5;
     data.balleJeu->vy = 5;
+    data.score[0] = 0;
+    data.score[1] =0;
     return data;
 }
 

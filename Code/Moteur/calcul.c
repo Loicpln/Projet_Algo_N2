@@ -71,7 +71,102 @@ void down(Raquette *raquette)
 		raquette->centre -= raquette->vc;
 	}
 }
-
+void nombre(int score, bool digit[])
+{
+	switch (score)
+	{
+	case 0:
+		digit[0] = true;
+		digit[1] = true;
+		digit[2] = true;
+		digit[3] = false;
+		digit[4] = true;
+		digit[5] = true;
+		digit[6] = true;
+		break;
+	case 1:
+		digit[0] = false;
+		digit[1] = false;
+		digit[2] = true;
+		digit[3] = false;
+		digit[4] = false;
+		digit[5] = true;
+		digit[6] = false;
+		break;
+	case 2:
+		digit[0] = true;
+		digit[1] = false;
+		digit[2] = true;
+		digit[3] = true;
+		digit[4] = true;
+		digit[5] = false;
+		digit[6] = true;
+		break;
+	case 3:
+		digit[0] = true;
+		digit[1] = false;
+		digit[2] = true;
+		digit[3] = true;
+		digit[4] = false;
+		digit[5] = true;
+		digit[6] = true;
+		break;
+	case 4:
+		digit[0] = false;
+		digit[1] = true;
+		digit[2] = true;
+		digit[3] = true;
+		digit[4] = false;
+		digit[5] = true;
+		digit[6] = false;
+		break;
+	case 5:
+		digit[0] = true;
+		digit[1] = true;
+		digit[2] = false;
+		digit[3] = true;
+		digit[4] = false;
+		digit[5] = true;
+		digit[6] = true;
+		break;
+	case 6:
+		digit[0] = true;
+		digit[1] = true;
+		digit[2] = false;
+		digit[3] = true;
+		digit[4] = true;
+		digit[5] = true;
+		digit[6] = true;
+		break;
+	case 7:
+		digit[0] = true;
+		digit[1] = false;
+		digit[2] = true;
+		digit[3] = false;
+		digit[4] = false;
+		digit[5] = true;
+		digit[6] = false;
+		break;
+	case 8:
+		digit[0] = true;
+		digit[1] = true;
+		digit[2] = true;
+		digit[3] = true;
+		digit[4] = true;
+		digit[5] = true;
+		digit[6] = true;
+		break;
+	case 9:
+		digit[0] = true;
+		digit[1] = true;
+		digit[2] = true;
+		digit[3] = true;
+		digit[4] = false;
+		digit[5] = true;
+		digit[6] = true;
+		break;
+	}
+}
 void hitbox()
 {
 }

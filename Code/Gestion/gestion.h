@@ -9,6 +9,7 @@ void AfficheRegles(Data *data);
 void plateau();
 void raquette(Raquette raquette);
 void balle(Balle *balleJeu);
+void score(int score, bool side);
 
 void ClavierAccueil(Data *data);
 void ClavierMenu(Data *data);
