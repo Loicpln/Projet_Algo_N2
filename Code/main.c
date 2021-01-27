@@ -22,14 +22,11 @@ void gestionEvenement(EvenementGfx evenement)
 	static Data d;
 	Data *data = &d;
 
-	FMOD_SYSTEM *system;
 
 	switch (evenement)
 	{
 	case Initialisation:
 		d = init();
-		FMOD_System_Create(&system);
-		FMOD_System_Init(system,2,FMOD_INIT_NORMAL,NULL);
 		demandeTemporisation(20);
 		break;
 
