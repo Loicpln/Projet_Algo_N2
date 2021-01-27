@@ -140,9 +140,9 @@ void raquette(Raquette raquette)
 {
     couleurCourante(255, 255, 255); // Raquette gauche
     rectangle(
-        (raquette.side == true) ? largeurFenetre() / 30 + 10 - raquette.largeur / 2 : 29 * largeurFenetre() / 30 - 10 - raquette.largeur / 2,
+        raquette.side ? largeurFenetre() / 30 + 10 - raquette.largeur / 2 : 29 * largeurFenetre() / 30 - 10 - raquette.largeur / 2,
         raquette.centre + raquette.longueur / 2,
-        (raquette.side == true) ? largeurFenetre() / 30 + 10 + raquette.largeur / 2 : 29 * largeurFenetre() / 30 - 10 + raquette.largeur / 2,
+        raquette.side ? largeurFenetre() / 30 + 10 + raquette.largeur / 2 : 29 * largeurFenetre() / 30 - 10 + raquette.largeur / 2,
         raquette.centre - raquette.longueur / 2);
 }
 

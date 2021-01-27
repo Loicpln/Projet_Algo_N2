@@ -8,9 +8,9 @@ void mouvementBalle(Balle *balle)
 
 void rebond(Balle *balle, int min_x, int min_y, int max_x, int max_y)
 {
-	if (balle->x < min_x || balle->x > max_x)
+	if (balle->x - balle->r < min_x || balle->x + balle->r > max_x)
 		balle->vx = -balle->vx;
-	if (balle->y < min_y || balle->y > max_y)
+	if (balle->y - balle->r < min_y || balle->y + balle->r > max_y)
 		balle->vy = -balle->vy;
 }
 
@@ -167,6 +167,22 @@ void nombre(int score, bool digit[])
 		break;
 	}
 }
-void hitbox()
+void hitbox(Balle *balle, Raquette *raquette)
 {
+	if (raquette->side)
+	{
+		if (balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 && balle->y < raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre - raquette->longueur / 2)
+		{
+			balle->vx = -balle->vx;
+			balle->vy = balle->vy;
+		}
+	}
+	else
+	{
+		if (balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2 && balle->y < raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre - raquette->longueur / 2)
+		{
+			balle->vx = -balle->vx;
+			balle->vy = balle->vy;
+		}
+	}
 }

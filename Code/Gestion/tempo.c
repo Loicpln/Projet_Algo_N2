@@ -25,6 +25,6 @@ void TempoJeu(Data *data)
 {
 	mouvementBalle(data->balleJeu);
 	for (int i = 0; i < NB_RAQUETTE; i++)
-		hitbox();
+		hitbox(data->balleJeu, data->raquette + i);
 	rebond(data->balleJeu, MIN_X_PLATEAU, MIN_Y_PLATEAU, MAX_X_PLATEAU, MAX_Y_PLATEAU);
 }

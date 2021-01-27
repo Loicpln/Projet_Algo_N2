@@ -9,4 +9,4 @@ void touches(Raquette *raquette);
 void up(Raquette *raquette);
 void down(Raquette *raquette);
 void nombre(int score, bool digit[]);
-void hitbox();
+void hitbox(Balle *balle, Raquette *raquette);
