@@ -1,11 +1,11 @@
 modules = controleur.o affichage.o souris.o clavier.o tempo.o redim.o calcul.o
-lib = ./GfxLib/libisentlib.a ./Fmod/libfmod.a
+lib = ./GfxLib/libisentlib.a
 controleur = controleur.h
 gestion = ./Gestion/gestion.h
 moteur = ./Moteur/moteur.h
-extentions = -lm -lglut -lGL -lX11 -lSDL_mixer
+extentions = -lm -lglut -lGL -lX11 -lSDL_mixer 
 #Fmod: -I/usr/include -L/usr/lib -lfmod
-
+#SDL: -lSDL
 run: main
 	rm *.o
 	@./main

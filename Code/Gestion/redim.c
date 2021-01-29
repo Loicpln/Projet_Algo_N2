@@ -24,6 +24,6 @@ void RedimJeu(Data *data)
 {
     for (int i = 0; i < NB_RAQUETTE; i++)
     {
-        redimRaquette(data->raquette + i);
+        redimRaquette(data->raquette + i,i);
     }
 }

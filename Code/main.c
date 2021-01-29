@@ -1,5 +1,4 @@
 #include "controleur.h"
-#include "./Fmod/fmod.h"
 
 //page 0 = Ecran d'accueil
 //page 1 = Ecran Jouer
@@ -10,6 +9,11 @@
 
 int main(int argc, char **argv)
 {
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
+	Mix_Music *musique;
+	musique = Mix_LoadMUS("Musique/videogame.wav");
+	Mix_PlayMusic(musique, -1);
+	
 	initialiseGfx(argc, argv);
 	prepareFenetreGraphique("Pong", LargeurFenetre, HauteurFenetre);
 	lanceBoucleEvenements();
@@ -21,7 +25,6 @@ void gestionEvenement(EvenementGfx evenement)
 {
 	static Data d;
 	Data *data = &d;
-
 
 	switch (evenement)
 	{

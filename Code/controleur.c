@@ -53,19 +53,20 @@ Data init()
     {
         data.raquette[i].longueur = 100;
         data.raquette[i].largeur = 10;
-        data.raquette[i].centre = (hauteurFenetre() / 60 + 99 * hauteurFenetre() / 120) / 2;
-        data.raquette[i].vc = 35;
-        data.raquette[i].side = (i % 2) ? false : true;
-        data.raquette[i].up = (data.raquette[i].side) ? 'a' : 'p';
-        data.raquette[i].down = (data.raquette[i].side) ? 'q' : 'm';
+        data.raquette[i].x = (i%2) ? RAQUETTE_X_LEFT : RAQUETTE_X_RIGHT;
+        data.raquette[i].y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
+        data.raquette[i].vy = 10;
+        data.raquette[i].up = (i%2) ? 'a' : 'p';
+        data.raquette[i].down = (i%2) ? 'q' : 'm';
     }
-    data.balleJeu->x = 400;
+    data.balleJeu->x = MID_X;
     data.balleJeu->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
     data.balleJeu->r = 7;
-    data.balleJeu->vx = 5;
-    data.balleJeu->vy = 5;
-    data.score[0] = 20;
-    data.score[1] =14;
+    data.balleJeu->v0 = 7;
+    data.balleJeu->vx = 7;
+    data.balleJeu->vy = 0.0001;
+    data.score[0] = 0;
+    data.score[1] = 0;
     return data;
 }
 

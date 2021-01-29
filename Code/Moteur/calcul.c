@@ -28,12 +28,13 @@ void accelereBalle(Balle *balle, float a)
 	balle->vy *= a;
 }
 
-void redimRaquette(Raquette *raquette)
+void redimRaquette(Raquette *raquette, int i)
 {
-	if (raquette->centre + raquette->longueur / 2 >= MAX_Y_PLATEAU)
-		raquette->centre = MAX_Y_PLATEAU - raquette->longueur / 2;
-	if (raquette->centre - raquette->longueur / 2 <= MIN_Y_PLATEAU)
-		raquette->centre = MIN_Y_PLATEAU + raquette->longueur / 2;
+	if (raquette->y + raquette->longueur / 2 >= MAX_Y_PLATEAU)
+		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
+	if (raquette->y - raquette->longueur / 2 <= MIN_Y_PLATEAU)
+		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
+	raquette->x = (i % 2) ? RAQUETTE_X_LEFT : RAQUETTE_X_RIGHT;
 }
 
 void touches(Raquette *raquette)
@@ -50,25 +51,25 @@ void touches(Raquette *raquette)
 
 void up(Raquette *raquette)
 {
-	if (raquette->centre + raquette->vc + raquette->longueur / 2 >= MAX_Y_PLATEAU)
+	if (raquette->y + raquette->vy + raquette->longueur / 2 >= MAX_Y_PLATEAU)
 	{
-		raquette->centre = MAX_Y_PLATEAU - raquette->longueur / 2;
+		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
 	}
-	else if (raquette->centre + raquette->longueur / 2 <= MAX_Y_PLATEAU)
+	else if (raquette->y + raquette->longueur / 2 <= MAX_Y_PLATEAU)
 	{
-		raquette->centre += raquette->vc;
+		raquette->y += raquette->vy;
 	}
 }
 
 void down(Raquette *raquette)
 {
-	if (raquette->centre - raquette->vc - raquette->longueur / 2 <= MIN_Y_PLATEAU)
+	if (raquette->y - raquette->vy - raquette->longueur / 2 <= MIN_Y_PLATEAU)
 	{
-		raquette->centre = MIN_Y_PLATEAU + raquette->longueur / 2;
+		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
 	}
-	else if (raquette->centre - raquette->longueur / 2 >= MIN_Y_PLATEAU)
+	else if (raquette->y - raquette->longueur / 2 >= MIN_Y_PLATEAU)
 	{
-		raquette->centre -= raquette->vc;
+		raquette->y -= raquette->vy;
 	}
 }
 void nombre(int score, bool digit[])
@@ -169,25 +170,31 @@ void nombre(int score, bool digit[])
 }
 void hitbox(Balle *balle, Raquette *raquette)
 {
-
-	if (((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2) && balle->y <= raquette->centre + raquette->longueur / 2 && balle->y > raquette->centre + raquette->longueur / 4) //top quart
+	for (float i = 0; i < 2 * M_PI; i = i + 0.01)
 	{
-		balle->vx = -balle->vx;
-		balle->vy = -balle->vy;
-	}
-	if (((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2) && balle->y <= raquette->centre + raquette->longueur / 4 && balle->y > raquette->centre) //low part of  top quart
-	{
-		balle->vx = -balle->vx;
-		balle->vy = balle->vy;
-	}
-	if (((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2) && balle->y <= raquette->centre && balle->y >= raquette->centre - raquette->longueur / 4) //top part of low quart
-	{
-		balle->vx = -balle->vx;
-		balle->vy = balle->vy;
-	}
-	if (((raquette->side) ? balle->x - balle->r <= largeurFenetre() / 30 + 10 + raquette->largeur / 2 : balle->x + balle->r >= 29 * largeurFenetre() / 30 - 10 - raquette->largeur / 2) && balle->y < raquette->centre - raquette->longueur / 4 && balle->y >= raquette->centre - raquette->longueur / 2) //low quart
-	{
-		balle->vx = -balle->vx;
-		balle->vy = balle->vy;
+		if (balle->x + cosf(i) * balle->r <= raquette->x + raquette->largeur / 2 && balle->x + cosf(i) * balle->r >= raquette->x - raquette->largeur / 2 &&
+			balle->y + sinf(i) * balle->r <= raquette->y + raquette->longueur / 2 && balle->y + sinf(i) * balle->r >= raquette->y - raquette->longueur / 2)
+		{
+			if (
+				(balle->x >= raquette->x + raquette->largeur / 2 || balle->x <= raquette->x - raquette->largeur / 2) &&
+				balle->y <= raquette->y + raquette->longueur / 2 &&
+				balle->y >= raquette->y - raquette->longueur / 2)
+			{
+				balle->vx = -cosf(M_PI_4 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * (balle->vx/fabsf(balle->vx));
+				balle->vy = fabsf(sinf(M_PI_4 * (balle->y - raquette->y) / (raquette->longueur / 2))) * balle->v0 * (balle->vy/fabsf(balle->vy));
+			}
+			else if (
+				(balle->y >= raquette->y + raquette->longueur / 2 || balle->y <= raquette->y - raquette->longueur / 2) &&
+				balle->x <= raquette->x + raquette->largeur / 2 &&
+				balle->x >= raquette->x - raquette->largeur / 2)
+				balle->vy = -balle->vy;
+			else
+			{
+				balle->vx = -balle->vx;
+				balle->vy = -balle->vy;
+			}
+			balle->x += balle->vx;
+			balle->y += balle->vy;
+		}
 	}
 }

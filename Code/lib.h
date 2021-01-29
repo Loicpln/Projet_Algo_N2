@@ -4,10 +4,11 @@
 #include <math.h>
 #include <time.h>
 #include <unistd.h>
+//#include <Fmod/fmod.h>
+#include <SDL/SDL_mixer.h>
 #include "./GfxLib/GfxLib.h"
 #include "./GfxLib/BmpLib.h"
 #include "./GfxLib/ESLib.h"
-#include "./Fmod/fmod.h"
 
 #define LargeurFenetre 800
 #define HauteurFenetre 600
@@ -17,6 +18,9 @@
 #define MIN_X_PLATEAU largeurFenetre() / 30
 #define MAX_Y_PLATEAU 99 * hauteurFenetre() / 120
 #define MIN_Y_PLATEAU hauteurFenetre() / 60
+
+#define RAQUETTE_X_LEFT largeurFenetre() / 30 + 10
+#define RAQUETTE_X_RIGHT 29 * largeurFenetre() / 30 - 10
 
 #define MAX_BALLE 50
 #define NB_RAQUETTE 2
@@ -32,15 +36,16 @@ typedef struct
     float r;
     float vx;
     float vy;
+    float v0;
 } Balle;
 
 typedef struct
 {
     float longueur;
     float largeur;
-    float centre;
-    float vc;
-    bool side;
+    float x;
+    float y;
+    float vy;
     char up;
     char down;
 } Raquette;
