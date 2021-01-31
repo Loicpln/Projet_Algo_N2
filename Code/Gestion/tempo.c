@@ -23,8 +23,11 @@ void TempoRegles(Data *data)
 }
 void TempoJeu(Data *data)
 {
+	
 	mouvementBalle(data->balleJeu);
 	for (int i = 0; i < NB_RAQUETTE; i++)
 		hitbox(data->balleJeu, data->raquette + i);
 	rebond(data->balleJeu, 0, MIN_Y_PLATEAU, largeurFenetre(), MAX_Y_PLATEAU);
+	but(data->balleJeu,data->score);
+	
 }

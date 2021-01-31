@@ -63,7 +63,7 @@ Data init()
     data.balleJeu->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
     data.balleJeu->r = 7;
     data.balleJeu->v0 = 7;
-    data.balleJeu->vx = 7;
+    data.balleJeu->vx = 5;
     data.balleJeu->vy = 0.0001;
     data.score[0] = 0;
     data.score[1] = 0;

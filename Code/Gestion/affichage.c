@@ -154,8 +154,9 @@ void score(int score, bool side)
 {
     bool dizaine[7];
     bool unite[7];
-    nombre(floor(score / 10), dizaine);
+    nombre((score / 10), dizaine);
     nombre(score - 10 * floor(score / 10), unite);
+
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(5);
     //digit 2

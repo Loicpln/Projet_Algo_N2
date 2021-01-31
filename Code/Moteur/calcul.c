@@ -180,8 +180,8 @@ void hitbox(Balle *balle, Raquette *raquette)
 				balle->y <= raquette->y + raquette->longueur / 2 &&
 				balle->y >= raquette->y - raquette->longueur / 2)
 			{
-				balle->vx = -cosf(M_PI_4 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * (balle->vx/fabsf(balle->vx));
-				balle->vy = fabsf(sinf(M_PI_4 * (balle->y - raquette->y) / (raquette->longueur / 2))) * balle->v0 * (balle->vy/fabsf(balle->vy));
+				balle->vx = -cosf(M_PI_4 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * (balle->vx / fabsf(balle->vx));
+				balle->vy = fabsf(sinf(M_PI_4 * (balle->y - raquette->y) / (raquette->longueur / 2))) * balle->v0 * (balle->vy / fabsf(balle->vy));
 			}
 			else if (
 				(balle->y >= raquette->y + raquette->longueur / 2 || balle->y <= raquette->y - raquette->longueur / 2) &&
@@ -196,5 +196,32 @@ void hitbox(Balle *balle, Raquette *raquette)
 			balle->x += balle->vx;
 			balle->y += balle->vy;
 		}
+	}
+}
+
+void but(Balle *balle, int score[])
+{
+	bool coteBut;
+	if (balle->x - balle->r < MIN_X_PLATEAU || balle->x + balle->r > MAX_X_PLATEAU)
+	{
+		if (balle->x - balle->r < MIN_X_PLATEAU)
+		{
+			score[1] += 1;
+			coteBut = true;
+		}
+
+		if (balle->x + balle->r > MAX_X_PLATEAU)
+		{
+			score[0] += 1;
+			coteBut = false;
+		}
+				
+		balle->x = MID_X;
+		balle->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
+		balle->r = 7;
+		balle->v0 = 7;
+		balle->vx = (coteBut) ? 5 : -5;
+		balle->vy = 0.0001;
+		
 	}
 }

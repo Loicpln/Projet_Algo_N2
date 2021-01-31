@@ -3,9 +3,9 @@ lib = ./GfxLib/libisentlib.a
 controleur = controleur.h
 gestion = ./Gestion/gestion.h
 moteur = ./Moteur/moteur.h
-extentions = -lm -lglut -lGL -lX11 -lSDL_mixer 
+extentions = -lm -lglut -lGL -lX11  
 #Fmod: -I/usr/include -L/usr/lib -lfmod
-#SDL: -lSDL
+#SDL: -lSDL -lSDL_mixer
 run: main
 	rm *.o
 	@./main

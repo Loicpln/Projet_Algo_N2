@@ -5,7 +5,7 @@
 #include <time.h>
 #include <unistd.h>
 //#include <Fmod/fmod.h>
-#include <SDL/SDL_mixer.h>
+//#include <SDL/SDL_mixer.h>
 #include "./GfxLib/GfxLib.h"
 #include "./GfxLib/BmpLib.h"
 #include "./GfxLib/ESLib.h"
