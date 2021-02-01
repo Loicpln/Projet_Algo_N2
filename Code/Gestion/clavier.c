@@ -7,6 +7,9 @@ void ClavierAccueil(Data *data)
 void ClavierMenu(Data *data)
 {
 }
+void ClavierRegles(Data *data)
+{
+}
 void ClavierJeu(Data *data)
 {
 	for (int i = 0; i < NB_RAQUETTE; i++)
@@ -14,8 +17,10 @@ void ClavierJeu(Data *data)
 		touches(data->raquette + i);
 	}
 }
-void ClavierRegles(Data *data)
+
+void ClavierJeuIA(Data *data)
 {
+	touches(data->raquette);
 }
 
 void ClavierEntrainement(Data *data)

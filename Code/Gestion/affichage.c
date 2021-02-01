@@ -115,6 +115,22 @@ void AfficheJeu(Data *data)
     }
     balle(data->balleJeu);
 }
+void AfficheJeuIA(Data *data)
+{
+    plateau();
+    for (int i = 0; i < NB_RAQUETTE; i++)
+    {
+        raquette(data->raquette[i]);
+        score(data->score[i], i);
+    }
+    balle(data->balleJeu);
+}
+void AfficheEntrainement(Data *data)
+{
+    plateau();
+    raquette(data->raquette[0]);
+    balle(data->balleJeu);
+}
 
 void plateau()
 {
@@ -162,7 +178,7 @@ void score(int score, bool side)
         afficheDigit(digit[i], side, i);
 }
 
-void afficheDigit(bool digit[], bool side, int i)
+void afficheDigit(bool *digit, bool side, int i)
 {
     //digit 2
     (digit[1]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
@@ -199,11 +215,4 @@ void afficheDigit(bool digit[], bool side, int i)
     ligne(
         MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50,
         MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
-}
-
-void AfficheEntrainement(Data *data)
-{
-    plateau();
-    raquette(data->raquette[0]);
-    balle(data->balleJeu);
 }

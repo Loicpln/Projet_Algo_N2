@@ -41,37 +41,15 @@ Data init()
     {
         data.page[i] = 0;
     }
-    for (int i = 0; i < MAX_BALLE; i++)
-    {
-        data.balle[i].x = largeurFenetre() * valeurAleatoire();
-        data.balle[i].y = hauteurFenetre() * valeurAleatoire();
-        data.balle[i].r = 10;
-        data.balle[i].vx = (rand() % 2) ? 5 : -5;
-        data.balle[i].vy = (rand() % 2) ? 5 : -5;
-    }
-    for (int i = 0; i < NB_RAQUETTE; i++)
-    {
-        data.raquette[i].longueur = 100;
-        data.raquette[i].largeur = 10;
-        data.raquette[i].x = (i%2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
-        data.raquette[i].y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
-        data.raquette[i].vy = 15;
-        data.raquette[i].up = (i%2) ? 'p' : 'a';
-        data.raquette[i].down = (i%2) ? 'm' : 'q';
-    }
-    data.balleJeu->x = MID_X;
-    data.balleJeu->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
-    data.balleJeu->r = 7;
-    data.balleJeu->v0 = 5;
-    data.balleJeu->vx = data.balleJeu->v0;
-    data.balleJeu->vy = 0.1;
-    data.score[0] = 0;
-    data.score[1] = 0;
+    initBallesAccueil(data.balle);
+    initRaquettes(data.raquette);
+    initBalleJeu(data.balleJeu);
+    initScore(data.score);
     return data;
 }
 
-Gestion fTempo() { return (Gestion){TempoAccueil, TempoMenu, TempoJeu, NULL, TempoEntrainement, TempoRegles}; }
-Gestion fAffiche() { return (Gestion){AfficheAccueil, AfficheMenu, AfficheJeu, NULL, AfficheEntrainement, AfficheRegles}; }
-Gestion fClavier() { return (Gestion){ClavierAccueil, ClavierMenu, ClavierJeu, NULL, ClavierEntrainement, ClavierRegles}; }
-Gestion fClic() { return (Gestion){ClicAccueil, ClicMenu, ClicJeu, NULL, ClicEntrainement, ClicRegles}; }
-Gestion fRedim() { return (Gestion){RedimAccueil, RedimMenu, RedimJeu, NULL, RedimEntrainement, RedimRegles}; }
+Gestion fTempo() { return (Gestion){TempoAccueil, TempoMenu, TempoJeu, TempoJeuIA, TempoEntrainement, TempoRegles}; }
+Gestion fAffiche() { return (Gestion){AfficheAccueil, AfficheMenu, AfficheJeu, AfficheJeuIA, AfficheEntrainement, AfficheRegles}; }
+Gestion fClavier() { return (Gestion){ClavierAccueil, ClavierMenu, ClavierJeu, ClavierJeuIA, ClavierEntrainement, ClavierRegles}; }
+Gestion fClic() { return (Gestion){ClicAccueil, ClicMenu, ClicJeu, ClicJeuIA, ClicEntrainement, ClicRegles}; }
+Gestion fRedim() { return (Gestion){RedimAccueil, RedimMenu, RedimJeu, RedimJeuIA, RedimEntrainement, RedimRegles}; }

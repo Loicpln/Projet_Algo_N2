@@ -1,5 +1,45 @@
 #include "moteur.h"
 
+void initBallesAccueil(Balle *balle)
+{
+	for (int i = 0; i < MAX_BALLE; i++)
+	{
+		balle[i].x = largeurFenetre() * valeurAleatoire();
+		balle[i].y = hauteurFenetre() * valeurAleatoire();
+		balle[i].r = 10;
+		balle[i].v0 = 5;
+		balle[i].vx = (rand() % 2) ? 5 : -5;
+		balle[i].vy = (rand() % 2) ? 5 : -5;
+	}
+}
+void initRaquettes(Raquette *raquette)
+{
+	for (int i = 0; i < NB_RAQUETTE; i++)
+	{
+		raquette[i].longueur = 100;
+		raquette[i].largeur = 10;
+		raquette[i].x = (i % 2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
+		raquette[i].y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
+		raquette[i].vy = 15;
+		raquette[i].up = (i % 2) ? 'p' : 'a';
+		raquette[i].down = (i % 2) ? 'm' : 'q';
+	}
+}
+void initBalleJeu(Balle *balle)
+{
+	balle->x = MID_X;
+	balle->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
+	balle->r = 7;
+	balle->v0 = 5;
+	balle->vx = balle->v0;
+	balle->vy = 0.1;
+}
+
+void initScore(int *score)
+{
+	for (int i = 0; i < 2; i++)
+		score[i] = 0;
+}
 void mouvementBalle(Balle *balle)
 {
 	balle->x += balle->vx;
@@ -34,7 +74,7 @@ void redimRaquette(Raquette *raquette, int i)
 		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
 	if (raquette->y - raquette->longueur / 2 <= MIN_Y_PLATEAU)
 		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
-	raquette->x = (i % 2) ? RAQUETTE_X_LEFT : RAQUETTE_X_RIGHT;
+	raquette->x = (i % 2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
 }
 
 void touches(Raquette *raquette)
@@ -72,7 +112,7 @@ void down(Raquette *raquette)
 		raquette->y -= raquette->vy;
 	}
 }
-void nombre(int score, bool digit[])
+void nombre(int score, bool *digit)
 {
 	switch (score)
 	{
@@ -180,8 +220,8 @@ void hitbox(Balle *balle, Raquette *raquette)
 				balle->y <= raquette->y + raquette->longueur / 2 &&
 				balle->y >= raquette->y - raquette->longueur / 2)
 			{
-				balle->vx = -cosf(M_PI/3 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * (balle->vx / fabsf(balle->vx));
-				balle->vy = fabsf(sinf(M_PI/3 * (balle->y - raquette->y) / (raquette->longueur / 2))) * balle->v0 * (balle->vy / fabsf(balle->vy));
+				balle->vx = -cosf(M_PI / 3 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * (balle->vx / fabsf(balle->vx));
+				balle->vy = fabsf(sinf(M_PI / 3 * (balle->y - raquette->y) / (raquette->longueur / 2))) * balle->v0 * (balle->vy / fabsf(balle->vy));
 			}
 			else if (
 				(balle->y >= raquette->y + raquette->longueur / 2 || balle->y <= raquette->y - raquette->longueur / 2) &&
@@ -199,7 +239,7 @@ void hitbox(Balle *balle, Raquette *raquette)
 	}
 }
 
-void but(Balle *balle, int score[])
+void but(Balle *balle, int *score)
 {
 	if (balle->x + balle->r < MIN_X_PLATEAU || balle->x - balle->r > MAX_X_PLATEAU)
 	{
@@ -214,23 +254,42 @@ void but(Balle *balle, int score[])
 			score[0]++;
 			balle->vx = -balle->v0;
 		}
-				
+
 		balle->x = MID_X;
 		balle->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
 		balle->vy = 0.1;
 	}
 }
 
-void butEntrainement(Balle *balle)
+void IA(Balle *balle, Raquette *raquette)
 {
-	if (balle->x + balle->r < MIN_X_PLATEAU || balle->x - balle->r > MAX_X_PLATEAU)
+	float x = balle->x, y = balle->y;
+	if (x < raquette->x)
 	{
-		if (balle->x < MIN_X_PLATEAU)
+		if (balle->vx > 0)
 		{
-			balle->vx = balle->v0;
-		}		
-		balle->x = MID_X;
-		balle->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
-		balle->vy = 0.1;
+			while (x < raquette->x - raquette->largeur / 2)
+			{
+				x += balle->vx;
+				y += balle->vy;
+			}
+
+			if (raquette->y >= MIN_Y_PLATEAU + raquette->longueur / 2 && raquette->y <= MAX_Y_PLATEAU - raquette->longueur / 2)
+			{
+				if (y < raquette->y)
+					raquette->y--;
+
+				if (y > raquette->y)
+					raquette->y++;
+			}
+		}
+		else
+		{
+			if ((MIN_Y_PLATEAU + MAX_Y_PLATEAU) / 2 < raquette->y)
+				raquette->y--;
+
+			if ((MIN_Y_PLATEAU + MAX_Y_PLATEAU) / 2 > raquette->y)
+				raquette->y++;
+		}
 	}
 }

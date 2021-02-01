@@ -50,6 +50,17 @@ typedef struct
     char down;
 } Raquette;
 
+typedef struct User User;
+struct User
+{
+    char pseudo[25];
+    int nbGame;
+    int nbWinGames;
+    int nbLoseGames;
+    int ratioWin;
+    User *userSuivant;
+};
+
 typedef struct
 {
     int page[DIM_PAGE];
@@ -59,15 +70,5 @@ typedef struct
     int score[2];
     User user;
 } Data;
-
-typedef struct
-{
-    char pseudo[25];
-    int nbGame;
-    int nbWinGames;
-    int nbLoseGames;
-    int ratioWin;
-    User userSuivant;
-} User;
 
 #endif

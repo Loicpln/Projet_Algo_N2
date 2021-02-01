@@ -31,22 +31,25 @@ void ClicMenu(Data *data)
         {
             //*page = joueur contre joueur
             data->page[1] = 1;
+            initRaquettes(data->raquette);
+            initBalleJeu(data->balleJeu);
+            initScore(data->score);
         }
         if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 2 && ordonneeSouris() < 15 * hauteurFenetre() / 24)
         {
             //*page = page jeu contre IA
             data->page[1] = 2;
+            initRaquettes(data->raquette);
+            initBalleJeu(data->balleJeu);
+            initScore(data->score);
         }
         if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 3 && ordonneeSouris() < 11 * hauteurFenetre() / 24)
         {
             //*page = page entrainement
             data->page[1] = 3;
-            data->balleJeu->x = MID_X;
-            data->balleJeu->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
-            data->balleJeu->r = 7;
-            data->balleJeu->v0 = 5;
-            data->balleJeu->vx = data->balleJeu->v0;
-            data->balleJeu->vy = 0.1;
+            initRaquettes(data->raquette);
+            initBalleJeu(data->balleJeu);
+            initScore(data->score);
         }
         if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
@@ -71,6 +74,14 @@ void ClicRegles(Data *data)
 }
 
 void ClicJeu(Data *data)
+{
+    if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+    {
+        data->page[1] = 0;
+    }
+}
+
+void ClicJeuIA(Data *data)
 {
     if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
     {
