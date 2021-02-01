@@ -220,3 +220,17 @@ void but(Balle *balle, int score[])
 		balle->vy = 0.1;
 	}
 }
+
+void butEntrainement(Balle *balle)
+{
+	if (balle->x + balle->r < MIN_X_PLATEAU || balle->x - balle->r > MAX_X_PLATEAU)
+	{
+		if (balle->x < MIN_X_PLATEAU)
+		{
+			balle->vx = balle->v0;
+		}		
+		balle->x = MID_X;
+		balle->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
+		balle->vy = 0.1;
+	}
+}

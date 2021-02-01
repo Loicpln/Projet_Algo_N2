@@ -53,11 +53,11 @@ Data init()
     {
         data.raquette[i].longueur = 100;
         data.raquette[i].largeur = 10;
-        data.raquette[i].x = (i%2) ? RAQUETTE_X_LEFT : RAQUETTE_X_RIGHT;
+        data.raquette[i].x = (i%2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
         data.raquette[i].y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
         data.raquette[i].vy = 15;
-        data.raquette[i].up = (i%2) ? 'a' : 'p';
-        data.raquette[i].down = (i%2) ? 'q' : 'm';
+        data.raquette[i].up = (i%2) ? 'p' : 'a';
+        data.raquette[i].down = (i%2) ? 'm' : 'q';
     }
     data.balleJeu->x = MID_X;
     data.balleJeu->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
@@ -70,8 +70,8 @@ Data init()
     return data;
 }
 
-Gestion fTempo() { return (Gestion){TempoAccueil, TempoMenu, TempoJeu, NULL, NULL, TempoRegles}; }
-Gestion fAffiche() { return (Gestion){AfficheAccueil, AfficheMenu, AfficheJeu, NULL, NULL, AfficheRegles}; }
-Gestion fClavier() { return (Gestion){ClavierAccueil, ClavierMenu, ClavierJeu, NULL, NULL, ClavierRegles}; }
-Gestion fClic() { return (Gestion){ClicAccueil, ClicMenu, ClicJeu, NULL, NULL, ClicRegles}; }
-Gestion fRedim() { return (Gestion){RedimAccueil, RedimMenu, RedimJeu, NULL, NULL, RedimRegles}; }
+Gestion fTempo() { return (Gestion){TempoAccueil, TempoMenu, TempoJeu, NULL, TempoEntrainement, TempoRegles}; }
+Gestion fAffiche() { return (Gestion){AfficheAccueil, AfficheMenu, AfficheJeu, NULL, AfficheEntrainement, AfficheRegles}; }
+Gestion fClavier() { return (Gestion){ClavierAccueil, ClavierMenu, ClavierJeu, NULL, ClavierEntrainement, ClavierRegles}; }
+Gestion fClic() { return (Gestion){ClicAccueil, ClicMenu, ClicJeu, NULL, ClicEntrainement, ClicRegles}; }
+Gestion fRedim() { return (Gestion){RedimAccueil, RedimMenu, RedimJeu, NULL, RedimEntrainement, RedimRegles}; }

@@ -17,3 +17,8 @@ void ClavierJeu(Data *data)
 void ClavierRegles(Data *data)
 {
 }
+
+void ClavierEntrainement(Data *data)
+{
+	touches(data->raquette);
+}

@@ -2,9 +2,9 @@
 
 //page 0 = Ecran d'accueil
 //page 1 = Ecran Jouer
-//////Sous-page 0 = joueur contre joueur
-//////Sous-page 1 = jeu contre IA
-//////Sous-page 2 = page entrainement
+//////case 1 = joueur contre joueur
+//////case 2 = jeu contre IA
+//////case 3 = page entrainement
 //page 2 = Reglement
 
 int main(int argc, char **argv)

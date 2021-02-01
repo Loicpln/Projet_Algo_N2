@@ -11,3 +11,4 @@ void down(Raquette *raquette);
 void nombre(int score, bool digit[]);
 void hitbox(Balle *balle, Raquette *raquette);
 void but(Balle *balle,int score[]);
+void butEntrainement(Balle *balle);

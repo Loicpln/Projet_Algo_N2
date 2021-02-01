@@ -5,6 +5,7 @@ void AfficheAccueil(Data *data);
 void AfficheMenu(Data *data);
 void AfficheJeu(Data *data);
 void AfficheRegles(Data *data);
+void AfficheEntrainement(Data *data);
 
 void plateau();
 void raquette(Raquette raquette);
@@ -16,18 +17,22 @@ void ClavierAccueil(Data *data);
 void ClavierMenu(Data *data);
 void ClavierJeu(Data *data);
 void ClavierRegles(Data *data);
+void ClavierEntrainement(Data * data);
 
 void ClicAccueil(Data *data);
 void ClicMenu(Data *data);
 void ClicJeu(Data *data);
 void ClicRegles(Data *data);
+void ClicEntrainement(Data *data);
 
 void TempoAccueil(Data *data);
 void TempoMenu(Data *data);
 void TempoJeu(Data *data);
 void TempoRegles(Data *data);
+void TempoEntrainement(Data *data);
 
 void RedimAccueil(Data *data);
 void RedimMenu(Data *data);
 void RedimJeu(Data *data);
 void RedimRegles(Data *data);
+void RedimEntrainement(Data *data);

@@ -29,3 +29,12 @@ void TempoJeu(Data *data)
 	rebond(data->balleJeu, 0, MIN_Y_PLATEAU, largeurFenetre(), MAX_Y_PLATEAU);
 	but(data->balleJeu,data->score);
 }
+
+void TempoEntrainement(Data *data)
+{
+	
+	mouvementBalle(data->balleJeu);
+	hitbox(data->balleJeu, data->raquette);
+	rebond(data->balleJeu, 0, MIN_Y_PLATEAU, MAX_X_PLATEAU, MAX_Y_PLATEAU);
+	butEntrainement(data->balleJeu);
+}

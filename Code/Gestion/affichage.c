@@ -200,3 +200,10 @@ void afficheDigit(bool digit[], bool side, int i)
         MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50,
         MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
 }
+
+void AfficheEntrainement(Data *data)
+{
+    plateau();
+    raquette(data->raquette[0]);
+    balle(data->balleJeu);
+}
