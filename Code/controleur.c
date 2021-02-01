@@ -55,16 +55,16 @@ Data init()
         data.raquette[i].largeur = 10;
         data.raquette[i].x = (i%2) ? RAQUETTE_X_LEFT : RAQUETTE_X_RIGHT;
         data.raquette[i].y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
-        data.raquette[i].vy = 10;
+        data.raquette[i].vy = 15;
         data.raquette[i].up = (i%2) ? 'a' : 'p';
         data.raquette[i].down = (i%2) ? 'q' : 'm';
     }
     data.balleJeu->x = MID_X;
     data.balleJeu->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
     data.balleJeu->r = 7;
-    data.balleJeu->v0 = 7;
-    data.balleJeu->vx = 5;
-    data.balleJeu->vy = 0.0001;
+    data.balleJeu->v0 = 5;
+    data.balleJeu->vx = data.balleJeu->v0;
+    data.balleJeu->vy = 0.1;
     data.score[0] = 0;
     data.score[1] = 0;
     return data;

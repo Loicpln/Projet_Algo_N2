@@ -109,9 +109,10 @@ void AfficheJeu(Data *data)
 {
     plateau();
     for (int i = 0; i < NB_RAQUETTE; i++)
+    {
         raquette(data->raquette[i]);
-    score(data->score[0], true);
-    score(data->score[1], false);
+        score(data->score[i], i);
+    }
     balle(data->balleJeu);
 }
 
@@ -152,82 +153,50 @@ void balle(Balle *balleJeu)
 
 void score(int score, bool side)
 {
-    bool dizaine[7];
-    bool unite[7];
-    nombre((score / 10), dizaine);
-    nombre(score - 10 * floor(score / 10), unite);
-
+    bool digit[2][7];
+    nombre(score - 10 * floor(score / 10), digit[0]);
+    nombre(floor(score / 10), digit[1]);
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(5);
-    //digit 2
-    (dizaine[1]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
-    ligne(
-        (side) ? MID_X - 8 * largeurFenetre() / 100 : MID_X + 2 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 + largeurFenetre() / 50,
-        (side) ? MID_X - 8 * largeurFenetre() / 100 : MID_X + 2 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4);
-    //dizaine 3
-    (dizaine[2]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
-    ligne(
-        (side) ? MID_X - 6 * largeurFenetre() / 100 : MID_X + 4 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4,
-        (side) ? MID_X - 6 * largeurFenetre() / 100 : MID_X + 4 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 + largeurFenetre() / 50);
-    //digit 5
-    (dizaine[4]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
-    ligne(
-        (side) ? MID_X - 8 * largeurFenetre() / 100 : MID_X + 2 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4,
-        (side) ? MID_X - 8 * largeurFenetre() / 100 : MID_X + 2 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
-    //digit 6
-    (dizaine[5]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
-    ligne(
-        (side) ? MID_X - 6 * largeurFenetre() / 100 : MID_X + 4 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4,
-        (side) ? MID_X - 6 * largeurFenetre() / 100 : MID_X + 4 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
-    //digit 1
-    (dizaine[0]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
-    ligne(
-        (side) ? MID_X - 8 * largeurFenetre() / 100 : MID_X + 4 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 + largeurFenetre() / 50,
-        (side) ? MID_X - 6 * largeurFenetre() / 100 : MID_X + 2 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 + largeurFenetre() / 50);
-    //dizaine 4
-    (dizaine[3]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
-    ligne(
-        (side) ? MID_X - 8 * largeurFenetre() / 100 : MID_X + 4 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4,
-        (side) ? MID_X - 6 * largeurFenetre() / 100 : MID_X + 2 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4);
-    //digit 7
-    (dizaine[6]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
-    ligne(
-        (side) ? MID_X - 8 * largeurFenetre() / 100 : MID_X + 4 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 - largeurFenetre() / 50,
-        (side) ? MID_X - 6 * largeurFenetre() / 100 : MID_X + 2 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
+    for (int i = 0; i < 2; i++)
+        afficheDigit(digit[i], side, i);
+}
 
+void afficheDigit(bool digit[], bool side, int i)
+{
     //digit 2
-    (unite[1]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
+    (digit[1]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
     ligne(
-        (side) ? MID_X - 4 * largeurFenetre() / 100 : MID_X + 6 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 + largeurFenetre() / 50,
-        (side) ? MID_X - 4 * largeurFenetre() / 100 : MID_X + 6 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4);
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 + largeurFenetre() / 50,
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4);
     //digit 3
-    (unite[2]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
+    (digit[2]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
     ligne(
-        (side) ? MID_X - 2 * largeurFenetre() / 100 : MID_X + 8 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4,
-        (side) ? MID_X - 2 * largeurFenetre() / 100 : MID_X + 8 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 + largeurFenetre() / 50);
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4,
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 + largeurFenetre() / 50);
     //digit 5
-    (unite[4]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
+    (digit[4]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
     ligne(
-        (side) ? MID_X - 4 * largeurFenetre() / 100 : MID_X + 6 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4,
-        (side) ? MID_X - 4 * largeurFenetre() / 100 : MID_X + 6 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4,
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
     //digit 6
-    (unite[5]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
+    (digit[5]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
     ligne(
-        (side) ? MID_X - 2 * largeurFenetre() / 100 : MID_X + 8 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4,
-        (side) ? MID_X - 2 * largeurFenetre() / 100 : MID_X + 8 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4,
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
     //digit 1
-    (unite[0]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
+    (digit[0]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
     ligne(
-        (side) ? MID_X - 4 * largeurFenetre() / 100 : MID_X + 6 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 + largeurFenetre() / 50,
-        (side) ? MID_X - 2 * largeurFenetre() / 100 : MID_X + 8 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 + largeurFenetre() / 50);
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 + largeurFenetre() / 50,
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 + largeurFenetre() / 50);
     //digit 4
-    (unite[3]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
+    (digit[3]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
     ligne(
-        (side) ? MID_X - 4 * largeurFenetre() / 100 : MID_X + 6 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4,
-        (side) ? MID_X - 2 * largeurFenetre() / 100 : MID_X + 8 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4);
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4,
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4);
     //digit 7
-    (unite[6]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
+    (digit[6]) ? couleurCourante(255, 255, 255) : couleurCourante(0, 0, 0);
     ligne(
-        (side) ? MID_X - 4 * largeurFenetre() / 100 : MID_X + 6 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 - largeurFenetre() / 50,
-        (side) ? MID_X - 2 * largeurFenetre() / 100 : MID_X + 8 * largeurFenetre() / 100, 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50,
+        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
 }
