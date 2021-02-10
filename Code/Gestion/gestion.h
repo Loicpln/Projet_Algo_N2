@@ -8,11 +8,13 @@ void AfficheJeu(Data *data);
 void AfficheJeuIA(Data *data);
 void AfficheEntrainement(Data *data);
 
-void plateau();
-void raquette(Raquette raquette);
-void balle(Balle *balleJeu);
-void score(int score, bool side);
-void afficheDigit(bool *digit, bool side, int i);
+void plateau(int teinte);
+void affichePause(int *select);
+void selectPause(int *select);
+void raquette(Raquette raquette, int teinte);
+void balle(Balle *balleJeu, int teinte);
+void score(int score, bool side, int teinte);
+void afficheDigit(bool *digit, bool side, int i, int teinte);
 
 void ClavierAccueil(Data *data);
 void ClavierMenu(Data *data);

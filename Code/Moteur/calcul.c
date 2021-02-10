@@ -1,11 +1,24 @@
 #include "moteur.h"
 
+void initPages(Page *page)
+{
+	page->numero = 1;
+	page->pause = false;
+	initSelect(page->select);
+}
+void initSelect(int *select)
+{
+	for (int i = 0; i < NB_SELECT; i++)
+	{
+		select[i] = 1;
+	}
+}
 void initBallesAccueil(Balle *balle)
 {
 	for (int i = 0; i < MAX_BALLE; i++)
 	{
-		balle[i].x = largeurFenetre() * valeurAleatoire();
-		balle[i].y = hauteurFenetre() * valeurAleatoire();
+		balle[i].x = rand() % largeurFenetre();
+		balle[i].y = rand() % hauteurFenetre();
 		balle[i].r = 10;
 		balle[i].v0 = 5;
 		balle[i].vx = (rand() % 2) ? 5 : -5;
@@ -68,6 +81,27 @@ void accelereBalle(Balle *balle, float a)
 	balle->vy *= a;
 }
 
+void selectPause(int *select)
+{
+	if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 11 * hauteurFenetre() / 20 && ordonneeSouris() < 13 * hauteurFenetre() / 20)
+	{
+		initSelect(select);
+		select[0] = 5;
+	}
+	else if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
+	{
+		initSelect(select);
+		select[1] = 5;
+	}
+	else if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 3 * hauteurFenetre() / 20 && ordonneeSouris() < 5 * hauteurFenetre() / 20)
+	{
+		initSelect(select);
+		select[2] = 5;
+	}
+	else 
+		initSelect(select);
+}
+
 void redimRaquette(Raquette *raquette, int i)
 {
 	if (raquette->y + raquette->longueur / 2 >= MAX_Y_PLATEAU)
@@ -76,7 +110,11 @@ void redimRaquette(Raquette *raquette, int i)
 		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
 	raquette->x = (i % 2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
 }
-
+void touchePause(Page *page)
+{
+	if (caractereClavier() == 'v')
+		page->pause = (page->pause) ? false : true;
+}
 void touches(Raquette *raquette)
 {
 	if (caractereClavier() == raquette->up)

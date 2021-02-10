@@ -12,18 +12,30 @@ void ClavierRegles(Data *data)
 }
 void ClavierJeu(Data *data)
 {
-	for (int i = 0; i < NB_RAQUETTE; i++)
+	touchePause(data->page);
+	if (!data->page->pause)
 	{
-		touches(data->raquette + i);
+		for (int i = 0; i < NB_RAQUETTE; i++)
+		{
+			touches(data->raquette + i);
+		}
 	}
 }
 
 void ClavierJeuIA(Data *data)
 {
-	touches(data->raquette);
+	touchePause(data->page);
+	if (!data->page->pause)
+	{
+		touches(data->raquette);
+	}
 }
 
 void ClavierEntrainement(Data *data)
 {
-	touches(data->raquette);
+	touchePause(data->page);
+	if (!data->page->pause)
+	{
+		touches(data->raquette);
+	}
 }

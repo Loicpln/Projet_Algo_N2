@@ -9,11 +9,12 @@
 
 int main(int argc, char **argv)
 {
-	/*Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
+	/*SDL_Init(SDL_INIT_AUDIO);
+	Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
 	Mix_Music *musique;
-	musique = Mix_LoadMUS("Musique/videogame.wav");
+	musique = Mix_LoadMUS("Musique/videogame.mp3");
 	Mix_PlayMusic(musique, -1);*/
-	
+
 	initialiseGfx(argc, argv);
 	prepareFenetreGraphique("Pong", LargeurFenetre, HauteurFenetre);
 	lanceBoucleEvenements();
@@ -30,6 +31,7 @@ void gestionEvenement(EvenementGfx evenement)
 	{
 	case Initialisation:
 		d = init();
+		activeGestionDeplacementPassifSouris();
 		demandeTemporisation(20);
 		break;
 

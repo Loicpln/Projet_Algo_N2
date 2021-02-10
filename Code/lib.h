@@ -5,6 +5,7 @@
 #include <time.h>
 #include <unistd.h>
 //#include <Fmod/fmod.h>
+//#include <SDL/SDL.h>
 //#include <SDL/SDL_mixer.h>
 #include "./GfxLib/GfxLib.h"
 #include "./GfxLib/BmpLib.h"
@@ -24,7 +25,7 @@
 
 #define MAX_BALLE 50
 #define NB_RAQUETTE 2
-#define DIM_PAGE 5
+#define NB_SELECT 5
 
 #ifndef STRUCT
 #define STRUCT
@@ -61,9 +62,17 @@ struct User
     User *userSuivant;
 };
 
+typedef struct Page Page;
+struct Page
+{
+    int numero;
+    bool pause;
+    int select[NB_SELECT];
+};
+
 typedef struct
 {
-    int page[DIM_PAGE];
+    Page page[1];
     Balle balle[MAX_BALLE];
     Raquette raquette[NB_RAQUETTE];
     Balle balleJeu[1];

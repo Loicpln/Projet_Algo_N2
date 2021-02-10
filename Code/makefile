@@ -1,4 +1,4 @@
-modules = controleur.o affichage.o souris.o clavier.o tempo.o redim.o calcul.o
+modules = controleur.o affichage.o clavier.o tempo.o redim.o calcul.o clic.o
 lib = ./GfxLib/libisentlib.a
 controleur = controleur.h
 gestion = ./Gestion/gestion.h
@@ -25,8 +25,8 @@ controleur.o: controleur.c $(controleur)
 affichage.o: ./Gestion/affichage.c $(gestion) 
 	gcc -Wall -c ./Gestion/affichage.c
 
-souris.o: ./Gestion/souris.c $(gestion) 
-	gcc -Wall -c ./Gestion/souris.c
+clic.o: ./Gestion/clic.c $(gestion) 
+	gcc -Wall -c ./Gestion/clic.c
 
 clavier.o: ./Gestion/clavier.c $(gestion) 
 	gcc -Wall -c ./Gestion/clavier.c
