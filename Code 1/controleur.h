@@ -1,5 +1,4 @@
-#include "./Affichage/gestion.h"
-#include "./Moteur/moteur.h"
+#include "./Gestion/gestion.h"
 
 typedef struct
 {
@@ -20,4 +19,3 @@ Gestion fAffiche();
 Gestion fClavier();
 Gestion fClic();
 Gestion fRedim();
-
