@@ -110,6 +110,7 @@ void AfficheJeu(Data *data)
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(8);
     afficheChaine("PONG", 95, 5 * largeurFenetre() / 16 + 1, 20.5 * hauteurFenetre() / 24 + 1);
+    rouage(7 * largeurFenetre() / 8, 29 * hauteurFenetre() / 32, largeurFenetre() / 30);
     int teinte = (data->page->pause) ? 150 : 255;
     plateau(teinte);
     for (int i = 0; i < NB_RAQUETTE; i++)
@@ -126,6 +127,7 @@ void AfficheJeuIA(Data *data)
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(8);
     afficheChaine("PONG", 95, 5 * largeurFenetre() / 16 + 1, 20.5 * hauteurFenetre() / 24 + 1);
+    rouage(7 * largeurFenetre() / 8, 29 * hauteurFenetre() / 32, largeurFenetre() / 30);
     int teinte = (data->page->pause) ? 150 : 255;
     plateau(teinte);
     for (int i = 0; i < NB_RAQUETTE; i++)
@@ -142,12 +144,28 @@ void AfficheEntrainement(Data *data)
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(8);
     afficheChaine("PONG", 95, 5 * largeurFenetre() / 16 + 1, 20.5 * hauteurFenetre() / 24 + 1);
+    rouage(7 * largeurFenetre() / 8, 29 * hauteurFenetre() / 32, largeurFenetre() / 30);
     int teinte = (data->page->pause) ? 150 : 255;
     plateau(teinte);
     raquette(data->raquette[0], teinte);
     balle(data->balleJeu, teinte);
     if (data->page->pause)
         affichePause(data->page->select);
+}
+void rouage(int x, int y, int r)
+{
+    couleurCourante(100, 100, 100);
+    cercle(x, y, r);
+    couleurCourante(255, 255, 255);
+    ligne(x - r + 5, y, x + r - 5, y);
+    ligne(x - sqrt(2) * (r - 5)/2, y - sqrt(2) * (r - 5)/2, x + sqrt(2) * (r - 5)/2, y + sqrt(2) * (r - 5)/2);
+    ligne(x, y - r + 5, x, y + r - 5);
+    ligne(x - sqrt(2) * (r - 5)/2, y + sqrt(2) * (r - 5)/2, x + sqrt(2) * (r - 5)/2, y - sqrt(2) * (r - 5)/2);
+    cercle(x, y, 11*r/16);
+    couleurCourante(100, 100, 100);
+    cercle(x, y, r/4);
+    couleurCourante(255, 255, 255);
+    cercle(x, y, r/6);
 }
 void affichePause(int *select)
 {

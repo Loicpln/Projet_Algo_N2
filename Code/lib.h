@@ -62,13 +62,17 @@ struct User
     User *userSuivant;
 };
 
-typedef struct Page Page;
-struct Page
+typedef struct
+{
+    User *premier;
+} Users;
+
+typedef struct
 {
     int numero;
     bool pause;
     int select[NB_SELECT];
-};
+} Page;
 
 typedef struct
 {
@@ -77,7 +81,7 @@ typedef struct
     Raquette raquette[NB_RAQUETTE];
     Balle balleJeu[1];
     int score[2];
-    User user;
+    Users users;
 } Data;
 
 #endif

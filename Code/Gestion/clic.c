@@ -8,7 +8,7 @@ void ClicAccueil(Data *data) // gestion clic page d'accueil
         {
             for (int i = 0; i < MAX_BALLE; i++)
             {
-                accelereBalle(data->balle + i, 4);
+                accelereBalle(data->balle + i, 2);
             }
             data->page->numero = 3;
         }
@@ -55,7 +55,7 @@ void ClicMenu(Data *data)
         {
             for (int i = 0; i < MAX_BALLE; i++)
             {
-                accelereBalle(data->balle + i, 0.25);
+                accelereBalle(data->balle + i, 0.5);
             }
             initPages(data->page);
             data->page->numero = 1;
@@ -80,7 +80,7 @@ void ClicJeu(Data *data)
     {
         if (!data->page->pause)
         {
-            if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > 5 * hauteurFenetre() / 6 && ordonneeSouris() < 11 * hauteurFenetre() / 12)
+            if (abs(abscisseSouris() - 7 * largeurFenetre() / 8) < largeurFenetre() / 30 && abs(ordonneeSouris() - 29 * hauteurFenetre() / 32) < largeurFenetre() / 30)
             {
                 data->page->pause = true;
             }
@@ -113,7 +113,7 @@ void ClicJeuIA(Data *data)
     {
         if (!data->page->pause)
         {
-            if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > 5 * hauteurFenetre() / 6 && ordonneeSouris() < 11 * hauteurFenetre() / 12)
+            if (abs(abscisseSouris() - 7 * largeurFenetre() / 8) < largeurFenetre() / 30 && abs(ordonneeSouris() - 29 * hauteurFenetre() / 32) < largeurFenetre() / 30)
             {
                 data->page->pause = true;
             }
@@ -146,7 +146,7 @@ void ClicEntrainement(Data *data)
     {
         if (!data->page->pause)
         {
-            if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > 5 * hauteurFenetre() / 6 && ordonneeSouris() < 11 * hauteurFenetre() / 12)
+            if (abs(abscisseSouris() - 7 * largeurFenetre() / 8) < largeurFenetre() / 30 && abs(ordonneeSouris() - 29 * hauteurFenetre() / 32) < largeurFenetre() / 30)
             {
                 data->page->pause = true;
             }

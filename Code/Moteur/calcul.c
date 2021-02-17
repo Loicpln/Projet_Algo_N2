@@ -98,7 +98,7 @@ void selectPause(int *select)
 		initSelect(select);
 		select[2] = 5;
 	}
-	else 
+	else
 		initSelect(select);
 }
 
@@ -301,7 +301,7 @@ void but(Balle *balle, int *score)
 
 void IA(Balle *balle, Raquette *raquette)
 {
-	float x = balle->x, y = balle->y;
+	float x = balle->x, y = balle->y, vy = balle->vy;
 	if (x < raquette->x)
 	{
 		if (balle->vx > 0)
@@ -309,7 +309,9 @@ void IA(Balle *balle, Raquette *raquette)
 			while (x < raquette->x - raquette->largeur / 2)
 			{
 				x += balle->vx;
-				y += balle->vy;
+				if (y < MIN_Y_PLATEAU || MAX_Y_PLATEAU < y)
+					vy = -vy;
+				y += vy;
 			}
 
 			if (raquette->y >= MIN_Y_PLATEAU + raquette->longueur / 2 && raquette->y <= MAX_Y_PLATEAU - raquette->longueur / 2)

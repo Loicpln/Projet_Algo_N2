@@ -8,6 +8,7 @@ void AfficheJeu(Data *data);
 void AfficheJeuIA(Data *data);
 void AfficheEntrainement(Data *data);
 
+void rouage(int x, int y, int r);
 void plateau(int teinte);
 void affichePause(int *select);
 void selectPause(int *select);
