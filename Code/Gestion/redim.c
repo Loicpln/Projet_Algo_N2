@@ -20,6 +20,10 @@ void RedimRegles(Data *data)
 {
 }
 
+void RedimSelection(Data *data)
+{
+}
+
 void RedimJeu(Data *data)
 {
     for (int i = 0; i < NB_RAQUETTE; i++)

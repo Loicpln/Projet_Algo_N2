@@ -38,7 +38,7 @@ void ClicMenu(Data *data)
         if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 2 && ordonneeSouris() < 15 * hauteurFenetre() / 24)
         {
             //*page = page jeu contre IA
-            data->page->numero = 5;
+            data->page->numero = 6;
             initRaquettes(data->raquette);
             initBalleJeu(data->balleJeu);
             initScore(data->score);
@@ -46,7 +46,7 @@ void ClicMenu(Data *data)
         if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 3 && ordonneeSouris() < 11 * hauteurFenetre() / 24)
         {
             //*page = page entrainement
-            data->page->numero = 6;
+            data->page->numero = 8;
             initRaquettes(data->raquette);
             initBalleJeu(data->balleJeu);
             initScore(data->score);
@@ -70,6 +70,36 @@ void ClicRegles(Data *data)
         if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
             data->page->numero = 1;
+        }
+    }
+}
+
+void ClicSelection(Data *data)
+{
+    if (etatBoutonSouris() == GaucheAppuye)
+    {
+        if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        {
+            data->page->numero = 5;
+        }
+        else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        {
+            data->page->numero = 3;
+        }
+    }
+}
+
+void ClicSelectionIA(Data *data)
+{
+    if (etatBoutonSouris() == GaucheAppuye)
+    {
+        if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        {
+            data->page->numero = 7;
+        }
+        else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        {
+            data->page->numero = 3;
         }
     }
 }

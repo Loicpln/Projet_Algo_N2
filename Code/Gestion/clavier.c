@@ -10,6 +10,9 @@ void ClavierMenu(Data *data)
 void ClavierRegles(Data *data)
 {
 }
+void ClavierSelection(Data *data)
+{
+}
 void ClavierJeu(Data *data)
 {
 	touchePause(data->page);

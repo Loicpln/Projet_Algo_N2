@@ -8,7 +8,7 @@ void initPages(Page *page)
 }
 void initSelect(int *select)
 {
-	for (int i = 0; i < NB_SELECT; i++)
+	for (int i = 0; i <= NB_SELECT; i++)
 	{
 		select[i] = 1;
 	}
@@ -53,6 +53,11 @@ void initScore(int *score)
 	for (int i = 0; i < 2; i++)
 		score[i] = 0;
 }
+
+void initUsers(Users *users){
+	*users = chargeUsersDepuisFichier();
+}
+
 void mouvementBalle(Balle *balle)
 {
 	balle->x += balle->vx;

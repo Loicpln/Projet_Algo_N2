@@ -1,11 +1,13 @@
 #include "save.h"
 
-User *creeUser(char nom[20])
+User *creeUser(char pseudo[20], int nbGame, int nbWin, int nbLose)
 {
     User *elem = malloc(sizeof(User));
-    strcpy(elem->pseudo, nom);
+    strcpy(elem->pseudo, pseudo);
+    elem->nbGame = nbGame;
+    elem->nbWin = nbWin;
+    elem->nbLose = nbLose;
     elem->userSuivant = NULL;
-
     return elem;
 }
 
@@ -74,43 +76,42 @@ User *rechercheUser(Users *maUsers, char nom[20])
 
 void enregistreUsersFichier(Users *maUsers)
 {
-    Users *Users = fopen("Users.txt", "w");
+    FILE *file = fopen("Users.txt", "w");
     User *tmp = maUsers->premier;
-    if (Users != NULL)
+    if (file != NULL)
     {
         while (tmp != NULL)
         {
-            fprintf(Users, "[pseudo=%s]\n", tmp->pseudo);
+            fprintf(file, "[pseudo=%s |nbGame=%d |nbWin=%d |nbLose=%d]\n", tmp->pseudo, tmp->nbGame, tmp->nbWin, tmp->nbLose);
             tmp = tmp->userSuivant;
         }
-        fclose(Users);
+        fclose(file);
     }
 }
 
-Users *chargeUsersDepuisFichier()
+Users chargeUsersDepuisFichier()
 {
     Users *maUsers = NULL;
-    Users *Users = fopen("Users.txt", "r");
-    char nom[20];
-    int id;
-    if (Users != NULL)
+    FILE *file = fopen("Users.txt", "r");
+    char pseudo[25];
+    int nbGame, nbWin, nbLose;
+    if (file != NULL)
     {
-        fseek(Users, 0, SEEK_END);
-        unsigned long int taille = ftell(Users);
-        if (taille != 0)
+        fseek(file, 0, SEEK_END);
+        if (ftell(file) != 0)
         {
-            fseek(Users, 0, SEEK_SET);
-            while (!feof(Users))
+            fseek(file, 0, SEEK_SET);
+            while (!feof(file))
             {
-                fscanf(Users, "[pseudo=%s]\n", nom);
-                maUsers = ajouteUsers(maUsers, creeUser(nom));
+                fscanf(file, "[pseudo=%s |nbGame=%d |nbWin=%d |nbLose=%d]\n", pseudo, &nbGame, &nbWin, &nbLose);
+                maUsers = ajouteUsers(maUsers, creeUser(pseudo, nbGame, nbWin, nbLose));
             }
         }
         else
         {
-            return NULL;
+            maUsers = malloc(sizeof(Users));
         }
-        fclose(Users);
+        fclose(file);
     }
-    return maUsers;
+    return *maUsers;
 }

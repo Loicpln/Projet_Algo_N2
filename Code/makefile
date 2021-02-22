@@ -1,8 +1,9 @@
-modules = controleur.o affichage.o clavier.o tempo.o redim.o calcul.o clic.o
+modules = controleur.o affichage.o clavier.o tempo.o redim.o calcul.o clic.o save.o
 lib = ./GfxLib/libisentlib.a
 controleur = controleur.h
 gestion = ./Gestion/gestion.h
 moteur = ./Moteur/moteur.h
+save = ./Sauvegarde/save.h
 extentions = -lm -lglut -lGL -lX11  
 #Fmod: -I/usr/include -L/usr/lib -lfmod
 #SDL: -lSDL -lSDL_mixer
@@ -39,3 +40,6 @@ redim.o: ./Gestion/redim.c $(gestion)
 	
 calcul.o: ./Moteur/calcul.c $(moteur) 
 	gcc -Wall -c ./Moteur/calcul.c
+	
+save.o: ./Sauvegarde/save.c $(save) 
+	gcc -Wall -c ./Sauvegarde/save.c

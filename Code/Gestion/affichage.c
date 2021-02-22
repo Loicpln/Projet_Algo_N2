@@ -105,6 +105,46 @@ void AfficheRegles(Data *data)
     afficheChaine("a l'aide de raquettes, le joueur ayant le plus de points", 20, largeurFenetre() / 10, 5 * hauteurFenetre() / 12);
     afficheChaine("gagne la partie.", 20, largeurFenetre() / 10, 4 * hauteurFenetre() / 12);
 }
+void AfficheSelection(Data *data)
+{
+    couleurCourante(255, 255, 255);
+    for (int i = 0; i < 5; i++)
+    {
+        rectangle(
+            largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 99 * hauteurFenetre() / 120,
+            5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30);
+        rectangle(
+            largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 59 * hauteurFenetre() / 120,
+            5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30);
+    }
+    rectangle(
+        5 * largeurFenetre() / 16, hauteurFenetre() / 12,
+        11 * largeurFenetre() / 16, hauteurFenetre() / 6);
+    rectangle(
+        3 * largeurFenetre() / 4, hauteurFenetre() / 12,
+        15 * largeurFenetre() / 16, hauteurFenetre() / 6);
+    couleurCourante(0, 0, 0);
+    for (int i = 0; i < 5; i++)
+    {
+        rectangle(
+            largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30 + data->page->select[2 * i], 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 + data->page->select[2 * i],
+            5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30 - data->page->select[2 * i], 99 * hauteurFenetre() / 120 - data->page->select[2 * i]);
+        rectangle(
+            largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30 + data->page->select[2 * i + 1], 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 + data->page->select[2 * i + 1],
+            5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30 - data->page->select[2 * i + 1], 59 * hauteurFenetre() / 120 - data->page->select[2 * i + 1]);
+    }
+    rectangle(
+        5 * largeurFenetre() / 16 + data->page->select[10], hauteurFenetre() / 12 + data->page->select[10],
+        11 * largeurFenetre() / 16 - data->page->select[10], hauteurFenetre() / 6 - data->page->select[10]);
+    rectangle(
+        3 * largeurFenetre() / 4 + data->page->select[11], hauteurFenetre() / 12 + data->page->select[11],
+        15 * largeurFenetre() / 16 - data->page->select[11], hauteurFenetre() / 6 - data->page->select[11]);
+    couleurCourante(255, 255, 255);
+    afficheUsers(data->users);
+    epaisseurDeTrait(2);
+    afficheChaine("Jouer", 30, 18 * largeurFenetre() / 40, hauteurFenetre() / 10);
+    afficheChaine("Retour", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
+}
 void AfficheJeu(Data *data)
 {
     couleurCourante(255, 255, 255);
@@ -158,14 +198,14 @@ void rouage(int x, int y, int r)
     cercle(x, y, r);
     couleurCourante(255, 255, 255);
     ligne(x - r + 5, y, x + r - 5, y);
-    ligne(x - sqrt(2) * (r - 5)/2, y - sqrt(2) * (r - 5)/2, x + sqrt(2) * (r - 5)/2, y + sqrt(2) * (r - 5)/2);
+    ligne(x - sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2);
     ligne(x, y - r + 5, x, y + r - 5);
-    ligne(x - sqrt(2) * (r - 5)/2, y + sqrt(2) * (r - 5)/2, x + sqrt(2) * (r - 5)/2, y - sqrt(2) * (r - 5)/2);
-    cercle(x, y, 11*r/16);
+    ligne(x - sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2);
+    cercle(x, y, 11 * r / 16);
     couleurCourante(100, 100, 100);
-    cercle(x, y, r/4);
+    cercle(x, y, r / 4);
     couleurCourante(255, 255, 255);
-    cercle(x, y, r/6);
+    cercle(x, y, r / 6);
 }
 void affichePause(int *select)
 {
@@ -266,4 +306,40 @@ void afficheDigit(bool *digit, bool side, int i, int teinte)
     ligne(
         MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50,
         MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
+}
+
+void afficheUsers(Users *maUsers)
+{
+    if (maUsers != NULL)
+    {
+        int i = 0;
+        char Game[10] = "", Win[10] = "", Lose[10] = "";
+        User *tmp = maUsers->premier;
+        while (tmp != NULL)
+        {
+            sprintf(Game, "Game: %d", tmp->nbWin);
+            sprintf(Win, "Win: %d", tmp->nbWin);
+            sprintf(Lose, "Lose: %d", tmp->nbLose);
+            if (largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30 < largeurFenetre())
+            {
+                epaisseurDeTrait(2);
+                afficheChaine(tmp->pseudo, 20, largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30, 90 * hauteurFenetre() / 120);
+                epaisseurDeTrait(1);
+                afficheChaine(Game, 15, largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30, 85 * hauteurFenetre() / 120);
+                afficheChaine(Win, 15, largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30, 80 * hauteurFenetre() / 120);
+                afficheChaine(Lose, 15, largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30, 75 * hauteurFenetre() / 120);
+            }
+            else
+            {
+                epaisseurDeTrait(2);
+                afficheChaine(tmp->pseudo, 20, largeurFenetre() / 30 + 20 + 6 * (i - 5) * largeurFenetre() / 30, 50 * hauteurFenetre() / 120);
+                epaisseurDeTrait(1);
+                afficheChaine(Game, 15, largeurFenetre() / 30 + 20 + 6 * (i - 5) * largeurFenetre() / 30, 45 * hauteurFenetre() / 120);
+                afficheChaine(Win, 15, largeurFenetre() / 30 + 20 + 6 * (i - 5) * largeurFenetre() / 30, 40 * hauteurFenetre() / 120);
+                afficheChaine(Lose, 15, largeurFenetre() / 30 + 20 + 6 * (i - 5) * largeurFenetre() / 30, 35 * hauteurFenetre() / 120);
+            }
+            tmp = tmp->userSuivant;
+            i++;
+        }
+    }
 }

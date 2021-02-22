@@ -8,6 +8,8 @@ typedef struct
     void (*f4)(Data *);
     void (*f5)(Data *);
     void (*f6)(Data *);
+    void (*f7)(Data *);
+    void (*f8)(Data *);
 
 } Gestion;
 
