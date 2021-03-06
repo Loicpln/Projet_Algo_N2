@@ -89,8 +89,9 @@ void enregistreUsersFichier(User *maUsers)
     }
 }
 
-void chargeUsersDepuisFichier(User * maUsers)
+User * chargeUsersDepuisFichier()
 {
+    User * maUsers = NULL;
     FILE *file = fopen("Users.txt", "r");
     char pseudo[25];
     int nbGame, nbWin, nbLose;
@@ -103,4 +104,5 @@ void chargeUsersDepuisFichier(User * maUsers)
         }
         fclose(file);
     }
+    return maUsers;
 }

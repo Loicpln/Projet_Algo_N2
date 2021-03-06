@@ -39,7 +39,7 @@ Data init()
     initRaquettes(data.raquette);
     initBalleJeu(data.balleJeu);
     initScore(data.score);
-    chargeUsersDepuisFichier(data.users);
+    data.users = chargeUsersDepuisFichier();
     return data;
 }
 

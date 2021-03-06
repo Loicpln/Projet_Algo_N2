@@ -8,6 +8,7 @@ void initBallesAccueil(Balle *balle);
 void initRaquettes(Raquette *raquette);
 void initBalleJeu(Balle *balle);
 void initScore(int *score);
+void initUsers(User * maUsers);
 void mouvementBalle(Balle *balle);
 void rebond(Balle *balle, int min_x, int min_y, int max_x, int max_y);
 void redimBalle(Balle *balle);

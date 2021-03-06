@@ -52,7 +52,6 @@ void initScore(int *score)
 		score[i] = 0;
 }
 
-
 void mouvementBalle(Balle *balle)
 {
 	balle->x += balle->vx;
