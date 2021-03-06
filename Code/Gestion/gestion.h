@@ -1,23 +1,14 @@
 #include "../lib.h"
 #include "../Moteur/moteur.h"
+#include "../Elements/elements.h"
 
-void AfficheAccueil(Data *data);
+void AfficheAccueil(Data * data);
 void AfficheMenu(Data *data);
 void AfficheRegles(Data *data);
 void AfficheSelection(Data *data);
 void AfficheJeu(Data *data);
 void AfficheJeuIA(Data *data);
 void AfficheEntrainement(Data *data);
-
-void rouage(int x, int y, int r);
-void plateau(int teinte);
-void affichePause(int *select);
-void selectPause(int *select);
-void raquette(Raquette raquette, int teinte);
-void balle(Balle *balleJeu, int teinte);
-void score(int score, bool side, int teinte);
-void afficheDigit(bool *digit, bool side, int i, int teinte);
-void afficheUsers(Users *maUsers);
 
 void ClavierAccueil(Data *data);
 void ClavierMenu(Data *data);

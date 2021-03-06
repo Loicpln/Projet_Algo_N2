@@ -9,9 +9,7 @@ void initPages(Page *page)
 void initSelect(int *select)
 {
 	for (int i = 0; i <= NB_SELECT; i++)
-	{
 		select[i] = 1;
-	}
 }
 void initBallesAccueil(Balle *balle)
 {
@@ -54,9 +52,6 @@ void initScore(int *score)
 		score[i] = 0;
 }
 
-void initUsers(Users *users){
-	*users = chargeUsersDepuisFichier();
-}
 
 void mouvementBalle(Balle *balle)
 {
@@ -117,43 +112,31 @@ void redimRaquette(Raquette *raquette, int i)
 }
 void touchePause(Page *page)
 {
-	if (caractereClavier() == 'v')
+	if (caractereClavier() == 'g' || caractereClavier() == 'G')
 		page->pause = (page->pause) ? false : true;
 }
 void touches(Raquette *raquette)
 {
 	if (caractereClavier() == raquette->up)
-	{
 		up(raquette);
-	}
 	else if (caractereClavier() == raquette->down)
-	{
 		down(raquette);
-	}
 }
 
 void up(Raquette *raquette)
 {
 	if (raquette->y + raquette->vy + raquette->longueur / 2 >= MAX_Y_PLATEAU)
-	{
 		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
-	}
 	else if (raquette->y + raquette->longueur / 2 <= MAX_Y_PLATEAU)
-	{
 		raquette->y += raquette->vy;
-	}
 }
 
 void down(Raquette *raquette)
 {
 	if (raquette->y - raquette->vy - raquette->longueur / 2 <= MIN_Y_PLATEAU)
-	{
 		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
-	}
 	else if (raquette->y - raquette->longueur / 2 >= MIN_Y_PLATEAU)
-	{
 		raquette->y -= raquette->vy;
-	}
 }
 void nombre(int score, bool *digit)
 {

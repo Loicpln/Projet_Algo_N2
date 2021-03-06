@@ -3,15 +3,16 @@
 
 void initPages(Page *page);
 void initSelect(int *select);
+void reinitSelect(int *select);
 void initBallesAccueil(Balle *balle);
 void initRaquettes(Raquette *raquette);
 void initBalleJeu(Balle *balle);
 void initScore(int *score);
-void initUsers(Users *users);
 void mouvementBalle(Balle *balle);
 void rebond(Balle *balle, int min_x, int min_y, int max_x, int max_y);
 void redimBalle(Balle *balle);
 void accelereBalle(Balle *balle, float a);
+void selectPause(int *select);
 void redimRaquette(Raquette *raquette, int i);
 void touchePause(Page *page);
 void touches(Raquette *raquette);

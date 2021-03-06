@@ -11,20 +11,20 @@ User *creeUser(char pseudo[20], int nbGame, int nbWin, int nbLose)
     return elem;
 }
 
-Users *ajouteUsers(Users *maUsers, User *nouv)
+User *ajouteUsers(User *maUsers, User *nouv)
 {
     if (maUsers == NULL)
     {
-        maUsers = malloc(sizeof(Users));
-        maUsers->premier = nouv;
+        maUsers = malloc(sizeof(User));
+        maUsers = nouv;
     }
-    else if (maUsers->premier == NULL)
+    else if (maUsers == NULL)
     {
-        maUsers->premier = nouv;
+        maUsers = nouv;
     }
     else
     {
-        User *tmp = maUsers->premier;
+        User *tmp = maUsers;
         while (tmp->userSuivant != NULL)
         {
             tmp = tmp->userSuivant;
@@ -34,12 +34,12 @@ Users *ajouteUsers(Users *maUsers, User *nouv)
     return maUsers;
 }
 
-Users *supprimeDansUsers(Users *maUsers)
+User *supprimeDansUsers(User *maUsers)
 {
-    if (maUsers->premier != NULL)
+    if (maUsers != NULL)
     {
-        User *tmp = maUsers->premier;
-        User *ptmp = maUsers->premier;
+        User *tmp = maUsers;
+        User *ptmp = maUsers;
         while (tmp->userSuivant != NULL)
         {
             ptmp = tmp;
@@ -51,20 +51,20 @@ Users *supprimeDansUsers(Users *maUsers)
     return maUsers;
 }
 
-Users *supprimeUsers(Users *maUsers)
+User *supprimeUsers(User *maUsers)
 {
-    while (maUsers->premier != NULL)
+    while (maUsers != NULL)
     {
-        User *tmp = maUsers->premier;
-        maUsers->premier = maUsers->premier->userSuivant;
+        User *tmp = maUsers;
+        maUsers = maUsers->userSuivant;
         free(tmp);
     }
     return maUsers;
 }
 
-User *rechercheUser(Users *maUsers, char nom[20])
+User *rechercheUser(User *maUsers, char nom[20])
 {
-    User *tmp = maUsers->premier;
+    User *tmp = maUsers;
     while (tmp != NULL)
     {
         if (!strcmp(tmp->pseudo, nom))
@@ -74,10 +74,10 @@ User *rechercheUser(Users *maUsers, char nom[20])
     return tmp;
 }
 
-void enregistreUsersFichier(Users *maUsers)
+void enregistreUsersFichier(User *maUsers)
 {
     FILE *file = fopen("Users.txt", "w");
-    User *tmp = maUsers->premier;
+    User *tmp = maUsers;
     if (file != NULL)
     {
         while (tmp != NULL)
@@ -89,29 +89,18 @@ void enregistreUsersFichier(Users *maUsers)
     }
 }
 
-Users chargeUsersDepuisFichier()
+void chargeUsersDepuisFichier(User * maUsers)
 {
-    Users *maUsers = NULL;
     FILE *file = fopen("Users.txt", "r");
     char pseudo[25];
     int nbGame, nbWin, nbLose;
     if (file != NULL)
     {
-        fseek(file, 0, SEEK_END);
-        if (ftell(file) != 0)
+        while (fgetc(file) != EOF)
         {
-            fseek(file, 0, SEEK_SET);
-            while (!feof(file))
-            {
-                fscanf(file, "[pseudo=%s |nbGame=%d |nbWin=%d |nbLose=%d]\n", pseudo, &nbGame, &nbWin, &nbLose);
-                maUsers = ajouteUsers(maUsers, creeUser(pseudo, nbGame, nbWin, nbLose));
-            }
-        }
-        else
-        {
-            maUsers = malloc(sizeof(Users));
+            fscanf(file, "pseudo=%s |nbGame=%d |nbWin=%d |nbLose=%d]\n", pseudo, &nbGame, &nbWin, &nbLose);
+            maUsers = ajouteUsers(maUsers, creeUser(pseudo, nbGame, nbWin, nbLose));
         }
         fclose(file);
     }
-    return *maUsers;
 }

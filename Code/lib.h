@@ -25,7 +25,7 @@
 
 #define MAX_BALLE 50
 #define NB_RAQUETTE 2
-#define NB_SELECT 11
+#define NB_SELECT 12
 
 #ifndef STRUCT
 #define STRUCT
@@ -63,11 +63,6 @@ struct User
 
 typedef struct
 {
-    User *premier;
-} Users;
-
-typedef struct
-{
     int numero;
     bool pause;
     int select[NB_SELECT];
@@ -81,7 +76,7 @@ typedef struct
 {
     Page page[1];
     Balle balle[MAX_BALLE];
-    Users users[1];
+    User * users;
     Raquette raquette[NB_RAQUETTE];
     Balle balleJeu[1];
     Options option[1];

@@ -13,11 +13,11 @@ typedef struct
 
 } Gestion;
 
-void gestion(Data *data, Gestion gestion);
+void gestion(Data *data, const Gestion gestion);
 
 Data init();
-Gestion fTempo();
-Gestion fAffiche();
-Gestion fClavier();
-Gestion fClic();
-Gestion fRedim();
+const Gestion fTempo();
+const Gestion fAffiche();
+const Gestion fClavier();
+const Gestion fClic();
+const Gestion fRedim();

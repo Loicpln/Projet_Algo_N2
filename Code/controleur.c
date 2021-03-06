@@ -1,6 +1,6 @@
 #include "controleur.h"
 
-void gestion(Data *data, Gestion gestion) //gestion affichage pages
+void gestion(Data *data, const Gestion gestion) //gestion affichage pages
 {
     switch (data->page->numero)
     {
@@ -39,12 +39,12 @@ Data init()
     initRaquettes(data.raquette);
     initBalleJeu(data.balleJeu);
     initScore(data.score);
-    initUsers(data.users);
+    chargeUsersDepuisFichier(data.users);
     return data;
 }
 
-Gestion fTempo() { return (Gestion){TempoAccueil, TempoRegles, TempoMenu, TempoSelection, TempoJeu, TempoSelection, TempoJeuIA, TempoEntrainement}; }
-Gestion fAffiche() { return (Gestion){AfficheAccueil, AfficheRegles, AfficheMenu, AfficheSelection, AfficheJeu, AfficheSelection, AfficheJeuIA, AfficheEntrainement}; }
-Gestion fClavier() { return (Gestion){ClavierAccueil, ClavierRegles, ClavierMenu, ClavierSelection, ClavierJeu, ClavierSelection, ClavierJeuIA, ClavierEntrainement}; }
-Gestion fClic() { return (Gestion){ClicAccueil, ClicRegles, ClicMenu, ClicSelection, ClicJeu, ClicSelectionIA, ClicJeuIA, ClicEntrainement}; }
-Gestion fRedim() { return (Gestion){RedimAccueil, RedimRegles, RedimMenu, RedimSelection, RedimJeu, RedimSelection, RedimJeuIA, RedimEntrainement}; }
+const Gestion fTempo() { return (const Gestion){TempoAccueil, TempoRegles, TempoMenu, TempoSelection, TempoJeu, TempoSelection, TempoJeuIA, TempoEntrainement}; }
+const Gestion fAffiche() { return (const Gestion){AfficheAccueil, AfficheRegles, AfficheMenu, AfficheSelection, AfficheJeu, AfficheSelection, AfficheJeuIA, AfficheEntrainement}; }
+const Gestion fClavier() { return (const Gestion){ClavierAccueil, ClavierRegles, ClavierMenu, ClavierSelection, ClavierJeu, ClavierSelection, ClavierJeuIA, ClavierEntrainement}; }
+const Gestion fClic() { return (const Gestion){ClicAccueil, ClicRegles, ClicMenu, ClicSelection, ClicJeu, ClicSelectionIA, ClicJeuIA, ClicEntrainement}; }
+const Gestion fRedim() { return (const Gestion){RedimAccueil, RedimRegles, RedimMenu, RedimSelection, RedimJeu, RedimSelection, RedimJeuIA, RedimEntrainement}; }

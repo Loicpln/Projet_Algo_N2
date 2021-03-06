@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 void gestionEvenement(EvenementGfx evenement)
 {
 	static Data d;
-	Data *data = &d;
+	Data * const data = &d;
 
 	switch (evenement)
 	{
