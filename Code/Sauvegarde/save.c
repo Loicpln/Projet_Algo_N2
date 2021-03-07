@@ -1,6 +1,6 @@
 #include "save.h"
 
-User *creeUser(char pseudo[20], int nbGame, int nbWin, int nbLose)
+User * creeUser(const char pseudo[], const int nbGame, const int nbWin, const int nbLose)
 {
     User *elem = malloc(sizeof(User));
     strcpy(elem->pseudo, pseudo);
@@ -11,7 +11,7 @@ User *creeUser(char pseudo[20], int nbGame, int nbWin, int nbLose)
     return elem;
 }
 
-User *ajouteUsers(User *maUsers, User *nouv)
+User * ajouteUsers(User * maUsers, User * const nouv)
 {
     if (maUsers == NULL)
     {
@@ -34,7 +34,7 @@ User *ajouteUsers(User *maUsers, User *nouv)
     return maUsers;
 }
 
-User *supprimeDansUsers(User *maUsers)
+User * supprimeDansUsers(User *maUsers)
 {
     if (maUsers != NULL)
     {
@@ -51,7 +51,7 @@ User *supprimeDansUsers(User *maUsers)
     return maUsers;
 }
 
-User *supprimeUsers(User *maUsers)
+User * supprimeUsers(User *maUsers)
 {
     while (maUsers != NULL)
     {
@@ -62,19 +62,19 @@ User *supprimeUsers(User *maUsers)
     return maUsers;
 }
 
-User *rechercheUser(User *maUsers, char nom[20])
+User * rechercheUser(User * maUsers, const char pseudo[])
 {
-    User *tmp = maUsers;
+    User * tmp = maUsers;
     while (tmp != NULL)
     {
-        if (!strcmp(tmp->pseudo, nom))
+        if (!strcmp(tmp->pseudo, pseudo))
             break;
         tmp = tmp->userSuivant;
     }
     return tmp;
 }
 
-void enregistreUsersFichier(User *maUsers)
+void enregistreUsersFichier(User * maUsers)
 {
     FILE *file = fopen("Users.txt", "w");
     User *tmp = maUsers;
@@ -87,22 +87,4 @@ void enregistreUsersFichier(User *maUsers)
         }
         fclose(file);
     }
-}
-
-User * chargeUsersDepuisFichier()
-{
-    User * maUsers = NULL;
-    FILE *file = fopen("Users.txt", "r");
-    char pseudo[25];
-    int nbGame, nbWin, nbLose;
-    if (file != NULL)
-    {
-        while (fgetc(file) != EOF)
-        {
-            fscanf(file, "pseudo=%s |nbGame=%d |nbWin=%d |nbLose=%d]\n", pseudo, &nbGame, &nbWin, &nbLose);
-            maUsers = ajouteUsers(maUsers, creeUser(pseudo, nbGame, nbWin, nbLose));
-        }
-        fclose(file);
-    }
-    return maUsers;
 }

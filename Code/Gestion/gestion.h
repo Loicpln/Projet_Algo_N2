@@ -2,43 +2,43 @@
 #include "../Moteur/moteur.h"
 #include "../Elements/elements.h"
 
-void AfficheAccueil(Data * data);
-void AfficheMenu(Data *data);
-void AfficheRegles(Data *data);
-void AfficheSelection(Data *data);
-void AfficheJeu(Data *data);
-void AfficheJeuIA(Data *data);
-void AfficheEntrainement(Data *data);
+void AfficheAccueil(Data * const data);
+void AfficheMenu(Data * const data);
+void AfficheRegles(Data * const data);
+void AfficheSelection(Data *const data);
+void AfficheJeu(Data * const data);
+void AfficheJeuIA(Data * const data);
+void AfficheEntrainement(Data * const data);
 
-void ClavierAccueil(Data *data);
-void ClavierMenu(Data *data);
-void ClavierRegles(Data *data);
-void ClavierSelection(Data *data);
-void ClavierJeu(Data *data);
-void ClavierJeuIA(Data *data);
-void ClavierEntrainement(Data * data);
+void ClavierAccueil(Data * const data);
+void ClavierMenu(Data * const data);
+void ClavierRegles(Data * const data);
+void ClavierSelection(Data * const data);
+void ClavierJeu(Data * const data);
+void ClavierJeuIA(Data * const data);
+void ClavierEntrainement(Data * const data);
 
-void ClicAccueil(Data *data);
-void ClicMenu(Data *data);
-void ClicRegles(Data *data);
-void ClicSelection(Data *data);
-void ClicJeu(Data *data);
-void ClicSelectionIA(Data *data);
-void ClicJeuIA(Data *data);
-void ClicEntrainement(Data *data);
+void ClicAccueil(Data * const data);
+void ClicMenu(Data * const data);
+void ClicRegles(Data * const data);
+void ClicSelection(Data * const data);
+void ClicJeu(Data * const data);
+void ClicSelectionIA(Data * const data);
+void ClicJeuIA(Data * const data);
+void ClicEntrainement(Data * const data);
 
-void TempoAccueil(Data *data);
-void TempoMenu(Data *data);
-void TempoRegles(Data *data);
-void TempoSelection(Data *data);
-void TempoJeu(Data *data);
-void TempoJeuIA(Data *data);
-void TempoEntrainement(Data *data);
+void TempoAccueil(Data * const data);
+void TempoMenu(Data * const data);
+void TempoRegles(Data * const data);
+void TempoSelection(Data * const data);
+void TempoJeu(Data * const data);
+void TempoJeuIA(Data * const data);
+void TempoEntrainement(Data * const data);
 
-void RedimAccueil(Data *data);
-void RedimMenu(Data *data);
-void RedimRegles(Data *data);
-void RedimSelection(Data *data);
-void RedimJeu(Data *data);
-void RedimJeuIA(Data *data);
-void RedimEntrainement(Data *data);
+void RedimAccueil(Data * const data);
+void RedimMenu(Data * const data);
+void RedimRegles(Data * const data);
+void RedimSelection(Data * const data);
+void RedimJeu(Data * const data);
+void RedimJeuIA(Data * const data);
+void RedimEntrainement(Data * const data);

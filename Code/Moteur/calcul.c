@@ -1,64 +1,12 @@
 #include "moteur.h"
 
-void initPages(Page *page)
-{
-	page->numero = 1;
-	page->pause = false;
-	initSelect(page->select);
-}
-void initSelect(int *select)
-{
-	for (int i = 0; i <= NB_SELECT; i++)
-		select[i] = 1;
-}
-void initBallesAccueil(Balle *balle)
-{
-	for (int i = 0; i < MAX_BALLE; i++)
-	{
-		balle[i].x = rand() % largeurFenetre();
-		balle[i].y = rand() % hauteurFenetre();
-		balle[i].r = 10;
-		balle[i].v0 = 5;
-		balle[i].vx = (rand() % 2) ? 5 : -5;
-		balle[i].vy = (rand() % 2) ? 5 : -5;
-	}
-}
-void initRaquettes(Raquette *raquette)
-{
-	for (int i = 0; i < NB_RAQUETTE; i++)
-	{
-		raquette[i].longueur = 100;
-		raquette[i].largeur = 10;
-		raquette[i].x = (i % 2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
-		raquette[i].y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
-		raquette[i].vy = 15;
-		raquette[i].up = (i % 2) ? 'p' : 'a';
-		raquette[i].down = (i % 2) ? 'm' : 'q';
-	}
-}
-void initBalleJeu(Balle *balle)
-{
-	balle->x = MID_X;
-	balle->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
-	balle->r = 7;
-	balle->v0 = 5;
-	balle->vx = balle->v0;
-	balle->vy = 0.1;
-}
-
-void initScore(int *score)
-{
-	for (int i = 0; i < 2; i++)
-		score[i] = 0;
-}
-
-void mouvementBalle(Balle *balle)
+void mouvementBalle(Balle * const balle)
 {
 	balle->x += balle->vx;
 	balle->y += balle->vy;
 }
 
-void rebond(Balle *balle, int min_x, int min_y, int max_x, int max_y)
+void rebond(Balle * const balle, const int min_x, const int min_y, const int max_x, const int max_y)
 {
 	if (balle->x - balle->r < min_x || balle->x + balle->r > max_x)
 		balle->vx = -balle->vx;
@@ -66,7 +14,7 @@ void rebond(Balle *balle, int min_x, int min_y, int max_x, int max_y)
 		balle->vy = -balle->vy;
 }
 
-void redimBalle(Balle *balle)
+void redimBalle(Balle * const balle)
 {
 	if (balle->x >= largeurFenetre())
 		balle->x = largeurFenetre() - 1;
@@ -74,13 +22,13 @@ void redimBalle(Balle *balle)
 		balle->y = hauteurFenetre() - 1;
 }
 
-void accelereBalle(Balle *balle, float a)
+void accelereBalle(Balle * const balle, const float a)
 {
 	balle->vx *= a;
 	balle->vy *= a;
 }
 
-void selectPause(int *select)
+void selectPause(int * const select)
 {
 	if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 11 * hauteurFenetre() / 20 && ordonneeSouris() < 13 * hauteurFenetre() / 20)
 	{
@@ -101,7 +49,7 @@ void selectPause(int *select)
 		initSelect(select);
 }
 
-void redimRaquette(Raquette *raquette, int i)
+void redimRaquette(Raquette * const raquette, const int i)
 {
 	if (raquette->y + raquette->longueur / 2 >= MAX_Y_PLATEAU)
 		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
@@ -109,12 +57,12 @@ void redimRaquette(Raquette *raquette, int i)
 		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
 	raquette->x = (i % 2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
 }
-void touchePause(Page *page)
+void touchePause(Page * const page)
 {
 	if (caractereClavier() == 'g' || caractereClavier() == 'G')
 		page->pause = (page->pause) ? false : true;
 }
-void touches(Raquette *raquette)
+void touches(Raquette * const raquette)
 {
 	if (caractereClavier() == raquette->up)
 		up(raquette);
@@ -122,7 +70,7 @@ void touches(Raquette *raquette)
 		down(raquette);
 }
 
-void up(Raquette *raquette)
+void up(Raquette * const raquette)
 {
 	if (raquette->y + raquette->vy + raquette->longueur / 2 >= MAX_Y_PLATEAU)
 		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
@@ -130,14 +78,14 @@ void up(Raquette *raquette)
 		raquette->y += raquette->vy;
 }
 
-void down(Raquette *raquette)
+void down(Raquette * const raquette)
 {
 	if (raquette->y - raquette->vy - raquette->longueur / 2 <= MIN_Y_PLATEAU)
 		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
 	else if (raquette->y - raquette->longueur / 2 >= MIN_Y_PLATEAU)
 		raquette->y -= raquette->vy;
 }
-void nombre(int score, bool *digit)
+void nombre(bool * const digit, const int score)
 {
 	switch (score)
 	{
@@ -233,7 +181,7 @@ void nombre(int score, bool *digit)
 		break;
 	}
 }
-void hitbox(Balle *balle, Raquette *raquette)
+void hitbox(Balle * const balle, const Raquette * const raquette)
 {
 	for (float i = 0; i < 2 * M_PI; i = i + 0.01)
 	{
@@ -264,7 +212,7 @@ void hitbox(Balle *balle, Raquette *raquette)
 	}
 }
 
-void but(Balle *balle, int *score)
+void but(Balle * const balle, int * const score)
 {
 	if (balle->x + balle->r < MIN_X_PLATEAU || balle->x - balle->r > MAX_X_PLATEAU)
 	{
@@ -276,7 +224,7 @@ void but(Balle *balle, int *score)
 
 		if (balle->x > MAX_X_PLATEAU)
 		{
-			score[0]++;
+			score[0]++;;
 			balle->vx = -balle->v0;
 		}
 
@@ -286,7 +234,7 @@ void but(Balle *balle, int *score)
 	}
 }
 
-void IA(Balle *balle, Raquette *raquette)
+void IA(Balle * const balle, Raquette * const raquette)
 {
 	float x = balle->x, y = balle->y, vy = balle->vy;
 	if (x < raquette->x)

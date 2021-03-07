@@ -2,14 +2,14 @@
 
 typedef struct
 {
-    void (*f1)(Data *);
-    void (*f2)(Data *);
-    void (*f3)(Data *);
-    void (*f4)(Data *);
-    void (*f5)(Data *);
-    void (*f6)(Data *);
-    void (*f7)(Data *);
-    void (*f8)(Data *);
+    void (*f1)(Data * const);
+    void (*f2)(Data * const);
+    void (*f3)(Data * const);
+    void (*f4)(Data * const);
+    void (*f5)(Data * const);
+    void (*f6)(Data * const);
+    void (*f7)(Data * const);
+    void (*f8)(Data * const);
 
 } Gestion;
 

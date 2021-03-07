@@ -1,2 +1,4 @@
 [pseudo=Loic |nbGame=5 |nbWin=3 |nbLose=2]
-[pseudo=Loic |nbGame=5 |nbWin=3 |nbLose=2]
+[pseudo=William |nbGame=5 |nbWin=3 |nbLose=2]
+[pseudo=Melvin |nbGame=5 |nbWin=3 |nbLose=2]
+[pseudo=Heloise |nbGame=5 |nbWin=3 |nbLose=2]

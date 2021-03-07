@@ -1,8 +1,8 @@
 #include "controleur.h"
 
-void gestion(Data *data, const Gestion gestion) //gestion affichage pages
+void gestion(Data *const data, const Gestion gestion) //gestion affichage pages
 {
-    switch (data->page->numero)
+    switch (data->page.numero)
     {
     case 1:
         gestion.f1(data);
@@ -34,11 +34,15 @@ void gestion(Data *data, const Gestion gestion) //gestion affichage pages
 Data init()
 {
     Data data;
-    initPages(data.page);
-    initBallesAccueil(data.balle);
-    initRaquettes(data.raquette);
-    initBalleJeu(data.balleJeu);
-    initScore(data.score);
+    data.page = initPages();
+    for (int i = 0; i < MAX_BALLE; i++)
+        data.balle[i] = initBallesAccueil();
+    data.balleJeu = initBalleJeu();
+    for (int i = 0; i < NB_RAQUETTE; i++)
+    {
+        data.raquette[i] = initRaquettes(i);
+        data.score[i] = initScore();
+    }
     data.users = chargeUsersDepuisFichier();
     return data;
 }

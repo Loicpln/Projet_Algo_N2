@@ -74,13 +74,13 @@ typedef struct
 
 typedef struct
 {
-    Page page[1];
+    Page page;
     Balle balle[MAX_BALLE];
-    User * users;
+    Balle balleJeu;
     Raquette raquette[NB_RAQUETTE];
-    Balle balleJeu[1];
-    Options option[1];
-    int score[2];
+    int score[NB_RAQUETTE];
+    User * users;
+    //Options option;
 } Data;
 
 #endif

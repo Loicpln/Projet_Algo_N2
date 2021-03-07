@@ -1,4 +1,4 @@
-modules = controleur.o affichage.o clavier.o tempo.o redim.o elements.o calcul.o clic.o save.o
+modules = controleur.o affichage.o clavier.o tempo.o redim.o elements.o calcul.o initialisation.o clic.o save.o
 lib = ./GfxLib/libisentlib.a
 controleur = controleur.h
 gestion = ./Gestion/gestion.h
@@ -44,6 +44,9 @@ elements.o: ./Elements/elements.c $(elements)
 
 calcul.o: ./Moteur/calcul.c $(moteur) 
 	gcc -Wall -c ./Moteur/calcul.c
+
+initialisation.o: ./Moteur/initialisation.c $(moteur) 
+	gcc -Wall -c ./Moteur/initialisation.c
 	
 save.o: ./Sauvegarde/save.c $(save) 
 	gcc -Wall -c ./Sauvegarde/save.c

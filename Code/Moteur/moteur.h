@@ -1,25 +1,25 @@
 #include "../lib.h"
 #include "../Sauvegarde/save.h"
 
-void initPages(Page *page);
-void initSelect(int *select);
-void reinitSelect(int *select);
-void initBallesAccueil(Balle *balle);
-void initRaquettes(Raquette *raquette);
-void initBalleJeu(Balle *balle);
-void initScore(int *score);
-void initUsers(User * maUsers);
-void mouvementBalle(Balle *balle);
-void rebond(Balle *balle, int min_x, int min_y, int max_x, int max_y);
-void redimBalle(Balle *balle);
-void accelereBalle(Balle *balle, float a);
-void selectPause(int *select);
-void redimRaquette(Raquette *raquette, int i);
-void touchePause(Page *page);
-void touches(Raquette *raquette);
-void up(Raquette *raquette);
-void down(Raquette *raquette);
-void nombre(int score, bool *digit);
-void hitbox(Balle *balle, Raquette *raquette);
-void but(Balle *balle, int *score);
-void IA(Balle *balle, Raquette *raquette);
+Page initPages();
+void initSelect(int * const select);
+Balle initBallesAccueil();
+Raquette initRaquettes(const int i);
+Balle initBalleJeu();
+int initScore();
+User * chargeUsersDepuisFichier();
+
+void mouvementBalle(Balle * const balle);
+void rebond(Balle * const balle, const int min_x, const int min_y, const int max_x, const int max_y);
+void redimBalle(Balle * constballe);
+void accelereBalle(Balle * const balle, const float a);
+void selectPause(int * const select);
+void redimRaquette(Raquette * const raquette, const int i);
+void touchePause(Page * const page);
+void touches(Raquette * const raquette);
+void up(Raquette * const raquette);
+void down(Raquette * const raquette);
+void nombre(bool * const digit, const int score);
+void hitbox(Balle * const balle, const Raquette * const raquette);
+void but(Balle * const balle, int * const score);
+void IA(Balle * const balle, Raquette * const raquette);
