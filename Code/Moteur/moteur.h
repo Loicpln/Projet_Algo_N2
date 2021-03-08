@@ -1,12 +1,14 @@
 #include "../lib.h"
 #include "../Sauvegarde/save.h"
 
+Data init();
 Page initPages();
-void initSelect(int * const select);
 Balle initBallesAccueil();
-Raquette initRaquettes(const int i);
+Raquette initRaquetteG();
+Raquette initRaquetteD();
 Balle initBalleJeu();
 int initScore();
+void initSelect(int * const select);
 User * chargeUsersDepuisFichier();
 
 void mouvementBalle(Balle * const balle);
@@ -21,5 +23,5 @@ void up(Raquette * const raquette);
 void down(Raquette * const raquette);
 void nombre(bool * const digit, const int score);
 void hitbox(Balle * const balle, const Raquette * const raquette);
-void but(Balle * const balle, int * const score);
+void but(Balle * const balle, Joueur * const joueur);
 void IA(Balle * const balle, Raquette * const raquette);

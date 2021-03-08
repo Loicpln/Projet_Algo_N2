@@ -1,6 +1,6 @@
 #include "gestion.h"
-
-void ClicAccueil(Data *const data) // gestion clic page d'accueil
+// gestion clic page d'accueil
+void ClicAccueil(Data *const data) 
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
@@ -25,10 +25,10 @@ void ClicMenu(Data *const data)
         {
             //*page = joueur contre joueur
             data->page.numero = 4;
-            for (int i = 0; i < NB_RAQUETTE; i++)
+            for (int i = 0; i < NB_JOUEUR; i++)
             {
-                data->raquette[i] = initRaquettes(i);
-                data->score[i] = initScore();
+                data->joueurs[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
+                data->joueurs[i].score = initScore();
             }
             data->balleJeu = initBalleJeu();
         }
@@ -36,10 +36,10 @@ void ClicMenu(Data *const data)
         {
             //*page = page jeu contre IA
             data->page.numero = 6;
-            for (int i = 0; i < NB_RAQUETTE; i++)
+            for (int i = 0; i < NB_JOUEUR; i++)
             {
-                data->raquette[i] = initRaquettes(i);
-                data->score[i] = initScore();
+                data->joueurs[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
+                data->joueurs[i].score = initScore();
             }
             data->balleJeu = initBalleJeu();
         }
@@ -47,10 +47,10 @@ void ClicMenu(Data *const data)
         {
             //*page = page entrainement
             data->page.numero = 8;
-            for (int i = 0; i < NB_RAQUETTE; i++)
+            for (int i = 0; i < NB_JOUEUR; i++)
             {
-                data->raquette[i] = initRaquettes(i);
-                data->score[i] = initScore();
+                data->joueurs[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
+                data->joueurs[i].score = initScore();
             }
             data->balleJeu = initBalleJeu();
         }
@@ -108,10 +108,10 @@ void ClicJeu(Data *const data)
             if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
             {
                 data->page.pause = false;
-                for (int i = 0; i < NB_RAQUETTE; i++)
+                for (int i = 0; i < NB_JOUEUR; i++)
                 {
-                    data->raquette[i] = initRaquettes(i);
-                    data->score[i] = initScore();
+                    data->joueurs[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
+                    data->joueurs[i].score = initScore();
                 }
                 data->balleJeu = initBalleJeu();
             }
@@ -140,10 +140,10 @@ void ClicJeuIA(Data *const data)
             if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
             {
                 data->page.pause = false;
-                for (int i = 0; i < NB_RAQUETTE; i++)
+                for (int i = 0; i < NB_JOUEUR; i++)
                 {
-                    data->raquette[i] = initRaquettes(i);
-                    data->score[i] = initScore();
+                    data->joueurs[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
+                    data->joueurs[i].score = initScore();
                 }
                 data->balleJeu = initBalleJeu();
             }
@@ -172,8 +172,7 @@ void ClicEntrainement(Data *const data)
             if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
             {
                 data->page.pause = false;
-                for (int i = 0; i < NB_RAQUETTE; i++)
-                    data->raquette[i] = initRaquettes(i);
+                data->joueurs[0].raquette = initRaquetteG();
                 data->balleJeu = initBalleJeu();
             }
             if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 3 * hauteurFenetre() / 20 && ordonneeSouris() < 5 * hauteurFenetre() / 20)

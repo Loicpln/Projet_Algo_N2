@@ -1,6 +1,6 @@
 #include "gestion.h"
 
-void AfficheAccueil(Data * const data) //Affichage page d'accueil
+void AfficheAccueil(Data *const data)
 {
     couleurCourante(255, 0, 0);
     for (int i = 0; i < MAX_BALLE; i++)
@@ -34,8 +34,7 @@ void AfficheAccueil(Data * const data) //Affichage page d'accueil
     afficheChaine("Reglement", 40, 3 * largeurFenetre() / 8, hauteurFenetre() / 2);
     afficheChaine("Quitter", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
-
-void AfficheMenu(Data * const data)
+void AfficheMenu(Data *const data)
 {
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
     for (int i = 0; i < MAX_BALLE; i++)
@@ -78,8 +77,7 @@ void AfficheMenu(Data * const data)
     epaisseurDeTrait(8);
     afficheChaine("PONG", 60, 13 * largeurFenetre() / 32, 21 * hauteurFenetre() / 24);
 }
-
-void AfficheRegles(Data * const data)
+void AfficheRegles(Data *const data)
 {
     epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);
@@ -105,7 +103,7 @@ void AfficheRegles(Data * const data)
     afficheChaine("a l'aide de raquettes, le joueur ayant le plus de points", 20, largeurFenetre() / 10, 5 * hauteurFenetre() / 12);
     afficheChaine("gagne la partie.", 20, largeurFenetre() / 10, 4 * hauteurFenetre() / 12);
 }
-void AfficheSelection(Data * const data)
+void AfficheSelection(Data *const data)
 {
     couleurCourante(255, 255, 255);
     for (int i = 0; i < 5; i++)
@@ -145,7 +143,7 @@ void AfficheSelection(Data * const data)
     afficheChaine("Jouer", 30, 18 * largeurFenetre() / 40, hauteurFenetre() / 10);
     afficheChaine("Retour", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
-void AfficheJeu(Data * const data)
+void AfficheJeu(Data *const data)
 {
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(8);
@@ -153,16 +151,16 @@ void AfficheJeu(Data * const data)
     rouage(7 * largeurFenetre() / 8, 29 * hauteurFenetre() / 32, largeurFenetre() / 30);
     int teinte = (data->page.pause) ? 150 : 255;
     plateau(teinte);
-    for (int i = 0; i < NB_RAQUETTE; i++)
+    for (int i = 0; i < NB_JOUEUR; i++)
     {
-        raquette(data->raquette+i, teinte);
-        score(data->score[i], i, teinte);
+        raquette(data->joueurs[i].raquette, teinte);
+        score(data->joueurs[i].score, i, teinte);
     }
-    balle(&data->balleJeu, teinte);
+    balle(data->balleJeu, teinte);
     if (data->page.pause)
         affichePause(data->page.select);
 }
-void AfficheJeuIA(Data * const data)
+void AfficheJeuIA(Data *const data)
 {
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(8);
@@ -170,16 +168,16 @@ void AfficheJeuIA(Data * const data)
     rouage(7 * largeurFenetre() / 8, 29 * hauteurFenetre() / 32, largeurFenetre() / 30);
     int teinte = (data->page.pause) ? 150 : 255;
     plateau(teinte);
-    for (int i = 0; i < NB_RAQUETTE; i++)
+    for (int i = 0; i < NB_JOUEUR; i++)
     {
-        raquette(data->raquette+i, teinte);
-        score(data->score[i], i, teinte);
+        raquette(data->joueurs[i].raquette, teinte);
+        score(data->joueurs[i].score, i, teinte);
     }
-    balle(&data->balleJeu, teinte);
+    balle(data->balleJeu, teinte);
     if (data->page.pause)
         affichePause(data->page.select);
 }
-void AfficheEntrainement(Data * const data)
+void AfficheEntrainement(Data *const data)
 {
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(8);
@@ -187,8 +185,8 @@ void AfficheEntrainement(Data * const data)
     rouage(7 * largeurFenetre() / 8, 29 * hauteurFenetre() / 32, largeurFenetre() / 30);
     int teinte = (data->page.pause) ? 150 : 255;
     plateau(teinte);
-    raquette(data->raquette, teinte);
-    balle(&data->balleJeu, teinte);
+    raquette(data->joueurs[0].raquette, teinte);
+    balle(data->balleJeu, teinte);
     if (data->page.pause)
         affichePause(data->page.select);
 }

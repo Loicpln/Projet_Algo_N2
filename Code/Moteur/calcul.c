@@ -212,22 +212,20 @@ void hitbox(Balle * const balle, const Raquette * const raquette)
 	}
 }
 
-void but(Balle * const balle, int * const score)
+void but(Balle * const balle, Joueur * const joueur)
 {
 	if (balle->x + balle->r < MIN_X_PLATEAU || balle->x - balle->r > MAX_X_PLATEAU)
 	{
 		if (balle->x < MIN_X_PLATEAU)
 		{
-			score[1]++;
+			joueur[1].score++;
 			balle->vx = balle->v0;
 		}
-
 		if (balle->x > MAX_X_PLATEAU)
 		{
-			score[0]++;;
+			joueur[0].score++;;
 			balle->vx = -balle->v0;
 		}
-
 		balle->x = MID_X;
 		balle->y = (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2;
 		balle->vy = 0.1;

@@ -76,7 +76,7 @@ User * rechercheUser(User * maUsers, const char pseudo[])
 
 void enregistreUsersFichier(User * maUsers)
 {
-    FILE *file = fopen("Users.txt", "w");
+    FILE *file = fopen("./Sauvegarde/Users.txt", "w");
     User *tmp = maUsers;
     if (file != NULL)
     {

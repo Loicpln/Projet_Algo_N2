@@ -138,10 +138,10 @@ void TempoJeu(Data * const data)
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);
-		for (int i = 0; i < NB_RAQUETTE; i++)
-			hitbox(&data->balleJeu, data->raquette + i);
+		for (int i = 0; i < NB_JOUEUR; i++)
+			hitbox(&data->balleJeu, &data->joueurs[i].raquette);
 		rebond(&data->balleJeu, 0, MIN_Y_PLATEAU, largeurFenetre(), MAX_Y_PLATEAU);
-		but(&data->balleJeu, data->score);
+		but(&data->balleJeu, data->joueurs);
 	}
 	else
 		selectPause(data->page.select);
@@ -151,11 +151,11 @@ void TempoJeuIA(Data * const data)
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);
-		for (int i = 0; i < NB_RAQUETTE; i++)
-			hitbox(&data->balleJeu, data->raquette + i);
+		for (int i = 0; i < NB_JOUEUR; i++)
+			hitbox(&data->balleJeu, &data->joueurs[i].raquette);
 		rebond(&data->balleJeu, 0, MIN_Y_PLATEAU, largeurFenetre(), MAX_Y_PLATEAU);
-		but(&data->balleJeu, data->score);
-		IA(&data->balleJeu, data->raquette + 1);
+		but(&data->balleJeu, data->joueurs);
+		IA(&data->balleJeu, &data->joueurs[1].raquette);
 	}
 	else
 		selectPause(data->page.select);
@@ -165,9 +165,9 @@ void TempoEntrainement(Data * const data)
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);
-		hitbox(&data->balleJeu, data->raquette);
+			hitbox(&data->balleJeu, &data->joueurs[0].raquette);
 		rebond(&data->balleJeu, 0, MIN_Y_PLATEAU, MAX_X_PLATEAU, MAX_Y_PLATEAU);
-		but(&data->balleJeu, data->score);
+		but(&data->balleJeu, data->joueurs);
 	}
 	else
 		selectPause(data->page.select);

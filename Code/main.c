@@ -24,36 +24,37 @@ int main(int argc, char **argv)
 
 void gestionEvenement(EvenementGfx evenement)
 {
-	static Data d;
-	Data * const data = &d;
+	static Data data;
 
 	switch (evenement)
 	{
 	case Initialisation:
-		d = init();
+		data = init();
+		for (int i = 0; i < MAX_BALLE; i++)
+			data.balle[i] = initBallesAccueil();
 		activeGestionDeplacementPassifSouris();
 		demandeTemporisation(20);
 		break;
 
 	case Temporisation:
-		gestion(data, fTempo());
+		gestion(&data, fTempo());
 		rafraichisFenetre();
 		break;
 
 	case Affichage:
 		effaceFenetre(0, 0, 0);
-		gestion(data, fAffiche());
+		gestion(&data, fAffiche());
 		break;
 
 	case Clavier:
-		gestion(data, fClavier());
+		gestion(&data, fClavier());
 		break;
 
 	case ClavierSpecial:
 		break;
 
 	case BoutonSouris:
-		gestion(data, fClic());
+		gestion(&data, fClic());
 		break;
 
 	case Souris:
@@ -63,7 +64,7 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case Redimensionnement:
-		gestion(data, fRedim());
+		gestion(&data, fRedim());
 		break;
 	}
 }

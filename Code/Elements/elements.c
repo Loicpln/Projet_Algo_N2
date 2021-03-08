@@ -32,7 +32,7 @@ void plateau(const int teinte)
             MID_X, 100 * hauteurFenetre() / 120 - 10 * i * hauteurFenetre() / 120,
             MID_X, 91 * hauteurFenetre() / 120 - 10 * i * hauteurFenetre() / 120);
 }
-void affichePause(const int * const select)
+void affichePause(const int *const select)
 {
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(3);
@@ -53,18 +53,18 @@ void affichePause(const int * const select)
     afficheChaine("Quitter", 30, 21 * MID_X / 24, 7 * hauteurFenetre() / 40);
 }
 
-void raquette(const Raquette * const raquette, const int teinte)
+void raquette(const Raquette raquette, const int teinte)
 {
     couleurCourante(teinte, teinte, teinte);
     rectangle(
-        raquette->x - raquette->largeur / 2, raquette->y + raquette->longueur / 2,
-        raquette->x + raquette->largeur / 2, raquette->y - raquette->longueur / 2);
+        raquette.x - raquette.largeur / 2, raquette.y + raquette.longueur / 2,
+        raquette.x + raquette.largeur / 2, raquette.y - raquette.longueur / 2);
 }
 
-void balle(const Balle * const balleJeu, const int teinte)
+void balle(const Balle balleJeu, const int teinte)
 {
     couleurCourante(teinte, teinte, teinte);
-    cercle(balleJeu->x, balleJeu->y, balleJeu->r);
+    cercle(balleJeu.x, balleJeu.y, balleJeu.r);
 }
 
 void score(const int score, const bool side, const int teinte)
@@ -77,7 +77,7 @@ void score(const int score, const bool side, const int teinte)
         afficheDigit(digit[i], side, i, teinte);
 }
 
-void afficheDigit(const bool * const digit, const bool side, const int i, const int teinte)
+void afficheDigit(const bool *const digit, const bool side, const int i, const int teinte)
 {
     //digit 2
     (digit[1]) ? couleurCourante(teinte, teinte, teinte) : couleurCourante(0, 0, 0);
@@ -116,13 +116,13 @@ void afficheDigit(const bool * const digit, const bool side, const int i, const 
         MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
 }
 
-void afficheUsers(const User * maUsers)
+void afficheUsers(const User *maUsers)
 {
     if (maUsers != NULL)
     {
         int i = 0;
         char Game[10] = "", Win[10] = "", Lose[10] = "";
-        const User * tmp = maUsers;
+        const User *tmp = maUsers;
         while (tmp != NULL)
         {
             sprintf(Game, "G %d", tmp->nbWin);
