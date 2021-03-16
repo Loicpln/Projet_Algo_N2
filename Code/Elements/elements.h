@@ -6,7 +6,7 @@ void rouage(const int x, const int y, const int r);
 //Affiche le plateau
 void plateau(const int teinte);
 //Affiche le menu pause
-void affichePause(const int * const select);
+void affichePause(const Select *const select);
 //Affiche l'élément raquette
 void raquette(const Raquette raquette, const int teinte);
 //Affiche l'élément balle

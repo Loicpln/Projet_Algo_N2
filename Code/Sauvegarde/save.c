@@ -1,8 +1,9 @@
 #include "save.h"
 
-User * creeUser(const char pseudo[], const int nbGame, const int nbWin, const int nbLose)
+User * creeUser(const int id, const char pseudo[], const int nbGame, const int nbWin, const int nbLose)
 {
     User *elem = malloc(sizeof(User));
+    elem->id = id;
     strcpy(elem->pseudo, pseudo);
     elem->nbGame = nbGame;
     elem->nbWin = nbWin;
@@ -62,12 +63,12 @@ User * supprimeUsers(User *maUsers)
     return maUsers;
 }
 
-User * rechercheUser(User * maUsers, const char pseudo[])
+User * rechercheUser(User * maUsers, const int id)
 {
     User * tmp = maUsers;
     while (tmp != NULL)
     {
-        if (!strcmp(tmp->pseudo, pseudo))
+        if (tmp->id == id)
             break;
         tmp = tmp->userSuivant;
     }
@@ -82,7 +83,7 @@ void enregistreUsersFichier(User * maUsers)
     {
         while (tmp != NULL)
         {
-            fprintf(file, "[pseudo=%s |nbGame=%d |nbWin=%d |nbLose=%d]\n", tmp->pseudo, tmp->nbGame, tmp->nbWin, tmp->nbLose);
+            fprintf(file, "[id=%d |pseudo=%s |nbGame=%d |nbWin=%d |nbLose=%d]\n",tmp->id, tmp->pseudo, tmp->nbGame, tmp->nbWin, tmp->nbLose);
             tmp = tmp->userSuivant;
         }
         fclose(file);

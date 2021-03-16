@@ -1,12 +1,12 @@
 #include "moteur.h"
 
-void mouvementBalle(Balle * const balle)
+void mouvementBalle(Balle *const balle)
 {
 	balle->x += balle->vx;
 	balle->y += balle->vy;
 }
 
-void rebond(Balle * const balle, const int min_x, const int min_y, const int max_x, const int max_y)
+void rebond(Balle *const balle, const int min_x, const int min_y, const int max_x, const int max_y)
 {
 	if (balle->x - balle->r < min_x || balle->x + balle->r > max_x)
 		balle->vx = -balle->vx;
@@ -14,7 +14,7 @@ void rebond(Balle * const balle, const int min_x, const int min_y, const int max
 		balle->vy = -balle->vy;
 }
 
-void redimBalle(Balle * const balle)
+void redimBalle(Balle *const balle)
 {
 	if (balle->x >= largeurFenetre())
 		balle->x = largeurFenetre() - 1;
@@ -22,34 +22,74 @@ void redimBalle(Balle * const balle)
 		balle->y = hauteurFenetre() - 1;
 }
 
-void accelereBalle(Balle * const balle, const float a)
+void accelereBalle(Balle *const balle, const float a)
 {
 	balle->vx *= a;
 	balle->vy *= a;
 }
 
-void selectPause(int * const select)
+void selectPause(Select *const select)
 {
 	if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 11 * hauteurFenetre() / 20 && ordonneeSouris() < 13 * hauteurFenetre() / 20)
 	{
-		initSelect(select);
-		select[0] = 5;
+		resetSelect(select);
+		select[0].largeur = 5;
 	}
 	else if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
 	{
-		initSelect(select);
-		select[1] = 5;
+		resetSelect(select);
+		select[1].largeur = 5;
 	}
 	else if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 3 * hauteurFenetre() / 20 && ordonneeSouris() < 5 * hauteurFenetre() / 20)
 	{
-		initSelect(select);
-		select[2] = 5;
+		resetSelect(select);
+		select[2].largeur = 5;
 	}
 	else
-		initSelect(select);
+		resetSelect(select);
 }
 
-void redimRaquette(Raquette * const raquette, const int i)
+void clicUsers(Joueur *const joueur, User *const users)
+{
+	if (abscisseSouris() > largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 0);
+	else if (abscisseSouris() > largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 1);
+	else if (abscisseSouris() > largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 2);
+	else if (abscisseSouris() > largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 3);
+	else if (abscisseSouris() > largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 4);
+	else if (abscisseSouris() > largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 5);
+	else if (abscisseSouris() > largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 6);
+	else if (abscisseSouris() > largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 7);
+	else if (abscisseSouris() > largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 8);
+	else if (abscisseSouris() > largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+		joueur->user = rechercheUser(users, 9);
+}
+
+void resetJoueurs(Joueur * const joueur)
+{
+	for (int i = 0; i < NB_JOUEUR; i++)
+		joueur[i].user = NULL;
+}
+void resetRaquette(Joueur * const joueur)
+{
+	for (int i = 0; i < NB_JOUEUR; i++)
+		joueur[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
+}
+void resetScore(Joueur * const joueur)
+{
+	for (int i = 0; i < NB_JOUEUR; i++)
+        joueur[i].score = initScore();
+}
+
+void redimRaquette(Raquette *const raquette, const int i)
 {
 	if (raquette->y + raquette->longueur / 2 >= MAX_Y_PLATEAU)
 		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
@@ -57,12 +97,12 @@ void redimRaquette(Raquette * const raquette, const int i)
 		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
 	raquette->x = (i % 2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
 }
-void touchePause(Page * const page)
+void touchePause(Page *const page)
 {
 	if (caractereClavier() == 'g' || caractereClavier() == 'G')
 		page->pause = (page->pause) ? false : true;
 }
-void touches(Raquette * const raquette)
+void touches(Raquette *const raquette)
 {
 	if (caractereClavier() == raquette->up)
 		up(raquette);
@@ -70,7 +110,7 @@ void touches(Raquette * const raquette)
 		down(raquette);
 }
 
-void up(Raquette * const raquette)
+void up(Raquette *const raquette)
 {
 	if (raquette->y + raquette->vy + raquette->longueur / 2 >= MAX_Y_PLATEAU)
 		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
@@ -78,14 +118,14 @@ void up(Raquette * const raquette)
 		raquette->y += raquette->vy;
 }
 
-void down(Raquette * const raquette)
+void down(Raquette *const raquette)
 {
 	if (raquette->y - raquette->vy - raquette->longueur / 2 <= MIN_Y_PLATEAU)
 		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
 	else if (raquette->y - raquette->longueur / 2 >= MIN_Y_PLATEAU)
 		raquette->y -= raquette->vy;
 }
-void nombre(bool * const digit, const int score)
+void nombre(bool *const digit, const int score)
 {
 	switch (score)
 	{
@@ -181,7 +221,7 @@ void nombre(bool * const digit, const int score)
 		break;
 	}
 }
-void hitbox(Balle * const balle, const Raquette * const raquette)
+void hitbox(Balle *const balle, const Raquette *const raquette)
 {
 	for (float i = 0; i < 2 * M_PI; i = i + 0.01)
 	{
@@ -212,7 +252,7 @@ void hitbox(Balle * const balle, const Raquette * const raquette)
 	}
 }
 
-void but(Balle * const balle, Joueur * const joueur)
+void but(Balle *const balle, Joueur *const joueur)
 {
 	if (balle->x + balle->r < MIN_X_PLATEAU || balle->x - balle->r > MAX_X_PLATEAU)
 	{
@@ -223,7 +263,8 @@ void but(Balle * const balle, Joueur * const joueur)
 		}
 		if (balle->x > MAX_X_PLATEAU)
 		{
-			joueur[0].score++;;
+			joueur[0].score++;
+			;
 			balle->vx = -balle->v0;
 		}
 		balle->x = MID_X;
@@ -232,7 +273,7 @@ void but(Balle * const balle, Joueur * const joueur)
 	}
 }
 
-void IA(Balle * const balle, Raquette * const raquette)
+void IA(Balle *const balle, Raquette *const raquette)
 {
 	float x = balle->x, y = balle->y, vy = balle->vy;
 	if (x < raquette->x)

@@ -32,7 +32,7 @@ void plateau(const int teinte)
             MID_X, 100 * hauteurFenetre() / 120 - 10 * i * hauteurFenetre() / 120,
             MID_X, 91 * hauteurFenetre() / 120 - 10 * i * hauteurFenetre() / 120);
 }
-void affichePause(const int *const select)
+void affichePause(const Select *const select)
 {
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(3);
@@ -40,13 +40,16 @@ void affichePause(const int *const select)
     ligne(3 * largeurFenetre() / 10, 7 * hauteurFenetre() / 10, 7 * largeurFenetre() / 10, 7 * hauteurFenetre() / 10);
     ligne(7 * largeurFenetre() / 10, 7 * hauteurFenetre() / 10, 7 * largeurFenetre() / 10, hauteurFenetre() / 10);
     ligne(7 * largeurFenetre() / 10, hauteurFenetre() / 10, 3 * largeurFenetre() / 10, hauteurFenetre() / 10);
+    couleurCourante(select[0].couleur[0], select[0].couleur[1], select[0].couleur[2]);
     rectangle(7 * largeurFenetre() / 20, 11 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 13 * hauteurFenetre() / 20);
+    couleurCourante(select[1].couleur[0], select[1].couleur[1], select[1].couleur[2]);
     rectangle(7 * largeurFenetre() / 20, 7 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 9 * hauteurFenetre() / 20);
+    couleurCourante(select[2].couleur[0], select[2].couleur[1], select[2].couleur[2]);
     rectangle(7 * largeurFenetre() / 20, 3 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 5 * hauteurFenetre() / 20);
     couleurCourante(0, 0, 0);
-    rectangle(7 * largeurFenetre() / 20 + select[0], 11 * hauteurFenetre() / 20 + select[0], 13 * largeurFenetre() / 20 - select[0], 13 * hauteurFenetre() / 20 - select[0]);
-    rectangle(7 * largeurFenetre() / 20 + select[1], 7 * hauteurFenetre() / 20 + select[1], 13 * largeurFenetre() / 20 - select[1], 9 * hauteurFenetre() / 20 - select[1]);
-    rectangle(7 * largeurFenetre() / 20 + select[2], 3 * hauteurFenetre() / 20 + select[2], 13 * largeurFenetre() / 20 - select[2], 5 * hauteurFenetre() / 20 - select[2]);
+    rectangle(7 * largeurFenetre() / 20 + select[0].largeur, 11 * hauteurFenetre() / 20 + select[0].largeur, 13 * largeurFenetre() / 20 - select[0].largeur, 13 * hauteurFenetre() / 20 - select[0].largeur);
+    rectangle(7 * largeurFenetre() / 20 + select[1].largeur, 7 * hauteurFenetre() / 20 + select[1].largeur, 13 * largeurFenetre() / 20 - select[1].largeur, 9 * hauteurFenetre() / 20 - select[1].largeur);
+    rectangle(7 * largeurFenetre() / 20 + select[2].largeur, 3 * hauteurFenetre() / 20 + select[2].largeur, 13 * largeurFenetre() / 20 - select[2].largeur, 5 * hauteurFenetre() / 20 - select[2].largeur);
     couleurCourante(255, 255, 255);
     afficheChaine("Reprendre", 30, 5 * MID_X / 6, 23 * hauteurFenetre() / 40);
     afficheChaine("Rejouer", 30, 21 * MID_X / 24, 15 * hauteurFenetre() / 40);

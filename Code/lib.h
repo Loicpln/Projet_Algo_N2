@@ -56,18 +56,24 @@ typedef struct User User;
 // char pseudo[25] |int nbGame |int nbWin |int nbLose |User *userSuivant
 struct User
 {
+    int id;
     char pseudo[25];
     int nbGame;
     int nbWin;
     int nbLose;
     User *userSuivant;
 };
+typedef struct
+{
+    int largeur;
+    int couleur[3];
+} Select;
 // int numero |bool pause |int select[NB_SELECT]
 typedef struct
 {
     int numero;
     bool pause;
-    int select[NB_SELECT];
+    Select select[NB_SELECT];
 } Page;
 
 // int score |User *user |Raquette raquette
