@@ -8,10 +8,10 @@ void ClicAccueil(Data *const data)
         {
             for (int i = 0; i < MAX_BALLE; i++)
                 accelereBalle(data->balle + i, 2);
-            data->page.numero = 3;
+            data->page.numero = Menu;
         }
         if (abscisseSouris() > 11 * largeurFenetre() / 32 && abscisseSouris() < 21 * largeurFenetre() / 32 && ordonneeSouris() > 11 * hauteurFenetre() / 24 && ordonneeSouris() < 14 * hauteurFenetre() / 24)
-            data->page.numero = 2;
+            data->page.numero = Regles;
         if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
             termineBoucleEvenements();
     }
@@ -23,18 +23,18 @@ void ClicMenu(Data *const data)
     {
         if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > 16 * hauteurFenetre() / 24 && ordonneeSouris() < 19 * hauteurFenetre() / 24)
             //*page = joueur contre joueur
-            data->page.numero = 4;
+            data->page.numero = Selection_Joueurs;
         if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 2 && ordonneeSouris() < 15 * hauteurFenetre() / 24)
             //*page = page jeu contre IA
-            data->page.numero = 6;
+            data->page.numero = Selection_IA;
         if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 3 && ordonneeSouris() < 11 * hauteurFenetre() / 24)
             //*page = page entrainement
-            data->page.numero = 8;
+            data->page.numero = Entrainement;
         if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
             for (int i = 0; i < MAX_BALLE; i++)
                 accelereBalle(data->balle + i, 0.5);
-            data->page = initPages();
+            data->page.numero = Acceuil;
         }
     }
 }
@@ -43,7 +43,7 @@ void ClicRegles(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
         if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
-            data->page.numero = 1;
+            data->page.numero = Acceuil;
 }
 
 void ClicSelection(Data *const data)
@@ -56,11 +56,11 @@ void ClicSelection(Data *const data)
         if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
             if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
-                data->page.numero = 5;
+                data->page.numero = Jeu_Joueurs;
         }
         else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
-            data->page.numero = 3;
+            data->page.numero = Menu;
             resetJoueurs(data->joueurs);
             resetRaquette(data->joueurs);
             resetScore(data->joueurs);
@@ -76,11 +76,11 @@ void ClicSelectionIA(Data *const data)
         if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
             if (data->joueurs[0].user != NULL)
-                data->page.numero = 7;
+                data->page.numero = Jeu_IA;
         }
         else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
-            data->page.numero = 3;
+            data->page.numero = Menu;
             resetJoueurs(data->joueurs);
             resetRaquette(data->joueurs);
             resetScore(data->joueurs);
@@ -112,7 +112,7 @@ void ClicJeu(Data *const data)
             {
                 data->page.pause = false;
                 data->balleJeu = initBalleJeu();
-                data->page.numero = 3;
+                data->page.numero = Menu;
                 resetJoueurs(data->joueurs);
                 resetRaquette(data->joueurs);
                 resetScore(data->joueurs);
@@ -145,7 +145,7 @@ void ClicJeuIA(Data *const data)
             {
                 data->page.pause = false;
                 data->balleJeu = initBalleJeu();
-                data->page.numero = 3;
+                data->page.numero = Menu;
                 resetJoueurs(data->joueurs);
                 resetRaquette(data->joueurs);
                 resetScore(data->joueurs);
@@ -170,14 +170,14 @@ void ClicEntrainement(Data *const data)
             if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
             {
                 data->page.pause = false;
-                data->joueurs[0].raquette = initRaquetteG();
+                resetRaquette(data->joueurs);
                 data->balleJeu = initBalleJeu();
             }
             if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 3 * hauteurFenetre() / 20 && ordonneeSouris() < 5 * hauteurFenetre() / 20)
             {
                 data->page.pause = false;
                 data->balleJeu = initBalleJeu();
-                data->page.numero = 3;
+                data->page.numero = Menu;
             }
         }
     }

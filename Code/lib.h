@@ -23,9 +23,18 @@
 #define RAQUETTE_X_LEFT largeurFenetre() / 30 + 10
 #define RAQUETTE_X_RIGHT 29 * largeurFenetre() / 30 - 10
 
+#define Acceuil 1
+#define Regles 2
+#define Menu 3
+#define Selection_Joueurs 4
+#define Jeu_Joueurs 5
+#define Selection_IA 6
+#define Jeu_IA 7
+#define Entrainement 8
+
 #define MAX_BALLE 50
 #define NB_JOUEUR 2
-#define NB_SELECT 12
+#define NB_SELECT 50
 
 #ifndef STRUCT
 #define STRUCT

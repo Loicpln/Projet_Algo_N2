@@ -2,6 +2,7 @@
 
 void TempoAccueil(Data *const data)
 {
+	resetAllSelect(data->page.select);
 	for (int i = 0; i < MAX_BALLE; i++)
 	{
 		rebond(data->balle + i, 0, 0, largeurFenetre(), hauteurFenetre());
@@ -22,8 +23,7 @@ void TempoAccueil(Data *const data)
 		resetSelect(data->page.select);
 		data->page.select[2].largeur = 5;
 	}
-	else
-		resetSelect(data->page.select);
+	else resetSelect(data->page.select);
 }
 
 void TempoMenu(Data *const data)
@@ -33,6 +33,11 @@ void TempoMenu(Data *const data)
 	{
 		rebond(data->balle + i, 0, 0, largeurFenetre(), hauteurFenetre());
 		mouvementBalle(data->balle + i);
+	}
+	for (int i = 0; i < NB_SELECT; i++){
+		data->page.select[i].couleur[0] = rand() % 256;
+		data->page.select[i].couleur[1] = rand() % 256;
+		data->page.select[i].couleur[2] = rand() % 256;
 	}
 	if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > 16 * hauteurFenetre() / 24 && ordonneeSouris() < 19 * hauteurFenetre() / 24)
 	{
@@ -54,8 +59,7 @@ void TempoMenu(Data *const data)
 		resetSelect(data->page.select);
 		data->page.select[3].largeur = 5;
 	}
-	else
-		resetSelect(data->page.select);
+	else resetSelect(data->page.select);
 }
 
 void TempoRegles(Data *const data)
@@ -65,8 +69,7 @@ void TempoRegles(Data *const data)
 		resetSelect(data->page.select);
 		data->page.select[0].largeur = 5;
 	}
-	else
-		resetSelect(data->page.select);
+	else resetSelect(data->page.select);
 }
 
 void TempoSelection(Data *const data)
@@ -132,8 +135,7 @@ void TempoSelection(Data *const data)
 		resetSelect(data->page.select);
 		data->page.select[11].largeur = 5;
 	}
-	else
-		resetSelect(data->page.select);
+	else resetSelect(data->page.select);
 
 	if (data->joueurs[1].user != NULL)
 	{
@@ -159,7 +161,7 @@ void TempoJeu(Data *const data)
 		rebond(&data->balleJeu, 0, MIN_Y_PLATEAU, largeurFenetre(), MAX_Y_PLATEAU);
 		but(&data->balleJeu, data->joueurs);
 	}
-	else
+	else 
 		selectPause(data->page.select);
 }
 void TempoJeuIA(Data *const data)

@@ -2,8 +2,6 @@
 #include "../Sauvegarde/save.h"
 
 Data init();
-Page initPages();
-Select initSelect();
 Balle initBallesAccueil();
 Raquette initRaquetteG();
 Raquette initRaquetteD();

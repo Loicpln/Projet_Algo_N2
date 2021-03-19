@@ -43,16 +43,19 @@ void AfficheMenu(Data *const data)
         cercle(data->balle[i].x, data->balle[i].y, data->balle[i].r);
 
     epaisseurDeTrait(3);
-    couleurCourante(rand() % 255, rand() % 255, rand() % 255);
+    couleurCourante(data->page.select[0].couleur[0], data->page.select[0].couleur[1], data->page.select[0].couleur[2]);
     rectangle(
         9 * largeurFenetre() / 32, 16 * hauteurFenetre() / 24,
         24 * largeurFenetre() / 32, 19 * hauteurFenetre() / 24); //JcJ
+    couleurCourante(data->page.select[1].couleur[0], data->page.select[1].couleur[1], data->page.select[1].couleur[2]);
     rectangle(
         9 * largeurFenetre() / 32, hauteurFenetre() / 2,
         24 * largeurFenetre() / 32, 15 * hauteurFenetre() / 24); //contreIA
+    couleurCourante(data->page.select[2].couleur[0], data->page.select[2].couleur[1], data->page.select[2].couleur[2]);
     rectangle(
         9 * largeurFenetre() / 32, hauteurFenetre() / 3,
         24 * largeurFenetre() / 32, 11 * hauteurFenetre() / 24); //entrainement
+    couleurCourante(data->page.select[3].couleur[0], data->page.select[3].couleur[1], data->page.select[3].couleur[2]);
     rectangle(
         3 * largeurFenetre() / 4, hauteurFenetre() / 12,
         15 * largeurFenetre() / 16, hauteurFenetre() / 6); //Quitter
