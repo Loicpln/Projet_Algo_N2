@@ -52,8 +52,10 @@ void ClicSelection(Data *const data)
         clicUsers(data->joueurs, data->users);
         if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {
-            if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
+            if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL){
+                printf("%s vs %s\n",data->joueurs[0].user->pseudo,data->joueurs[1].user->pseudo);
                 data->page.numero = Jeu_Joueurs;
+            }
         }
         else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
         {

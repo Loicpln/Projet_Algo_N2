@@ -1,5 +1,13 @@
 #include "elements.h"
 
+void bouton(const Select select, const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite)
+{
+    couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
+    rectangle(xBasGauche, yBasGauche, xHautDroite, yHautDroite);
+    couleurCourante(0, 0, 0);
+    rectangle(xBasGauche + select.largeur, yBasGauche + select.largeur, xHautDroite - select.largeur, yHautDroite - select.largeur);
+}
+
 void rouage(const int x, const int y, const int r)
 {
     couleurCourante(100, 100, 100);

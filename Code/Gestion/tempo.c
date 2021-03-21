@@ -2,7 +2,7 @@
 
 void TempoAccueil(Data *const data)
 {
-	resetAllSelect(data->page.select);
+	resetSelect(data->page.select);
 	if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > 16 * hauteurFenetre() / 24 && ordonneeSouris() < 19 * hauteurFenetre() / 24)
 		data->page.select[0].largeur = 5;
 	else if (abscisseSouris() > 11 * largeurFenetre() / 32 && abscisseSouris() < 21 * largeurFenetre() / 32 && ordonneeSouris() > 11 * hauteurFenetre() / 24 && ordonneeSouris() < 14 * hauteurFenetre() / 24)
@@ -19,7 +19,7 @@ void TempoAccueil(Data *const data)
 
 void TempoMenu(Data *const data)
 {
-	resetAllSelect(data->page.select);
+	resetSelect(data->page.select);
 	if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > 16 * hauteurFenetre() / 24 && ordonneeSouris() < 19 * hauteurFenetre() / 24)
 		data->page.select[0].largeur = 5;
 	else if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 2 && ordonneeSouris() < 15 * hauteurFenetre() / 24)
@@ -40,39 +40,14 @@ void TempoMenu(Data *const data)
 
 void TempoRegles(Data *const data)
 {
-	resetAllSelect(data->page.select);
+	resetSelect(data->page.select);
 	if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
-		data->page.select[0].largeur = 5;
+		data->page.select[1].largeur = 5;
 }
 
 void TempoSelection(Data *const data)
 {
-	resetAllSelect(data->page.select);
-	if (abscisseSouris() > largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
-		data->page.select[0].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
-		data->page.select[1].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
-		data->page.select[2].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
-		data->page.select[3].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
-		data->page.select[4].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
-		data->page.select[5].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
-		data->page.select[6].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
-		data->page.select[7].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
-		data->page.select[8].largeur = 5;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
-		data->page.select[9].largeur = 5;
-	else if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
-		data->page.select[10].largeur = 5;
-	else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
-		data->page.select[11].largeur = 5;
-
+	selectSelection(data->page.select);
 	if (data->joueurs[1].user != NULL)
 		couleurSelect(data->page.select, data->joueurs[1].user->id, 255, 0, 0);
 	if (data->joueurs[0].user != NULL)
@@ -80,7 +55,6 @@ void TempoSelection(Data *const data)
 }
 void TempoJeu(Data *const data)
 {
-	resetAllSelect(data->page.select);
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);
@@ -94,7 +68,6 @@ void TempoJeu(Data *const data)
 }
 void TempoJeuIA(Data *const data)
 {
-	resetAllSelect(data->page.select);
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);
@@ -109,7 +82,6 @@ void TempoJeuIA(Data *const data)
 }
 void TempoEntrainement(Data *const data)
 {
-	resetAllSelect(data->page.select);
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);

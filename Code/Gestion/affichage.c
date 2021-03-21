@@ -6,31 +6,11 @@ void AfficheAccueil(Data *const data)
     for (int i = 0; i < MAX_BALLE; i++)
         cercle(data->balle[i].x, data->balle[i].y, data->balle[i].r);
 
-    epaisseurDeTrait(3);
-    couleurCourante(data->page.select[0].couleur[0], data->page.select[0].couleur[1], data->page.select[0].couleur[2]);
-    rectangle(
-        5 * largeurFenetre() / 16, 16 * hauteurFenetre() / 24,
-        11 * largeurFenetre() / 16, 19 * hauteurFenetre() / 24); //jouer
-    couleurCourante(data->page.select[1].couleur[0], data->page.select[1].couleur[1], data->page.select[1].couleur[2]);
-    rectangle(
-        11 * largeurFenetre() / 32, 11 * hauteurFenetre() / 24,
-        21 * largeurFenetre() / 32, 14 * hauteurFenetre() / 24); //reglement
+    bouton(data->page.select[0], 5 * largeurFenetre() / 16, 16 * hauteurFenetre() / 24, 11 * largeurFenetre() / 16, 19 * hauteurFenetre() / 24);
+    bouton(data->page.select[1], 11 * largeurFenetre() / 32, 11 * hauteurFenetre() / 24, 21 * largeurFenetre() / 32, 14 * hauteurFenetre() / 24);
+    bouton(data->page.select[2], 3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);
     couleurCourante(data->page.select[2].couleur[0], data->page.select[2].couleur[1], data->page.select[2].couleur[2]);
-    rectangle(
-        3 * largeurFenetre() / 4, hauteurFenetre() / 12,
-        15 * largeurFenetre() / 16, hauteurFenetre() / 6); //Quitter
-
-    couleurCourante(0, 0, 0);
-    rectangle(
-        5 * largeurFenetre() / 16 + data->page.select[0].largeur, 2 * hauteurFenetre() / 3 + data->page.select[0].largeur,
-        11 * largeurFenetre() / 16 - data->page.select[0].largeur, 19 * hauteurFenetre() / 24 - data->page.select[0].largeur); //jouer
-    rectangle(
-        11 * largeurFenetre() / 32 + data->page.select[1].largeur, 11 * hauteurFenetre() / 24 + data->page.select[1].largeur,
-        21 * largeurFenetre() / 32 - data->page.select[1].largeur, 14 * hauteurFenetre() / 24 - data->page.select[1].largeur); //reglement
-    rectangle(
-        3 * largeurFenetre() / 4 + data->page.select[2].largeur, hauteurFenetre() / 12 + data->page.select[2].largeur,
-        15 * largeurFenetre() / 16 - data->page.select[2].largeur, hauteurFenetre() / 6 - data->page.select[2].largeur); //Quitter
-
+    epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);
     afficheChaine("Jouer", 60, 13 * largeurFenetre() / 32, 83 * hauteurFenetre() / 120);
     afficheChaine("Reglement", 40, 3 * largeurFenetre() / 8, hauteurFenetre() / 2);
@@ -42,37 +22,12 @@ void AfficheMenu(Data *const data)
     for (int i = 0; i < MAX_BALLE; i++)
         cercle(data->balle[i].x, data->balle[i].y, data->balle[i].r);
 
-    epaisseurDeTrait(3);
-    couleurCourante(data->page.select[0].couleur[0], data->page.select[0].couleur[1], data->page.select[0].couleur[2]);
-    rectangle(
-        9 * largeurFenetre() / 32, 16 * hauteurFenetre() / 24,
-        24 * largeurFenetre() / 32, 19 * hauteurFenetre() / 24); //JcJ
+    bouton(data->page.select[0], 9 * largeurFenetre() / 32, 16 * hauteurFenetre() / 24, 24 * largeurFenetre() / 32, 19 * hauteurFenetre() / 24); //JcJ
     couleurCourante(data->page.select[1].couleur[0], data->page.select[1].couleur[1], data->page.select[1].couleur[2]);
-    rectangle(
-        9 * largeurFenetre() / 32, hauteurFenetre() / 2,
-        24 * largeurFenetre() / 32, 15 * hauteurFenetre() / 24); //contreIA
-    couleurCourante(data->page.select[2].couleur[0], data->page.select[2].couleur[1], data->page.select[2].couleur[2]);
-    rectangle(
-        9 * largeurFenetre() / 32, hauteurFenetre() / 3,
-        24 * largeurFenetre() / 32, 11 * hauteurFenetre() / 24); //entrainement
-    couleurCourante(data->page.select[3].couleur[0], data->page.select[3].couleur[1], data->page.select[3].couleur[2]);
-    rectangle(
-        3 * largeurFenetre() / 4, hauteurFenetre() / 12,
-        15 * largeurFenetre() / 16, hauteurFenetre() / 6); //Quitter
-
-    couleurCourante(0, 0, 0);
-    rectangle(
-        9 * largeurFenetre() / 32 + data->page.select[0].largeur, 2 * hauteurFenetre() / 3 + data->page.select[0].largeur,
-        24 * largeurFenetre() / 32 - data->page.select[0].largeur, 19 * hauteurFenetre() / 24 - data->page.select[0].largeur); //JcJ
-    rectangle(
-        9 * largeurFenetre() / 32 + data->page.select[1].largeur, hauteurFenetre() / 2 + data->page.select[1].largeur,
-        24 * largeurFenetre() / 32 - data->page.select[1].largeur, 15 * hauteurFenetre() / 24 - data->page.select[1].largeur); //contreIA
-    rectangle(
-        9 * largeurFenetre() / 32 + data->page.select[2].largeur, hauteurFenetre() / 3 + data->page.select[2].largeur,
-        24 * largeurFenetre() / 32 - data->page.select[2].largeur, 11 * hauteurFenetre() / 24 - data->page.select[2].largeur); //entrainement
-    rectangle(
-        3 * largeurFenetre() / 4 + data->page.select[3].largeur, hauteurFenetre() / 12 + data->page.select[3].largeur,
-        15 * largeurFenetre() / 16 - data->page.select[3].largeur, hauteurFenetre() / 6 - data->page.select[3].largeur); //Quitter
+    bouton(data->page.select[1], 9 * largeurFenetre() / 32, hauteurFenetre() / 2, 24 * largeurFenetre() / 32, 15 * hauteurFenetre() / 24); //contreIA
+    bouton(data->page.select[2], 9 * largeurFenetre() / 32, hauteurFenetre() / 3, 24 * largeurFenetre() / 32, 11 * hauteurFenetre() / 24); //entrainement
+    bouton(data->page.select[3], 3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);       //Quitter
+    epaisseurDeTrait(3);
     couleurCourante(255, 255, 255);
     afficheChaine("Joueur contre joueur", 30, 5 * largeurFenetre() / 16, 17 * hauteurFenetre() / 24);
     afficheChaine("Jouer contre IA", 30, 5 * largeurFenetre() / 16, 13 * hauteurFenetre() / 24);
@@ -85,21 +40,8 @@ void AfficheMenu(Data *const data)
 void AfficheRegles(Data *const data)
 {
     epaisseurDeTrait(3);
-    couleurCourante(255, 255, 255);
-    rectangle(
-        2 * largeurFenetre() / 8, 9 * hauteurFenetre() / 12,
-        3 * largeurFenetre() / 4, 11 * hauteurFenetre() / 12); //titre
-    couleurCourante(data->page.select[0].couleur[0], data->page.select[0].couleur[1], data->page.select[0].couleur[2]);
-    rectangle(
-        3 * largeurFenetre() / 4, hauteurFenetre() / 12,
-        15 * largeurFenetre() / 16, hauteurFenetre() / 6); //Retour
-    couleurCourante(0, 0, 0);
-    rectangle(
-        2 * largeurFenetre() / 8 + 1, 9 * hauteurFenetre() / 12 + 1,
-        3 * largeurFenetre() / 4 - 1, 11 * hauteurFenetre() / 12 - 1); //titre
-    rectangle(
-        3 * largeurFenetre() / 4 + data->page.select[0].largeur, hauteurFenetre() / 12 + data->page.select[0].largeur,
-        15 * largeurFenetre() / 16 - data->page.select[0].largeur, hauteurFenetre() / 6 - data->page.select[0].largeur); //Retour
+    bouton(data->page.select[0], 2 * largeurFenetre() / 8, 9 * hauteurFenetre() / 12, 3 * largeurFenetre() / 4, 11 * hauteurFenetre() / 12); //titre                                                             //titre
+    bouton(data->page.select[1], 3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);         //Retour
     epaisseurDeTrait(2);
     couleurCourante(255, 255, 255);
     afficheChaine("Retour", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
@@ -112,41 +54,13 @@ void AfficheRegles(Data *const data)
 void AfficheSelection(Data *const data)
 {
 
-    for (int i = 0; i < 5; i++)
-    {
-        couleurCourante(data->page.select[2 * i].couleur[0], data->page.select[2 * i].couleur[1], data->page.select[2 * i].couleur[2]);
-        rectangle(
-            largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 99 * hauteurFenetre() / 120,
-            5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30);
-        couleurCourante(data->page.select[2 * i + 1].couleur[0], data->page.select[2 * i + 1].couleur[1], data->page.select[2 * i + 1].couleur[2]);
-        rectangle(
-            largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 59 * hauteurFenetre() / 120,
-            5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30);
-    }
-    couleurCourante(data->page.select[10].couleur[0],data->page.select[10].couleur[1],data->page.select[10].couleur[2]);
-    rectangle(
-        5 * largeurFenetre() / 16, hauteurFenetre() / 12,
-        11 * largeurFenetre() / 16, hauteurFenetre() / 6);
-    couleurCourante(data->page.select[11].couleur[0],data->page.select[11].couleur[1],data->page.select[11].couleur[2]);
-    rectangle(
-        3 * largeurFenetre() / 4, hauteurFenetre() / 12,
-        15 * largeurFenetre() / 16, hauteurFenetre() / 6);
-    couleurCourante(0, 0, 0);
-    for (int i = 0; i < 5; i++)
-    {
-        rectangle(
-            largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30 + data->page.select[2 * i].largeur, 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 + data->page.select[2 * i].largeur,
-            5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30 - data->page.select[2 * i].largeur, 99 * hauteurFenetre() / 120 - data->page.select[2 * i].largeur);
-        rectangle(
-            largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30 + data->page.select[2 * i + 1].largeur, 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 + data->page.select[2 * i + 1].largeur,
-            5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30 - data->page.select[2 * i + 1].largeur, 59 * hauteurFenetre() / 120 - data->page.select[2 * i + 1].largeur);
-    }
-    rectangle(
-        5 * largeurFenetre() / 16 + data->page.select[10].largeur, hauteurFenetre() / 12 + data->page.select[10].largeur,
-        11 * largeurFenetre() / 16 - data->page.select[10].largeur, hauteurFenetre() / 6 - data->page.select[10].largeur);
-    rectangle(
-        3 * largeurFenetre() / 4 + data->page.select[11].largeur, hauteurFenetre() / 12 + data->page.select[11].largeur,
-        15 * largeurFenetre() / 16 - data->page.select[11].largeur, hauteurFenetre() / 6 - data->page.select[11].largeur);
+    for (int i = 0; i < 10; i++)
+        if (largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30 < largeurFenetre())
+            bouton(data->page.select[i], largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30, 5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 99 * hauteurFenetre() / 120);
+        else
+            bouton(data->page.select[i], largeurFenetre() / 30 + 6 * (i - 5) * largeurFenetre() / 30, 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30, 5 * largeurFenetre() / 30 + 6 * (i - 5) * largeurFenetre() / 30, 59 * hauteurFenetre() / 120);
+    bouton(data->page.select[10], 5 * largeurFenetre() / 16, hauteurFenetre() / 12, 11 * largeurFenetre() / 16, hauteurFenetre() / 6);
+    bouton(data->page.select[11], 3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);
     couleurCourante(255, 255, 255);
     afficheUsers(data->users);
     epaisseurDeTrait(2);
