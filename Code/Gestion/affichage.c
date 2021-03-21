@@ -170,23 +170,6 @@ void AfficheJeu(Data *const data)
     if (data->page.pause)
         affichePause(data->page.select);
 }
-void AfficheJeuIA(Data *const data)
-{
-    couleurCourante(255, 255, 255);
-    epaisseurDeTrait(8);
-    afficheChaine("PONG", 95, 5 * largeurFenetre() / 16 + 1, 20.5 * hauteurFenetre() / 24 + 1);
-    rouage(7 * largeurFenetre() / 8, 29 * hauteurFenetre() / 32, largeurFenetre() / 30);
-    int teinte = (data->page.pause) ? 150 : 255;
-    plateau(teinte);
-    for (int i = 0; i < NB_JOUEUR; i++)
-    {
-        raquette(data->joueurs[i].raquette, teinte);
-        score(data->joueurs[i].score, i, teinte);
-    }
-    balle(data->balleJeu, teinte);
-    if (data->page.pause)
-        affichePause(data->page.select);
-}
 void AfficheEntrainement(Data *const data)
 {
     couleurCourante(255, 255, 255);

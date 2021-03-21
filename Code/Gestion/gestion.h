@@ -10,21 +10,11 @@ void AfficheMenu(Data * const data);
 void AfficheRegles(Data * const data);
 //Gestion Affichage page Selection
 void AfficheSelection(Data *const data);
-//Gestion Affichage page Jeu 1v1
+//Gestion Affichage page Jeu 
 void AfficheJeu(Data * const data);
-//Gestion Affichage page Jeu 1vIA
-void AfficheJeuIA(Data * const data);
 //Gestion Affichage page d'Entrainement
 void AfficheEntrainement(Data * const data);
 
-//Gestion Clavier page d'Accueil
-void ClavierAccueil(Data * const data);
-//Gestion Clavier page Menu
-void ClavierMenu(Data * const data);
-//Gestion Clavier page Règles
-void ClavierRegles(Data * const data);
-//Gestion Clavier page Selection
-void ClavierSelection(Data * const data);
 //Gestion Clavier page Jeu 1v1
 void ClavierJeu(Data * const data);
 //Gestion Clavier page Jeu 1vIA
@@ -40,12 +30,10 @@ void ClicMenu(Data * const data);
 void ClicRegles(Data * const data);
 //Gestion Clic page Selection
 void ClicSelection(Data * const data);
-//Gestion Clic page Jeu 1v1
+//Gestion Clic page Jeu
 void ClicJeu(Data * const data);
 //Gestion Clic page Selection vs IA
 void ClicSelectionIA(Data * const data);
-//Gestion Clic page Jeu 1vIA
-void ClicJeuIA(Data * const data);
 //Gestion Clic page d'Entrainement
 void ClicEntrainement(Data * const data);
 
@@ -63,18 +51,3 @@ void TempoJeu(Data * const data);
 void TempoJeuIA(Data * const data);
 //Gestion Tempo page d'Entrainement
 void TempoEntrainement(Data * const data);
-
-//Gestion Redim page d'Accueil
-void RedimAccueil(Data * const data);
-//Gestion Redim page Menu
-void RedimMenu(Data * const data);
-//Gestion Redim page Règles
-void RedimRegles(Data * const data);
-//Gestion Redim page Selection
-void RedimSelection(Data * const data);
-//Gestion Redim page Jeu 1v1
-void RedimJeu(Data * const data);
-//Gestion Redim page Jeu 1vIA
-void RedimJeuIA(Data * const data);
-//Gestion Redim page d'Entrainement
-void RedimEntrainement(Data * const data);

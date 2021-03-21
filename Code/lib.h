@@ -11,30 +11,31 @@
 #include "./GfxLib/BmpLib.h"
 #include "./GfxLib/ESLib.h"
 
-#define LargeurFenetre 800
-#define HauteurFenetre 600
-#define MID_X largeurFenetre() / 2
-#define MID_Y hauteurFenetre() / 2
-#define MAX_X_PLATEAU 29 * largeurFenetre() / 30
-#define MIN_X_PLATEAU largeurFenetre() / 30
-#define MAX_Y_PLATEAU 99 * hauteurFenetre() / 120
-#define MIN_Y_PLATEAU hauteurFenetre() / 60
+#define LargeurFenetre    800
+#define HauteurFenetre    600
 
-#define RAQUETTE_X_LEFT largeurFenetre() / 30 + 10
-#define RAQUETTE_X_RIGHT 29 * largeurFenetre() / 30 - 10
+#define MID_X             largeurFenetre() / 2
+#define MID_Y             hauteurFenetre() / 2
+#define MAX_X_PLATEAU     29 * largeurFenetre() / 30
+#define MIN_X_PLATEAU     largeurFenetre() / 30
+#define MAX_Y_PLATEAU     99 * hauteurFenetre() / 120
+#define MIN_Y_PLATEAU     hauteurFenetre() / 60
 
-#define Acceuil 1
-#define Regles 2
-#define Menu 3
+#define RAQUETTE_X_LEFT   largeurFenetre() / 30 + 10
+#define RAQUETTE_X_RIGHT  29 * largeurFenetre() / 30 - 10
+
+#define Acceuil           1
+#define Regles            2
+#define Menu              3
 #define Selection_Joueurs 4
-#define Jeu_Joueurs 5
-#define Selection_IA 6
-#define Jeu_IA 7
-#define Entrainement 8
+#define Jeu_Joueurs       5
+#define Selection_IA      6
+#define Jeu_IA            7
+#define Entrainement      8
 
-#define MAX_BALLE 50
-#define NB_JOUEUR 2
-#define NB_SELECT 50
+#define MAX_BALLE         50
+#define NB_JOUEUR         2
+#define NB_SELECT         50
 
 #ifndef STRUCT
 #define STRUCT

@@ -21,9 +21,11 @@ typedef struct
 
 } Gestion;
 
+//fonction nulle
+void F_NULL();
 
 //gestion des pages selon type
-void gestion(Data *data, const Gestion type);
+void gestion(Data *const data, const Gestion type);
 //renvoie toutes les fonctions pour le case Temporisation
 const Gestion fTempo();
 //renvoie toutes les fonctions pour le case Affichage
@@ -32,5 +34,3 @@ const Gestion fAffiche();
 const Gestion fClavier();
 //renvoie toutes les fonctions pour le case BoutonSouris
 const Gestion fClic();
-//renvoie toutes les fonctions pour le case Redimensionnement
-const Gestion fRedim();

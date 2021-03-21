@@ -1,5 +1,6 @@
 #include "controleur.h"
-void gestion(Data *const data, const Gestion type) 
+
+void gestion(Data *const data, const Gestion type)
 {
     switch (data->page.numero)
     {
@@ -29,8 +30,10 @@ void gestion(Data *const data, const Gestion type)
         break;
     }
 }
+
+void F_NULL() {}
+
 const Gestion fTempo() { return (const Gestion){TempoAccueil, TempoRegles, TempoMenu, TempoSelection, TempoJeu, TempoSelection, TempoJeuIA, TempoEntrainement}; }
-const Gestion fAffiche() { return (const Gestion){AfficheAccueil, AfficheRegles, AfficheMenu, AfficheSelection, AfficheJeu, AfficheSelection, AfficheJeuIA, AfficheEntrainement}; }
-const Gestion fClavier() { return (const Gestion){ClavierAccueil, ClavierRegles, ClavierMenu, ClavierSelection, ClavierJeu, ClavierSelection, ClavierJeuIA, ClavierEntrainement}; }
-const Gestion fClic() { return (const Gestion){ClicAccueil, ClicRegles, ClicMenu, ClicSelection, ClicJeu, ClicSelectionIA, ClicJeuIA, ClicEntrainement}; }
-const Gestion fRedim() { return (const Gestion){RedimAccueil, RedimRegles, RedimMenu, RedimSelection, RedimJeu, RedimSelection, RedimJeuIA, RedimEntrainement}; }
+const Gestion fAffiche() { return (const Gestion){AfficheAccueil, AfficheRegles, AfficheMenu, AfficheSelection, AfficheJeu, AfficheSelection, AfficheJeu, AfficheEntrainement}; }
+const Gestion fClavier() { return (const Gestion){F_NULL, F_NULL, F_NULL, F_NULL, ClavierJeu, F_NULL, ClavierJeuIA, ClavierEntrainement}; }
+const Gestion fClic() { return (const Gestion){ClicAccueil, ClicRegles, ClicMenu, ClicSelection, ClicJeu, ClicSelectionIA, ClicJeu, ClicEntrainement}; }

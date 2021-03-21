@@ -14,18 +14,15 @@ void rebond(Balle *const balle, const int min_x, const int min_y, const int max_
 		balle->vy = -balle->vy;
 }
 
-void redimBalle(Balle *const balle)
+void accelereBalle(Balle *const balle, const float facteur)
 {
-	if (balle->x >= largeurFenetre())
-		balle->x = largeurFenetre() - 1;
-	if (balle->y >= hauteurFenetre())
-		balle->y = hauteurFenetre() - 1;
+	balle->vx *= facteur;
+	balle->vy *= facteur;
 }
-
-void accelereBalle(Balle *const balle, const float a)
-{
-	balle->vx *= a;
-	balle->vy *= a;
+void couleurSelect(Select *const select,int i, int R, int V, int B){
+	select[i].couleur[0] = R;
+	select[i].couleur[1] = V;
+	select[i].couleur[2] = B;
 }
 
 void selectPause(Select *const select)
@@ -87,15 +84,6 @@ void resetScore(Joueur * const joueur)
 {
 	for (int i = 0; i < NB_JOUEUR; i++)
         joueur[i].score = initScore();
-}
-
-void redimRaquette(Raquette *const raquette, const int i)
-{
-	if (raquette->y + raquette->longueur / 2 >= MAX_Y_PLATEAU)
-		raquette->y = MAX_Y_PLATEAU - raquette->longueur / 2;
-	if (raquette->y - raquette->longueur / 2 <= MIN_Y_PLATEAU)
-		raquette->y = MIN_Y_PLATEAU + raquette->longueur / 2;
-	raquette->x = (i % 2) ? RAQUETTE_X_RIGHT : RAQUETTE_X_LEFT;
 }
 void touchePause(Page *const page)
 {

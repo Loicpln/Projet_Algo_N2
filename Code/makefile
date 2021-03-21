@@ -1,4 +1,4 @@
-modules = controleur.o affichage.o clavier.o tempo.o redim.o elements.o calcul.o initialisation.o clic.o save.o
+modules = controleur.o affichage.o clavier.o tempo.o elements.o calcul.o initialisation.o clic.o save.o
 lib = ./GfxLib/libisentlib.a
 controleur = controleur.h
 gestion = ./Gestion/gestion.h
@@ -18,7 +18,7 @@ clear:
 main: main.o $(modules) 
 	gcc -Wall main.o $(modules) -o main $(lib) $(extentions)
 
-main.o: main.c $(controleur)
+main.o: main.c
 	gcc -Wall -c main.c
 
 controleur.o: controleur.c $(controleur) 
@@ -35,9 +35,6 @@ clavier.o: ./Gestion/clavier.c $(gestion)
 
 tempo.o: ./Gestion/tempo.c $(gestion) 
 	gcc -Wall -c ./Gestion/tempo.c
-
-redim.o: ./Gestion/redim.c $(gestion) 
-	gcc -Wall -c ./Gestion/redim.c
 	
 elements.o: ./Elements/elements.c $(elements) 
 	gcc -Wall -c ./Elements/elements.c
