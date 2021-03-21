@@ -127,38 +127,25 @@ void afficheDigit(const bool *const digit, const bool side, const int i, const i
         MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
 }
 
-void afficheUsers(const User *maUsers)
+void afficheUsers(const Select *const select, const User *const maUsers)
 {
     if (maUsers != NULL)
     {
-        int i = 0;
         char Game[10] = "", Win[10] = "", Lose[10] = "";
         const User *tmp = maUsers;
-        while (tmp != NULL)
+        for (int i = 0; tmp != NULL; i++, tmp = tmp->userSuivant)
         {
             sprintf(Game, "G %d", tmp->nbWin);
             sprintf(Win, "W %d", tmp->nbWin);
             sprintf(Lose, "L %d", tmp->nbLose);
-            if (largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30 < largeurFenetre())
-            {
-                epaisseurDeTrait(3);
-                afficheChaine(tmp->pseudo, 25, largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30, 90 * hauteurFenetre() / 120);
-                epaisseurDeTrait(2);
-                afficheChaine(Game, 20, largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30, 85 * hauteurFenetre() / 120);
-                afficheChaine(Win, 20, largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30, 80 * hauteurFenetre() / 120);
-                afficheChaine(Lose, 20, largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30, 75 * hauteurFenetre() / 120);
-            }
-            else
-            {
-                epaisseurDeTrait(3);
-                afficheChaine(tmp->pseudo, 25, largeurFenetre() / 30 + 20 + 6 * (i - 5) * largeurFenetre() / 30, 50 * hauteurFenetre() / 120);
-                epaisseurDeTrait(2);
-                afficheChaine(Game, 20, largeurFenetre() / 30 + 20 + 6 * (i - 5) * largeurFenetre() / 30, 45 * hauteurFenetre() / 120);
-                afficheChaine(Win, 20, largeurFenetre() / 30 + 20 + 6 * (i - 5) * largeurFenetre() / 30, 40 * hauteurFenetre() / 120);
-                afficheChaine(Lose, 20, largeurFenetre() / 30 + 20 + 6 * (i - 5) * largeurFenetre() / 30, 35 * hauteurFenetre() / 120);
-            }
-            tmp = tmp->userSuivant;
-            i++;
+            bouton(select[i], largeurFenetre() / 30 + 6 * (i % 5) * largeurFenetre() / 30, 67 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120, 5 * largeurFenetre() / 30 + 6 * (i % 5) * largeurFenetre() / 30, 99 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120);
+            couleurCourante(255, 255, 255);
+            epaisseurDeTrait(3);
+            afficheChaine(tmp->pseudo, 25, largeurFenetre() / 30 + 20 + 6 * (i % 5) * largeurFenetre() / 30, 90 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120);
+            epaisseurDeTrait(2);
+            afficheChaine(Game, 20, largeurFenetre() / 30 + 20 + 6 * (i % 5) * largeurFenetre() / 30, 85 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120);
+            afficheChaine(Win, 20, largeurFenetre() / 30 + 20 + 6 * (i % 5) * largeurFenetre() / 30, 80 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120);
+            afficheChaine(Lose, 20, largeurFenetre() / 30 + 20 + 6 * (i % 5) * largeurFenetre() / 30, 75 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120);
         }
     }
 }

@@ -19,7 +19,8 @@ void accelereBalle(Balle *const balle, const float facteur)
 	balle->vx *= facteur;
 	balle->vy *= facteur;
 }
-void couleurSelect(Select *const select,int i, int R, int V, int B){
+void couleurSelect(Select *const select, const int i, const int R, const int V, const int B)
+{
 	select[i].couleur[0] = R;
 	select[i].couleur[1] = V;
 	select[i].couleur[2] = B;
@@ -88,20 +89,20 @@ void clicUsers(Joueur *const joueur, User *const users)
 		joueur->user = rechercheUser(users, 9);
 }
 
-void resetJoueurs(Joueur * const joueur)
+void resetJoueurs(Joueur *const joueur)
 {
 	for (int i = 0; i < NB_JOUEUR; i++)
 		joueur[i].user = NULL;
 }
-void resetRaquette(Joueur * const joueur)
+void resetRaquette(Joueur *const joueur)
 {
 	for (int i = 0; i < NB_JOUEUR; i++)
 		joueur[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
 }
-void resetScore(Joueur * const joueur)
+void resetScore(Joueur *const joueur)
 {
 	for (int i = 0; i < NB_JOUEUR; i++)
-        joueur[i].score = initScore();
+		joueur[i].score = initScore();
 }
 void touchePause(Page *const page)
 {

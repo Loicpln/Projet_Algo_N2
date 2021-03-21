@@ -53,17 +53,11 @@ void AfficheRegles(Data *const data)
 }
 void AfficheSelection(Data *const data)
 {
-
-    for (int i = 0; i < 10; i++)
-        if (largeurFenetre() / 30 + 20 + 6 * i * largeurFenetre() / 30 < largeurFenetre())
-            bouton(data->page.select[i], largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30, 5 * largeurFenetre() / 30 + 6 * i * largeurFenetre() / 30, 99 * hauteurFenetre() / 120);
-        else
-            bouton(data->page.select[i], largeurFenetre() / 30 + 6 * (i - 5) * largeurFenetre() / 30, 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30, 5 * largeurFenetre() / 30 + 6 * (i - 5) * largeurFenetre() / 30, 59 * hauteurFenetre() / 120);
+    afficheUsers(data->page.select, data->users);
     bouton(data->page.select[10], 5 * largeurFenetre() / 16, hauteurFenetre() / 12, 11 * largeurFenetre() / 16, hauteurFenetre() / 6);
     bouton(data->page.select[11], 3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);
-    couleurCourante(255, 255, 255);
-    afficheUsers(data->users);
     epaisseurDeTrait(2);
+    couleurCourante(255, 255, 255);
     afficheChaine("Jouer", 30, 18 * largeurFenetre() / 40, hauteurFenetre() / 10);
     afficheChaine("Retour", 30, 31 * largeurFenetre() / 40, hauteurFenetre() / 10);
 }
