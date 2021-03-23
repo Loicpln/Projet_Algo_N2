@@ -2,13 +2,13 @@
 
 Data init() { return (Data){{Acceuil, false, {{1,{255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier()}; }
 
-Balle initBallesAccueil() { return (Balle){rand() % largeurFenetre(), rand() % hauteurFenetre(), 10, (rand() % 2) ? 5 : -5, (rand() % 2) ? 5 : -5, 5}; }
+Balle initBallesAccueil() { return (Balle){rand() % largeurFenetre(), rand() % hauteurFenetre(), R_BALLE, V_BALLE, V_BALLE, fabsf(V_BALLE)}; }
 
-Raquette initRaquetteG() { return (Raquette){100, 10, RAQUETTE_X_LEFT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, 15, 'a', 'q'}; }
+Raquette initRaquetteG() { return (Raquette){LONG_RAQUETTE, LARG_RAQUETTE, X_RAQUETTE_LEFT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'a', 'q'}; }
 
-Raquette initRaquetteD() { return (Raquette){100, 10, RAQUETTE_X_RIGHT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, 15, 'p', 'm'}; }
+Raquette initRaquetteD() { return (Raquette){LONG_RAQUETTE, LARG_RAQUETTE, X_RAQUETTE_RIGHT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'p', 'm'}; }
 
-Balle initBalleJeu() { return (Balle){MID_X, (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2, 7, 5, 0.1, 5}; }
+Balle initBalleJeu() { return (Balle){MID_X, (MAX_Y_PLATEAU - MIN_Y_PLATEAU) / 2, R_BALLE, V_BALLE, VH_BALLE, fabsf(V_BALLE)}; }
 
 User *chargeUsersDepuisFichier()
 {

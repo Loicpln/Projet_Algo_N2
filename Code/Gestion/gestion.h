@@ -15,12 +15,10 @@ void AfficheJeu(Data * const data);
 //Gestion Affichage page d'Entrainement
 void AfficheEntrainement(Data * const data);
 
-//Gestion Clavier page Jeu 1v1
-void ClavierJeu(Data * const data);
-//Gestion Clavier page Jeu 1vIA
-void ClavierJeuIA(Data * const data);
-//Gestion Clavier page d'Entrainement
-void ClavierEntrainement(Data * const data);
+//Gestion Clavier page Jeu 1 joueurs
+void ClavierJeu1J(Data * const data);
+//Gestion Clavier page Jeu 2 joueurs
+void ClavierJeu2J(Data * const data);
 
 //Gestion Clic page d'Accueil
 void ClicAccueil(Data * const data);

@@ -13,8 +13,8 @@ void raquette(const Raquette raquette, const int teinte);
 //Affiche l'élément balle
 void balle(const Balle balleJeu, const int teinte);
 //Affiche l'élément les digit selon le score
-void score(const int score, const bool side, const int teinte);
+void score(const int score, const int x, const int y);
 //Affiche l'élément Digit
-void afficheDigit(const bool *const digit, const bool side, const int i, const int teinte);
+void afficheDigit(const Digit digit, const int x, const int y);
 //Affiche tout les Users
 void afficheUsers(const Select *const select, const User *const maUsers);

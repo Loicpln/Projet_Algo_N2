@@ -4,7 +4,7 @@ void bouton(const Select select, const int xBasGauche, const int yBasGauche, con
 {
     couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
     rectangle(xBasGauche, yBasGauche, xHautDroite, yHautDroite);
-    couleurCourante(0, 0, 0);
+    CC_NOIR;
     rectangle(xBasGauche + select.largeur, yBasGauche + select.largeur, xHautDroite - select.largeur, yHautDroite - select.largeur);
 }
 
@@ -12,7 +12,7 @@ void rouage(const int x, const int y, const int r)
 {
     couleurCourante(100, 100, 100);
     cercle(x, y, r);
-    couleurCourante(255, 255, 255);
+    CC_BLANC;
     ligne(x - r + 5, y, x + r - 5, y);
     ligne(x - sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2);
     ligne(x, y - r + 5, x, y + r - 5);
@@ -20,45 +20,32 @@ void rouage(const int x, const int y, const int r)
     cercle(x, y, 11 * r / 16);
     couleurCourante(100, 100, 100);
     cercle(x, y, r / 4);
-    couleurCourante(255, 255, 255);
+    CC_BLANC;
     cercle(x, y, r / 6);
 }
 void plateau(const int teinte)
 {
     couleurCourante(teinte, teinte, teinte);
-    rectangle(
-        largeurFenetre() / 40, MIN_Y_PLATEAU / 2,
-        39 * largeurFenetre() / 40, MAX_Y_PLATEAU + MIN_Y_PLATEAU / 2);
-    couleurCourante(0, 0, 0);
-    rectangle(
-        MIN_X_PLATEAU, MIN_Y_PLATEAU,
-        MAX_X_PLATEAU, MAX_Y_PLATEAU);
+    rectangle(MIN_X_PLATEAU - MIN_X_PLATEAU / 3, MIN_Y_PLATEAU - MIN_X_PLATEAU / 3, MAX_X_PLATEAU + MIN_X_PLATEAU / 3, MAX_Y_PLATEAU + MIN_X_PLATEAU / 3);
+    CC_NOIR;
+    rectangle(MIN_X_PLATEAU, MIN_Y_PLATEAU, MAX_X_PLATEAU, MAX_Y_PLATEAU);
     couleurCourante(teinte, teinte, teinte);
     epaisseurDeTrait(3);
     for (int i = 0; i < 10; i++)
-        ligne(
-            MID_X, 100 * hauteurFenetre() / 120 - 10 * i * hauteurFenetre() / 120,
-            MID_X, 91 * hauteurFenetre() / 120 - 10 * i * hauteurFenetre() / 120);
+        ligne(MID_X, 100 * hauteurFenetre() / 120 - 10 * i * hauteurFenetre() / 120, MID_X, 91 * hauteurFenetre() / 120 - 10 * i * hauteurFenetre() / 120);
 }
 void affichePause(const Select *const select)
 {
-    couleurCourante(255, 255, 255);
+    CC_BLANC;
     epaisseurDeTrait(3);
     ligne(3 * largeurFenetre() / 10, hauteurFenetre() / 10, 3 * largeurFenetre() / 10, 7 * hauteurFenetre() / 10);
     ligne(3 * largeurFenetre() / 10, 7 * hauteurFenetre() / 10, 7 * largeurFenetre() / 10, 7 * hauteurFenetre() / 10);
     ligne(7 * largeurFenetre() / 10, 7 * hauteurFenetre() / 10, 7 * largeurFenetre() / 10, hauteurFenetre() / 10);
     ligne(7 * largeurFenetre() / 10, hauteurFenetre() / 10, 3 * largeurFenetre() / 10, hauteurFenetre() / 10);
-    couleurCourante(select[0].couleur[0], select[0].couleur[1], select[0].couleur[2]);
-    rectangle(7 * largeurFenetre() / 20, 11 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 13 * hauteurFenetre() / 20);
-    couleurCourante(select[1].couleur[0], select[1].couleur[1], select[1].couleur[2]);
-    rectangle(7 * largeurFenetre() / 20, 7 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 9 * hauteurFenetre() / 20);
-    couleurCourante(select[2].couleur[0], select[2].couleur[1], select[2].couleur[2]);
-    rectangle(7 * largeurFenetre() / 20, 3 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 5 * hauteurFenetre() / 20);
-    couleurCourante(0, 0, 0);
-    rectangle(7 * largeurFenetre() / 20 + select[0].largeur, 11 * hauteurFenetre() / 20 + select[0].largeur, 13 * largeurFenetre() / 20 - select[0].largeur, 13 * hauteurFenetre() / 20 - select[0].largeur);
-    rectangle(7 * largeurFenetre() / 20 + select[1].largeur, 7 * hauteurFenetre() / 20 + select[1].largeur, 13 * largeurFenetre() / 20 - select[1].largeur, 9 * hauteurFenetre() / 20 - select[1].largeur);
-    rectangle(7 * largeurFenetre() / 20 + select[2].largeur, 3 * hauteurFenetre() / 20 + select[2].largeur, 13 * largeurFenetre() / 20 - select[2].largeur, 5 * hauteurFenetre() / 20 - select[2].largeur);
-    couleurCourante(255, 255, 255);
+    bouton(select[0], 7 * largeurFenetre() / 20, 11 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 13 * hauteurFenetre() / 20);
+    bouton(select[1], 7 * largeurFenetre() / 20, 7 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 9 * hauteurFenetre() / 20);
+    bouton(select[2], 7 * largeurFenetre() / 20, 3 * hauteurFenetre() / 20, 13 * largeurFenetre() / 20, 5 * hauteurFenetre() / 20);
+    CC_BLANC;
     afficheChaine("Reprendre", 30, 5 * MID_X / 6, 23 * hauteurFenetre() / 40);
     afficheChaine("Rejouer", 30, 21 * MID_X / 24, 15 * hauteurFenetre() / 40);
     afficheChaine("Quitter", 30, 21 * MID_X / 24, 7 * hauteurFenetre() / 40);
@@ -67,9 +54,7 @@ void affichePause(const Select *const select)
 void raquette(const Raquette raquette, const int teinte)
 {
     couleurCourante(teinte, teinte, teinte);
-    rectangle(
-        raquette.x - raquette.largeur / 2, raquette.y + raquette.longueur / 2,
-        raquette.x + raquette.largeur / 2, raquette.y - raquette.longueur / 2);
+    rectangle(raquette.x - raquette.largeur / 2, raquette.y + raquette.longueur / 2, raquette.x + raquette.largeur / 2, raquette.y - raquette.longueur / 2);
 }
 
 void balle(const Balle balleJeu, const int teinte)
@@ -78,53 +63,30 @@ void balle(const Balle balleJeu, const int teinte)
     cercle(balleJeu.x, balleJeu.y, balleJeu.r);
 }
 
-void score(const int score, const bool side, const int teinte)
+void score(const int score, const int x, const int y)
 {
-    bool digit[2][7];
-    nombre(digit[0], score - 10 * floor(score / 10));
-    nombre(digit[1], floor(score / 10));
-    epaisseurDeTrait(5);
+    Digit digit[2] = {nombre(score - 10 * floor(score / 10)), nombre(floor(score / 10))};
     for (int i = 0; i < 2; i++)
-        afficheDigit(digit[i], side, i, teinte);
+        afficheDigit(digit[i], x - i * largeurFenetre() / 25, y);
 }
 
-void afficheDigit(const bool *const digit, const bool side, const int i, const int teinte)
+void afficheDigit(const Digit digit, const int x, const int y)
 {
-    //digit 2
-    (digit[1]) ? couleurCourante(teinte, teinte, teinte) : couleurCourante(0, 0, 0);
-    ligne(
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 + largeurFenetre() / 50,
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4);
-    //digit 3
-    (digit[2]) ? couleurCourante(teinte, teinte, teinte) : couleurCourante(0, 0, 0);
-    ligne(
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4,
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 + largeurFenetre() / 50);
-    //digit 5
-    (digit[4]) ? couleurCourante(teinte, teinte, teinte) : couleurCourante(0, 0, 0);
-    ligne(
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4,
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
-    //digit 6
-    (digit[5]) ? couleurCourante(teinte, teinte, teinte) : couleurCourante(0, 0, 0);
-    ligne(
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4,
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
-    //digit 1
-    (digit[0]) ? couleurCourante(teinte, teinte, teinte) : couleurCourante(0, 0, 0);
-    ligne(
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 + largeurFenetre() / 50,
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 + largeurFenetre() / 50);
-    //digit 4
-    (digit[3]) ? couleurCourante(teinte, teinte, teinte) : couleurCourante(0, 0, 0);
-    ligne(
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4,
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4);
-    //digit 7
-    (digit[6]) ? couleurCourante(teinte, teinte, teinte) : couleurCourante(0, 0, 0);
-    ligne(
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 6 * largeurFenetre() / 100 : -4 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50,
-        MID_X - i * largeurFenetre() / 25 + ((side) ? 8 * largeurFenetre() / 100 : -2 * largeurFenetre() / 100), 3 * hauteurFenetre() / 4 - largeurFenetre() / 50);
+    epaisseurDeTrait(5);
+    (digit.hautGauche) ? CC_BLANC : CC_NOIR;
+    ligne(x - largeurFenetre() / 100, y + largeurFenetre() / 50, x - largeurFenetre() / 100, y);
+    (digit.hautDroite) ? CC_BLANC : CC_NOIR;
+    ligne(x + largeurFenetre() / 100, y, x + largeurFenetre() / 100, y + largeurFenetre() / 50);
+    (digit.basGauche) ? CC_BLANC : CC_NOIR;
+    ligne(x - largeurFenetre() / 100, y, x - largeurFenetre() / 100, y - largeurFenetre() / 50);
+    (digit.basDroite) ? CC_BLANC : CC_NOIR;
+    ligne(x + largeurFenetre() / 100, y, x + largeurFenetre() / 100, y - largeurFenetre() / 50);
+    (digit.haut) ? CC_BLANC : CC_NOIR;
+    ligne(x - largeurFenetre() / 100, y + largeurFenetre() / 50, x + largeurFenetre() / 100, y + largeurFenetre() / 50);
+    (digit.milieu) ? CC_BLANC : CC_NOIR;
+    ligne(x - largeurFenetre() / 100, y, x + largeurFenetre() / 100, y);
+    (digit.bas) ? CC_BLANC : CC_NOIR;
+    ligne(x - largeurFenetre() / 100, y - largeurFenetre() / 50, x + largeurFenetre() / 100, y - largeurFenetre() / 50);
 }
 
 void afficheUsers(const Select *const select, const User *const maUsers)
@@ -139,7 +101,7 @@ void afficheUsers(const Select *const select, const User *const maUsers)
             sprintf(Win, "W %d", tmp->nbWin);
             sprintf(Lose, "L %d", tmp->nbLose);
             bouton(select[i], largeurFenetre() / 30 + 6 * (i % 5) * largeurFenetre() / 30, 67 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120, 5 * largeurFenetre() / 30 + 6 * (i % 5) * largeurFenetre() / 30, 99 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120);
-            couleurCourante(255, 255, 255);
+            CC_BLANC;
             epaisseurDeTrait(3);
             afficheChaine(tmp->pseudo, 25, largeurFenetre() / 30 + 20 + 6 * (i % 5) * largeurFenetre() / 30, 90 * hauteurFenetre() / 120 - 40 * floor(i / 5) * hauteurFenetre() / 120);
             epaisseurDeTrait(2);
