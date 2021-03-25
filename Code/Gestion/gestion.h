@@ -32,8 +32,6 @@ void ClicSelection(Data * const data);
 void ClicJeu(Data * const data);
 //Gestion Clic page Selection vs IA
 void ClicSelectionIA(Data * const data);
-//Gestion Clic page d'Entrainement
-void ClicEntrainement(Data * const data);
 
 //Gestion Tempo page d'Accueil
 void TempoAccueil(Data * const data);

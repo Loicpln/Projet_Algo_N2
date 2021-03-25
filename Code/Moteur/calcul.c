@@ -28,91 +28,117 @@ void couleurSelect(Select *const select, const int i, const int R, const int V, 
 void selectAcceuil(Select *const select)
 {
 	resetSelect(select);
-	if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > 16 * hauteurFenetre() / 24 && ordonneeSouris() < 19 * hauteurFenetre() / 24)
+	if (30 * Ux < X_SOURIS < 70 * Ux && 65 * Uy < Y_SOURIS < 80 * Uy)
 		select[0].largeur = L_SELECT;
-	else if (abscisseSouris() > 11 * largeurFenetre() / 32 && abscisseSouris() < 21 * largeurFenetre() / 32 && ordonneeSouris() > 11 * hauteurFenetre() / 24 && ordonneeSouris() < 14 * hauteurFenetre() / 24)
+	else if (35 * Ux < X_SOURIS < 65 * Ux && 45 * Uy < Y_SOURIS < 60 * Uy)
 		select[1].largeur = L_SELECT;
-	else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+	else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
 		select[2].largeur = L_SELECT;
 }
 void selectMenu(Select *const select)
 {
 	resetSelect(select);
-	if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > 16 * hauteurFenetre() / 24 && ordonneeSouris() < 19 * hauteurFenetre() / 24)
+	if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
 		select[0].largeur = L_SELECT;
-	else if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 2 && ordonneeSouris() < 15 * hauteurFenetre() / 24)
+	else if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
 		select[1].largeur = L_SELECT;
-	else if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 3 && ordonneeSouris() < 11 * hauteurFenetre() / 24)
+	else if (25 * Ux < X_SOURIS < 75 * Ux && 33 * Uy < Y_SOURIS < 46 * Uy)
 		select[2].largeur = L_SELECT;
-	else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+	else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
 		select[3].largeur = L_SELECT;
 }
 void selectRegles(Select *const select)
 {
 	resetSelect(select);
-	if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+	if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
 		select[1].largeur = L_SELECT;
 }
 void selectPause(Select *const select)
 {
 	resetSelect(select);
-	if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 11 * hauteurFenetre() / 20 && ordonneeSouris() < 13 * hauteurFenetre() / 20)
+	if (35 * Ux < X_SOURIS < 65 * Ux && 55 * Uy < Y_SOURIS < 65 * Uy)
 		select[0].largeur = L_SELECT;
-	else if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
+	else if (35 * Ux < X_SOURIS < 65 * Ux && 35 * Uy < Y_SOURIS < 45 * Uy)
 		select[1].largeur = L_SELECT;
-	else if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 3 * hauteurFenetre() / 20 && ordonneeSouris() < 5 * hauteurFenetre() / 20)
+	else if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
 		select[2].largeur = L_SELECT;
+}
+void clicPause(Data *const data)
+{
+	if (35 * Ux < X_SOURIS < 65 * Ux && 55 * Uy < Y_SOURIS < 65 * Uy)
+		data->page.pause = false;
+	else if (35 * Ux < X_SOURIS < 65 * Ux && 35 * Uy < Y_SOURIS < 45 * Uy)
+	{
+		data->page.pause = false;
+		data->balleJeu = initBalleJeu();
+		resetRaquette(data->joueurs);
+		resetScore(data->joueurs);
+	}
+	else if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
+	{
+		data->page.pause = false;
+		data->balleJeu = initBalleJeu();
+		data->page.numero = Menu;
+		resetJoueurs(data->joueurs);
+		resetRaquette(data->joueurs);
+		resetScore(data->joueurs);
+	}
+}
+void clicRouage(Page * page)
+{
+	if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 91 * Uy) < r_Rouage)
+		page->pause = true;
 }
 
 void selectSelection(Select *const select)
 {
 	resetSelect(select);
-	if (abscisseSouris() > largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	if (2 * Ux < X_SOURIS < 18 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		select[0].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	else if (22 * Ux < X_SOURIS < 38 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		select[1].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	else if (42 * Ux < X_SOURIS < 58 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		select[2].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	else if (62 * Ux < X_SOURIS < 78 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		select[3].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	else if (82 * Ux < X_SOURIS < 98 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		select[4].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (2 * Ux < X_SOURIS < 18 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		select[5].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (22 * Ux < X_SOURIS < 38 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		select[6].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (42 * Ux < X_SOURIS < 58 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		select[7].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (62 * Ux < X_SOURIS < 78 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		select[8].largeur = L_SELECT;
-	else if (abscisseSouris() > largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (82 * Ux < X_SOURIS < 98 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		select[9].largeur = L_SELECT;
-	else if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+	else if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
 		select[10].largeur = L_SELECT;
-	else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+	else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
 		select[11].largeur = L_SELECT;
 }
-void clicUsers(Joueur *const joueur, const User *const users)
+void clicUsers(Joueur *const joueur, User *const users)
 {
-	if (abscisseSouris() > largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	if (2 * Ux < X_SOURIS < 18 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		joueur->user = rechercheUser(users, 0);
-	else if (abscisseSouris() > largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	else if (22 * Ux < X_SOURIS < 38 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		joueur->user = rechercheUser(users, 1);
-	else if (abscisseSouris() > largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	else if (42 * Ux < X_SOURIS < 58 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		joueur->user = rechercheUser(users, 2);
-	else if (abscisseSouris() > largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	else if (62 * Ux < X_SOURIS < 78 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		joueur->user = rechercheUser(users, 3);
-	else if (abscisseSouris() > largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && ordonneeSouris() > 99 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 99 * hauteurFenetre() / 120)
+	else if (82 * Ux < X_SOURIS < 98 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
 		joueur->user = rechercheUser(users, 4);
-	else if (abscisseSouris() > largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (2 * Ux < X_SOURIS < 18 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		joueur->user = rechercheUser(users, 5);
-	else if (abscisseSouris() > largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 6 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (22 * Ux < X_SOURIS < 38 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		joueur->user = rechercheUser(users, 6);
-	else if (abscisseSouris() > largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 12 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (42 * Ux < X_SOURIS < 58 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		joueur->user = rechercheUser(users, 7);
-	else if (abscisseSouris() > largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 18 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (62 * Ux < X_SOURIS < 78 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		joueur->user = rechercheUser(users, 8);
-	else if (abscisseSouris() > largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && abscisseSouris() < 5 * largeurFenetre() / 30 + 24 * largeurFenetre() / 30 && ordonneeSouris() > 59 * hauteurFenetre() / 120 - 8 * hauteurFenetre() / 30 && ordonneeSouris() < 59 * hauteurFenetre() / 120)
+	else if (82 * Ux < X_SOURIS < 98 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
 		joueur->user = rechercheUser(users, 9);
 }
 
@@ -165,27 +191,27 @@ Digit nombre(const int score)
 	switch (score)
 	{
 	case 0:
-		return ZERO_DIGIT;
+		return DIGIT_0;
 	case 1:
-		return UN_DIGIT;
+		return DIGIT_1;
 	case 2:
-		return DEUX_DIGIT;
+		return DIGIT_2;
 	case 3:
-		return TROIS_DIGIT;
+		return DIGIT_3;
 	case 4:
-		return QUATRE_DIGIT;
+		return DIGIT_4;
 	case 5:
-		return CINQ_DIGIT;
+		return DIGIT_5;
 	case 6:
-		return SIX_DIGIT;
+		return DIGIT_6;
 	case 7:
-		return SEPT_DIGIT;
+		return DIGIT_7;
 	case 8:
-		return HUIT_DIGIT;
+		return DIGIT_8;
 	case 9:
-		return NEUF_DIGIT;
+		return DIGIT_9;
 	default:
-		return ERREUR_DIGIT;
+		return DIGIT_ERROR;
 	}
 }
 

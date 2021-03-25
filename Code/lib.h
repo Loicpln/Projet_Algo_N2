@@ -14,13 +14,20 @@
 #define LargeurFenetre 800
 #define HauteurFenetre 600
 
+#define MAX_X largeurFenetre()
+#define MAX_Y hauteurFenetre()
 #define MID_X largeurFenetre() / 2
 #define MID_Y hauteurFenetre() / 2
+#define Ux largeurFenetre() / 100
+#define Uy hauteurFenetre() / 100
+#define X_SOURIS abscisseSouris() && abscisseSouris()
+#define Y_SOURIS ordonneeSouris() && ordonneeSouris()
+#define MIN_X_PLATEAU 3 * Ux
+#define MAX_X_PLATEAU 97 * Ux
+#define MIN_Y_PLATEAU 3 * Uy
+#define MAX_Y_PLATEAU 82 * Uy
 
-#define MIN_X_PLATEAU largeurFenetre() / 30
-#define MAX_X_PLATEAU 29 * largeurFenetre() / 30
-#define MIN_Y_PLATEAU hauteurFenetre() / 60
-#define MAX_Y_PLATEAU 99 * hauteurFenetre() / 120
+#define r_Rouage 25
 
 #define CC_BLANC couleurCourante(255, 255, 255)
 #define CC_NOIR couleurCourante(0, 0, 0)
@@ -41,27 +48,27 @@
 #define L_SELECT 5
 #define NB_SELECT 50
 
-#define ZERO_DIGIT \
+#define DIGIT_0 \
     (Digit) { true, true, true, false, true, true, true }
-#define UN_DIGIT \
+#define DIGIT_1 \
     (Digit) { false, false, true, false, false, true, false }
-#define DEUX_DIGIT \
+#define DIGIT_2 \
     (Digit) { true, false, true, true, true, false, true }
-#define TROIS_DIGIT \
+#define DIGIT_3 \
     (Digit) { true, false, true, true, false, true, true }
-#define QUATRE_DIGIT \
+#define DIGIT_4 \
     (Digit) { false, true, true, true, false, true, false }
-#define CINQ_DIGIT \
+#define DIGIT_5 \
     (Digit) { true, true, false, true, false, true, true }
-#define SIX_DIGIT \
+#define DIGIT_6 \
     (Digit) { true, true, false, true, true, true, true }
-#define SEPT_DIGIT \
+#define DIGIT_7 \
     (Digit) { true, false, true, false, false, true, false }
-#define HUIT_DIGIT \
+#define DIGIT_8 \
     (Digit) { true, true, true, true, true, true, true }
-#define NEUF_DIGIT \
+#define DIGIT_9 \
     (Digit) { true, true, true, true, false, true, true }
-#define ERREUR_DIGIT \
+#define DIGIT_ERROR \
     (Digit) { true, true, false, true, true, false, true }
 
 #define Acceuil 1

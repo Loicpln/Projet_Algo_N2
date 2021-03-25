@@ -4,15 +4,15 @@ void ClicAccueil(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
-        if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > 16 * hauteurFenetre() / 24 && ordonneeSouris() < 19 * hauteurFenetre() / 24)
+        if (30 * Ux < X_SOURIS < 70 * Ux && 65 * Uy < Y_SOURIS < 80 * Uy)
         {
             for (int i = 0; i < MAX_BALLE; i++)
                 accelereBalle(data->balle + i, 2.f);
             data->page.numero = Menu;
         }
-        if (abscisseSouris() > 11 * largeurFenetre() / 32 && abscisseSouris() < 21 * largeurFenetre() / 32 && ordonneeSouris() > 11 * hauteurFenetre() / 24 && ordonneeSouris() < 14 * hauteurFenetre() / 24)
+        if (35 * Ux < X_SOURIS < 65 * Ux && 45 * Uy < Y_SOURIS < 60 * Uy)
             data->page.numero = Regles;
-        if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
             termineBoucleEvenements();
     }
 }
@@ -21,13 +21,13 @@ void ClicMenu(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
-        if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > 16 * hauteurFenetre() / 24 && ordonneeSouris() < 19 * hauteurFenetre() / 24)
+        if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
             data->page.numero = Selection_Joueurs;
-        if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 2 && ordonneeSouris() < 15 * hauteurFenetre() / 24)
+        if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
             data->page.numero = Selection_IA;
-        if (abscisseSouris() > 9 * largeurFenetre() / 32 && abscisseSouris() < 24 * largeurFenetre() / 32 && ordonneeSouris() > hauteurFenetre() / 3 && ordonneeSouris() < 11 * hauteurFenetre() / 24)
+        if (25 * Ux < X_SOURIS < 75 * Ux && 33 * Uy < Y_SOURIS < 46 * Uy)
             data->page.numero = Entrainement;
-        if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
         {
             for (int i = 0; i < MAX_BALLE; i++)
                 accelereBalle(data->balle + i, 0.5f);
@@ -39,7 +39,7 @@ void ClicMenu(Data *const data)
 void ClicRegles(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
-        if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
             data->page.numero = Acceuil;
 }
 
@@ -50,14 +50,12 @@ void ClicSelection(Data *const data)
     if (etatBoutonSouris() == GaucheAppuye)
     {
         clicUsers(data->joueurs, data->users);
-        if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
         {
-            if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL){
-                printf("%s vs %s\n",data->joueurs[0].user->pseudo,data->joueurs[1].user->pseudo);
+            if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
                 data->page.numero = Jeu_Joueurs;
-            }
         }
-        else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
         {
             data->page.numero = Menu;
             resetJoueurs(data->joueurs);
@@ -72,12 +70,12 @@ void ClicSelectionIA(Data *const data)
     if (etatBoutonSouris() == GaucheAppuye)
     {
         clicUsers(data->joueurs, data->users);
-        if (abscisseSouris() > 5 * largeurFenetre() / 16 && abscisseSouris() < 11 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
         {
             if (data->joueurs[0].user != NULL)
                 data->page.numero = Jeu_IA;
         }
-        else if (abscisseSouris() > 3 * largeurFenetre() / 4 && abscisseSouris() < 15 * largeurFenetre() / 16 && ordonneeSouris() > hauteurFenetre() / 12 && ordonneeSouris() < hauteurFenetre() / 6)
+        else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
         {
             data->page.numero = Menu;
             resetJoueurs(data->joueurs);
@@ -92,59 +90,8 @@ void ClicJeu(Data *const data)
     if (etatBoutonSouris() == GaucheAppuye)
     {
         if (!data->page.pause)
-        {
-            if (abs(abscisseSouris() - 7 * largeurFenetre() / 8) < largeurFenetre() / 30 && abs(ordonneeSouris() - 29 * hauteurFenetre() / 32) < largeurFenetre() / 30)
-                data->page.pause = true;
-        }
+            clicRouage(&data->page);
         else
-        {
-            if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 11 * hauteurFenetre() / 20 && ordonneeSouris() < 13 * hauteurFenetre() / 20)
-                data->page.pause = false;
-            if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
-            {
-                data->page.pause = false;
-                data->balleJeu = initBalleJeu();
-                resetRaquette(data->joueurs);
-                resetScore(data->joueurs);
-            }
-            if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 3 * hauteurFenetre() / 20 && ordonneeSouris() < 5 * hauteurFenetre() / 20)
-            {
-                data->page.pause = false;
-                data->balleJeu = initBalleJeu();
-                data->page.numero = Menu;
-                resetJoueurs(data->joueurs);
-                resetRaquette(data->joueurs);
-                resetScore(data->joueurs);
-            }
-        }
-    }
-}
-
-void ClicEntrainement(Data *const data)
-{
-    if (etatBoutonSouris() == GaucheAppuye)
-    {
-        if (!data->page.pause)
-        {
-            if (abs(abscisseSouris() - 7 * largeurFenetre() / 8) < largeurFenetre() / 30 && abs(ordonneeSouris() - 29 * hauteurFenetre() / 32) < largeurFenetre() / 30)
-                data->page.pause = true;
-        }
-        else
-        {
-            if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 11 * hauteurFenetre() / 20 && ordonneeSouris() < 13 * hauteurFenetre() / 20)
-                data->page.pause = false;
-            if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 7 * hauteurFenetre() / 20 && ordonneeSouris() < 9 * hauteurFenetre() / 20)
-            {
-                data->page.pause = false;
-                resetRaquette(data->joueurs);
-                data->balleJeu = initBalleJeu();
-            }
-            if (abscisseSouris() > 7 * largeurFenetre() / 20 && abscisseSouris() < 13 * largeurFenetre() / 20 && ordonneeSouris() > 3 * hauteurFenetre() / 20 && ordonneeSouris() < 5 * hauteurFenetre() / 20)
-            {
-                data->page.pause = false;
-                data->balleJeu = initBalleJeu();
-                data->page.numero = Menu;
-            }
-        }
+            clicPause(data);
     }
 }

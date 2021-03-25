@@ -5,7 +5,7 @@ void TempoAccueil(Data *const data)
 	selectAcceuil(data->page.select);
 	for (int i = 0; i < MAX_BALLE; i++)
 	{
-		rebond(data->balle + i, 0, 0, largeurFenetre(), hauteurFenetre());
+		rebond(data->balle + i, 0, 0, MAX_X, MAX_Y);
 		mouvementBalle(data->balle + i);
 	}
 }
@@ -15,7 +15,7 @@ void TempoMenu(Data *const data)
 	selectMenu(data->page.select);
 	for (int i = 0; i < MAX_BALLE; i++)
 	{
-		rebond(data->balle + i, 0, 0, largeurFenetre(), hauteurFenetre());
+		rebond(data->balle + i, 0, 0, MAX_X, MAX_Y);
 		mouvementBalle(data->balle + i);
 	}
 	for (int i = 0; i < NB_SELECT; i++)
@@ -42,7 +42,7 @@ void TempoJeu(Data *const data)
 		mouvementBalle(&data->balleJeu);
 		for (int i = 0; i < NB_JOUEUR; i++)
 			hitbox(&data->balleJeu, &data->joueurs[i].raquette);
-		rebond(&data->balleJeu, -largeurFenetre(), MIN_Y_PLATEAU, 2 * largeurFenetre(), MAX_Y_PLATEAU);
+		rebond(&data->balleJeu, -MAX_X, MIN_Y_PLATEAU, 2 * MAX_X, MAX_Y_PLATEAU);
 		but(&data->balleJeu, data->joueurs);
 	}
 	else
@@ -55,9 +55,9 @@ void TempoJeuIA(Data *const data)
 		mouvementBalle(&data->balleJeu);
 		for (int i = 0; i < NB_JOUEUR; i++)
 			hitbox(&data->balleJeu, &data->joueurs[i].raquette);
-		rebond(&data->balleJeu, -largeurFenetre(), MIN_Y_PLATEAU, 2 * largeurFenetre(), MAX_Y_PLATEAU);
+		rebond(&data->balleJeu, -MAX_X, MIN_Y_PLATEAU, 2 * MAX_X, MAX_Y_PLATEAU);
 		but(&data->balleJeu, data->joueurs);
-		IA(&data->balleJeu, &data->joueurs[1].raquette);
+		IA(&data->joueurs[1].raquette, &data->balleJeu);
 	}
 	else
 		selectPause(data->page.select);
@@ -68,7 +68,7 @@ void TempoEntrainement(Data *const data)
 	{
 		mouvementBalle(&data->balleJeu);
 		hitbox(&data->balleJeu, &data->joueurs[0].raquette);
-		rebond(&data->balleJeu, -largeurFenetre(), MIN_Y_PLATEAU, MAX_X_PLATEAU, MAX_Y_PLATEAU);
+		rebond(&data->balleJeu, -MAX_X, MIN_Y_PLATEAU, MAX_X_PLATEAU, MAX_Y_PLATEAU);
 		but(&data->balleJeu, data->joueurs);
 	}
 	else
