@@ -47,7 +47,7 @@ void ClicSelection(Data *const data)
 {
     if (etatBoutonSouris() == DroiteAppuye)
         clicUsers(data->joueurs + 1, data->users);
-    if (etatBoutonSouris() == GaucheAppuye)
+    else if (etatBoutonSouris() == GaucheAppuye)
     {
         clicUsers(data->joueurs, data->users);
         if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)

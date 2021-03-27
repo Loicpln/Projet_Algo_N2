@@ -51,8 +51,8 @@ void AfficheRegles(Data *const data)
 void AfficheSelection(Data *const data)
 {
     afficheUsers(data->page.select, data->users);
-    bouton(data->page.select[10], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy); //titre
-    bouton(data->page.select[11], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
+    bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy); //titre
+    bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
     epaisseurDeTrait(2);
     CC_BLANC;
     afficheChaine("Jouer", 30, 45 * Ux, 8 * Uy);

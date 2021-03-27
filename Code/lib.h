@@ -44,6 +44,7 @@
 #define MAX_BALLE 50
 
 #define NB_JOUEUR 2
+#define NB_USERS 10
 
 #define L_SELECT 5
 #define NB_SELECT 50
@@ -131,6 +132,10 @@ struct User
 };
 typedef struct
 {
+    User *premier;
+} Users;
+typedef struct
+{
     int largeur;
     int couleur[3];
 } Select;
@@ -161,7 +166,7 @@ typedef struct
     Balle balle[MAX_BALLE];
     Balle balleJeu;
     Joueur joueurs[NB_JOUEUR];
-    User *users;
+    Users *users;
     //Options option;
 } Data;
 

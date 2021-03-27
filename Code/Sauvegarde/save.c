@@ -12,62 +12,60 @@ User *creeUser(const int id, const char pseudo[], const int nbGame, const int nb
     return elem;
 }
 
-User *ajouteUsers(User *maUsers, User *const nouv)
+Users *ajouteUsers(Users *users, User *const nouv)
 {
-    if (maUsers == NULL)
-    {
-        maUsers = malloc(sizeof(User));
-        maUsers = nouv;
-    }
+    if (users->premier == NULL)
+        users->premier = nouv;
     else
     {
-        User *tmp = maUsers;
+        User *tmp = users->premier;
         while (tmp->userSuivant != NULL)
             tmp = tmp->userSuivant;
         tmp->userSuivant = nouv;
     }
-    return maUsers;
+    users = changeId(users);
+    return users;
 }
 
-User *supprimeDansUsers(User *maUsers, const int id)
+Users *supprimeDansUsers(Users *users, const int id)
 {
-    if (maUsers != NULL)
+    User *tmp = users->premier;
+    User *ptmp = users->premier;
+    if (users->premier->id == id)
+        users->premier = users->premier->userSuivant;
+    else
     {
-        User *tmp = maUsers;
-        User *ptmp = maUsers;
-        for (; tmp != NULL; ptmp = tmp, tmp = tmp->userSuivant)
-            if (tmp->id == id)
-                break;
+        for (; tmp != NULL && tmp->id != id; ptmp = tmp, tmp = tmp->userSuivant)
+        {
+        }
         ptmp->userSuivant = tmp->userSuivant;
-        free(tmp);
     }
-    return maUsers;
+    users = changeId(users);
+    return users;
 }
 
-User *supprimeUsers(User *maUsers)
+Users *changeId(Users *users)
 {
-    while (maUsers != NULL)
-    {
-        User *tmp = maUsers;
-        maUsers = maUsers->userSuivant;
-        free(tmp);
-    }
-    return maUsers;
-}
-
-User *rechercheUser(User *maUsers, const int id)
-{
-    User *tmp = maUsers;
+    User *tmp = users->premier;
+    int i = 0;
     for (; tmp != NULL; tmp = tmp->userSuivant)
-        if (tmp->id == id)
-            break;
+        tmp->id = i++;
+    return users;
+}
+
+User *rechercheUser(Users *users, const int id)
+{
+    User *tmp = users->premier;
+    for (; tmp != NULL && tmp->id != id; tmp = tmp->userSuivant)
+    {
+    }
     return tmp;
 }
 
-void enregistreUsersFichier(User *maUsers)
+void enregistreUsersFichier(Users *users)
 {
     FILE *file = fopen("./Sauvegarde/Users.txt", "w");
-    User *tmp = maUsers;
+    User *tmp = users->premier;
     if (file != NULL)
     {
         for (; tmp != NULL; tmp = tmp->userSuivant)

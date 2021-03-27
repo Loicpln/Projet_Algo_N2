@@ -34,6 +34,7 @@ void TempoSelection(Data *const data)
 		couleurSelect(data->page.select, data->joueurs[1].user->id, 255, 0, 0);
 	if (data->joueurs[0].user != NULL)
 		couleurSelect(data->page.select, data->joueurs[0].user->id, 0, 0, 255);
+	enregistreUsersFichier(data->users);
 }
 void TempoJeu(Data *const data)
 {

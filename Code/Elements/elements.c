@@ -89,26 +89,25 @@ void afficheDigit(const Digit digit, const int x, const int y)
     ligne(x - Ux, y - 2 * Ux, x + Ux, y - 2 * Ux);
 }
 
-void afficheUsers(const Select *const select, const User *const maUsers)
+void afficheUsers(const Select *const select, const Users *const users)
 {
-    if (maUsers != NULL)
+    char Game[10] = "", Win[10] = "", Lose[10] = "";
+    const User *tmp = users->premier;
+    for (int i = 0; tmp != NULL; i++, tmp = tmp->userSuivant)
     {
-        char Game[10] = "", Win[10] = "", Lose[10] = "";
-        const User *tmp = maUsers;
-        for (int i = 0; tmp != NULL; i++, tmp = tmp->userSuivant)
-        {
-            sprintf(Game, "G %d", tmp->nbWin);
-            sprintf(Win, "W %d", tmp->nbWin);
-            sprintf(Lose, "L %d", tmp->nbLose);
-            bouton(select[i], 2 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 83 * Uy - 35 * floor(i / 5) * Uy);
-            bouton(select[i], 15 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 60 * Uy - 35 * floor(i / 5) * Uy);
-            CC_BLANC;
-            epaisseurDeTrait(3);
-            afficheChaine(tmp->pseudo, 30, 4 * Ux + 20 * (i % 5) * Ux, 75 * Uy - 35 * floor(i / 5) * Uy);
-            epaisseurDeTrait(2);
-            afficheChaine(Game, 20, 4 * Ux + 20 * (i % 5) * Ux, 70 * Uy - 35 * floor(i / 5) * Uy);
-            afficheChaine(Win, 20, 4 * Ux + 20 * (i % 5) * Ux, 65 * Uy - 35 * floor(i / 5) * Uy);
-            afficheChaine(Lose, 20, 4 * Ux + 20 * (i % 5) * Ux, 60 * Uy - 35 * floor(i / 5) * Uy);
-        }
+        sprintf(Game, "G %d", tmp->nbWin);
+        sprintf(Win, "W %d", tmp->nbWin);
+        sprintf(Lose, "L %d", tmp->nbLose);
+        bouton(select[i], 2 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 83 * Uy - 35 * floor(i / 5) * Uy);
+        bouton(select[i + NB_USERS], 15 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 60 * Uy - 35 * floor(i / 5) * Uy);
+        CC_BLANC;
+        epaisseurDeTrait(3);
+        afficheChaine(tmp->pseudo, 30, 4 * Ux + 20 * (i % 5) * Ux, 75 * Uy - 35 * floor(i / 5) * Uy);
+        epaisseurDeTrait(2);
+        ligne(16 * Ux + 20 * (i % 5) * Ux, 57 * Uy - 35 * floor(i / 5) * Uy, 17 * Ux + 20 * (i % 5) * Ux, 59 * Uy - 35 * floor(i / 5) * Uy);
+        ligne(16 * Ux + 20 * (i % 5) * Ux, 59 * Uy - 35 * floor(i / 5) * Uy, 17 * Ux + 20 * (i % 5) * Ux, 57 * Uy - 35 * floor(i / 5) * Uy);
+        afficheChaine(Game, 20, 4 * Ux + 20 * (i % 5) * Ux, 70 * Uy - 35 * floor(i / 5) * Uy);
+        afficheChaine(Win, 20, 4 * Ux + 20 * (i % 5) * Ux, 65 * Uy - 35 * floor(i / 5) * Uy);
+        afficheChaine(Lose, 20, 4 * Ux + 20 * (i % 5) * Ux, 60 * Uy - 35 * floor(i / 5) * Uy);
     }
 }

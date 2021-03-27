@@ -17,4 +17,4 @@ void score(const int score, const int x, const int y);
 //Affiche l'élément Digit
 void afficheDigit(const Digit digit, const int x, const int y);
 //Affiche tout les Users
-void afficheUsers(const Select *const select, const User *const maUsers);
+void afficheUsers(const Select *const select, const Users *const maUsers);

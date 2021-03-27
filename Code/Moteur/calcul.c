@@ -24,15 +24,18 @@ void couleurSelect(Select *const select, const int i, const int R, const int V, 
 	select[i].couleur[0] = R;
 	select[i].couleur[1] = V;
 	select[i].couleur[2] = B;
+	select[i + NB_USERS].couleur[0] = R;
+	select[i + NB_USERS].couleur[1] = V;
+	select[i + NB_USERS].couleur[2] = B;
 }
 void selectAcceuil(Select *const select)
 {
 	resetSelect(select);
 	if (30 * Ux < X_SOURIS < 70 * Ux && 65 * Uy < Y_SOURIS < 80 * Uy)
 		select[0].largeur = L_SELECT;
-	else if (35 * Ux < X_SOURIS < 65 * Ux && 45 * Uy < Y_SOURIS < 60 * Uy)
+	if (35 * Ux < X_SOURIS < 65 * Ux && 45 * Uy < Y_SOURIS < 60 * Uy)
 		select[1].largeur = L_SELECT;
-	else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+	if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
 		select[2].largeur = L_SELECT;
 }
 void selectMenu(Select *const select)
@@ -40,11 +43,11 @@ void selectMenu(Select *const select)
 	resetSelect(select);
 	if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
 		select[0].largeur = L_SELECT;
-	else if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
+	if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
 		select[1].largeur = L_SELECT;
-	else if (25 * Ux < X_SOURIS < 75 * Ux && 33 * Uy < Y_SOURIS < 46 * Uy)
+	if (25 * Ux < X_SOURIS < 75 * Ux && 33 * Uy < Y_SOURIS < 46 * Uy)
 		select[2].largeur = L_SELECT;
-	else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+	if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
 		select[3].largeur = L_SELECT;
 }
 void selectRegles(Select *const select)
@@ -58,23 +61,23 @@ void selectPause(Select *const select)
 	resetSelect(select);
 	if (35 * Ux < X_SOURIS < 65 * Ux && 55 * Uy < Y_SOURIS < 65 * Uy)
 		select[0].largeur = L_SELECT;
-	else if (35 * Ux < X_SOURIS < 65 * Ux && 35 * Uy < Y_SOURIS < 45 * Uy)
+	if (35 * Ux < X_SOURIS < 65 * Ux && 35 * Uy < Y_SOURIS < 45 * Uy)
 		select[1].largeur = L_SELECT;
-	else if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
+	if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
 		select[2].largeur = L_SELECT;
 }
 void clicPause(Data *const data)
 {
 	if (35 * Ux < X_SOURIS < 65 * Ux && 55 * Uy < Y_SOURIS < 65 * Uy)
 		data->page.pause = false;
-	else if (35 * Ux < X_SOURIS < 65 * Ux && 35 * Uy < Y_SOURIS < 45 * Uy)
+	if (35 * Ux < X_SOURIS < 65 * Ux && 35 * Uy < Y_SOURIS < 45 * Uy)
 	{
 		data->page.pause = false;
 		data->balleJeu = initBalleJeu();
 		resetRaquette(data->joueurs);
 		resetScore(data->joueurs);
 	}
-	else if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
+	if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
 	{
 		data->page.pause = false;
 		data->balleJeu = initBalleJeu();
@@ -84,7 +87,7 @@ void clicPause(Data *const data)
 		resetScore(data->joueurs);
 	}
 }
-void clicRouage(Page * page)
+void clicRouage(Page *page)
 {
 	if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 91 * Uy) < r_Rouage)
 		page->pause = true;
@@ -93,53 +96,34 @@ void clicRouage(Page * page)
 void selectSelection(Select *const select)
 {
 	resetSelect(select);
-	if (2 * Ux < X_SOURIS < 18 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		select[0].largeur = L_SELECT;
-	else if (22 * Ux < X_SOURIS < 38 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		select[1].largeur = L_SELECT;
-	else if (42 * Ux < X_SOURIS < 58 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		select[2].largeur = L_SELECT;
-	else if (62 * Ux < X_SOURIS < 78 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		select[3].largeur = L_SELECT;
-	else if (82 * Ux < X_SOURIS < 98 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		select[4].largeur = L_SELECT;
-	else if (2 * Ux < X_SOURIS < 18 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		select[5].largeur = L_SELECT;
-	else if (22 * Ux < X_SOURIS < 38 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		select[6].largeur = L_SELECT;
-	else if (42 * Ux < X_SOURIS < 58 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		select[7].largeur = L_SELECT;
-	else if (62 * Ux < X_SOURIS < 78 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		select[8].largeur = L_SELECT;
-	else if (82 * Ux < X_SOURIS < 98 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		select[9].largeur = L_SELECT;
-	else if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
-		select[10].largeur = L_SELECT;
-	else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
-		select[11].largeur = L_SELECT;
+	for (int i = 0; i < NB_USERS; i++)
+	{
+		if (2 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 83 * Uy - 35 * floor(i / 5) * Uy)
+			select[i].largeur = L_SELECT;
+		if (15 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 60 * Uy - 35 * floor(i / 5) * Uy)
+			select[i + NB_USERS].largeur = L_SELECT;
+	}
+	if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+		select[48].largeur = L_SELECT;
+	if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+		select[49].largeur = L_SELECT;
 }
-void clicUsers(Joueur *const joueur, User *const users)
+void clicUsers(Joueur *const joueur, Users *users)
 {
-	if (2 * Ux < X_SOURIS < 18 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		joueur->user = rechercheUser(users, 0);
-	else if (22 * Ux < X_SOURIS < 38 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		joueur->user = rechercheUser(users, 1);
-	else if (42 * Ux < X_SOURIS < 58 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		joueur->user = rechercheUser(users, 2);
-	else if (62 * Ux < X_SOURIS < 78 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		joueur->user = rechercheUser(users, 3);
-	else if (82 * Ux < X_SOURIS < 98 * Ux && 56 * Uy < Y_SOURIS < 83 * Uy)
-		joueur->user = rechercheUser(users, 4);
-	else if (2 * Ux < X_SOURIS < 18 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		joueur->user = rechercheUser(users, 5);
-	else if (22 * Ux < X_SOURIS < 38 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		joueur->user = rechercheUser(users, 6);
-	else if (42 * Ux < X_SOURIS < 58 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		joueur->user = rechercheUser(users, 7);
-	else if (62 * Ux < X_SOURIS < 78 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		joueur->user = rechercheUser(users, 8);
-	else if (82 * Ux < X_SOURIS < 98 * Ux && 21 * Uy < Y_SOURIS < 48 * Uy)
-		joueur->user = rechercheUser(users, 9);
+	const User *tmp = users->premier;
+	for (int i = 0; tmp != NULL; i++, tmp = tmp->userSuivant)
+	{
+		if (15 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 60 * Uy - 35 * floor(i / 5) * Uy)
+		{
+			if (rechercheUser(users, 0) != NULL)
+				users = supprimeDansUsers(users, i);
+		}
+		else if (2 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 83 * Uy - 35 * floor(i / 5) * Uy)
+		{
+			if (rechercheUser(users, 0) != NULL)
+				joueur->user = rechercheUser(users, i);
+		}
+	}
 }
 
 void resetJoueurs(Joueur *const joueur)
@@ -215,7 +199,7 @@ Digit nombre(const int score)
 	}
 }
 
-int sign(const float val) { return val / fabsf(val); }
+int signe(const float val) { return val / fabsf(val); }
 
 void hitbox(Balle *const balle, const Raquette *const raquette)
 {
@@ -227,13 +211,13 @@ void hitbox(Balle *const balle, const Raquette *const raquette)
 		{
 			if (balle->x >= raquette->x + raquette->largeur / 2 || balle->x <= raquette->x - raquette->largeur / 2)
 			{
-				balle->x += balle->vx = -cosf(M_PI / 3 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * sign(balle->vx);
-				balle->y += balle->vy = sinf(M_PI / 3 * fabsf(balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * sign(balle->vy);
+				balle->x += balle->vx = -cosf(M_PI / 3 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vx);
+				balle->y += balle->vy = sinf(M_PI / 3 * fabsf(balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vy);
 			}
 			else
 			{
-				balle->x += balle->vx = sinf(M_PI / 3 * fabsf(balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * sign(balle->vx);
-				balle->y += balle->vy = -cosf(M_PI / 3 * (balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * sign(balle->vy);
+				balle->x += balle->vx = sinf(M_PI / 3 * fabsf(balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vx);
+				balle->y += balle->vy = -cosf(M_PI / 3 * (balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vy);
 			}
 			break;
 		}
