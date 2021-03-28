@@ -110,21 +110,27 @@ int signe(const float val) { return val / fabsf(val); }
 void hitbox(Balle *const balle, const Raquette *const raquette)
 {
 	for (float i = 0.f; i < 2 * M_PI; i += 0.01f)
-		if (balle->x + cosf(i) * balle->r <= raquette->x + raquette->largeur / 2 &&
-			balle->x + cosf(i) * balle->r >= raquette->x - raquette->largeur / 2 &&
-			balle->y + sinf(i) * balle->r <= raquette->y + raquette->longueur / 2 &&
-			balle->y + sinf(i) * balle->r >= raquette->y - raquette->longueur / 2)
+		if (raquette->x - raquette->largeur / 2 - cosf(i) * balle->r < X_BALLE < raquette->x + raquette->largeur / 2 - cosf(i) * balle->r &&
+			raquette->y - raquette->longueur / 2 - sinf(i) * balle->r < Y_BALLE < raquette->y + raquette->longueur / 2 - sinf(i) * balle->r)
 		{
 			if (balle->x >= raquette->x + raquette->largeur / 2 || balle->x <= raquette->x - raquette->largeur / 2)
 			{
-				balle->x += balle->vx = -cosf(M_PI / 3 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vx);
-				balle->y += balle->vy = sinf(M_PI / 3 * fabsf(balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vy);
+				balle->vx = -cosf(M_PI / 4 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vx);
+				balle->vy = sinf(M_PI / 4 * fabsf(balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vy);
+			}
+			else if (balle->y >= raquette->y + raquette->longueur / 2 || balle->y <= raquette->y - raquette->longueur / 2)
+			{
+				balle->vx = sinf(M_PI / 4 * fabsf(balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vx);
+				balle->vy = -cosf(M_PI / 4 * (balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vy);
 			}
 			else
 			{
-				balle->x += balle->vx = sinf(M_PI / 3 * fabsf(balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vx);
-				balle->y += balle->vy = -cosf(M_PI / 3 * (balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vy);
+				balle->vx = M_SQRT1_2 * balle->v0 * signe(balle->vx);
+				balle->vy = -M_SQRT1_2 * balle->v0 * signe(balle->vy);
+				for (int i = 0; i < 3; i++)
+					mouvementBalle(balle);
 			}
+			mouvementBalle(balle);
 			break;
 		}
 }
