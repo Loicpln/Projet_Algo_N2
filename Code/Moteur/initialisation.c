@@ -42,3 +42,21 @@ void resetSelect(Select *const select)
 		select[i].couleur[2] = 255;
 	}
 }
+
+void resetJoueurs(Joueur *const joueur)
+{
+	for (int i = 0; i < NB_JOUEUR; i++)
+		joueur[i].user = NULL;
+}
+
+void resetRaquette(Joueur *const joueur)
+{
+	for (int i = 0; i < NB_JOUEUR; i++)
+		joueur[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
+}
+
+void resetScore(Joueur *const joueur)
+{
+	for (int i = 0; i < NB_JOUEUR; i++)
+		joueur[i].score = initScore();
+}

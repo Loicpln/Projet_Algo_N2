@@ -8,21 +8,22 @@ void bouton(const Select select, const int xBasGauche, const int yBasGauche, con
     rectangle(xBasGauche + select.largeur, yBasGauche + select.largeur, xHautDroite - select.largeur, yHautDroite - select.largeur);
 }
 
-void rouage(const int x, const int y, const int r)
+void rouage(const Select select, const int x, const int y, const int r)
 {
     couleurCourante(100, 100, 100);
     cercle(x, y, r);
-    CC_BLANC;
+    couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
     ligne(x - r + 5, y, x + r - 5, y);
     ligne(x - sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2);
     ligne(x, y - r + 5, x, y + r - 5);
     ligne(x - sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2);
-    cercle(x, y, 11 * r / 16);
+    cercle(x, y, 11 * r / 16 - select.largeur);
     couleurCourante(100, 100, 100);
     cercle(x, y, r / 4);
-    CC_BLANC;
+    couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
     cercle(x, y, r / 6);
 }
+
 void plateau(const int teinte)
 {
     couleurCourante(teinte, teinte, teinte);
@@ -34,6 +35,7 @@ void plateau(const int teinte)
     for (int i = 0; i < 8; i++)
         ligne(MID_X, 82 * Uy - 10 * i * Uy, MID_X, 73 * Uy - 10 * i * Uy);
 }
+
 void affichePause(const Select *const select)
 {
     CC_BLANC;
@@ -50,12 +52,13 @@ void affichePause(const Select *const select)
     afficheChaine("Rejouer", 30, 43 * Ux, 38 * Uy);
     afficheChaine("Quitter", 30, 44 * Ux, 18 * Uy);
 }
+
 void zoneText(const Select *const select, const char chaine[])
 {
     bouton(select[46], 30 * Ux, 45 * Uy, 70 * Ux, 55 * Uy);
     EPAISSEUR_2;
     CC_BLANC;
-    afficheChaine(chaine, 30, MID_X - strlen(chaine)*Ux, 48 * Uy);
+    afficheChaine(chaine, 30, MID_X - strlen(chaine) * Ux, 48 * Uy);
 }
 
 void raquette(const Raquette raquette, const int teinte)

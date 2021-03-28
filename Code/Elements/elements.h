@@ -3,7 +3,7 @@
 
 void bouton(const Select select, const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite);
 //Affiche l'élément rouage
-void rouage(const int x, const int y, const int r);
+void rouage(const Select select, const int x, const int y, const int r);
 //Affiche le plateau
 void plateau(const int teinte);
 //Affiche le menu pause

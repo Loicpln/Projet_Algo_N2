@@ -1,4 +1,4 @@
-#include "save.h"
+#include "moteur.h"
 
 User *creeUser(const int id, const char pseudo[], const int nbGame, const int nbWin, const int nbLose)
 {
@@ -53,15 +53,6 @@ Users *changeId(Users *users)
     return users;
 }
 
-int compteUsers(Users *users)
-{
-    User *tmp = users->premier;
-    int i = 0;
-    for (; tmp != NULL; tmp = tmp->userSuivant)
-        i++;
-    return i;
-}
-
 User *rechercheUser(Users *users, const int id)
 {
     User *tmp = users->premier;
@@ -69,6 +60,15 @@ User *rechercheUser(Users *users, const int id)
     {
     }
     return tmp;
+}
+
+int compteUsers(Users *users)
+{
+    User *tmp = users->premier;
+    int i = 0;
+    for (; tmp != NULL; tmp = tmp->userSuivant)
+        i++;
+    return i;
 }
 
 void enregistreUsersFichier(Users *users)

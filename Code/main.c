@@ -1,12 +1,5 @@
 #include "controleur.h"
 
-//page 0 = Ecran d'accueil
-//page 1 = Ecran Jouer
-//////case 1 = joueur contre joueur
-//////case 2 = jeu contre IA
-//////case 3 = page entrainement
-//page 2 = Reglement
-
 int main(int argc, char **argv)
 {
 	/*SDL_Init(SDL_INIT_AUDIO);
@@ -30,7 +23,7 @@ void gestionEvenement(EvenementGfx evenement)
 	{
 	case Initialisation:
 		data = init();
-		for (int i = 0; i < MAX_BALLE; i++)
+		for (int i = 0; i < NB_BALLE; i++)
 			data.balle[i] = initBallesAccueil();
 		activeGestionDeplacementPassifSouris();
 		demandeTemporisation(20);

@@ -4,11 +4,11 @@ void ClavierSelect(Data *const data)
 {
 	if (data->page.pause)
 	{
-		if (compteUsers(data->users) < NB_USERS && caractereClavier() == 13 && strcmp(data->newPseudo, "") != 0)
+		if (caractereClavier() == 13)
 		{
+			if (compteUsers(data->users) < NB_USERS && strcmp(data->newPseudo, "") != 0)
+				data->users = ajouteUsers(data->users, creeUser(0, data->newPseudo, 0, 0, 0));
 			data->page.pause = false;
-			data->users = ajouteUsers(data->users, creeUser(0, data->newPseudo, 0, 0, 0));
-			strcpy(data->newPseudo, "");
 		}
 		ecrire(data->newPseudo);
 	}

@@ -27,7 +27,7 @@
 #define MIN_Y_PLATEAU 3 * Uy
 #define MAX_Y_PLATEAU 82 * Uy
 
-#define r_Rouage 25
+#define r_Rouage 3 * Ux
 
 #define CC_BLANC couleurCourante(255, 255, 255)
 #define CC_NOIR couleurCourante(0, 0, 0)
@@ -37,16 +37,16 @@
 #define EPAISSEUR_3 epaisseurDeTrait(3)
 #define EPAISSEUR_TITRE epaisseurDeTrait(8)
 
-#define LARG_RAQUETTE 10
-#define LONG_RAQUETTE 100
-#define V_RAQUETTE 15
+#define LARG_RAQUETTE Ux
+#define LONG_RAQUETTE 17 * Uy
+#define V_RAQUETTE 3 * Uy
 #define X_RAQUETTE_LEFT MIN_X_PLATEAU + 2 * Ux
 #define X_RAQUETTE_RIGHT MAX_X_PLATEAU - 2 * Ux
 
 #define V_BALLE (rand() % 2) ? 5 : -5
-#define VH_BALLE 0.1
+#define VH_BALLE 0.00001
 #define R_BALLE 10
-#define MAX_BALLE 50
+#define NB_BALLE 50
 
 #define NB_JOUEUR 2
 #define NB_USERS 10
@@ -61,10 +61,10 @@
         CC_BLANC;                                     \
         EPAISSEUR_1;                                  \
         sprintf(a, "%d", i);                          \
-        afficheChaine(a, 5, Ux / 2 + i * Ux, Uy / 2); \
-        afficheChaine(a, 5, Ux / 2, Uy / 2 + i * Uy); \
-        ligne(i *Ux, Uy, i *Ux, 100 * Uy);            \
-        ligne(Ux, i *Uy, 100 * Ux, i * Uy);           \
+        afficheChaine(a, 5, i * Ux, Uy / 2); \
+        afficheChaine(a, 5, Ux / 2, i * Uy); \
+        ligne(i *Ux, 0, i *Ux, 100 * Uy);            \
+        ligne(0, i *Uy, 100 * Ux, i * Uy);           \
     }
 
 #define DIGIT_0 \
@@ -138,7 +138,7 @@ typedef struct
 } Raquette;
 
 typedef struct User User;
-// char pseudo[25] |int nbGame |int nbWin |int nbLose |User *userSuivant
+// int id |char pseudo[15] |int nbGame |int nbWin |int nbLose |User *userSuivant
 struct User
 {
     int id;
@@ -148,16 +148,18 @@ struct User
     int nbLose;
     User *userSuivant;
 };
+// User *premier
 typedef struct
 {
     User *premier;
 } Users;
+// int largeur |int couleur[3]
 typedef struct
 {
     int largeur;
     int couleur[3];
 } Select;
-// int numero |bool pause |int select[NB_SELECT]
+// int numero |bool pause |Select select[NB_SELECT]
 typedef struct
 {
     int numero;
@@ -177,11 +179,11 @@ typedef struct
 {
 } Options;
 
-// Page page |Balle balle[MAX_BALLE] |Balle balleJeu |Joueur joueurs[NB_JOUEUR] |User *users
+// Page page |Balle balle[MAX_BALLE] |Balle balleJeu |Joueur joueurs[NB_JOUEUR] |User *users |char newPseudo[15]
 typedef struct
 {
     Page page;
-    Balle balle[MAX_BALLE];
+    Balle balle[NB_BALLE];
     Balle balleJeu;
     Joueur joueurs[NB_JOUEUR];
     Users *users;

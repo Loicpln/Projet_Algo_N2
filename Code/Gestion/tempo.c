@@ -2,8 +2,9 @@
 
 void TempoAccueil(Data *const data)
 {
+    resetSelect(data->page.select);
 	selectAcceuil(data->page.select);
-	for (int i = 0; i < MAX_BALLE; i++)
+	for (int i = 0; i < NB_BALLE; i++)
 	{
 		rebond(data->balle + i, 0, 0, MAX_X, MAX_Y);
 		mouvementBalle(data->balle + i);
@@ -12,8 +13,9 @@ void TempoAccueil(Data *const data)
 
 void TempoMenu(Data *const data)
 {
+    resetSelect(data->page.select);
 	selectMenu(data->page.select);
-	for (int i = 0; i < MAX_BALLE; i++)
+	for (int i = 0; i < NB_BALLE; i++)
 	{
 		rebond(data->balle + i, 0, 0, MAX_X, MAX_Y);
 		mouvementBalle(data->balle + i);
@@ -24,27 +26,28 @@ void TempoMenu(Data *const data)
 
 void TempoRegles(Data *const data)
 {
+    resetSelect(data->page.select);
 	selectRegles(data->page.select);
 }
 
 void TempoSelection(Data *const data)
 {
 	int teinte = (data->page.pause) ? 150 : 255;
+    resetSelect(data->page.select);
+	for (int i = 0; i < NB_SELECT; i++)
+		couleurSelect(data->page.select + i, teinte, teinte, teinte);
 	if (!data->page.pause)
 	{
+		strcpy(data->newPseudo, "");
 		selectSelection(data->page.select);
 		enregistreUsersFichier(data->users);
 	}
 	else
 	{
-		resetSelect(data->page.select);
-		for (int i = 0; i < NB_SELECT; i++)
-			couleurSelect(data->page.select + i, 150, 150, 150);
 		couleurSelect(&data->page.select[46], 255, 255, 255);
 		couleurSelect(&data->page.select[47], 0, 255, 0);
 	}
-	if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
-		data->page.select[47].largeur = L_SELECT;
+	selectAddUsers(data->page.select);
 	if (data->joueurs[0].user != NULL)
 	{
 		couleurSelect(data->page.select + data->joueurs[0].user->id, 0, 0, teinte);
@@ -56,8 +59,10 @@ void TempoSelection(Data *const data)
 		couleurSelect(data->page.select + data->joueurs[1].user->id + NB_USERS, teinte, 0, 0);
 	}
 }
+
 void TempoJeu(Data *const data)
 {
+    resetSelect(data->page.select);
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);
@@ -68,9 +73,12 @@ void TempoJeu(Data *const data)
 	}
 	else
 		selectPause(data->page.select);
+	selectRouage(data->page.select);
 }
+
 void TempoJeuIA(Data *const data)
 {
+    resetSelect(data->page.select);
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);
@@ -82,9 +90,12 @@ void TempoJeuIA(Data *const data)
 	}
 	else
 		selectPause(data->page.select);
+	selectRouage(data->page.select);
 }
+
 void TempoEntrainement(Data *const data)
 {
+    resetSelect(data->page.select);
 	if (!data->page.pause)
 	{
 		mouvementBalle(&data->balleJeu);
@@ -94,4 +105,5 @@ void TempoEntrainement(Data *const data)
 	}
 	else
 		selectPause(data->page.select);
+	selectRouage(data->page.select);
 }
