@@ -15,6 +15,7 @@ void AfficheJeu(Data * const data);
 //Gestion Affichage page d'Entrainement
 void AfficheEntrainement(Data * const data);
 
+void ClavierSelect(Data *const data);
 //Gestion Clavier page Jeu 1 joueurs
 void ClavierJeu1J(Data * const data);
 //Gestion Clavier page Jeu 2 joueurs

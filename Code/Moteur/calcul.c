@@ -19,14 +19,11 @@ void accelereBalle(Balle *const balle, const float facteur)
 	balle->vx *= facteur;
 	balle->vy *= facteur;
 }
-void couleurSelect(Select *const select, const int i, const int R, const int V, const int B)
+void couleurSelect(Select *const select, const int R, const int V, const int B)
 {
-	select[i].couleur[0] = R;
-	select[i].couleur[1] = V;
-	select[i].couleur[2] = B;
-	select[i + NB_USERS].couleur[0] = R;
-	select[i + NB_USERS].couleur[1] = V;
-	select[i + NB_USERS].couleur[2] = B;
+	select->couleur[0] = R;
+	select->couleur[1] = V;
+	select->couleur[2] = B;
 }
 void selectAcceuil(Select *const select)
 {
@@ -146,6 +143,30 @@ void touchePause(Page *const page)
 	if (caractereClavier() == 'g' || caractereClavier() == 'G')
 		page->pause = (page->pause) ? false : true;
 }
+
+void ecrire(char newPseudo[])
+{
+	char a[15] = "";
+	if ((caractereClavier() == 8) && (strcmp(newPseudo, "") != 0))
+	{
+		strncpy(a, newPseudo, strlen(newPseudo) - 1);
+		strcat(a, "\0");
+		strcpy(newPseudo, a);
+	}
+	else if(caractereClavier() > 31)
+	{
+		for (int i = 0; i < 15; i++)
+		{
+			if (newPseudo[i] == '\0')
+			{
+				newPseudo[i] = caractereClavier();
+				newPseudo[i + 1] = '\0';
+				break;
+			}
+		}
+	}
+}
+
 void touches(Raquette *const raquette)
 {
 	if (caractereClavier() == raquette->up)

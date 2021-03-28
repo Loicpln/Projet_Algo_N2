@@ -49,18 +49,31 @@ void ClicSelection(Data *const data)
         clicUsers(data->joueurs + 1, data->users);
     else if (etatBoutonSouris() == GaucheAppuye)
     {
-        clicUsers(data->joueurs, data->users);
-        if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+        if (!data->page.pause)
         {
-            if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
-                data->page.numero = Jeu_Joueurs;
+            clicUsers(data->joueurs, data->users);
+            if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
+                data->page.pause = true;
+            else if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+            {
+                if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
+                    data->page.numero = Jeu_Joueurs;
+            }
+            else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+            {
+                data->page.numero = Menu;
+                resetJoueurs(data->joueurs);
+                resetRaquette(data->joueurs);
+                resetScore(data->joueurs);
+            }
         }
-        else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+        else
         {
-            data->page.numero = Menu;
-            resetJoueurs(data->joueurs);
-            resetRaquette(data->joueurs);
-            resetScore(data->joueurs);
+            if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
+            {
+                strcpy(data->newPseudo, "");
+                data->page.pause = false;
+            }
         }
     }
 }
@@ -69,18 +82,33 @@ void ClicSelectionIA(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
-        clicUsers(data->joueurs, data->users);
-        if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+        if (!data->page.pause)
         {
-            if (data->joueurs[0].user != NULL)
-                data->page.numero = Jeu_IA;
+            clicUsers(data->joueurs, data->users);
+            if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
+            {
+                data->page.pause = true;
+            }
+            else if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+            {
+                if (data->joueurs[0].user != NULL)
+                    data->page.numero = Jeu_IA;
+            }
+            else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+            {
+                data->page.numero = Menu;
+                resetJoueurs(data->joueurs);
+                resetRaquette(data->joueurs);
+                resetScore(data->joueurs);
+            }
         }
-        else if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+        else
         {
-            data->page.numero = Menu;
-            resetJoueurs(data->joueurs);
-            resetRaquette(data->joueurs);
-            resetScore(data->joueurs);
+            if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
+            {
+                strcpy(data->newPseudo, "");
+                data->page.pause = false;
+            }
         }
     }
 }

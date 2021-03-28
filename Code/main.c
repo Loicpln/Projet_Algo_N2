@@ -44,17 +44,7 @@ void gestionEvenement(EvenementGfx evenement)
 	case Affichage:
 		effaceFenetre(0, 0, 0);
 		gestion(&data, fAffiche());
-		/*for (int i = 1; i < 100; i++)
-		{
-			char a[10] = "";
-			CC_BLANC;
-			epaisseurDeTrait(1);
-			sprintf(a, "%d", i);
-			afficheChaine(a, 5, Ux / 2 + i * Ux, Uy / 2);
-			afficheChaine(a, 5, Ux / 2, Uy / 2 + i * Uy);
-			ligne(i * Ux, Uy, i * Ux, 100 * Uy);
-			ligne(Ux, i * Uy, 100 * Ux, i * Uy);
-		}*/
+		//GRILLE;
 		break;
 
 	case Clavier:

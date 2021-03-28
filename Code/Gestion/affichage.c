@@ -9,7 +9,7 @@ void AfficheAccueil(Data *const data)
     bouton(data->page.select[0], 30 * Ux, 65 * Uy, 70 * Ux, 80 * Uy);
     bouton(data->page.select[1], 35 * Ux, 45 * Uy, 65 * Ux, 60 * Uy);
     bouton(data->page.select[2], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
-    epaisseurDeTrait(3);
+    EPAISSEUR_3;
     CC_BLANC;
     afficheChaine("Jouer", 60, 40 * Ux, 68 * Uy);
     afficheChaine("Reglement", 40, 38 * Ux, 50 * Uy);
@@ -17,7 +17,7 @@ void AfficheAccueil(Data *const data)
 }
 void AfficheMenu(Data *const data)
 {
-    epaisseurDeTrait(8);
+    EPAISSEUR_TITRE;
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
     afficheChaine("PONG", 60, 41 * Ux, 87 * Uy);
     for (int i = 0; i < MAX_BALLE; i++)
@@ -27,7 +27,7 @@ void AfficheMenu(Data *const data)
     bouton(data->page.select[1], 25 * Ux, 50 * Uy, 75 * Ux, 63 * Uy); //contreIA
     bouton(data->page.select[2], 25 * Ux, 33 * Uy, 75 * Ux, 46 * Uy); //entrainement
     bouton(data->page.select[3], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);  //Quitter
-    epaisseurDeTrait(3);
+    EPAISSEUR_3;
     CC_BLANC;
     afficheChaine("Joueur contre joueur", 30, 30 * Ux, 71 * Uy);
     afficheChaine("Jouer contre IA", 30, 30 * Ux, 54 * Uy);
@@ -36,10 +36,9 @@ void AfficheMenu(Data *const data)
 }
 void AfficheRegles(Data *const data)
 {
-    epaisseurDeTrait(3);
     bouton(data->page.select[0], 25 * Ux, 75 * Uy, 75 * Ux, 92 * Uy); //titre                                                             //titre
     bouton(data->page.select[1], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
-    epaisseurDeTrait(2);
+    EPAISSEUR_2;
     CC_BLANC;
     afficheChaine("Reglement", 60, 31 * Ux, 79 * Uy);
     afficheChaine("Le concept original de pong est une simulation simpliste ", 20, 10 * Ux, 58 * Uy);
@@ -50,34 +49,41 @@ void AfficheRegles(Data *const data)
 }
 void AfficheSelection(Data *const data)
 {
-    afficheUsers(data->page.select, data->users);
+    int teinte = (data->page.pause) ? 150 : 255;
+    afficheUsers(data->page.select, data->users, teinte);
+    bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
     bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy); //titre
     bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
-    epaisseurDeTrait(2);
+    EPAISSEUR_2;
     CC_BLANC;
+    ligne(91 * Ux, 87 * Uy, 91 * Ux, 93 * Uy);
+    ligne(89 * Ux, 90 * Uy, 93 * Ux, 90 * Uy);
+    couleurCourante(teinte, teinte, teinte);
     afficheChaine("Jouer", 30, 45 * Ux, 8 * Uy);
     afficheChaine("Retour", 30, 79 * Ux, 8 * Uy);
+    if (data->page.pause)
+        zoneText(data->page.select,data->newPseudo);
 }
 void AfficheJeu(Data *const data)
 {
     CC_BLANC;
-    epaisseurDeTrait(8);
+    EPAISSEUR_TITRE;
     afficheChaine("PONG", 95, 31 * Ux, 85 * Uy);
     int teinte = (data->page.pause) ? 150 : 255;
     rouage(88 * Ux, 91 * Uy, r_Rouage);
     plateau(teinte);
     for (int i = 0; i < NB_JOUEUR; i++)
         raquette(data->joueurs[i].raquette, teinte);
+    balle(data->balleJeu, teinte);
     score(data->joueurs[0].score, 43 * Ux, 76 * Uy);
     score(data->joueurs[1].score, 61 * Ux, 76 * Uy);
-    balle(data->balleJeu, teinte);
     if (data->page.pause)
         affichePause(data->page.select);
 }
 void AfficheEntrainement(Data *const data)
 {
     CC_BLANC;
-    epaisseurDeTrait(8);
+    EPAISSEUR_TITRE;
     afficheChaine("PONG", 95, 31 * Ux, 85 * Uy);
     rouage(88 * Ux, 91 * Uy, r_Rouage);
     int teinte = (data->page.pause) ? 150 : 255;

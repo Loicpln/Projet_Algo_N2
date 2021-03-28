@@ -35,5 +35,5 @@ void F_NULL() {}
 
 const Gestion fTempo() { return (const Gestion){TempoAccueil, TempoRegles, TempoMenu, TempoSelection, TempoJeu, TempoSelection, TempoJeuIA, TempoEntrainement}; }
 const Gestion fAffiche() { return (const Gestion){AfficheAccueil, AfficheRegles, AfficheMenu, AfficheSelection, AfficheJeu, AfficheSelection, AfficheJeu, AfficheEntrainement}; }
-const Gestion fClavier() { return (const Gestion){F_NULL, F_NULL, F_NULL, F_NULL, ClavierJeu2J, F_NULL, ClavierJeu1J, ClavierJeu1J}; }
+const Gestion fClavier() { return (const Gestion){F_NULL, F_NULL, F_NULL, ClavierSelect, ClavierJeu2J, ClavierSelect, ClavierJeu1J, ClavierJeu1J}; }
 const Gestion fClic() { return (const Gestion){ClicAccueil, ClicRegles, ClicMenu, ClicSelection, ClicJeu, ClicSelectionIA, ClicJeu, ClicJeu}; }

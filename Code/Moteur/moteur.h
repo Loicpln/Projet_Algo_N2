@@ -10,7 +10,7 @@ int initScore();
 void resetSelect(Select *const select);
 Users *chargeUsersDepuisFichier();
 
-void couleurSelect(Select *const select, const int i, const int R, const int V, const int B);
+void couleurSelect(Select *const select, const int R, const int V, const int B);
 void mouvementBalle(Balle *const balle);
 void rebond(Balle *const balle, const int min_x, const int min_y, const int max_x, const int max_y);
 void accelereBalle(Balle *const balle, const float facteur);
@@ -26,6 +26,7 @@ void resetJoueurs(Joueur *const joueur);
 void resetRaquette(Joueur *const joueur);
 void resetScore(Joueur *const joueur);
 void touchePause(Page *const page);
+void ecrire(char text[]);
 void touches(Raquette *const raquette);
 void up(Raquette *const raquette);
 void down(Raquette *const raquette);

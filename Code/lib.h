@@ -32,11 +32,16 @@
 #define CC_BLANC couleurCourante(255, 255, 255)
 #define CC_NOIR couleurCourante(0, 0, 0)
 
+#define EPAISSEUR_1 epaisseurDeTrait(1)
+#define EPAISSEUR_2 epaisseurDeTrait(2)
+#define EPAISSEUR_3 epaisseurDeTrait(3)
+#define EPAISSEUR_TITRE epaisseurDeTrait(8)
+
 #define LARG_RAQUETTE 10
 #define LONG_RAQUETTE 100
 #define V_RAQUETTE 15
-#define X_RAQUETTE_LEFT MIN_X_PLATEAU + 10
-#define X_RAQUETTE_RIGHT MAX_X_PLATEAU - 10
+#define X_RAQUETTE_LEFT MIN_X_PLATEAU + 2 * Ux
+#define X_RAQUETTE_RIGHT MAX_X_PLATEAU - 2 * Ux
 
 #define V_BALLE (rand() % 2) ? 5 : -5
 #define VH_BALLE 0.1
@@ -48,6 +53,19 @@
 
 #define L_SELECT 5
 #define NB_SELECT 50
+
+#define GRILLE                                        \
+    for (int i = 1; i < 100; i++)                     \
+    {                                                 \
+        char a[10] = "";                              \
+        CC_BLANC;                                     \
+        EPAISSEUR_1;                                  \
+        sprintf(a, "%d", i);                          \
+        afficheChaine(a, 5, Ux / 2 + i * Ux, Uy / 2); \
+        afficheChaine(a, 5, Ux / 2, Uy / 2 + i * Uy); \
+        ligne(i *Ux, Uy, i *Ux, 100 * Uy);            \
+        ligne(Ux, i *Uy, 100 * Ux, i * Uy);           \
+    }
 
 #define DIGIT_0 \
     (Digit) { true, true, true, false, true, true, true }
@@ -124,7 +142,7 @@ typedef struct User User;
 struct User
 {
     int id;
-    char pseudo[25];
+    char pseudo[15];
     int nbGame;
     int nbWin;
     int nbLose;
@@ -168,6 +186,7 @@ typedef struct
     Joueur joueurs[NB_JOUEUR];
     Users *users;
     //Options option;
+    char newPseudo[15];
 } Data;
 
 #endif

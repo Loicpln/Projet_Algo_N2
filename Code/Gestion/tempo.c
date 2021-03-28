@@ -19,7 +19,7 @@ void TempoMenu(Data *const data)
 		mouvementBalle(data->balle + i);
 	}
 	for (int i = 0; i < NB_SELECT; i++)
-		couleurSelect(data->page.select, i, rand() % 256, rand() % 256, rand() % 256);
+		couleurSelect(data->page.select + i, rand() % 256, rand() % 256, rand() % 256);
 }
 
 void TempoRegles(Data *const data)
@@ -29,12 +29,32 @@ void TempoRegles(Data *const data)
 
 void TempoSelection(Data *const data)
 {
-	selectSelection(data->page.select);
-	if (data->joueurs[1].user != NULL)
-		couleurSelect(data->page.select, data->joueurs[1].user->id, 255, 0, 0);
+	int teinte = (data->page.pause) ? 150 : 255;
+	if (!data->page.pause)
+	{
+		selectSelection(data->page.select);
+		enregistreUsersFichier(data->users);
+	}
+	else
+	{
+		resetSelect(data->page.select);
+		for (int i = 0; i < NB_SELECT; i++)
+			couleurSelect(data->page.select + i, 150, 150, 150);
+		couleurSelect(&data->page.select[46], 255, 255, 255);
+		couleurSelect(&data->page.select[47], 0, 255, 0);
+	}
+	if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
+		data->page.select[47].largeur = L_SELECT;
 	if (data->joueurs[0].user != NULL)
-		couleurSelect(data->page.select, data->joueurs[0].user->id, 0, 0, 255);
-	enregistreUsersFichier(data->users);
+	{
+		couleurSelect(data->page.select + data->joueurs[0].user->id, 0, 0, teinte);
+		couleurSelect(data->page.select + data->joueurs[0].user->id + NB_USERS, 0, 0, teinte);
+	}
+	if (data->joueurs[1].user != NULL)
+	{
+		couleurSelect(data->page.select + data->joueurs[1].user->id, teinte, 0, 0);
+		couleurSelect(data->page.select + data->joueurs[1].user->id + NB_USERS, teinte, 0, 0);
+	}
 }
 void TempoJeu(Data *const data)
 {

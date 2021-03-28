@@ -30,14 +30,14 @@ void plateau(const int teinte)
     CC_NOIR;
     rectangle(MIN_X_PLATEAU, MIN_Y_PLATEAU, MAX_X_PLATEAU, MAX_Y_PLATEAU);
     couleurCourante(teinte, teinte, teinte);
-    epaisseurDeTrait(3);
+    EPAISSEUR_3;
     for (int i = 0; i < 8; i++)
         ligne(MID_X, 82 * Uy - 10 * i * Uy, MID_X, 73 * Uy - 10 * i * Uy);
 }
 void affichePause(const Select *const select)
 {
     CC_BLANC;
-    epaisseurDeTrait(3);
+    EPAISSEUR_3;
     ligne(30 * Ux, 10 * Uy, 30 * Ux, 70 * Uy);
     ligne(30 * Ux, 70 * Uy, 70 * Ux, 70 * Uy);
     ligne(70 * Ux, 70 * Uy, 70 * Ux, 10 * Uy);
@@ -49,6 +49,13 @@ void affichePause(const Select *const select)
     afficheChaine("Reprendre", 30, 41 * Ux, 58 * Uy);
     afficheChaine("Rejouer", 30, 43 * Ux, 38 * Uy);
     afficheChaine("Quitter", 30, 44 * Ux, 18 * Uy);
+}
+void zoneText(const Select *const select, const char chaine[])
+{
+    bouton(select[46], 30 * Ux, 45 * Uy, 70 * Ux, 55 * Uy);
+    EPAISSEUR_2;
+    CC_BLANC;
+    afficheChaine(chaine, 30, MID_X - strlen(chaine)*Ux, 48 * Uy);
 }
 
 void raquette(const Raquette raquette, const int teinte)
@@ -89,7 +96,7 @@ void afficheDigit(const Digit digit, const int x, const int y)
     ligne(x - Ux, y - 2 * Ux, x + Ux, y - 2 * Ux);
 }
 
-void afficheUsers(const Select *const select, const Users *const users)
+void afficheUsers(const Select *const select, const Users *const users, const int teinte)
 {
     char Game[10] = "", Win[10] = "", Lose[10] = "";
     const User *tmp = users->premier;
@@ -100,10 +107,9 @@ void afficheUsers(const Select *const select, const Users *const users)
         sprintf(Lose, "L %d", tmp->nbLose);
         bouton(select[i], 2 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 83 * Uy - 35 * floor(i / 5) * Uy);
         bouton(select[i + NB_USERS], 15 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 60 * Uy - 35 * floor(i / 5) * Uy);
-        CC_BLANC;
-        epaisseurDeTrait(3);
-        afficheChaine(tmp->pseudo, 30, 4 * Ux + 20 * (i % 5) * Ux, 75 * Uy - 35 * floor(i / 5) * Uy);
-        epaisseurDeTrait(2);
+        EPAISSEUR_2;
+        couleurCourante(teinte, teinte, teinte);
+        afficheChaine(tmp->pseudo, 40 - 10 * floor(strlen(tmp->pseudo) / 5), 4 * Ux + 20 * (i % 5) * Ux, 75 * Uy - 35 * floor(i / 5) * Uy);
         ligne(16 * Ux + 20 * (i % 5) * Ux, 57 * Uy - 35 * floor(i / 5) * Uy, 17 * Ux + 20 * (i % 5) * Ux, 59 * Uy - 35 * floor(i / 5) * Uy);
         ligne(16 * Ux + 20 * (i % 5) * Ux, 59 * Uy - 35 * floor(i / 5) * Uy, 17 * Ux + 20 * (i % 5) * Ux, 57 * Uy - 35 * floor(i / 5) * Uy);
         afficheChaine(Game, 20, 4 * Ux + 20 * (i % 5) * Ux, 70 * Uy - 35 * floor(i / 5) * Uy);
