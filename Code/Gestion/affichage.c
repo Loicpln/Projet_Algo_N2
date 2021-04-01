@@ -22,7 +22,7 @@ void AfficheMenu(Data *const data)
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
     for (int i = 0; i < NB_BALLE; i++)
         cercle(data->balle[i].x, data->balle[i].y, data->balle[i].r);
-    bouton(data->page.select[0], 25 * Ux, 67 * Uy, 75 * Ux, 79 * Uy); //JcJ
+    bouton(data->page.select[0], 25 * Ux, 67 * Uy, 75 * Ux, 80 * Uy); //JcJ
     bouton(data->page.select[1], 25 * Ux, 50 * Uy, 75 * Ux, 63 * Uy); //contreIA
     bouton(data->page.select[2], 25 * Ux, 33 * Uy, 75 * Ux, 46 * Uy); //entrainement
     bouton(data->page.select[3], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);  //Quitter
@@ -98,4 +98,18 @@ void AfficheEntrainement(Data *const data)
     balle(data->balleJeu, teinte);
     if (data->page.pause)
         affichePause(data->page.select);
+}
+
+void AfficheModeDeJeu(Data *const data)
+{
+    CC_BLANC;
+    EPAISSEUR_TITRE;
+    afficheChaine("Mode De Jeu", 70, 19 * Ux, 85 * Uy);
+    bouton(data->page.select[0], 25 * Ux, 67 * Uy, 75 * Ux, 80 * Uy); //Mode : Contre la montre
+    bouton(data->page.select[1], 25 * Ux, 50 * Uy, 75 * Ux, 63 * Uy); //Mode : Vies
+
+    CC_BLANC;
+    EPAISSEUR_3;
+    afficheChaine("Contre La Montre", 30, 33 * Ux, 71 * Uy);
+    afficheChaine("Battle Royal", 30, 38 * Ux, 54 * Uy);
 }

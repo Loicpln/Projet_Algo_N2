@@ -107,3 +107,9 @@ void TempoEntrainement(Data *const data)
 		selectPause(data->page.select);
 	selectRouage(data->page.select);
 }
+
+void TempoModeDeJeu(Data * const data)
+{
+	resetSelect(data->page.select);
+	selectModeDeJeu(data->page.select);
+}

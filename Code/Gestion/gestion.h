@@ -14,6 +14,8 @@ void AfficheSelection(Data *const data);
 void AfficheJeu(Data * const data);
 //Gestion Affichage page d'Entrainement
 void AfficheEntrainement(Data * const data);
+//Gestion Affichage page selection des modes de jeu
+void AfficheModeDeJeu(Data * const data);
 
 //Gestion Clavier page Select
 void ClavierSelect(Data *const data);
@@ -34,6 +36,10 @@ void ClicSelection(Data * const data);
 void ClicJeu(Data * const data);
 //Gestion Clic page Selection vs IA
 void ClicSelectionIA(Data * const data);
+//Gestion Clic page de selection Mode De Jeu Joueurs
+void ClicModeDeJeu(Data * const data);
+//Gestion Clic page de selection Mode De Jeu IA
+void ClicModeDeJeuIA(Data * const data);
 
 //Gestion Tempo page d'Accueil
 void TempoAccueil(Data * const data);
@@ -49,3 +55,5 @@ void TempoJeu(Data * const data);
 void TempoJeuIA(Data * const data);
 //Gestion Tempo page d'Entrainement
 void TempoEntrainement(Data * const data);
+//Gestion Tempo page Mode De Jeu
+void TempoModeDeJeu(Data * const data);

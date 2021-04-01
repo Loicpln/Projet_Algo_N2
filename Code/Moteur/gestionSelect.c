@@ -12,7 +12,7 @@ void selectAcceuil(Select *const select)
 
 void selectMenu(Select *const select)
 {
-    if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
+    if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 80 * Uy)
         select[0].largeur = L_SELECT;
     if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
         select[1].largeur = L_SELECT;
@@ -63,4 +63,14 @@ void selectRouage(Select *const select)
 {
     if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 91 * Uy) < r_Rouage)
         select[30].largeur = 3;
+}
+
+void selectModeDeJeu(Select * const select)
+{
+    if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 80 * Uy)
+        select[0].largeur = L_SELECT;
+    if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
+        select[1].largeur = L_SELECT;
+    // if (25 * Ux < X_SOURIS < 75 * Ux && 33 * Uy < Y_SOURIS < 46 * Uy)
+    //     select[2].largeur = L_SELECT;
 }

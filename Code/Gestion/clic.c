@@ -55,7 +55,7 @@ void ClicSelection(Data *const data)
             clicUsers(data->joueurs, data->users);
             if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
                 if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
-                    data->page.numero = Jeu_Joueurs;
+                    data->page.numero = ModeDeJeu;
             if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
             {
                 data->page.numero = Menu;
@@ -77,7 +77,7 @@ void ClicSelectionIA(Data *const data)
             clicUsers(data->joueurs, data->users);
             if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
                 if (data->joueurs[0].user != NULL)
-                    data->page.numero = Jeu_IA;
+                    data->page.numero = ModeDeJeuIA;
             if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
             {
                 data->page.numero = Menu;
@@ -96,5 +96,39 @@ void ClicJeu(Data *const data)
         clicRouage(&data->page);
         if (data->page.pause)
             clicPause(data);
+    }
+}
+
+void ClicModeDeJeu(Data *const data)
+{
+    if (etatBoutonSouris() == GaucheAppuye)
+    {
+        if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
+        {
+            data->mode = ContreLaMontre;
+            data->page.numero = Jeu_Joueurs;
+        }
+        if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
+        {
+            data->mode = BattleRoyal;
+            data->page.numero = Jeu_Joueurs;
+        }
+    }
+}
+
+void ClicModeDeJeuIA(Data *const data)
+{
+    if (etatBoutonSouris() == GaucheAppuye)
+    {
+        if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
+        {
+            data->mode = ContreLaMontre;
+            data->page.numero = Jeu_IA;
+        }
+        if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
+        {
+            data->mode = BattleRoyal;
+            data->page.numero = Jeu_IA;
+        }
     }
 }

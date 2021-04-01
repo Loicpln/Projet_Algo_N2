@@ -92,6 +92,9 @@
 #define DIGIT_ERROR \
     (Digit) { true, true, false, true, true, false, true }
 
+#define ContreLaMontre 0
+#define BattleRoyal 1
+
 #define Acceuil 1
 #define Regles 2
 #define Menu 3
@@ -100,6 +103,8 @@
 #define Selection_IA 6
 #define Jeu_IA 7
 #define Entrainement 8
+#define ModeDeJeu 9
+#define ModeDeJeuIA 10
 
 #ifndef STRUCT
 #define STRUCT
@@ -191,6 +196,7 @@ typedef struct
     Users *users;
     //Options option;
     char newPseudo[15];
+    int mode;
 } Data;
 
 #endif

@@ -19,6 +19,7 @@ void selectSelection(Select *const select);
 void selectPause(Select *const select);
 void selectAddUsers(Select *const select);
 void selectRouage(Select *const select);
+void selectModeDeJeu(Select * const select);
 
 void clicPause(Data *const data);
 void clicUsers(Joueur *const joueur, Users *const users);
