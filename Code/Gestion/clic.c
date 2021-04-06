@@ -60,8 +60,6 @@ void ClicSelection(Data *const data)
             {
                 data->page.numero = Menu;
                 resetJoueurs(data->joueurs);
-                resetRaquette(data->joueurs);
-                resetScore(data->joueurs);
             }
         }
     }
@@ -82,8 +80,6 @@ void ClicSelectionIA(Data *const data)
             {
                 data->page.numero = Menu;
                 resetJoueurs(data->joueurs);
-                resetRaquette(data->joueurs);
-                resetScore(data->joueurs);
             }
         }
     }
@@ -93,7 +89,7 @@ void ClicJeu(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
-        clicRouage(&data->page);
+        clicRouage(&data->page, data->option.mode);
         if (data->page.pause)
             clicPause(data);
     }
@@ -105,12 +101,12 @@ void ClicModeDeJeu(Data *const data)
     {
         if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
         {
-            data->mode = ContreLaMontre;
+            data->option.mode = ContreLaMontre;
             data->page.numero = Jeu_Joueurs;
         }
         if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
         {
-            data->mode = BattleRoyal;
+            data->option.mode = BattleRoyal;
             data->page.numero = Jeu_Joueurs;
         }
     }
@@ -122,12 +118,12 @@ void ClicModeDeJeuIA(Data *const data)
     {
         if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
         {
-            data->mode = ContreLaMontre;
+            data->option.mode = ContreLaMontre;
             data->page.numero = Jeu_IA;
         }
         if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
         {
-            data->mode = BattleRoyal;
+            data->option.mode = BattleRoyal;
             data->page.numero = Jeu_IA;
         }
     }

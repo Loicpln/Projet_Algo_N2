@@ -71,17 +71,27 @@ void AfficheSelection(Data *const data)
 
 void AfficheJeu(Data *const data)
 {
-    CC_BLANC;
-    EPAISSEUR_TITRE;
-    afficheChaine("PONG", 95, 31 * Ux, 85 * Uy);
     int teinte = (data->page.pause) ? 150 : 255;
-    rouage(data->page.select[30], 88 * Ux, 91 * Uy, r_Rouage);
     plateau(teinte);
     for (int i = 0; i < NB_JOUEUR; i++)
         raquette(data->joueurs[i].raquette, teinte);
     balle(data->balleJeu, teinte);
-    score(data->joueurs[0].score, 43 * Ux, 76 * Uy);
-    score(data->joueurs[1].score, 61 * Ux, 76 * Uy);
+    if (data->option.mode == ContreLaMontre)
+    {
+        rouage(data->page.select[30], 88 * Ux, 90 * Uy, r_Rouage);
+        timer(data->option.temps, MID_X, 90 * Uy);
+        score(data->joueurs[0].score, 43 * Ux, 76 * Uy);
+        score(data->joueurs[1].score, 61 * Ux, 76 * Uy);
+    }
+    else
+    {
+        rouage(data->page.select[30], MID_X, 90 * Uy, r_Rouage);
+        for (int i = 0; i < (data->option.nbButs - data->joueurs[1].score); i++)
+            coeur(10 * Ux + 10 * i * Ux, 92 * Uy);
+
+        for (int i = 0; i < (data->option.nbButs - data->joueurs[0].score); i++)
+            coeur(90 * Ux - 10 * i * Ux, 92 * Uy);
+    }
     if (data->page.pause)
         affichePause(data->page.select);
 }
@@ -90,8 +100,8 @@ void AfficheEntrainement(Data *const data)
 {
     CC_BLANC;
     EPAISSEUR_TITRE;
-    afficheChaine("PONG", 95, 31 * Ux, 85 * Uy);
-    rouage(data->page.select[30], 88 * Ux, 91 * Uy, r_Rouage);
+    afficheChaine("Training", 95, 28 * Ux, 85 * Uy);
+    rouage(data->page.select[30], 88 * Ux, 90 * Uy, r_Rouage);
     int teinte = (data->page.pause) ? 150 : 255;
     plateau(teinte);
     raquette(data->joueurs[0].raquette, teinte);

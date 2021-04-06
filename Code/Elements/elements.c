@@ -10,6 +10,7 @@ void bouton(const Select select, const int xBasGauche, const int yBasGauche, con
 
 void rouage(const Select select, const int x, const int y, const int r)
 {
+    EPAISSEUR_TITRE;
     couleurCourante(100, 100, 100);
     cercle(x, y, r);
     couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
@@ -34,6 +35,15 @@ void plateau(const int teinte)
     EPAISSEUR_3;
     for (int i = 0; i < 8; i++)
         ligne(MID_X, 82 * Uy - 10 * i * Uy, MID_X, 73 * Uy - 10 * i * Uy);
+}
+
+void coeur(const int x, const int y)
+{
+    couleurCourante(255, 0, 0);
+    rectangle(x - 5, y - 20, x + 5, y);
+    cercle(x - 2 * Ux, y, 2 * Ux);
+    cercle(x + 2 * Ux, y, 2 * Ux);
+    triangle(x, y - 6 * Uy, x - (1 + M_SQRT1_2) * 2 * Ux, y - M_SQRT1_2 * 2 * Ux, x + (1 + M_SQRT1_2) * 2 * Ux, y - M_SQRT1_2 * 2 * Ux);
 }
 
 void affichePause(const Select *const select)
@@ -78,6 +88,18 @@ void score(const int score, const int x, const int y)
     Digit digit[2] = {nombre(score - 10 * floor(score / 10)), nombre(floor(score / 10))};
     for (int i = 0; i < 2; i++)
         afficheDigit(digit[i], x - 4 * i * Ux, y);
+}
+
+void timer(const int temps[], const int x, const int y)
+{
+    Digit minutes = nombre(temps[0]);
+    Digit secondes[2] = {nombre(floor(temps[1] / 10)), nombre(temps[1] - 10 * floor(temps[1] / 10))};
+    CC_BLANC;
+    cercle(x, y + Uy, 3);
+    cercle(x, y - Uy, 3);
+    afficheDigit(minutes, x - 4 * Ux, y);
+    for (int i = 1; i < 3; i++)
+        afficheDigit(secondes[i - 1], x + 4 * i * Ux, y);
 }
 
 void afficheDigit(const Digit digit, const int x, const int y)

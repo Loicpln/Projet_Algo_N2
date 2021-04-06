@@ -1,6 +1,6 @@
 #include "moteur.h"
 
-Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier(), ""}; }
+Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier(),initOptions(), ""}; }
 
 Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_BALLE, V_BALLE, V_BALLE, fabsf(V_BALLE)}; }
 
@@ -29,6 +29,8 @@ Users *chargeUsersDepuisFichier()
 	}
 	return users;
 }
+
+Options initOptions() { return (Options){0,{5,0},3}; }
 
 int initScore() { return (int)0; }
 

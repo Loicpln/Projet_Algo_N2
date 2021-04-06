@@ -155,6 +155,53 @@ void but(Balle *const balle, Joueur *const joueur)
 	}
 }
 
+void jeu(Data *const data)
+{
+	mouvementBalle(&data->balleJeu);
+	for (int i = 0; i < NB_JOUEUR; i++)
+		hitbox(&data->balleJeu, &data->joueurs[i].raquette);
+	rebond(&data->balleJeu, -MAX_X, MIN_Y_PLATEAU, 2 * MAX_X, MAX_Y_PLATEAU);
+	but(&data->balleJeu, data->joueurs);
+	if (data->option.mode == ContreLaMontre)
+	{
+		decompte(data->option.temps);
+		if (data->option.temps[0] == 0 && data->option.temps[1] == 0)
+		{
+			data->page.numero = Menu;
+			data->balleJeu = initBalleJeu();
+			data->option = initOptions();
+			resetJoueurs(data->joueurs);
+			resetRaquette(data->joueurs);
+			resetScore(data->joueurs);
+		}
+	}
+	else if (data->joueurs[0].score == data->option.nbButs || data->joueurs[1].score == data->option.nbButs)
+	{
+		data->page.numero = Menu;
+		data->balleJeu = initBalleJeu();
+		data->option = initOptions();
+		resetJoueurs(data->joueurs);
+		resetRaquette(data->joueurs);
+		resetScore(data->joueurs);
+	}
+}
+
+void decompte(int temps[])
+{
+	static int tmp = 0;
+	if (++tmp == 50)
+	{
+		if (temps[1] == 0)
+		{
+			temps[1] = 59;
+			temps[0]--;
+		}
+		else
+			temps[1]--;
+		tmp = 0;
+	}
+}
+
 void IA(Raquette *const raquette, const Balle *const balle)
 {
 	float x = balle->x, y = balle->y, vy = balle->vy;

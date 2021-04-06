@@ -184,6 +184,9 @@ typedef struct
 
 typedef struct
 {
+    int mode;
+    int temps[2];
+    int nbButs;
 } Options;
 
 // Page page |Balle balle[MAX_BALLE] |Balle balleJeu |Joueur joueurs[NB_JOUEUR] |User *users |char newPseudo[15]
@@ -194,9 +197,8 @@ typedef struct
     Balle balleJeu;
     Joueur joueurs[NB_JOUEUR];
     Users *users;
-    //Options option;
+    Options option;
     char newPseudo[15];
-    int mode;
 } Data;
 
 #endif

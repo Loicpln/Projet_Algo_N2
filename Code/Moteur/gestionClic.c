@@ -40,9 +40,14 @@ void clicUsers(Joueur *const joueur, Users *users)
     }
 }
 
-void clicRouage(Page *const page)
+void clicRouage(Page *const page, const int mode)
 {
-    if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 91 * Uy) < r_Rouage)
+    if (mode == ContreLaMontre)
+    {
+        if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
+            page->pause = (page->pause == true) ? false : true;
+    }
+    else if (abs(abscisseSouris() - MID_X) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
         page->pause = (page->pause == true) ? false : true;
 }
 

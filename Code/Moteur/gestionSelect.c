@@ -56,16 +56,21 @@ void selectPause(Select *const select)
 void selectAddUsers(Select *const select)
 {
     if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
-		select[47].largeur = L_SELECT;
+        select[47].largeur = L_SELECT;
 }
 
-void selectRouage(Select *const select)
+void selectRouage(Select *const select, const int mode)
 {
-    if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 91 * Uy) < r_Rouage)
+    if (mode == ContreLaMontre)
+    {
+        if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
+            select[30].largeur = 3;
+    }
+    else if (abs(abscisseSouris() - MID_X) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
         select[30].largeur = 3;
 }
 
-void selectModeDeJeu(Select * const select)
+void selectModeDeJeu(Select *const select)
 {
     if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 80 * Uy)
         select[0].largeur = L_SELECT;
