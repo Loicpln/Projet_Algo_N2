@@ -50,4 +50,4 @@ void hitbox(Balle *const balle, const Raquette *const raquette);
 void but(Balle *const balle, Joueur *const joueur);
 void jeu(Data *const data);
 void decompte(int temps[]);
-void IA(Raquette *const raquette, const Balle *const balle);
+void IA(Raquette *const raquette, const Balle *const balle,const bool side);

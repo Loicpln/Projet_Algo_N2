@@ -160,6 +160,10 @@ void jeu(Data *const data)
 	mouvementBalle(&data->balleJeu);
 	for (int i = 0; i < NB_JOUEUR; i++)
 		hitbox(&data->balleJeu, &data->joueurs[i].raquette);
+	if (data->joueurs[0].user->id == 45)
+		IA(&data->joueurs[0].raquette, &data->balleJeu, Gauche);
+	else if (data->joueurs[1].user->id == 45)
+		IA(&data->joueurs[1].raquette, &data->balleJeu, Droite);
 	rebond(&data->balleJeu, -MAX_X, MIN_Y_PLATEAU, 2 * MAX_X, MAX_Y_PLATEAU);
 	but(&data->balleJeu, data->joueurs);
 	if (data->option.mode == ContreLaMontre)
@@ -202,21 +206,20 @@ void decompte(int temps[])
 	}
 }
 
-void IA(Raquette *const raquette, const Balle *const balle)
+void IA(Raquette *const raquette, const Balle *const balle, const bool side)
 {
 	float x = balle->x, y = balle->y, vy = balle->vy;
-	if (x < raquette->x)
+	if ((side) ? (x < raquette->x) : (x > raquette->x))
 	{
-		if (balle->vx > 0)
+		if ((side) ? (balle->vx > 0) : (balle->vx < 0))
 		{
-			while (x < raquette->x - raquette->largeur / 2)
+			while ((side) ? (x < raquette->x - raquette->largeur / 2) : (x > raquette->x + raquette->largeur / 2))
 			{
 				x += balle->vx;
 				if (y < MIN_Y_PLATEAU || MAX_Y_PLATEAU < y)
 					vy = -vy;
 				y += vy;
 			}
-
 			if (raquette->y >= MIN_Y_PLATEAU + raquette->longueur / 2 && raquette->y <= MAX_Y_PLATEAU - raquette->longueur / 2)
 			{
 				if (y > raquette->y)

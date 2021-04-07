@@ -14,17 +14,22 @@ void ClavierSelect(Data *const data)
 	}
 }
 
-void ClavierJeu1J(Data *const data)
-{
-	touchePause(&data->page);
-	if (!data->page.pause)
-		touches(&data->joueurs[0].raquette);
-}
-
-void ClavierJeu2J(Data *const data)
+void ClavierEntrainement(Data *const data)
 {
 	touchePause(&data->page);
 	if (!data->page.pause)
 		for (int i = 0; i < NB_JOUEUR; i++)
 			touches(&data->joueurs[i].raquette);
+}
+
+void ClavierJeu(Data *const data)
+{
+	touchePause(&data->page);
+	if (!data->page.pause)
+	{
+		if(data->joueurs[0].user->id != 45)
+			touches(&data->joueurs[0].raquette);
+		if(data->joueurs[1].user->id != 45)
+			touches(&data->joueurs[1].raquette);
+	}
 }

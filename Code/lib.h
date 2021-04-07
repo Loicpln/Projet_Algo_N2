@@ -45,6 +45,9 @@
 #define X_RAQUETTE_LEFT MIN_X_PLATEAU + 2 * Ux
 #define X_RAQUETTE_RIGHT MAX_X_PLATEAU - 2 * Ux
 
+#define Gauche false
+#define Droite true
+
 #define V_BALLE (rand() % 2) ? 5 : -5
 #define VH_BALLE 0.00001
 #define R_BALLE 10
@@ -100,11 +103,7 @@
 #define Menu 3
 #define Selection_Joueurs 4
 #define Jeu_Joueurs 5
-#define Selection_IA 6
-#define Jeu_IA 7
-#define Entrainement 8
-#define ModeDeJeu 9
-#define ModeDeJeuIA 10
+#define Entrainement 6
 
 #ifndef STRUCT
 #define STRUCT

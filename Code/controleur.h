@@ -14,15 +14,6 @@ typedef struct
     void (*f5)(Data * const);
     //Page 6
     void (*f6)(Data * const);
-    //Page 7
-    void (*f7)(Data * const);
-    //Page 8
-    void (*f8)(Data * const);
-    //Page 9
-    void (*f9)(Data * const);
-    //Page 10
-    void (*f10)(Data * const);
-
 } Gestion;
 
 //fonction nulle

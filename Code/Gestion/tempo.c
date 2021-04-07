@@ -70,19 +70,6 @@ void TempoJeu(Data *const data)
 	selectRouage(data->page.select, data->option.mode);
 }
 
-void TempoJeuIA(Data *const data)
-{
-	resetSelect(data->page.select);
-	if (!data->page.pause)
-	{
-		jeu(data);
-		IA(&data->joueurs[1].raquette, &data->balleJeu);
-	}
-	else
-		selectPause(data->page.select);
-	selectRouage(data->page.select, data->option.mode);
-}
-
 void TempoEntrainement(Data *const data)
 {
 	resetSelect(data->page.select);
@@ -96,10 +83,4 @@ void TempoEntrainement(Data *const data)
 	else
 		selectPause(data->page.select);
 	selectRouage(data->page.select, data->option.mode);
-}
-
-void TempoModeDeJeu(Data *const data)
-{
-	resetSelect(data->page.select);
-	selectModeDeJeu(data->page.select);
 }

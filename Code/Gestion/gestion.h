@@ -14,15 +14,13 @@ void AfficheSelection(Data *const data);
 void AfficheJeu(Data * const data);
 //Gestion Affichage page d'Entrainement
 void AfficheEntrainement(Data * const data);
-//Gestion Affichage page selection des modes de jeu
-void AfficheModeDeJeu(Data * const data);
 
 //Gestion Clavier page Select
 void ClavierSelect(Data *const data);
-//Gestion Clavier page Jeu 1 joueurs
-void ClavierJeu1J(Data * const data);
-//Gestion Clavier page Jeu 2 joueurs
-void ClavierJeu2J(Data * const data);
+//Gestion Clavier page Jeu 
+void ClavierJeu(Data * const data);
+//Gestion Clavier page Entrainement
+void ClavierEntrainement(Data *const data);
 
 //Gestion Clic page d'Accueil
 void ClicAccueil(Data * const data);
@@ -34,12 +32,6 @@ void ClicRegles(Data * const data);
 void ClicSelection(Data * const data);
 //Gestion Clic page Jeu
 void ClicJeu(Data * const data);
-//Gestion Clic page Selection vs IA
-void ClicSelectionIA(Data * const data);
-//Gestion Clic page de selection Mode De Jeu Joueurs
-void ClicModeDeJeu(Data * const data);
-//Gestion Clic page de selection Mode De Jeu IA
-void ClicModeDeJeuIA(Data * const data);
 
 //Gestion Tempo page d'Accueil
 void TempoAccueil(Data * const data);
@@ -49,11 +41,7 @@ void TempoMenu(Data * const data);
 void TempoRegles(Data * const data);
 //Gestion Tempo page Selection
 void TempoSelection(Data * const data);
-//Gestion Tempo page Jeu 1v1
+//Gestion Tempo page Jeu
 void TempoJeu(Data * const data);
-//Gestion Tempo page Jeu 1vIA
-void TempoJeuIA(Data * const data);
 //Gestion Tempo page d'Entrainement
 void TempoEntrainement(Data * const data);
-//Gestion Tempo page Mode De Jeu
-void TempoModeDeJeu(Data * const data);

@@ -26,18 +26,19 @@ void clicUsers(Joueur *const joueur, Users *users)
 {
     const User *tmp = users->premier;
     for (int i = 0; tmp != NULL; i++, tmp = tmp->userSuivant)
-    {
         if (15 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 60 * Uy - 35 * floor(i / 5) * Uy)
         {
-            if (rechercheUser(users, 0) != NULL)
+            if (rechercheUser(users, i) != NULL)
                 users = supprimeDansUsers(users, i);
         }
         else if (2 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 83 * Uy - 35 * floor(i / 5) * Uy)
         {
-            if (rechercheUser(users, 0) != NULL)
+            if (rechercheUser(users, i) != NULL)
                 joueur->user = rechercheUser(users, i);
         }
-    }
+
+    if (42 * Ux < X_SOURIS < 58 * Ux && 86 * Uy < Y_SOURIS < 96 * Uy)
+        joueur->user = creeUser(45,"IA",-1,-1,-1);
 }
 
 void clicRouage(Page *const page, const int mode)

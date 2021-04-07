@@ -31,8 +31,8 @@ void AfficheMenu(Data *const data)
     afficheChaine("PONG", 60, 40 * Ux, 87 * Uy);
     CC_BLANC;
     EPAISSEUR_3;
-    afficheChaine("Joueur contre joueur", 30, 30 * Ux, 71 * Uy);
-    afficheChaine("Jouer contre IA", 30, 30 * Ux, 54 * Uy);
+    afficheChaine("Contre la Montre", 30, 30 * Ux, 71 * Uy);
+    afficheChaine("Battle Royal", 30, 30 * Ux, 54 * Uy);
     afficheChaine("Entrainement", 30, 30 * Ux, 37 * Uy);
     afficheChaine("Retour", 30, 79 * Ux, 8 * Uy);
 }
@@ -55,6 +55,7 @@ void AfficheSelection(Data *const data)
 {
     int teinte = (data->page.pause) ? 150 : 255;
     afficheUsers(data->page.select, data->users, teinte);
+    bouton(data->page.select[45], 42 * Ux, 86 * Uy, 58 * Ux, 96 * Uy);
     bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
     bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy); //titre
     bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
@@ -63,6 +64,7 @@ void AfficheSelection(Data *const data)
     ligne(91 * Ux, 87 * Uy, 91 * Ux, 93 * Uy);
     ligne(89 * Ux, 90 * Uy, 93 * Ux, 90 * Uy);
     couleurCourante(teinte, teinte, teinte);
+    afficheChaine("IA", 35, 48 * Ux, 89 * Uy);
     afficheChaine("Jouer", 30, 45 * Ux, 8 * Uy);
     afficheChaine("Retour", 30, 79 * Ux, 8 * Uy);
     if (data->page.pause)
@@ -100,7 +102,7 @@ void AfficheEntrainement(Data *const data)
 {
     CC_BLANC;
     EPAISSEUR_TITRE;
-    afficheChaine("Training", 95, 28 * Ux, 85 * Uy);
+    afficheChaine("Entrainement", 70, 20 * Ux, 88 * Uy);
     rouage(data->page.select[30], 88 * Ux, 90 * Uy, r_Rouage);
     int teinte = (data->page.pause) ? 150 : 255;
     plateau(teinte);
@@ -108,18 +110,4 @@ void AfficheEntrainement(Data *const data)
     balle(data->balleJeu, teinte);
     if (data->page.pause)
         affichePause(data->page.select);
-}
-
-void AfficheModeDeJeu(Data *const data)
-{
-    CC_BLANC;
-    EPAISSEUR_TITRE;
-    afficheChaine("Mode De Jeu", 70, 19 * Ux, 85 * Uy);
-    bouton(data->page.select[0], 25 * Ux, 67 * Uy, 75 * Ux, 80 * Uy); //Mode : Contre la montre
-    bouton(data->page.select[1], 25 * Ux, 50 * Uy, 75 * Ux, 63 * Uy); //Mode : Vies
-
-    CC_BLANC;
-    EPAISSEUR_3;
-    afficheChaine("Contre La Montre", 30, 33 * Ux, 71 * Uy);
-    afficheChaine("Battle Royal", 30, 38 * Ux, 54 * Uy);
 }
