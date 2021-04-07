@@ -7,7 +7,7 @@ void rouage(const Select select, const int x, const int y, const int r);
 //Affiche le plateau
 void plateau(const int teinte);
 
-void coeur(const int x, const int y);
+void coeur(const int x, const int y, const float r);
 //Affiche le menu pause
 void affichePause(const Select *const select);
 //Affiche la zone de texte

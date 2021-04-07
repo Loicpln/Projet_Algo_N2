@@ -37,13 +37,13 @@ void plateau(const int teinte)
         ligne(MID_X, 82 * Uy - 10 * i * Uy, MID_X, 73 * Uy - 10 * i * Uy);
 }
 
-void coeur(const int x, const int y)
+void coeur(const int x, const int y, const float r)
 {
     couleurCourante(255, 0, 0);
-    rectangle(x - 5, y - 20, x + 5, y);
-    cercle(x - 2 * Ux, y, 2 * Ux);
-    cercle(x + 2 * Ux, y, 2 * Ux);
-    triangle(x, y - 6 * Uy, x - (1 + M_SQRT1_2) * 2 * Ux, y - M_SQRT1_2 * 2 * Ux, x + (1 + M_SQRT1_2) * 2 * Ux, y - M_SQRT1_2 * 2 * Ux);
+    rectangle(x - r / 2, y - r / 2, x + r / 2, y);
+    cercle(x - r / 2, y, r / 2);
+    cercle(x + r / 2, y, r / 2);
+    triangle(x, y - r, x - (1 + M_SQRT1_2) * r / 2, y - M_SQRT1_2 * r / 2, x + (1 + M_SQRT1_2) * r / 2, y - M_SQRT1_2 * r / 2);
 }
 
 void affichePause(const Select *const select)

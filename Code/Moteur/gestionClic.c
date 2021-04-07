@@ -37,7 +37,7 @@ void clicUsers(Joueur *const joueur, Users *users)
                 joueur->user = rechercheUser(users, i);
         }
 
-    if (42 * Ux < X_SOURIS < 58 * Ux && 86 * Uy < Y_SOURIS < 96 * Uy)
+    if (42 * Ux < X_SOURIS < 58 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
         joueur->user = creeUser(45,"IA",-1,-1,-1);
 }
 

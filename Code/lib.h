@@ -101,8 +101,8 @@
 #define Acceuil 1
 #define Regles 2
 #define Menu 3
-#define Selection_Joueurs 4
-#define Jeu_Joueurs 5
+#define Selection 4
+#define Jeu 5
 #define Entrainement 6
 
 #ifndef STRUCT

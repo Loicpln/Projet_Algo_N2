@@ -24,12 +24,12 @@ void ClicMenu(Data *const data)
         if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 79 * Uy)
         {
             data->option.mode = ContreLaMontre;
-            data->page.numero = Selection_Joueurs;
+            data->page.numero = Selection;
         }
         if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
         {
             data->option.mode = BattleRoyal;
-            data->page.numero = Selection_Joueurs;
+            data->page.numero = Selection;
         }
         if (25 * Ux < X_SOURIS < 75 * Ux && 33 * Uy < Y_SOURIS < 46 * Uy)
             data->page.numero = Entrainement;
@@ -61,7 +61,7 @@ void ClicSelection(Data *const data)
             clicUsers(data->joueurs, data->users);
             if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
                 if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
-                    data->page.numero = Jeu_Joueurs;
+                    data->page.numero = Jeu;
             if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
             {
                 data->page.numero = Menu;

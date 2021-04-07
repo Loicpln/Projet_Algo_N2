@@ -31,19 +31,19 @@ void AfficheMenu(Data *const data)
     afficheChaine("PONG", 60, 40 * Ux, 87 * Uy);
     CC_BLANC;
     EPAISSEUR_3;
-    afficheChaine("Contre la Montre", 30, 30 * Ux, 71 * Uy);
-    afficheChaine("Battle Royal", 30, 30 * Ux, 54 * Uy);
-    afficheChaine("Entrainement", 30, 30 * Ux, 37 * Uy);
+    afficheChaine("Contre la Montre", 35, 30 * Ux, 71 * Uy);
+    afficheChaine("Battle Royal", 35, 30 * Ux, 54 * Uy);
+    afficheChaine("Entrainement", 35, 30 * Ux, 37 * Uy);
     afficheChaine("Retour", 30, 79 * Ux, 8 * Uy);
 }
 
 void AfficheRegles(Data *const data)
 {
-    bouton(data->page.select[0], 25 * Ux, 75 * Uy, 75 * Ux, 92 * Uy); //titre                                                             //titre
-    bouton(data->page.select[1], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
-    EPAISSEUR_2;
+    bouton(data->page.select[0], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
     CC_BLANC;
+    EPAISSEUR_TITRE;
     afficheChaine("Reglement", 60, 31 * Ux, 79 * Uy);
+    EPAISSEUR_2;
     afficheChaine("Le concept original de pong est une simulation simpliste ", 20, 10 * Ux, 58 * Uy);
     afficheChaine("de tennis de table, les deux joueurs se passent la balle ", 20, 10 * Ux, 50 * Uy);
     afficheChaine("a l'aide de raquettes, le joueur ayant le plus de points", 20, 10 * Ux, 42 * Uy);
@@ -55,16 +55,16 @@ void AfficheSelection(Data *const data)
 {
     int teinte = (data->page.pause) ? 150 : 255;
     afficheUsers(data->page.select, data->users, teinte);
-    bouton(data->page.select[45], 42 * Ux, 86 * Uy, 58 * Ux, 96 * Uy);
+    bouton(data->page.select[45], 42 * Ux, 85 * Uy, 58 * Ux, 95 * Uy);
     bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
-    bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy); //titre
+    bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);
     bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
     EPAISSEUR_2;
     CC_BLANC;
     ligne(91 * Ux, 87 * Uy, 91 * Ux, 93 * Uy);
     ligne(89 * Ux, 90 * Uy, 93 * Ux, 90 * Uy);
     couleurCourante(teinte, teinte, teinte);
-    afficheChaine("IA", 35, 48 * Ux, 89 * Uy);
+    afficheChaine("IA", 35, 48 * Ux, 88 * Uy);
     afficheChaine("Jouer", 30, 45 * Ux, 8 * Uy);
     afficheChaine("Retour", 30, 79 * Ux, 8 * Uy);
     if (data->page.pause)
@@ -89,10 +89,10 @@ void AfficheJeu(Data *const data)
     {
         rouage(data->page.select[30], MID_X, 90 * Uy, r_Rouage);
         for (int i = 0; i < (data->option.nbButs - data->joueurs[1].score); i++)
-            coeur(10 * Ux + 10 * i * Ux, 92 * Uy);
+            coeur(10 * Ux + 40 / data->option.nbButs * i * Ux, 92 * Uy, 3 * Ux);
 
         for (int i = 0; i < (data->option.nbButs - data->joueurs[0].score); i++)
-            coeur(90 * Ux - 10 * i * Ux, 92 * Uy);
+            coeur(90 * Ux - 40 / data->option.nbButs * i * Ux, 92 * Uy, 3 * Ux);
     }
     if (data->page.pause)
         affichePause(data->page.select);
