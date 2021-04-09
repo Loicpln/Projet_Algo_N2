@@ -55,7 +55,7 @@ void AfficheSelection(Data *const data)
 {
     int teinte = (data->page.pause) ? 150 : 255;
     afficheUsers(data->page.select, data->users, teinte);
-    bouton(data->page.select[45], 42 * Ux, 85 * Uy, 58 * Ux, 95 * Uy);
+    bouton(data->page.select[id_IA], 42 * Ux, 85 * Uy, 58 * Ux, 95 * Uy);
     bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
     bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);
     bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
@@ -78,6 +78,9 @@ void AfficheJeu(Data *const data)
     for (int i = 0; i < NB_JOUEUR; i++)
         raquette(data->joueurs[i].raquette, teinte);
     balle(data->balleJeu, teinte);
+    EPAISSEUR_2;
+    afficheChaine(data->joueurs[0].user->pseudo, 35, 15 * Ux, 73 * Uy);
+    afficheChaine(data->joueurs[1].user->pseudo, 35, 70 * Ux, 73 * Uy);
     if (data->option.mode == ContreLaMontre)
     {
         rouage(data->page.select[30], 88 * Ux, 90 * Uy, r_Rouage);

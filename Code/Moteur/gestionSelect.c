@@ -38,7 +38,7 @@ void selectSelection(Select *const select)
             select[i + NB_USERS].largeur = L_SELECT;
     }
     if (42 * Ux < X_SOURIS < 58 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
-        select[45].largeur = L_SELECT;
+        select[id_IA].largeur = L_SELECT;
     if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
         select[48].largeur = L_SELECT;
     if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)

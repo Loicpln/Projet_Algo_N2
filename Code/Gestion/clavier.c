@@ -27,9 +27,9 @@ void ClavierJeu(Data *const data)
 	touchePause(&data->page);
 	if (!data->page.pause)
 	{
-		if(data->joueurs[0].user->id != 45)
+		if(data->joueurs[0].user->id != id_IA)
 			touches(&data->joueurs[0].raquette);
-		if(data->joueurs[1].user->id != 45)
+		if(data->joueurs[1].user->id != id_IA)
 			touches(&data->joueurs[1].raquette);
 	}
 }

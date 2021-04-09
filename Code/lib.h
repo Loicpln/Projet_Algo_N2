@@ -98,6 +98,8 @@
 #define ContreLaMontre 0
 #define BattleRoyal 1
 
+#define id_IA 45
+
 #define Acceuil 1
 #define Regles 2
 #define Menu 3

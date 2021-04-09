@@ -160,9 +160,9 @@ void jeu(Data *const data)
 	mouvementBalle(&data->balleJeu);
 	for (int i = 0; i < NB_JOUEUR; i++)
 		hitbox(&data->balleJeu, &data->joueurs[i].raquette);
-	if (data->joueurs[0].user->id == 45)
+	if (data->joueurs[0].user->id == id_IA)
 		IA(&data->joueurs[0].raquette, &data->balleJeu, Gauche);
-	else if (data->joueurs[1].user->id == 45)
+	if (data->joueurs[1].user->id == id_IA)
 		IA(&data->joueurs[1].raquette, &data->balleJeu, Droite);
 	rebond(&data->balleJeu, -MAX_X, MIN_Y_PLATEAU, 2 * MAX_X, MAX_Y_PLATEAU);
 	but(&data->balleJeu, data->joueurs);

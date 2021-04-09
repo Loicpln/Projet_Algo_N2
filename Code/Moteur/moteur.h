@@ -24,6 +24,7 @@ void selectModeDeJeu(Select *const select);
 
 void clicPause(Data *const data);
 void clicUsers(Joueur *const joueur, Users *const users);
+void clicSupprUsers(Joueur *const joueur, Users *users);
 void clicRouage(Page *const page, const int mode);
 void clicAddUsers(Page *const page);
 

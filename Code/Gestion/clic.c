@@ -59,6 +59,7 @@ void ClicSelection(Data *const data)
         if (!data->page.pause)
         {
             clicUsers(data->joueurs, data->users);
+            clicSupprUsers(data->joueurs, data->users);
             if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
                 if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
                     data->page.numero = Jeu;
