@@ -54,14 +54,14 @@ void ClicSelection(Data *const data)
     if (etatBoutonSouris() == DroiteAppuye)
     {
         if (!data->page.pause)
-            clicUsers(data->joueurs + 1, data->users);
+            clicUsers(data->joueurs + 1, data->joueurs[0], data->users);
     }
     else if (etatBoutonSouris() == GaucheAppuye)
     {
         clicAddUsers(&data->page);
         if (!data->page.pause)
         {
-            clicUsers(data->joueurs, data->users);
+            clicUsers(data->joueurs, data->joueurs[1], data->users);
             clicSupprUsers(data->joueurs, data->users);
             if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
                 if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)

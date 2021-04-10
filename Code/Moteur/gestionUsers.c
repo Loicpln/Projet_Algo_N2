@@ -1,6 +1,6 @@
 #include "moteur.h"
 
-User *creeUser(const int id, const char pseudo[], const int nbGame, const int nbWin, const int nbLose)
+User *creeUser(const int id, const char *const pseudo, const int nbGame, const int nbWin, const int nbLose)
 {
     User *elem = malloc(sizeof(User));
     elem->id = id;

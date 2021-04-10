@@ -33,7 +33,7 @@ void touchePause(Page *const page)
 		page->pause = (page->pause) ? false : true;
 }
 
-void ecrire(char newPseudo[])
+void ecrire(char *newPseudo)
 {
 	char a[15] = "";
 	if ((caractereClavier() == 8) && (strcmp(newPseudo, "") != 0))
@@ -191,7 +191,7 @@ void jeu(Data *const data)
 	}
 }
 
-void decompte(int temps[])
+void decompte(int *temps)
 {
 	static int tmp = 0;
 	if (++tmp == 50)

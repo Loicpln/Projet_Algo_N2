@@ -71,13 +71,3 @@ void selectRouage(Select *const select, const int mode)
     else if (abs(abscisseSouris() - MID_X) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
         select[30].largeur = 3;
 }
-
-void selectModeDeJeu(Select *const select)
-{
-    if (25 * Ux < X_SOURIS < 75 * Ux && 67 * Uy < Y_SOURIS < 80 * Uy)
-        select[0].largeur = L_SELECT;
-    if (25 * Ux < X_SOURIS < 75 * Ux && 50 * Uy < Y_SOURIS < 63 * Uy)
-        select[1].largeur = L_SELECT;
-    // if (25 * Ux < X_SOURIS < 75 * Ux && 33 * Uy < Y_SOURIS < 46 * Uy)
-    //     select[2].largeur = L_SELECT;
-}

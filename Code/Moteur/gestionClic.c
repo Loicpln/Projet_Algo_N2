@@ -22,12 +22,17 @@ void clicPause(Data *const data)
     }
 }
 
-void clicUsers(Joueur *const joueur, Users *const users)
+void clicUsers(Joueur *const joueur, const Joueur autre, Users *const users)
 {
     const User *tmp = users->premier;
     for (int i = 0; tmp != NULL; i++, tmp = tmp->userSuivant)
         if (2 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 83 * Uy - 35 * floor(i / 5) * Uy)
-            joueur->user = rechercheUser(users, i);
+        {
+            if (autre.user == NULL)
+                joueur->user = rechercheUser(users, i);
+            else if(rechercheUser(users, i)->id != autre.user->id)
+                joueur->user = rechercheUser(users, i);
+        }
     if (42 * Ux < X_SOURIS < 58 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
         joueur->user = creeUser(id_IA, "IA", -1, -1, -1);
 }
@@ -39,10 +44,8 @@ void clicSupprUsers(Joueur *const joueur, Users *users)
         if (15 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 60 * Uy - 35 * floor(i / 5) * Uy)
         {
             users = supprimeDansUsers(users, i);
-            if (i == joueur[0].user->id)
-                joueur[0].user = NULL;
-            if (i == joueur[1].user->id)
-                joueur[1].user = NULL;
+            joueur[0].user = NULL;
+            joueur[1].user = NULL;
         }
 }
 
