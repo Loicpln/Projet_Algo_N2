@@ -2,3 +2,4 @@
 [id=1 |pseudo=Melvin |nbGame=0 |nbWin=0 |nbLose=0]
 [id=2 |pseudo=William |nbGame=0 |nbWin=0 |nbLose=0]
 [id=3 |pseudo=Heloise |nbGame=0 |nbWin=0 |nbLose=0]
+[id=4 |pseudo=cgjbn |nbGame=0 |nbWin=0 |nbLose=0]

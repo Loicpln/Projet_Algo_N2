@@ -52,7 +52,10 @@ void ClicRegles(Data *const data)
 void ClicSelection(Data *const data)
 {
     if (etatBoutonSouris() == DroiteAppuye)
-        clicUsers(data->joueurs + 1, data->users);
+    {
+        if (!data->page.pause)
+            clicUsers(data->joueurs + 1, data->users);
+    }
     else if (etatBoutonSouris() == GaucheAppuye)
     {
         clicAddUsers(&data->page);

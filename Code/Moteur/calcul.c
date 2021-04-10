@@ -113,23 +113,24 @@ void hitbox(Balle *const balle, const Raquette *const raquette)
 		if (raquette->x - raquette->largeur / 2 - cosf(i) * balle->r < X_BALLE < raquette->x + raquette->largeur / 2 - cosf(i) * balle->r &&
 			raquette->y - raquette->longueur / 2 - sinf(i) * balle->r < Y_BALLE < raquette->y + raquette->longueur / 2 - sinf(i) * balle->r)
 		{
-			if (balle->x >= raquette->x + raquette->largeur / 2 || balle->x <= raquette->x - raquette->largeur / 2)
+			if (raquette->x - raquette->largeur / 2 <= X_BALLE <= raquette->x + raquette->largeur / 2 &&
+				raquette->y - raquette->longueur / 2 <= Y_BALLE <= raquette->y + raquette->longueur / 2)
+				while (raquette->y - raquette->longueur / 2 <= Y_BALLE <= raquette->y + raquette->longueur / 2)
+					balle->y += signe(balle->y - raquette->y);
+			if (balle->x > raquette->x + raquette->largeur / 2 || balle->x < raquette->x - raquette->largeur / 2)
 			{
 				balle->vx = -cosf(M_PI / 4 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vx);
 				balle->vy = sinf(M_PI / 4 * fabsf(balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vy);
 			}
-			else if (balle->y >= raquette->y + raquette->longueur / 2 || balle->y <= raquette->y - raquette->longueur / 2)
+			else
 			{
 				balle->vx = sinf(M_PI / 4 * fabsf(balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vx);
 				balle->vy = -cosf(M_PI / 4 * (balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vy);
 			}
-			else
-			{
-				balle->vx = M_SQRT1_2 * balle->v0 * signe(balle->vx);
-				balle->vy = -M_SQRT1_2 * balle->v0 * signe(balle->vy);
-				for (int i = 0; i < 3; i++)
-					mouvementBalle(balle);
-			}
+			if (balle->vx == 0.f)
+				balle->vx = 0.1;
+			if (balle->vy == 0.f)
+				balle->vy = 0.1;
 			mouvementBalle(balle);
 			break;
 		}
