@@ -10,6 +10,7 @@ void clicPause(Data *const data)
         data->balleJeu = initBalleJeu();
         resetRaquette(data->joueurs);
         resetScore(data->joueurs);
+        resetTimer(data->timer, data->option);
     }
     if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
     {
@@ -19,6 +20,7 @@ void clicPause(Data *const data)
         resetJoueurs(data->joueurs);
         resetRaquette(data->joueurs);
         resetScore(data->joueurs);
+        resetTimer(data->timer, data->option);
     }
 }
 
@@ -30,7 +32,7 @@ void clicUsers(Joueur *const joueur, const Joueur autre, Users *const users)
         {
             if (autre.user == NULL)
                 joueur->user = rechercheUser(users, i);
-            else if(rechercheUser(users, i)->id != autre.user->id)
+            else if (rechercheUser(users, i)->id != autre.user->id)
                 joueur->user = rechercheUser(users, i);
         }
     if (42 * Ux < X_SOURIS < 58 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
@@ -49,14 +51,9 @@ void clicSupprUsers(Joueur *const joueur, Users *users)
         }
 }
 
-void clicRouage(Page *const page, const int mode)
+void clicRouage(Page *const page, const int x, const int y, const int r)
 {
-    if (mode == ContreLaMontre)
-    {
-        if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
-            page->pause = (page->pause == true) ? false : true;
-    }
-    else if (abs(abscisseSouris() - MID_X) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
+    if (abs(abscisseSouris() - x) < r && abs(ordonneeSouris() - y) < r)
         page->pause = (page->pause == true) ? false : true;
 }
 

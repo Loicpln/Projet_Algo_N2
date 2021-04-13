@@ -1,6 +1,6 @@
 #include "moteur.h"
 
-Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier(),initOptions(), ""}; }
+Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier(), initOptions(), {5, 0}, ""}; }
 
 Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_BALLE, V_BALLE, V_BALLE, fabsf(V_BALLE)}; }
 
@@ -9,6 +9,8 @@ Raquette initRaquetteG() { return (Raquette){LONG_RAQUETTE, LARG_RAQUETTE, X_RAQ
 Raquette initRaquetteD() { return (Raquette){LONG_RAQUETTE, LARG_RAQUETTE, X_RAQUETTE_RIGHT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'p', 'm'}; }
 
 Balle initBalleJeu() { return (Balle){MID_X, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, R_BALLE, V_BALLE, VH_BALLE, fabsf(V_BALLE)}; }
+
+Options initOptions() { return (Options){0, {5, 0}, 3}; }
 
 Users *chargeUsersDepuisFichier()
 {
@@ -30,8 +32,6 @@ Users *chargeUsersDepuisFichier()
 	return users;
 }
 
-Options initOptions() { return (Options){0,{5,0},3}; }
-
 int initScore() { return (int)0; }
 
 void resetSelect(Select *const select)
@@ -49,6 +49,12 @@ void resetJoueurs(Joueur *const joueur)
 {
 	for (int i = 0; i < NB_JOUEUR; i++)
 		joueur[i].user = NULL;
+}
+
+void resetTimer(int *const timer, const Options options)
+{
+	timer[0] = options.temps[0];
+	timer[1] = options.temps[1];
 }
 
 void resetRaquette(Joueur *const joueur)

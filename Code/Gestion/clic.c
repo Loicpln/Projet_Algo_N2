@@ -32,7 +32,10 @@ void ClicMenu(Data *const data)
             data->page.numero = Selection;
         }
         if (25 * Ux < X_SOURIS < 75 * Ux && 33 * Uy < Y_SOURIS < 46 * Uy)
+        {
+            data->option.mode = Entrainement;
             data->page.numero = Entrainement;
+        }
         if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
         {
             for (int i = 0; i < NB_BALLE; i++)
@@ -79,7 +82,10 @@ void ClicJeu(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
-        clicRouage(&data->page, data->option.mode);
+        if (data->option.mode == ContreLaMontre || data->option.mode == Entrainement)
+            clicRouage(&data->page, 88 * Ux, 90 * Uy, r_Rouage);
+        else
+            clicRouage(&data->page, MID_X, 90 * Uy, r_Rouage);
         if (data->page.pause)
             clicPause(data);
     }

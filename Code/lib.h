@@ -13,6 +13,7 @@
 
 #define LargeurFenetre 800
 #define HauteurFenetre 600
+#define RafraichissementFenetre 20
 
 #define MAX_X largeurFenetre()
 #define MAX_Y hauteurFenetre()
@@ -99,6 +100,7 @@
 #define BattleRoyal 1
 
 #define id_IA 20
+#define id_Rouage 45
 
 #define Acceuil 1
 #define Regles 2
@@ -199,6 +201,7 @@ typedef struct
     Joueur joueurs[NB_JOUEUR];
     Users *users;
     Options option;
+    int timer[2];
     char newPseudo[15];
 } Data;
 

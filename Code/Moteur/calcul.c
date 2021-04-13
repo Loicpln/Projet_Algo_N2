@@ -169,8 +169,8 @@ void jeu(Data *const data)
 	but(&data->balleJeu, data->joueurs);
 	if (data->option.mode == ContreLaMontre)
 	{
-		decompte(data->option.temps);
-		if (data->option.temps[0] == 0 && data->option.temps[1] == 0)
+		decompte(data->timer);
+		if (data->timer[0] == 0 && data->timer[1] == 0)
 		{
 			data->page.numero = Menu;
 			data->balleJeu = initBalleJeu();
@@ -178,6 +178,7 @@ void jeu(Data *const data)
 			resetJoueurs(data->joueurs);
 			resetRaquette(data->joueurs);
 			resetScore(data->joueurs);
+			resetTimer(data->timer,data->option);
 		}
 	}
 	else if (data->joueurs[0].score == data->option.nbButs || data->joueurs[1].score == data->option.nbButs)
@@ -194,7 +195,7 @@ void jeu(Data *const data)
 void decompte(int *temps)
 {
 	static int tmp = 0;
-	if (++tmp == 50)
+	if (++tmp == 1000/RafraichissementFenetre)
 	{
 		if (temps[1] == 0)
 		{

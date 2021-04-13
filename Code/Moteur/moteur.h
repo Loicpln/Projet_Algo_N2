@@ -12,6 +12,7 @@ void resetSelect(Select *const select);
 void resetJoueurs(Joueur *const joueur);
 void resetRaquette(Joueur *const joueur);
 void resetScore(Joueur *const joueur);
+void resetTimer(int *const timer, const Options options);
 
 void selectAcceuil(Select *const select);
 void selectMenu(Select *const select);
@@ -19,12 +20,12 @@ void selectRegles(Select *const select);
 void selectSelection(Select *const select);
 void selectPause(Select *const select);
 void selectAddUsers(Select *const select);
-void selectRouage(Select *const select, const int mode);
+void selectRouage(Select *const select, const int x, const int y, const int r);
 
 void clicPause(Data *const data);
 void clicUsers(Joueur *const joueur, const Joueur autre, Users *const users);
 void clicSupprUsers(Joueur *const joueur, Users *users);
-void clicRouage(Page *const page, const int mode);
+void clicRouage(Page *const page, const int x, const int y, const int r);
 void clicAddUsers(Page *const page);
 
 User *creeUser(const int id, const char *const pseudo, const int nbGame, const int nbWin, const int nbLose);

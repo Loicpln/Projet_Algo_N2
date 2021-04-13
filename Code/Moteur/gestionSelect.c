@@ -61,13 +61,8 @@ void selectAddUsers(Select *const select)
         select[47].largeur = L_SELECT;
 }
 
-void selectRouage(Select *const select, const int mode)
+void selectRouage(Select *const select, const int x, const int y, const int r)
 {
-    if (mode == ContreLaMontre)
-    {
-        if (abs(abscisseSouris() - 88 * Ux) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
-            select[30].largeur = 3;
-    }
-    else if (abs(abscisseSouris() - MID_X) < r_Rouage && abs(ordonneeSouris() - 90 * Uy) < r_Rouage)
-        select[30].largeur = 3;
+    if (abs(abscisseSouris() - x) < r && abs(ordonneeSouris() - y) < r)
+        select[id_Rouage].largeur = 3;
 }

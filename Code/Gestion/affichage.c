@@ -56,6 +56,7 @@ void AfficheSelection(Data *const data)
     int teinte = (data->page.pause) ? 150 : 255;
     afficheUsers(data->page.select, data->users, teinte);
     bouton(data->page.select[id_IA], 42 * Ux, 85 * Uy, 58 * Ux, 95 * Uy);
+    rouage(data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
     bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
     bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);
     bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
@@ -67,6 +68,18 @@ void AfficheSelection(Data *const data)
     afficheChaine("IA", 35, 48 * Ux, 88 * Uy);
     afficheChaine("Jouer", 30, 45 * Ux, 8 * Uy);
     afficheChaine("Retour", 30, 79 * Ux, 8 * Uy);
+    couleurCourante(0, 0, 255);
+    rectangle(2 * Ux, 6 * Uy, 14 * Ux, 14 * Uy);
+    couleurCourante(255, 0, 0);
+    rectangle(14 * Ux, 6 * Uy, 26 * Ux, 14 * Uy);
+    CC_BLANC;
+    if (data->joueurs[0].user != NULL)
+        afficheChaine(data->joueurs[0].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[0].user->pseudo) / 5), 3 * Ux, 9 * Uy);
+    if (data->joueurs[1].user != NULL)
+        afficheChaine(data->joueurs[1].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[1].user->pseudo) / 5), 17 * Ux, 9 * Uy);
+    couleurCourante(255, 255, 0);
+    epaisseurDeTrait(5);
+    afficheChaine("Vs", 25,12*Ux,8*Uy);
     if (data->page.pause)
         zoneText(data->page.select, data->newPseudo);
 }
@@ -79,18 +92,19 @@ void AfficheJeu(Data *const data)
         raquette(data->joueurs[i].raquette, teinte);
     balle(data->balleJeu, teinte);
     EPAISSEUR_2;
+    CC_BLANC;
     afficheChaine(data->joueurs[0].user->pseudo, 35, 15 * Ux, 73 * Uy);
     afficheChaine(data->joueurs[1].user->pseudo, 35, 70 * Ux, 73 * Uy);
     if (data->option.mode == ContreLaMontre)
     {
-        rouage(data->page.select[30], 88 * Ux, 90 * Uy, r_Rouage);
-        timer(data->option.temps, MID_X, 90 * Uy);
+        rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
+        timer(data->timer, MID_X, 90 * Uy);
         score(data->joueurs[0].score, 43 * Ux, 76 * Uy);
         score(data->joueurs[1].score, 61 * Ux, 76 * Uy);
     }
     else
     {
-        rouage(data->page.select[30], MID_X, 90 * Uy, r_Rouage);
+        rouage(data->page.select[id_Rouage], MID_X, 90 * Uy, r_Rouage);
         for (int i = 0; i < (data->option.nbButs - data->joueurs[1].score); i++)
             coeur(10 * Ux + 40 / data->option.nbButs * i * Ux, 92 * Uy, 3 * Ux);
 
@@ -106,7 +120,7 @@ void AfficheEntrainement(Data *const data)
     CC_BLANC;
     EPAISSEUR_TITRE;
     afficheChaine("Entrainement", 70, 20 * Ux, 88 * Uy);
-    rouage(data->page.select[30], 88 * Ux, 90 * Uy, r_Rouage);
+    rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
     int teinte = (data->page.pause) ? 150 : 255;
     plateau(teinte);
     raquette(data->joueurs[0].raquette, teinte);

@@ -41,6 +41,7 @@ void TempoSelection(Data *const data)
 		strcpy(data->newPseudo, "");
 		selectSelection(data->page.select);
 		enregistreUsersFichier(data->users);
+		selectRouage(data->page.select, 9 * Ux, 90 * Uy, r_Rouage);
 	}
 	else
 	{
@@ -67,7 +68,10 @@ void TempoJeu(Data *const data)
 		jeu(data);
 	else
 		selectPause(data->page.select);
-	selectRouage(data->page.select, data->option.mode);
+	if (data->option.mode == ContreLaMontre || data->option.mode == Entrainement)
+		selectRouage(data->page.select, 88 * Ux, 90 * Uy, r_Rouage);
+	else
+		selectRouage(data->page.select, MID_X, 90 * Uy, r_Rouage);
 }
 
 void TempoEntrainement(Data *const data)
@@ -82,5 +86,5 @@ void TempoEntrainement(Data *const data)
 	}
 	else
 		selectPause(data->page.select);
-	selectRouage(data->page.select, data->option.mode);
+	selectRouage(data->page.select, 88 * Ux, 90 * Uy, r_Rouage);
 }
