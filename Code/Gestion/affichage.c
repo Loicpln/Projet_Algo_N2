@@ -72,6 +72,10 @@ void AfficheSelection(Data *const data)
     rectangle(2 * Ux, 6 * Uy, 14 * Ux, 14 * Uy);
     couleurCourante(255, 0, 0);
     rectangle(14 * Ux, 6 * Uy, 26 * Ux, 14 * Uy);
+    couleurCourante(0, 0, 255);
+    cercle(14 * Ux, 12 * Uy, 2 * Uy);
+    couleurCourante(255, 0, 0);
+    cercle(14 * Ux, 8 * Uy, 2 * Uy);
     CC_BLANC;
     if (data->joueurs[0].user != NULL)
         afficheChaine(data->joueurs[0].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[0].user->pseudo) / 5), 3 * Ux, 9 * Uy);
@@ -79,7 +83,7 @@ void AfficheSelection(Data *const data)
         afficheChaine(data->joueurs[1].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[1].user->pseudo) / 5), 17 * Ux, 9 * Uy);
     couleurCourante(255, 255, 0);
     epaisseurDeTrait(5);
-    afficheChaine("Vs", 25,12*Ux,8*Uy);
+    afficheChaine("Vs", 25, 12 * Ux, 8 * Uy);
     if (data->page.pause)
         zoneText(data->page.select, data->newPseudo);
 }
