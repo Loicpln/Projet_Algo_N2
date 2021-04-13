@@ -25,9 +25,9 @@ void gestion(Data *const data, const Gestion type)
     }
 }
 
-void F_NULL() {}
+void FNULL() {}
 
 const Gestion fTempo() { return (const Gestion){TempoAccueil, TempoRegles, TempoMenu, TempoSelection, TempoJeu, TempoEntrainement}; }
 const Gestion fAffiche() { return (const Gestion){AfficheAccueil, AfficheRegles, AfficheMenu, AfficheSelection, AfficheJeu, AfficheEntrainement}; }
-const Gestion fClavier() { return (const Gestion){F_NULL, F_NULL, F_NULL, ClavierSelect, ClavierJeu, ClavierEntrainement}; }
+const Gestion fClavier() { return (const Gestion){FNULL, FNULL, FNULL, ClavierSelect, ClavierJeu, ClavierEntrainement}; }
 const Gestion fClic() { return (const Gestion){ClicAccueil, ClicRegles, ClicMenu, ClicSelection, ClicJeu, ClicJeu}; }

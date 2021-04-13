@@ -1,5 +1,11 @@
 #include "moteur.h"
 
+void clicRouage(Page *const page, const int x, const int y, const int r)
+{
+    if (abs(abscisseSouris() - x) < r && abs(ordonneeSouris() - y) < r)
+        page->pause = (page->pause == true) ? false : true;
+}
+
 void clicPause(Data *const data)
 {
     if (35 * Ux < X_SOURIS < 65 * Ux && 55 * Uy < Y_SOURIS < 65 * Uy)
@@ -49,12 +55,6 @@ void clicSupprUsers(Joueur *const joueur, Users *users)
             joueur[0].user = NULL;
             joueur[1].user = NULL;
         }
-}
-
-void clicRouage(Page *const page, const int x, const int y, const int r)
-{
-    if (abs(abscisseSouris() - x) < r && abs(ordonneeSouris() - y) < r)
-        page->pause = (page->pause == true) ? false : true;
 }
 
 void clicAddUsers(Page *const page)

@@ -17,7 +17,7 @@ typedef struct
 } Gestion;
 
 //fonction nulle
-void F_NULL();
+void FNULL();
 
 //gestion des pages selon type
 void gestion(Data *const data, const Gestion type);

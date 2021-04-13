@@ -64,24 +64,23 @@ void AfficheSelection(Data *const data)
     CC_BLANC;
     ligne(91 * Ux, 87 * Uy, 91 * Ux, 93 * Uy);
     ligne(89 * Ux, 90 * Uy, 93 * Ux, 90 * Uy);
-    couleurCourante(teinte, teinte, teinte);
-    afficheChaine("IA", 35, 48 * Ux, 88 * Uy);
-    afficheChaine("Jouer", 30, 45 * Ux, 8 * Uy);
-    afficheChaine("Retour", 30, 79 * Ux, 8 * Uy);
-    couleurCourante(0, 0, 255);
+    couleurCourante(0, 0, teinte);
     rectangle(2 * Ux, 6 * Uy, 14 * Ux, 14 * Uy);
-    couleurCourante(255, 0, 0);
+    couleurCourante(teinte, 0, 0);
     rectangle(14 * Ux, 6 * Uy, 26 * Ux, 14 * Uy);
-    couleurCourante(0, 0, 255);
+    couleurCourante(0, 0, teinte);
     cercle(14 * Ux, 12 * Uy, 2 * Uy);
-    couleurCourante(255, 0, 0);
+    couleurCourante(teinte, 0, 0);
     cercle(14 * Ux, 8 * Uy, 2 * Uy);
-    CC_BLANC;
+    couleurCourante(teinte, teinte, teinte);
     if (data->joueurs[0].user != NULL)
         afficheChaine(data->joueurs[0].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[0].user->pseudo) / 5), 3 * Ux, 9 * Uy);
     if (data->joueurs[1].user != NULL)
         afficheChaine(data->joueurs[1].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[1].user->pseudo) / 5), 17 * Ux, 9 * Uy);
-    couleurCourante(255, 255, 0);
+    afficheChaine("IA", 35, 48 * Ux, 88 * Uy);
+    afficheChaine("Jouer", 30, 45 * Ux, 8 * Uy);
+    afficheChaine("Retour", 30, 79 * Ux, 8 * Uy);
+    couleurCourante(teinte, teinte, 0);
     epaisseurDeTrait(5);
     afficheChaine("Vs", 25, 12 * Ux, 8 * Uy);
     if (data->page.pause)

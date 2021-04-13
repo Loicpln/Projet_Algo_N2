@@ -3,7 +3,9 @@
 void TempoAccueil(Data *const data)
 {
 	resetSelect(data->page.select);
-	selectAcceuil(data->page.select);
+	selectBouton(&data->page.select[0], 30 * Ux, 70 * Ux, 65 * Uy, 80 * Uy);
+	selectBouton(&data->page.select[1], 35 * Ux, 65 * Ux, 45 * Uy, 60 * Uy);
+	selectBouton(&data->page.select[2], 75 * Ux, 95 * Ux, 5 * Uy, 15 * Uy);
 	for (int i = 0; i < NB_BALLE; i++)
 	{
 		rebond(data->balle + i, 0, 0, MAX_X, MAX_Y);
@@ -14,7 +16,10 @@ void TempoAccueil(Data *const data)
 void TempoMenu(Data *const data)
 {
 	resetSelect(data->page.select);
-	selectMenu(data->page.select);
+	selectBouton(&data->page.select[0], 25 * Ux, 75 * Ux, 67 * Uy, 80 * Uy);
+	selectBouton(&data->page.select[1], 25 * Ux, 75 * Ux, 50 * Uy, 63 * Uy);
+	selectBouton(&data->page.select[2], 25 * Ux, 75 * Ux, 33 * Uy, 46 * Uy);
+	selectBouton(&data->page.select[3], 75 * Ux, 95 * Ux, 5 * Uy, 15 * Uy);
 	for (int i = 0; i < NB_BALLE; i++)
 	{
 		rebond(data->balle + i, 0, 0, MAX_X, MAX_Y);
@@ -27,7 +32,7 @@ void TempoMenu(Data *const data)
 void TempoRegles(Data *const data)
 {
 	resetSelect(data->page.select);
-	selectRegles(data->page.select);
+    selectBouton(&data->page.select[0], 75 * Ux, 95 * Ux, 5 * Uy, 15 * Uy);
 }
 
 void TempoSelection(Data *const data)
@@ -39,16 +44,16 @@ void TempoSelection(Data *const data)
 	if (!data->page.pause)
 	{
 		strcpy(data->newPseudo, "");
-		selectSelection(data->page.select);
+		selectUsers(data->page.select);
 		enregistreUsersFichier(data->users);
-		selectRouage(data->page.select, 9 * Ux, 90 * Uy, r_Rouage);
+		selectRouage(&data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
 	}
 	else
 	{
 		couleurSelect(&data->page.select[46], 255, 255, 255);
 		couleurSelect(&data->page.select[47], 0, 255, 0);
 	}
-	selectAddUsers(data->page.select);
+	selectBouton(&data->page.select[47], 87 * Ux, 95 * Ux, 85 * Uy, 95 * Uy);
 	if (data->joueurs[0].user != NULL)
 	{
 		couleurSelect(data->page.select + data->joueurs[0].user->id, 0, 0, teinte);
@@ -69,9 +74,9 @@ void TempoJeu(Data *const data)
 	else
 		selectPause(data->page.select);
 	if (data->option.mode == ContreLaMontre || data->option.mode == Entrainement)
-		selectRouage(data->page.select, 88 * Ux, 90 * Uy, r_Rouage);
+		selectRouage(&data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
 	else
-		selectRouage(data->page.select, MID_X, 90 * Uy, r_Rouage);
+		selectRouage(&data->page.select[id_Rouage], MID_X, 90 * Uy, r_Rouage);
 }
 
 void TempoEntrainement(Data *const data)
@@ -86,5 +91,5 @@ void TempoEntrainement(Data *const data)
 	}
 	else
 		selectPause(data->page.select);
-	selectRouage(data->page.select, 88 * Ux, 90 * Uy, r_Rouage);
+	selectRouage(&data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
 }
