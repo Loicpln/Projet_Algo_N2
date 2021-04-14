@@ -60,17 +60,17 @@
 #define L_SELECT 5
 #define NB_SELECT 50
 
-#define GRILLE                                        \
-    for (int i = 1; i < 100; i++)                     \
-    {                                                 \
-        char a[10] = "";                              \
-        CC_BLANC;                                     \
-        EPAISSEUR_1;                                  \
-        sprintf(a, "%d", i);                          \
-        afficheChaine(a, 5, i * Ux, Uy / 2); \
+#define GRILLE                               \
+    for (int i = 1; i < 100; i++)            \
+    {                                        \
+        char a[10] = "";                     \
+        CC_BLANC;                            \
+        EPAISSEUR_1;                         \
+        sprintf(a, "%d", i);                 \
+        afficheChaine(a, 5, i *Ux, Uy / 2);  \
         afficheChaine(a, 5, Ux / 2, i * Uy); \
-        ligne(i *Ux, 0, i *Ux, 100 * Uy);            \
-        ligne(0, i *Uy, 100 * Ux, i * Uy);           \
+        ligne(i *Ux, 0, i *Ux, 100 * Uy);    \
+        ligne(0, i *Uy, 100 * Ux, i * Uy);   \
     }
 
 #define DIGIT_0 \
@@ -98,6 +98,12 @@
 
 #define ContreLaMontre 0
 #define BattleRoyal 1
+
+#define Cinq_Min \
+    {        \
+        5, 0 \
+    }
+#define NBVIES 3
 
 #define id_IA 20
 #define id_Rouage 45
