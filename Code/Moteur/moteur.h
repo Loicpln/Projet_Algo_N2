@@ -9,7 +9,7 @@ Users *chargeUsersDepuisFichier();
 Options initOptions();
 int initScore();
 void resetSelect(Select *const select);
-void resetJoueurs(Joueur *const joueur);
+void resetUsers(Joueur *const joueur);
 void resetRaquette(Joueur *const joueur);
 void resetScore(Joueur *const joueur);
 void resetTimer(int *const timer, const Options options);

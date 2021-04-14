@@ -23,7 +23,7 @@ void clicPause(Data *const data)
         data->page.pause = false;
         data->balleJeu = initBalleJeu();
         data->page.numero = Menu;
-        resetJoueurs(data->joueurs);
+        resetUsers(data->joueurs);
         resetRaquette(data->joueurs);
         resetScore(data->joueurs);
         resetTimer(data->timer, data->option);
@@ -60,5 +60,5 @@ void clicSupprUsers(Joueur *const joueur, Users *users)
 void clicAddUsers(Page *const page)
 {
     if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
-        page->pause = (page->pause == true) ? false : true;
+        page->pause = (page->pause == 2) ? false : 2;
 }

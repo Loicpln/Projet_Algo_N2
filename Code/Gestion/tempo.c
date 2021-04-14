@@ -32,12 +32,12 @@ void TempoMenu(Data *const data)
 void TempoRegles(Data *const data)
 {
 	resetSelect(data->page.select);
-    selectBouton(&data->page.select[0], 75 * Ux, 95 * Ux, 5 * Uy, 15 * Uy);
+	selectBouton(&data->page.select[0], 75 * Ux, 95 * Ux, 5 * Uy, 15 * Uy);
 }
 
 void TempoSelection(Data *const data)
 {
-	int teinte = (data->page.pause) ? 150 : 255;
+	int teinte = (data->page.pause == 2 || data->page.pause) ? 150 : 255;
 	resetSelect(data->page.select);
 	for (int i = 0; i < NB_SELECT; i++)
 		couleurSelect(data->page.select + i, teinte, teinte, teinte);
@@ -46,13 +46,16 @@ void TempoSelection(Data *const data)
 		strcpy(data->newPseudo, "");
 		selectUsers(data->page.select);
 		enregistreUsersFichier(data->users);
-		selectRouage(&data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
 	}
-	else
+	else if (data->page.pause == 2)
 	{
 		couleurSelect(&data->page.select[46], 255, 255, 255);
 		couleurSelect(&data->page.select[47], 0, 255, 0);
 	}
+	else
+		couleurSelect(&data->page.select[47], 255, 255, 255);
+	couleurSelect(&data->page.select[id_Rouage], 255, 255, 255);
+	selectRouage(&data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
 	selectBouton(&data->page.select[47], 87 * Ux, 95 * Ux, 85 * Uy, 95 * Uy);
 	if (data->joueurs[0].user != NULL)
 	{
@@ -92,4 +95,19 @@ void TempoEntrainement(Data *const data)
 	else
 		selectPause(data->page.select);
 	selectRouage(&data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
+}
+
+void TempoResultats(Data *const data)
+{
+	int teinte = (data->page.pause) ? 150 : 255;
+	resetSelect(data->page.select);
+	for (int i = 0; i < NB_SELECT; i++)
+		couleurSelect(data->page.select + i, teinte, teinte, teinte);
+	if (!data->page.pause)
+	{
+		selectBouton(&data->page.select[0], 30 * Ux, 70 * Ux, 20 * Uy, 30 * Uy);
+		selectBouton(&data->page.select[1], 30 * Ux, 70 * Ux, 5 * Uy, 15 * Uy);
+	}
+	couleurSelect(&data->page.select[id_Rouage], 255, 255, 255);
+	selectRouage(&data->page.select[id_Rouage], 12 * Ux, 90 * Uy, r_Rouage);
 }

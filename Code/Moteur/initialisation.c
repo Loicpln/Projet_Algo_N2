@@ -1,6 +1,6 @@
 #include "moteur.h"
 
-Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier(), initOptions(), {5, 0}, ""}; }
+Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier(), initOptions(), {0, 0}, ""}; }
 
 Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_BALLE, V_BALLE, V_BALLE, fabsf(V_BALLE)}; }
 
@@ -45,7 +45,7 @@ void resetSelect(Select *const select)
 	}
 }
 
-void resetJoueurs(Joueur *const joueur)
+void resetUsers(Joueur *const joueur)
 {
 	for (int i = 0; i < NB_JOUEUR; i++)
 		joueur[i].user = NULL;

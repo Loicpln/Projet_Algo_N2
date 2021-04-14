@@ -172,23 +172,15 @@ void jeu(Data *const data)
 		decompte(data->timer);
 		if (data->timer[0] == 0 && data->timer[1] == 0)
 		{
-			data->page.numero = Menu;
+			data->page.numero = Resultats;
 			data->balleJeu = initBalleJeu();
-			data->option = initOptions();
-			resetJoueurs(data->joueurs);
-			resetRaquette(data->joueurs);
-			resetScore(data->joueurs);
 			resetTimer(data->timer,data->option);
 		}
 	}
 	else if (data->joueurs[0].score == data->option.nbButs || data->joueurs[1].score == data->option.nbButs)
 	{
-		data->page.numero = Menu;
+		data->page.numero = Resultats;
 		data->balleJeu = initBalleJeu();
-		data->option = initOptions();
-		resetJoueurs(data->joueurs);
-		resetRaquette(data->joueurs);
-		resetScore(data->joueurs);
 	}
 }
 

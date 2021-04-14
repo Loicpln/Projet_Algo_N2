@@ -25,6 +25,13 @@ void rouage(const Select select, const int x, const int y, const int r)
     cercle(x, y, r / 6);
 }
 
+void plus(const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite)
+{
+    EPAISSEUR_TITRE;
+    ligne((xBasGauche + xHautDroite) / 2, yBasGauche, (xBasGauche + xHautDroite) / 2, yHautDroite);
+    ligne(xBasGauche, (yBasGauche + yHautDroite) / 2, xHautDroite, (yBasGauche + yHautDroite) / 2);
+}
+
 void plateau(const int teinte)
 {
     couleurCourante(teinte, teinte, teinte);

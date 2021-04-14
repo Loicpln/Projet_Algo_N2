@@ -61,6 +61,7 @@ void ClicSelection(Data *const data)
     }
     else if (etatBoutonSouris() == GaucheAppuye)
     {
+        clicRouage(&data->page, 9 * Ux, 90 * Uy, r_Rouage);
         clicAddUsers(&data->page);
         if (!data->page.pause)
         {
@@ -68,11 +69,14 @@ void ClicSelection(Data *const data)
             clicSupprUsers(data->joueurs, data->users);
             if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
                 if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
+                {
                     data->page.numero = Jeu;
+                    resetTimer(data->timer, data->option);
+                }
             if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
             {
                 data->page.numero = Menu;
-                resetJoueurs(data->joueurs);
+                resetUsers(data->joueurs);
             }
         }
     }
@@ -88,5 +92,29 @@ void ClicJeu(Data *const data)
             clicRouage(&data->page, MID_X, 90 * Uy, r_Rouage);
         if (data->page.pause)
             clicPause(data);
+    }
+}
+
+void ClicResultats(Data *const data)
+{
+    if (etatBoutonSouris() == GaucheAppuye)
+    {
+        clicRouage(&data->page, 12 * Ux, 90 * Uy, r_Rouage);
+        if (!data->page.pause)
+        {
+            if (30 * Ux < X_SOURIS < 70 * Ux && 20 * Uy < Y_SOURIS < 30 * Uy)
+            {
+                data->page.numero = Jeu;
+                resetRaquette(data->joueurs);
+                resetScore(data->joueurs);
+            }
+            if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+            {
+                data->page.numero = Menu;
+                resetUsers(data->joueurs);
+                resetRaquette(data->joueurs);
+                resetScore(data->joueurs);
+            }
+        }
     }
 }

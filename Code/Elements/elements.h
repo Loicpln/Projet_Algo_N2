@@ -6,7 +6,7 @@ void bouton(const Select select, const int xBasGauche, const int yBasGauche, con
 void rouage(const Select select, const int x, const int y, const int r);
 //Affiche le plateau
 void plateau(const int teinte);
-
+void plus(const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite);
 void coeur(const int x, const int y, const float r);
 //Affiche le menu pause
 void affichePause(const Select *const select);

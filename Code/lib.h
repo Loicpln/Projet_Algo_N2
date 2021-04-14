@@ -108,6 +108,7 @@
 #define Selection 4
 #define Jeu 5
 #define Entrainement 6
+#define Resultats 7
 
 #ifndef STRUCT
 #define STRUCT
@@ -173,7 +174,7 @@ typedef struct
 typedef struct
 {
     int numero;
-    bool pause;
+    int pause;
     Select select[NB_SELECT];
 } Page;
 
