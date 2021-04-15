@@ -1,6 +1,6 @@
 modules = controleur.o $(gestion) $(moteur) $(elements)
 elements = elements.o 
-gestion = affichage.o clavier.o clic.o tempo.o
+gestion = affichage.o clavier.o clic.o tempo.o redim.o
 moteur = initialisation.o gestionSelect.o gestionClic.o gestionUsers.o calcul.o
 lib = ./GfxLib/libisentlib.a
 controleur = controleur.h
@@ -41,6 +41,9 @@ clavier.o: ./Gestion/clavier.c $(lGestion)
 
 tempo.o: ./Gestion/tempo.c $(lGestion) 
 	gcc -Wall -c ./Gestion/tempo.c
+
+redim.o: ./Gestion/redim.c $(lGestion) 
+	gcc -Wall -c ./Gestion/redim.c
 
 initialisation.o: ./Moteur/initialisation.c $(lMoteur) 
 	gcc -Wall -c ./Moteur/initialisation.c

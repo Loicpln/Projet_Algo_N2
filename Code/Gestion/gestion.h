@@ -51,3 +51,8 @@ void TempoJeu(Data *const data);
 void TempoEntrainement(Data *const data);
 //Gestion Tempo page Resultats
 void TempoResultats(Data *const data);
+
+//Gestion Redim page d'Accueil
+void Redim(Data *const data);
+void redimBalle(Balle *const balle);
+void redimRaquette(Raquette *const raquette, const int i);

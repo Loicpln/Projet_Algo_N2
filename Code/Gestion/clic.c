@@ -71,6 +71,7 @@ void ClicSelection(Data *const data)
                 if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
                 {
                     data->page.numero = Jeu;
+                    resetRaquette(data->joueurs);
                     resetTimer(data->timer, data->option);
                 }
             if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)

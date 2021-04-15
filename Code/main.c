@@ -58,6 +58,7 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case Redimensionnement:
+		Redim(&data);
 		break;
 	}
 }
