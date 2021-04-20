@@ -9,7 +9,7 @@ void selectBouton(Select *const select, const int x1, const int x2, const int y1
 void selectRouage(Select *const select, const int x, const int y, const int r)
 {
     if (abs(abscisseSouris() - x) < r && abs(ordonneeSouris() - y) < r)
-        select->largeur = 3;
+        select->largeur = L_SELECT;
 }
 
 void selectPause(Select *const select)

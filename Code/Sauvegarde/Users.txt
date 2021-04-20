@@ -7,4 +7,4 @@
 [id=6 |pseudo=nesyrbtyuty |nbGame=0 |nbWin=0 |nbLose=0]
 [id=7 |pseudo=nueyrzt |nbGame=0 |nbWin=0 |nbLose=0]
 [id=8 |pseudo=rfghbnj |nbGame=0 |nbWin=0 |nbLose=0]
-[id=9 |pseudo=sdnkjc |nbGame=0 |nbWin=0 |nbLose=0]
+[id=9 |pseudo=tuyil |nbGame=0 |nbWin=0 |nbLose=0]

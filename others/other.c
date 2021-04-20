@@ -60,3 +60,20 @@ void RedimEntrainement(Data *const data)
 {
     redimRaquette(&data->joueurs[0].raquette, 0);
 }
+
+void rouage(const Select select, const int x, const int y, const int r)
+{
+    EPAISSEUR_TITRE;
+    couleurCourante(100, 100, 100);
+    cercle(x, y, r);
+    couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
+    ligne(x - r + 5, y, x + r - 5, y);
+    ligne(x - sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2);
+    ligne(x, y - r + 5, x, y + r - 5);
+    ligne(x - sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2);
+    cercle(x, y, 11 * r / 16 - select.largeur);
+    couleurCourante(100, 100, 100);
+    cercle(x, y, r / 4);
+    couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
+    cercle(x, y, r / 6);
+}

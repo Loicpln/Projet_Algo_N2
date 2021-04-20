@@ -10,19 +10,15 @@ void bouton(const Select select, const int xBasGauche, const int yBasGauche, con
 
 void rouage(const Select select, const int x, const int y, const int r)
 {
-    EPAISSEUR_TITRE;
-    couleurCourante(100, 100, 100);
-    cercle(x, y, r);
+    epaisseurDeTrait(10);
     couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
-    ligne(x - r + 5, y, x + r - 5, y);
-    ligne(x - sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2);
-    ligne(x, y - r + 5, x, y + r - 5);
-    ligne(x - sqrt(2) * (r - 5) / 2, y + sqrt(2) * (r - 5) / 2, x + sqrt(2) * (r - 5) / 2, y - sqrt(2) * (r - 5) / 2);
-    cercle(x, y, 11 * r / 16 - select.largeur);
-    couleurCourante(100, 100, 100);
-    cercle(x, y, r / 4);
-    couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
-    cercle(x, y, r / 6);
+    ligne(x - r, y, x + r, y);
+    ligne(x - sqrt(2) * r / 2, y - sqrt(2) * r / 2, x + sqrt(2) * r / 2, y + sqrt(2) * r / 2);
+    ligne(x, y - r, x, y + r);
+    ligne(x - sqrt(2) * r / 2, y + sqrt(2) * r / 2, x + sqrt(2) * r / 2, y - sqrt(2) * r / 2);
+    cercle(x, y, 6 * r /7 - select.largeur / 2);
+    couleurCourante(0, 0, 0);
+    cercle(x, y, r / 3 + select.largeur / 2);
 }
 
 void plus(const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite)
