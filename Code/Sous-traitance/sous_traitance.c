@@ -98,6 +98,7 @@ int modifTriangle1(int triangle)
 			printf("|                                      | \n");
 			printf("| Vitesse de la balle de 0 à 100 : %d  |\n", triangle*100/318);	
 		}
+		
 		return triangle;
 }
 
