@@ -50,8 +50,10 @@
 #define Droite true
 
 #define V_BALLE (rand() % 2) ? 5 : -5
+#define V_BALLETEST (rand() % 2) ? 10 : -10
 #define VH_BALLE 0.00001
 #define R_BALLE 10
+#define R_BALLETEST 20
 #define NB_BALLE 50
 
 #define NB_JOUEUR 2
@@ -116,8 +118,12 @@
 #define Entrainement 6
 #define Resultats 7
 
+
 #ifndef STRUCT
 #define STRUCT
+//sous traitance
+#define absBar1 1.5 * largeurFenetre() / 14
+#define absBar2 8 * largeurFenetre() / 14
 
 // bool haut |bool hautGauche |bool hautDroite |bool milieu |bool basGauche |bool basDroite |bool bas
 typedef struct
@@ -197,6 +203,8 @@ typedef struct
     int mode;
     int temps[2];
     int nbButs;
+    int triangle1;
+    int triangle2;
 } Options;
 
 // Page page |Balle balle[MAX_BALLE] |Balle balleJeu |Joueur joueurs[NB_JOUEUR] |User *users |char newPseudo[15]
@@ -210,6 +218,8 @@ typedef struct
     Options option;
     int timer[2];
     char newPseudo[15];
+    
 } Data;
+
 
 #endif

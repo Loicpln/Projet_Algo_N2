@@ -85,6 +85,11 @@ void AfficheSelection(Data *const data)
     afficheChaine("Vs", 25, 12 * Ux, 8 * Uy);
     if (data->page.pause == 2)
         zoneText(data->page.select, data->newPseudo);
+    if(data->page.pause==1)
+    {
+        AfficheMutateur(data);
+        ClicMutateur(data);
+    }
 }
 
 void AfficheJeu(Data *const data)
@@ -142,3 +147,94 @@ void AfficheResultats(Data *const data)
     afficheChaine("Rejouer", 30, 43 * Ux, 23 * Uy);
     afficheChaine("Retour au Menu", 30, 33 * Ux, 8 * Uy);
 }
+// sous traitance
+void AfficheMutateur(Data *const data)
+{
+	// FOND NOIR
+    effaceFenetre(0, 0, 0);
+    
+    // TEXTE MUTATEUR
+    couleurCourante(255, 255, 255);
+    epaisseurDeTrait(6);
+    afficheChaine("MUTATEUR", 60, 4 * largeurFenetre() / 14, 10.2* hauteurFenetre() / 12);
+    
+    // RECTANGLE VITESSE BALLE
+    couleurCourante(140, 20, 20);
+    rectangle(1.5 * largeurFenetre() / 14, 9 * hauteurFenetre() / 12, 6 * largeurFenetre() / 14, 7.5 * hauteurFenetre() / 12);
+    epaisseurDeTrait(3);
+    couleurCourante(255, 190, 180);
+    afficheChaine("Vitesse balle", 40, 1.5 * largeurFenetre() / 14, 8 * hauteurFenetre() / 12);
+    
+    //RECTANGLE TAILLE BALLE
+    couleurCourante(140, 20, 20);
+    rectangle(8 * largeurFenetre() / 14, 9 * hauteurFenetre() / 12, 12.5 * largeurFenetre() / 14, 7.5 * hauteurFenetre() / 12);
+    epaisseurDeTrait(3);
+    couleurCourante(255, 190, 180);
+    afficheChaine("Taille balle", 40, 8.8 * largeurFenetre() / 14, 8 * hauteurFenetre() / 12);
+    
+    // RECTANGLE TAILLE RAQUETTE
+    couleurCourante(140, 20, 20);
+    rectangle(1.5 * largeurFenetre() / 14, 4.1 * hauteurFenetre() / 12, 6.5 * largeurFenetre() / 14, 1.3 * hauteurFenetre() / 6);
+    epaisseurDeTrait(3);
+    couleurCourante(255, 190, 180);
+    afficheChaine("Taille raquette", 40, 2 * largeurFenetre() / 14, 3.1 * hauteurFenetre() / 12);
+    
+    // RECTANGLE S M L
+    couleurCourante(190, 70, 70);
+    rectangle(1.5 * largeurFenetre() / 14, 1 * hauteurFenetre() / 12, 7 * largeurFenetre() / 14, 1 * hauteurFenetre() / 6);
+    couleurCourante(0, 0, 0);
+	epaisseurDeTrait(3);
+	ligne(2.83 * largeurFenetre()/12, hauteurFenetre() / 12, 2.83 * largeurFenetre()/12, hauteurFenetre()/6);
+	couleurCourante(0, 0, 0);
+	epaisseurDeTrait(3);
+	ligne(4.425 * largeurFenetre()/12, hauteurFenetre() / 12, 4.425 * largeurFenetre()/12, hauteurFenetre()/6);
+	couleurCourante(255, 190, 180);
+    afficheChaine("S", 30, 6.5 * largeurFenetre() / 40, 1.08 * hauteurFenetre() / 10);
+    couleurCourante(150,56,53);
+    couleurCourante(255, 190, 180);
+    afficheChaine("M", 30, 11.65 * largeurFenetre() / 40, 1.08 * hauteurFenetre() / 10);
+    couleurCourante(150,56,53);
+    couleurCourante(255, 190, 180);
+    afficheChaine("L", 30, 17.07 * largeurFenetre() / 40, 1.08 * hauteurFenetre() / 10);
+    couleurCourante(150,56,53);
+    
+    // RECTANGLE RETOUR
+    couleurCourante(140, 130, 140);
+    rectangle(3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);
+    epaisseurDeTrait(3);
+    couleurCourante(255, 255, 255);
+    afficheChaine("Retour", 30, 31.9 * largeurFenetre() / 40, 1.1 * hauteurFenetre() / 10);
+    couleurCourante(150,56,53);
+
+    // FONCTION AFFICHAGE DES SLIDERS
+
+	couleurCourante(168,168,168);
+	rectangle(absBar1, 6.1 * hauteurFenetre() / 12, 6 * largeurFenetre() / 14, 6 * hauteurFenetre() / 12);
+	couleurCourante(255,0,0);
+	
+	couleurCourante(168,168,168);
+	rectangle(absBar2, 6.1 * hauteurFenetre() / 12, 12.5 * largeurFenetre() / 14, 6 * hauteurFenetre() / 12);
+	couleurCourante(255,0,0);
+
+    
+    // FONCTION AFFICHAGE CURSEUR GAUCHE
+
+	triangle(1.3 * largeurFenetre() / 14+ data->option.triangle1, 6.5 * hauteurFenetre() / 12, 1.5 * largeurFenetre() / 14+data->option.triangle1, 6 * hauteurFenetre() / 12, 1.7 * largeurFenetre() / 14+data->option.triangle1, 6.5 * hauteurFenetre() / 12);
+
+
+    // FONCTION AFFICHAGE CURSEUR DROITE
+
+
+	triangle(7.8 * largeurFenetre() / 14+data->option.triangle2, 6.5 * hauteurFenetre() / 12, 8 * largeurFenetre() / 14+data->option.triangle2, 6 * hauteurFenetre() / 12, 8.2 * largeurFenetre() / 14+data->option.triangle2, 6.5 * hauteurFenetre() / 12);
+
+
+}
+
+
+
+
+
+
+
+
+

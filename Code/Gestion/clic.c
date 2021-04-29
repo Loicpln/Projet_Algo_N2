@@ -119,3 +119,87 @@ void ClicResultats(Data *const data)
         }
     }
 }
+
+//sous traitance
+void ClicMutateur(Data *const data)
+{
+    data->option.triangle1=modifTriangle1(data->option.triangle1); // CHOIX VITESSE BALLE ET RENVOI % (0 VITESSE MINIMALE, 100 VITESSE MAXIMALE)
+	data->option.triangle2=modifTriangle2(data->option.triangle2); // CHOIX TAILLE BALLE ET RENVOI % (0 TAILLE MINIMALE, 100 TAILLE MAXIMALE)
+	int valTailleRaq = clicTailleRaq(); // SELECTION TAILLE RAQUETTE ET RENVOI VALEUR (1 = S, 2 = M, 3 = L)
+    if (valTailleRaq==1)
+    {
+        data->joueurs[0].raquette.longueur=2*LONG_RAQUETTE/3;
+        data->joueurs[1].raquette.longueur=2*LONG_RAQUETTE/3;
+
+    }
+    else if (valTailleRaq==3)
+    {
+        data->joueurs[0].raquette.longueur=3*LONG_RAQUETTE/2;
+        data->joueurs[1].raquette.longueur=3*LONG_RAQUETTE/2;
+    }
+
+    else
+    {
+        data->joueurs[0].raquette.longueur=LONG_RAQUETTE;
+        data->joueurs[1].raquette.longueur=LONG_RAQUETTE;
+
+    }
+data->balleJeu.vx=V_BALLETEST*data->option.triangle1/100;
+data->balleJeu.v0=V_BALLETEST*data->option.triangle1/100;
+data->balleJeu.r=R_BALLETEST*data->option.triangle2/100;
+    
+}
+
+int clicTailleRaq()
+{
+	int valTailleRaq;
+	
+	
+	if(etatBoutonSouris() == GaucheAppuye) 
+	{
+		if(abscisseSouris() >= (1.5 * largeurFenetre() / 14)  && abscisseSouris() <= (2.83 * largeurFenetre() / 12) && ordonneeSouris() >= (hauteurFenetre() / 12) && ordonneeSouris() <= (1 * hauteurFenetre() / 6))
+		{
+			valTailleRaq = 1;
+		}
+		else if((abscisseSouris() >= (2.83 * largeurFenetre() / 12)  && abscisseSouris() <= (4.425 * largeurFenetre() / 12) && ordonneeSouris() >= (hauteurFenetre() / 12) && ordonneeSouris() <= (1 * hauteurFenetre() / 6)))
+		{
+			valTailleRaq = 2;
+		}
+		else if((abscisseSouris() >= (4.425 * largeurFenetre() / 12)  && abscisseSouris() <= (7 * largeurFenetre() / 14) && ordonneeSouris() >= (hauteurFenetre() / 12) && ordonneeSouris() <= (1 * hauteurFenetre() / 6)))
+		{
+			valTailleRaq = 3;     
+		}
+	}
+	return valTailleRaq;
+}
+
+// FONCTION MODIFICATION POSITION CURSEUR GAUCHE
+int modifTriangle1(int triangle)
+{
+    if(etatBoutonSouris() == GaucheAppuye) 
+	{
+	if(abscisseSouris() >= (1.5 * largeurFenetre() / 14)  && abscisseSouris() <= (6 * largeurFenetre() / 14) && ordonneeSouris() >= (6 * hauteurFenetre() / 12) && ordonneeSouris() <= (6.1 * hauteurFenetre() / 12))
+		{
+			triangle=abscisseSouris()-absBar1;
+		}
+        //triangle = triangle*100/318;
+    }
+		return triangle;
+    
+}
+
+
+// FONCTION MODIFICATION POSITION CURSEUR DROITE
+int modifTriangle2(int triangle)
+{
+   if(etatBoutonSouris() == GaucheAppuye) 
+	{
+	if(abscisseSouris() >= (8 * largeurFenetre() / 14)  && abscisseSouris() <= (12.5 * largeurFenetre() / 14) && ordonneeSouris() >= (6 * hauteurFenetre() / 12) && ordonneeSouris() <= (6.1 * hauteurFenetre() / 12))
+		{
+			triangle=abscisseSouris()-absBar2;
+		}
+        //triangle = triangle*100/318;
+    }
+		return triangle;
+    
+}

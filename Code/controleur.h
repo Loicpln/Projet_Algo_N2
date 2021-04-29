@@ -16,6 +16,8 @@ typedef struct
     void (*f6)(Data * const);
     //Page 7
     void (*f7)(Data * const);
+    //page 8 mutateur
+    void (*f8)(Data * const);
 } Gestion;
 
 //fonction nulle

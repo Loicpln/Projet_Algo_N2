@@ -10,7 +10,7 @@ Raquette initRaquetteD() { return (Raquette){LONG_RAQUETTE, LARG_RAQUETTE, X_RAQ
 
 Balle initBalleJeu() { return (Balle){MID_X, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, R_BALLE, V_BALLE, VH_BALLE, fabsf(V_BALLE)}; }
 
-Options initOptions() { return (Options){ContreLaMontre, Cinq_Min, NBVIES}; }
+Options initOptions() { return (Options){ContreLaMontre, Cinq_Min, NBVIES,0,0}; }
 
 Users *chargeUsersDepuisFichier()
 {
@@ -68,3 +68,4 @@ void resetScore(Joueur *const joueur)
 	for (int i = 0; i < NB_JOUEUR; i++)
 		joueur[i].score = initScore();
 }
+

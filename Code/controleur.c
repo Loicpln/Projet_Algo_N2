@@ -25,6 +25,7 @@ void gestion(Data *const data, const Gestion type)
     case 7:
         type.f7(data);
         break;
+
     }
 }
 
