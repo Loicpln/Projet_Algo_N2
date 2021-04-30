@@ -110,8 +110,8 @@ int signe(const float val) { return val / fabsf(val); }
 void hitbox(Balle *const balle, const Raquette *const raquette)
 {
 	for (float i = 0.f; i < 2 * M_PI; i += 0.01f)
-		if (raquette->x - raquette->largeur / 2 - cosf(i) *( balle->r) < X_BALLE < raquette->x + raquette->largeur / 2 - cosf(i) *( balle->r) &&
-			raquette->y - raquette->longueur / 2 -raquette->vy - sinf(i) * (balle->r) < Y_BALLE < raquette->y+raquette->vy + raquette->longueur / 2 - sinf(i) * (balle->r))
+		if (raquette->x - raquette->largeur / 2 < X_BALLE < raquette->x + raquette->largeur / 2 &&
+			raquette->y - raquette->longueur / 2 -raquette->vy < Y_BALLE < raquette->y + raquette->longueur / 2 +raquette->vy)
 		{						
 			if (balle->x + balle->vx > raquette->x + raquette->largeur/2|| balle->x + balle->vx < raquette->x -raquette->largeur/2)
 			{
@@ -124,10 +124,9 @@ void hitbox(Balle *const balle, const Raquette *const raquette)
 				balle->vy = -cosf(M_PI / 4 * (balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vy);
 			}
 			if (balle->vx == 0)
-				balle->vx = 0.0001;
+				balle->vx = VH_BALLE;
 			if (balle->vy == 0)
-				balle->vy = 0.0001;
-			mouvementBalle(balle);
+				balle->vy = VH_BALLE;
 			break;
 		}
 }
@@ -169,14 +168,14 @@ void jeu(Data *const data)
 		if (data->timer[0] == 0 && data->timer[1] == 0)
 		{
 			data->page.numero = Resultats;
-			data->balleJeu = initBalleJeu();
+            resetBalle(&data->balleJeu, &data->option);
 			resetTimer(data->timer,data->option);
 		}
 	}
 	else if (data->joueurs[0].score == data->option.nbButs || data->joueurs[1].score == data->option.nbButs)
 	{
 		data->page.numero = Resultats;
-		data->balleJeu = initBalleJeu();
+        resetBalle(&data->balleJeu, &data->option);
 	}
 }
 

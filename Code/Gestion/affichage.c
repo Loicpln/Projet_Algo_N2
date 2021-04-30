@@ -95,7 +95,6 @@ void AfficheJeu(Data *const data)
     plateau(teinte);
     for (int i = 0; i < NB_JOUEUR; i++)
         raquette(data->joueurs[i].raquette, teinte);
-    balle(data->balleJeu, teinte);
     EPAISSEUR_2;
     CC_BLANC;
     afficheChaine(data->joueurs[0].user->pseudo, 35, 15 * Ux, 73 * Uy);
@@ -115,6 +114,7 @@ void AfficheJeu(Data *const data)
         for (int i = 0; i < (data->option.nbButs - data->joueurs[0].score); i++)
             coeur(90 * Ux - 40 / data->option.nbButs * i * Ux, 92 * Uy, 3 * Ux);
     }
+    balle(data->balleJeu, teinte);
     if (data->page.pause)
         affichePause(data->page.select);
 }

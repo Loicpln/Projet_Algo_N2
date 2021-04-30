@@ -63,7 +63,7 @@ void ClicSelection(Data *const data)
     {
         clicRouage(&data->page, 9 * Ux, 90 * Uy, r_Rouage);
         clicAddUsers(&data->page);
-        if(data->page.pause)
+        if (data->page.pause)
             ClicMutateur(data);
         else if (!data->page.pause)
         {
@@ -73,10 +73,7 @@ void ClicSelection(Data *const data)
                 if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
                 {
                     data->page.numero = Jeu;
-                    data->balleJeu.v0 = V_BALLE * data->option.triangle1 / 257.f;
-                    data->balleJeu.r = R_BALLE * data->option.triangle2 / 257.f + 8.f;
-                    //resetRaquette(data->joueurs);
-                    data->balleJeu.vx = data->balleJeu.v0;
+                    resetBalle(&data->balleJeu, &data->option);
                     resetTimer(data->timer, data->option);
                 }
             if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
@@ -111,13 +108,17 @@ void ClicResultats(Data *const data)
             if (30 * Ux < X_SOURIS < 70 * Ux && 20 * Uy < Y_SOURIS < 30 * Uy)
             {
                 data->page.numero = Jeu;
+                data->joueurs[0].raquette.y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
+                data->joueurs[1].raquette.y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
+                resetBalle(&data->balleJeu, &data->option);
                 resetRaquette(data->joueurs);
                 resetScore(data->joueurs);
             }
             if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
             {
                 data->page.numero = Menu;
-                resetUsers(data->joueurs);
+                resetUsers(data->joueurs);      
+                resetBalle(&data->balleJeu, &data->option);
                 resetRaquette(data->joueurs);
                 resetScore(data->joueurs);
             }
@@ -128,12 +129,12 @@ void ClicResultats(Data *const data)
 //sous traitance
 void ClicMutateur(Data *const data)
 {
-                                                                      // SELECTION TAILLE RAQUETTE ET RENVOI VALEUR (1 = S, 2 = M, 3 = L)
+    // SELECTION TAILLE RAQUETTE ET RENVOI VALEUR (1 = S, 2 = M, 3 = L)
     if (etatBoutonSouris() == GaucheAppuye)
     {
         data->option.triangle1 = modifTriangle1(data->option.triangle1); // CHOIX VITESSE BALLE ET RENVOI % (0 VITESSE MINIMALE, 100 VITESSE MAXIMALE)
         data->option.triangle2 = modifTriangle2(data->option.triangle2); // CHOIX TAILLE BALLE ET RENVOI % (0 TAILLE MINIMALE, 100 TAILLE MAXIMALE)
-   
+
         if (abscisseSouris() >= (1.5 * largeurFenetre() / 14) && abscisseSouris() <= (2.83 * largeurFenetre() / 12) && ordonneeSouris() >= (hauteurFenetre() / 12) && ordonneeSouris() <= (1 * hauteurFenetre() / 6))
         {
             data->joueurs[0].raquette.longueur = 2 * LONG_RAQUETTE / 3;
@@ -149,8 +150,6 @@ void ClicMutateur(Data *const data)
             data->joueurs[0].raquette.longueur = 3 * LONG_RAQUETTE / 2;
             data->joueurs[1].raquette.longueur = 3 * LONG_RAQUETTE / 2;
         }
-        
-                    printf("%f\n",data->option.triangle1);
     }
     //data->balleJeu.vx=V_BALLETEST*data->option.triangle1/100;
 }
@@ -158,20 +157,20 @@ void ClicMutateur(Data *const data)
 // FONCTION MODIFICATION POSITION CURSEUR GAUCHE
 float modifTriangle1(float triangle)
 {
-        if (abscisseSouris() >= (1.5 * largeurFenetre() / 14) && abscisseSouris() <= (6 * largeurFenetre() / 14) && ordonneeSouris() >= (6 * hauteurFenetre() / 12) && ordonneeSouris() <= (6.1 * hauteurFenetre() / 12))
-        {
-            triangle = abscisseSouris() - absBar1;
-        }
+    if (abscisseSouris() >= (1.5 * largeurFenetre() / 14) && abscisseSouris() <= (6 * largeurFenetre() / 14) && ordonneeSouris() >= (6 * hauteurFenetre() / 12) && ordonneeSouris() <= (6.1 * hauteurFenetre() / 12))
+    {
+        triangle = abscisseSouris() - absBar1;
+    }
     return triangle;
 }
 
 // FONCTION MODIFICATION POSITION CURSEUR DROITE
 float modifTriangle2(float triangle)
 {
-        if (abscisseSouris() >= (8 * largeurFenetre() / 14) && abscisseSouris() <= (12.5 * largeurFenetre() / 14) && ordonneeSouris() >= (6 * hauteurFenetre() / 12) && ordonneeSouris() <= (6.1 * hauteurFenetre() / 12))
-        {
-            triangle = abscisseSouris() - absBar2;
-        }
-        //triangle = triangle*100/318;
+    if (abscisseSouris() >= (8 * largeurFenetre() / 14) && abscisseSouris() <= (12.5 * largeurFenetre() / 14) && ordonneeSouris() >= (6 * hauteurFenetre() / 12) && ordonneeSouris() <= (6.1 * hauteurFenetre() / 12))
+    {
+        triangle = abscisseSouris() - absBar2;
+    }
+    //triangle = triangle*100/318;
     return triangle;
 }

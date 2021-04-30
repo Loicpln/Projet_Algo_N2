@@ -21,8 +21,8 @@
 #define MID_Y hauteurFenetre() / 2
 #define Ux largeurFenetre() / 100
 #define Uy hauteurFenetre() / 100
-#define X_BALLE balle->x + balle->vx && balle->x+ balle->vx
-#define Y_BALLE balle->y + balle->vy && balle->y+ balle->vy
+#define X_BALLE balle->x + cosf(i) * balle->r && balle->x + cosf(i) * balle->r
+#define Y_BALLE balle->y + sinf(i) * balle->r && balle->y + sinf(i) * balle->r
 #define X_SOURIS abscisseSouris() && abscisseSouris()
 #define Y_SOURIS ordonneeSouris() && ordonneeSouris()
 #define MIN_X_PLATEAU 3 * Ux

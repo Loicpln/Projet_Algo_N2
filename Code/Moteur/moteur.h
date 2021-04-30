@@ -13,6 +13,7 @@ void resetUsers(Joueur *const joueur);
 void resetRaquette(Joueur *const joueur);
 void resetScore(Joueur *const joueur);
 void resetTimer(int *const timer, const Options options);
+void resetBalle(Balle * const balle, const Options *const options);
 
 void selectBouton(Select *const select, const int x1, const int x2, const int y1, const int y2);
 void selectRouage(Select *const select, const int x, const int y, const int r);
