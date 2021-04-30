@@ -13,8 +13,13 @@ void clicPause(Data *const data)
     if (35 * Ux < X_SOURIS < 65 * Ux && 35 * Uy < Y_SOURIS < 45 * Uy)
     {
         data->page.pause = false;
-        data->balleJeu = initBalleJeu();
-        resetRaquette(data->joueurs);
+        data->joueurs[0].raquette.y=(MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
+        data->joueurs[1].raquette.y=(MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
+        data->balleJeu.x=MID_X;
+        data->balleJeu.y=(MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
+        data->balleJeu.vx=data->balleJeu.v0;
+        data->balleJeu.vy=0.0000001;
+        
         resetScore(data->joueurs);
         resetTimer(data->timer, data->option);
     }

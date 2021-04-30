@@ -21,8 +21,8 @@
 #define MID_Y hauteurFenetre() / 2
 #define Ux largeurFenetre() / 100
 #define Uy hauteurFenetre() / 100
-#define X_BALLE balle->x && balle->x
-#define Y_BALLE balle->y && balle->y
+#define X_BALLE balle->x + balle->vx && balle->x+ balle->vx
+#define Y_BALLE balle->y + balle->vy && balle->y+ balle->vy
 #define X_SOURIS abscisseSouris() && abscisseSouris()
 #define Y_SOURIS ordonneeSouris() && ordonneeSouris()
 #define MIN_X_PLATEAU 3 * Ux
@@ -49,11 +49,11 @@
 #define Gauche false
 #define Droite true
 
-#define V_BALLE (rand() % 2) ? 5 : -5
-#define V_BALLETEST (rand() % 2) ? 10 : -10
+#define V_ACCEUIL rand()%2 ? 5.f : -5.f
+#define V_BALLE 10.f
 #define VH_BALLE 0.00001
-#define R_BALLE 10
-#define R_BALLETEST 20
+#define R_ACCEUIL 10
+#define R_BALLE 20
 #define NB_BALLE 50
 
 #define NB_JOUEUR 2
@@ -203,8 +203,8 @@ typedef struct
     int mode;
     int temps[2];
     int nbButs;
-    int triangle1;
-    int triangle2;
+    float triangle1;
+    float triangle2;
 } Options;
 
 // Page page |Balle balle[MAX_BALLE] |Balle balleJeu |Joueur joueurs[NB_JOUEUR] |User *users |char newPseudo[15]

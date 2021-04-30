@@ -110,14 +110,10 @@ int signe(const float val) { return val / fabsf(val); }
 void hitbox(Balle *const balle, const Raquette *const raquette)
 {
 	for (float i = 0.f; i < 2 * M_PI; i += 0.01f)
-		if (raquette->x - raquette->largeur / 2 - cosf(i) * balle->r < X_BALLE < raquette->x + raquette->largeur / 2 - cosf(i) * balle->r &&
-			raquette->y - raquette->longueur / 2 - sinf(i) * balle->r < Y_BALLE < raquette->y + raquette->longueur / 2 - sinf(i) * balle->r)
-		{
-			if (raquette->x - raquette->largeur / 2 <= X_BALLE <= raquette->x + raquette->largeur / 2 &&
-				raquette->y - raquette->longueur / 2 <= Y_BALLE <= raquette->y + raquette->longueur / 2)
-				while (raquette->y - raquette->longueur / 2 <= Y_BALLE <= raquette->y + raquette->longueur / 2)
-					balle->y += signe(balle->y - raquette->y);
-			if (balle->x > raquette->x + raquette->largeur / 2 || balle->x < raquette->x - raquette->largeur / 2)
+		if (raquette->x - raquette->largeur / 2 - cosf(i) *( balle->r) < X_BALLE < raquette->x + raquette->largeur / 2 - cosf(i) *( balle->r) &&
+			raquette->y - raquette->longueur / 2 -raquette->vy - sinf(i) * (balle->r) < Y_BALLE < raquette->y+raquette->vy + raquette->longueur / 2 - sinf(i) * (balle->r))
+		{						
+			if (balle->x + balle->vx > raquette->x + raquette->largeur/2|| balle->x + balle->vx < raquette->x -raquette->largeur/2)
 			{
 				balle->vx = -cosf(M_PI / 4 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vx);
 				balle->vy = sinf(M_PI / 4 * fabsf(balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vy);
@@ -127,10 +123,10 @@ void hitbox(Balle *const balle, const Raquette *const raquette)
 				balle->vx = sinf(M_PI / 4 * fabsf(balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vx);
 				balle->vy = -cosf(M_PI / 4 * (balle->x - raquette->x) / (raquette->largeur / 2)) * balle->v0 * signe(balle->vy);
 			}
-			if (balle->vx == 0.f)
-				balle->vx = 0.1;
-			if (balle->vy == 0.f)
-				balle->vy = 0.1;
+			if (balle->vx == 0)
+				balle->vx = 0.0001;
+			if (balle->vy == 0)
+				balle->vy = 0.0001;
 			mouvementBalle(balle);
 			break;
 		}

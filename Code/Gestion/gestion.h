@@ -43,7 +43,8 @@ void ClicResultats(Data *const data);
 //mutateur
 void ClicMutateur(Data *const data);
 //taille raquette
-int clicTailleRaq();
+float modifTriangle1(float triangle);
+float modifTriangle2(float triangle);
 
 //Gestion Tempo page d'Accueil
 void TempoAccueil(Data *const data);

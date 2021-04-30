@@ -59,7 +59,6 @@ void AfficheSelection(Data *const data)
     bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
     bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);
     bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
-    rouage(data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
     couleurCourante(0, 0, teinte);
     rectangle(2 * Ux, 6 * Uy, 14 * Ux, 14 * Uy);
     couleurCourante(teinte, 0, 0);
@@ -86,10 +85,8 @@ void AfficheSelection(Data *const data)
     if (data->page.pause == 2)
         zoneText(data->page.select, data->newPseudo);
     if(data->page.pause==1)
-    {
         AfficheMutateur(data);
-        ClicMutateur(data);
-    }
+    rouage(data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
 }
 
 void AfficheJeu(Data *const data)
@@ -150,10 +147,10 @@ void AfficheResultats(Data *const data)
 // sous traitance
 void AfficheMutateur(Data *const data)
 {
-	// FOND NOIR
-    effaceFenetre(0, 0, 0);
     
     // TEXTE MUTATEUR
+    couleurCourante(0, 0, 0);
+    bouton(data->page.select[35],5*Ux,5*Uy,95*Ux,MAX_Y);
     couleurCourante(255, 255, 255);
     epaisseurDeTrait(6);
     afficheChaine("MUTATEUR", 60, 4 * largeurFenetre() / 14, 10.2* hauteurFenetre() / 12);
@@ -196,14 +193,6 @@ void AfficheMutateur(Data *const data)
     couleurCourante(150,56,53);
     couleurCourante(255, 190, 180);
     afficheChaine("L", 30, 17.07 * largeurFenetre() / 40, 1.08 * hauteurFenetre() / 10);
-    couleurCourante(150,56,53);
-    
-    // RECTANGLE RETOUR
-    couleurCourante(140, 130, 140);
-    rectangle(3 * largeurFenetre() / 4, hauteurFenetre() / 12, 15 * largeurFenetre() / 16, hauteurFenetre() / 6);
-    epaisseurDeTrait(3);
-    couleurCourante(255, 255, 255);
-    afficheChaine("Retour", 30, 31.9 * largeurFenetre() / 40, 1.1 * hauteurFenetre() / 10);
     couleurCourante(150,56,53);
 
     // FONCTION AFFICHAGE DES SLIDERS

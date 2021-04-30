@@ -2,7 +2,7 @@
 
 Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier(), initOptions(), Cinq_Min, ""}; }
 
-Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_BALLE, V_BALLE, V_BALLE, fabsf(V_BALLE)}; }
+Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_ACCEUIL, V_ACCEUIL, V_ACCEUIL, fabsf(V_BALLE)}; }
 
 Raquette initRaquetteG() { return (Raquette){LONG_RAQUETTE, LARG_RAQUETTE, X_RAQUETTE_LEFT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'a', 'q'}; }
 
