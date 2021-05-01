@@ -6,30 +6,6 @@ void clicRouage(Page *const page, const int x, const int y, const int r)
         page->pause = (page->pause == true) ? false : true;
 }
 
-void clicPause(Data *const data)
-{
-    if (35 * Ux < X_SOURIS < 65 * Ux && 55 * Uy < Y_SOURIS < 65 * Uy)
-        data->page.pause = false;
-    if (35 * Ux < X_SOURIS < 65 * Ux && 35 * Uy < Y_SOURIS < 45 * Uy)
-    {
-        data->page.pause = false;
-        data->joueurs[0].raquette.y=(MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
-        data->joueurs[1].raquette.y=(MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
-        resetBalle(&data->balleJeu, &data->option);
-        resetScore(data->joueurs);
-        resetTimer(data->timer, data->option);
-    }
-    if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
-    {
-        data->page.pause = false;
-        data->page.numero = Menu;
-        resetBalle(&data->balleJeu, &data->option);
-        resetUsers(data->joueurs);
-        resetRaquette(data->joueurs);
-        resetScore(data->joueurs);
-        resetTimer(data->timer, data->option);
-    }
-}
 
 void clicUsers(Joueur *const joueur, const Joueur autre, Users *const users)
 {
@@ -63,3 +39,4 @@ void clicAddUsers(Page *const page)
     if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
         page->pause = (page->pause == 2) ? false : 2;
 }
+

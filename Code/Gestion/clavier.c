@@ -2,7 +2,7 @@
 
 void ClavierSelect(Data *const data)
 {
-	if (data->page.pause)
+	if (data->page.pause==2)
 	{
 		if (caractereClavier() == 13)
 		{

@@ -58,11 +58,13 @@ void affichePause(const Select *const select)
     ligne(70 * Ux, 70 * Uy, 70 * Ux, 10 * Uy);
     ligne(70 * Ux, 10 * Uy, 30 * Ux, 10 * Uy);
     bouton(select[0], 35 * Ux, 55 * Uy, 65 * Ux, 65 * Uy);
-    bouton(select[1], 35 * Ux, 35 * Uy, 65 * Ux, 45 * Uy);
+    bouton(select[1], 35 * Ux, 42 * Uy, 65 * Ux, 52 * Uy);
+    bouton(select[3], 35 * Ux, 29 * Uy, 65 * Ux, 39 * Uy);
     bouton(select[2], 35 * Ux, 15 * Uy, 65 * Ux, 25 * Uy);
     CC_BLANC;
     afficheChaine("Reprendre", 30, 41 * Ux, 58 * Uy);
-    afficheChaine("Rejouer", 30, 43 * Ux, 38 * Uy);
+    afficheChaine("Rejouer", 30, 43 * Ux, 45 * Uy);
+    afficheChaine("Mutateur", 30, 42 * Ux, 32 * Uy);
     afficheChaine("Quitter", 30, 44 * Ux, 18 * Uy);
 }
 

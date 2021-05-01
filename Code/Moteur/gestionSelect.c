@@ -15,9 +15,13 @@ void selectRouage(Select *const select, const int x, const int y, const int r)
 void selectPause(Select *const select)
 {
     selectBouton(&select[0], 35 * Ux, 65 * Ux, 55 * Uy, 65 * Uy);
-    selectBouton(&select[1], 35 * Ux, 65 * Ux, 35 * Uy, 45 * Uy);
+    selectBouton(&select[1], 35 * Ux, 65 * Ux, 42 * Uy, 52 * Uy);
+    selectBouton(&select[3], 35 * Ux, 65 * Ux, 29 * Uy, 39 * Uy);
     selectBouton(&select[2], 35 * Ux, 65 * Ux, 15 * Uy, 25 * Uy);
+    
 }
+
+
 
 void selectUsers(Select *const select)
 {

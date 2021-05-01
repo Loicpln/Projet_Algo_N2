@@ -122,8 +122,8 @@
 #ifndef STRUCT
 #define STRUCT
 //sous traitance
-#define absBar1 1.5 * largeurFenetre() / 14
-#define absBar2 8 * largeurFenetre() / 14
+#define absBar1 10*Ux
+#define absBar2 58 * Ux
 
 // bool haut |bool hautGauche |bool hautDroite |bool milieu |bool basGauche |bool basDroite |bool bas
 typedef struct

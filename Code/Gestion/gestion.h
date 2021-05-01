@@ -16,8 +16,6 @@ void AfficheJeu(Data *const data);
 void AfficheEntrainement(Data *const data);
 //Gestion Affichage page de Resultats
 void AfficheResultats(Data *const data);
-//Sous traitance mutateur
-void AfficheMutateur(Data *const data);
 
 //Gestion Clavier page Select
 void ClavierSelect(Data *const data);
@@ -39,12 +37,7 @@ void ClicJeu(Data *const data);
 //Gestion Clic page Resultats
 void ClicResultats(Data *const data);
 
-//Sous traitance 
-//mutateur
-void ClicMutateur(Data *const data);
-//taille raquette
-float modifTriangle1(float triangle);
-float modifTriangle2(float triangle);
+
 
 //Gestion Tempo page d'Accueil
 void TempoAccueil(Data *const data);
@@ -65,3 +58,12 @@ void TempoResultats(Data *const data);
 void Redim(Data *const data);
 void redimBalle(Balle *const balle);
 void redimRaquette(Raquette *const raquette, const int i);
+
+//Sous traitance 
+//mutateur
+void ClicMutateur(Data *const data);
+//taille raquette
+float modifTriangle1(float triangle);
+float modifTriangle2(float triangle);
+//Sous traitance mutateur
+void AfficheMutateur(Data *const data);

@@ -18,6 +18,7 @@ void resetBalle(Balle * const balle, const Options *const options);
 void selectBouton(Select *const select, const int x1, const int x2, const int y1, const int y2);
 void selectRouage(Select *const select, const int x, const int y, const int r);
 void selectPause(Select *const select);
+
 void selectUsers(Select *const select);
 
 void clicRouage(Page *const page, const int x, const int y, const int r);
@@ -50,3 +51,5 @@ void but(Balle *const balle, Joueur *const joueur);
 void jeu(Data *const data);
 void decompte(int *temps);
 void IA(Raquette *const raquette, const Balle *const balle, const bool side);
+
+

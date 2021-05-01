@@ -80,7 +80,9 @@ void TempoJeu(Data *const data)
 		selectRouage(&data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
 	else
 		selectRouage(&data->page.select[id_Rouage], MID_X, 90 * Uy, r_Rouage);
-}
+	
+
+}	
 
 void TempoEntrainement(Data *const data)
 {
