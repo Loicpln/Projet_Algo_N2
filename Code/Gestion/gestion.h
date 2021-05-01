@@ -58,12 +58,3 @@ void TempoResultats(Data *const data);
 void Redim(Data *const data);
 void redimBalle(Balle *const balle);
 void redimRaquette(Raquette *const raquette, const int i);
-
-//Sous traitance 
-//mutateur
-void ClicMutateur(Data *const data);
-//taille raquette
-float modifTriangle1(float triangle);
-float modifTriangle2(float triangle);
-//Sous traitance mutateur
-void AfficheMutateur(Data *const data);

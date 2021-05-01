@@ -6,7 +6,6 @@ void clicRouage(Page *const page, const int x, const int y, const int r)
         page->pause = (page->pause == true) ? false : true;
 }
 
-
 void clicUsers(Joueur *const joueur, const Joueur autre, Users *const users)
 {
     const User *tmp = users->premier;
@@ -40,3 +39,86 @@ void clicAddUsers(Page *const page)
         page->pause = (page->pause == 2) ? false : 2;
 }
 
+void clicPause(Data *const data)
+{
+    if (35 * Ux < X_SOURIS < 65 * Ux && 55 * Uy < Y_SOURIS < 65 * Uy)
+        data->page.pause = false;
+    if (35 * Ux < X_SOURIS < 65 * Ux && 42 * Uy < Y_SOURIS < 52 * Uy)
+    {
+        data->page.pause = false;
+        resetRaquette(data->joueurs, data->option);
+        resetBalle(&data->balleJeu, data->option);
+        resetScore(data->joueurs);
+        resetTimer(data->timer, data->option);
+    }
+
+    if (35 * Ux < X_SOURIS < 65 * Ux && 29 * Uy < Y_SOURIS < 39 * Uy)
+    {
+        data->page.pause = 2;
+    }
+
+    if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
+    {
+        data->page.pause = false;
+        data->page.numero = Menu;
+        resetBalle(&data->balleJeu, data->option);
+        resetUsers(data->joueurs);
+        resetRaquette(data->joueurs, data->option);
+        resetScore(data->joueurs);
+        resetTimer(data->timer, data->option);
+    }
+}
+
+//sous traitance
+void ClicMutateur(Data *const data)
+{
+    // SELECTION TAILLE RAQUETTE ET RENVOI VALEUR (1 = S, 2 = M, 3 = L)
+
+    if (etatBoutonSouris() == GaucheAppuye)
+    {
+        data->option.triangle1 = modifTriangle1(data->option.triangle1); // CHOIX VITESSE BALLE ET RENVOI % (0 VITESSE MINIMALE, 100 VITESSE MAXIMALE)
+        data->option.triangle2 = modifTriangle2(data->option.triangle2); // CHOIX TAILLE BALLE ET RENVOI % (0 TAILLE MINIMALE, 100 TAILLE MAXIMALE)
+
+        if (33 * Ux < X_SOURIS < 43 * Ux && 10 * Uy < Y_SOURIS < 18 * Uy)
+        {
+            data->option.raquette = 0;
+            data->joueurs[0].raquette.longueur = 2 * LONG_RAQUETTE / 3;
+            data->joueurs[1].raquette.longueur = 2 * LONG_RAQUETTE / 3;
+        }
+        else if (45 * Ux < X_SOURIS < 55 * Ux && 10 * Uy < Y_SOURIS < 18 * Uy)
+        {
+            data->option.raquette = 1;
+            data->joueurs[0].raquette.longueur = LONG_RAQUETTE;
+            data->joueurs[1].raquette.longueur = LONG_RAQUETTE;
+        }
+        else if (57 * Ux < X_SOURIS < 67 * Ux && 10 * Uy < Y_SOURIS < 18 * Uy)
+        {
+            data->option.raquette = 2;
+            data->joueurs[0].raquette.longueur = 3 * LONG_RAQUETTE / 2;
+            data->joueurs[1].raquette.longueur = 3 * LONG_RAQUETTE / 2;
+        }
+    }
+    resetBalle(&data->balleJeu, data->option);
+    resetRaquette(data->joueurs, data->option);
+}
+
+// FONCTION MODIFICATION POSITION CURSEUR GAUCHE
+float modifTriangle1(float triangle)
+{
+    if (abscisseSouris() >= absBar1 && abscisseSouris() <= 42 * Ux && ordonneeSouris() >= 53 * Uy && ordonneeSouris() <= 55 * Uy)
+    {
+        triangle = abscisseSouris() - absBar1;
+    }
+    return triangle;
+}
+
+// FONCTION MODIFICATION POSITION CURSEUR DROITE
+float modifTriangle2(float triangle)
+{
+    if (abscisseSouris() >= absBar2 && abscisseSouris() <= 90 * Ux && ordonneeSouris() >= 53 * Uy && ordonneeSouris() <= 55 * Uy)
+    {
+        triangle = abscisseSouris() - absBar2;
+    }
+    //triangle = triangle*100/318;
+    return triangle;
+}

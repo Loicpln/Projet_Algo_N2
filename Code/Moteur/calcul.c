@@ -111,9 +111,9 @@ void hitbox(Balle *const balle, const Raquette *const raquette)
 {
 	for (float i = 0.f; i < 2 * M_PI; i += 0.01f)
 		if (raquette->x - raquette->largeur / 2 - balle->vx < X_BALLE < raquette->x + raquette->largeur / 2 - balle->vx &&
-			raquette->y - raquette->longueur / 2 -raquette->vy < Y_BALLE < raquette->y + raquette->longueur / 2 +raquette->vy)
-		{						
-			if (balle->x + balle->vx > raquette->x + raquette->largeur/2|| balle->x + balle->vx < raquette->x -raquette->largeur/2)
+			raquette->y - raquette->longueur / 2 - raquette->vy < Y_BALLE < raquette->y + raquette->longueur / 2 + raquette->vy)
+		{
+			if (balle->x + balle->vx > raquette->x + raquette->largeur / 2 || balle->x + balle->vx < raquette->x - raquette->largeur / 2)
 			{
 				balle->vx = -cosf(M_PI / 4 * (balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vx);
 				balle->vy = sinf(M_PI / 4 * fabsf(balle->y - raquette->y) / (raquette->longueur / 2)) * balle->v0 * signe(balle->vy);
@@ -168,21 +168,23 @@ void jeu(Data *const data)
 		if (data->timer[0] == 0 && data->timer[1] == 0)
 		{
 			data->page.numero = Resultats;
-            resetBalle(&data->balleJeu, &data->option);
-			resetTimer(data->timer,data->option);
+			resetBalle(&data->balleJeu, data->option);
+			resetRaquette(data->joueurs, data->option);
+			resetTimer(data->timer, data->option);
 		}
 	}
 	else if (data->joueurs[0].score == data->option.nbButs || data->joueurs[1].score == data->option.nbButs)
 	{
 		data->page.numero = Resultats;
-        resetBalle(&data->balleJeu, &data->option);
+		resetRaquette(data->joueurs, data->option);
+		resetBalle(&data->balleJeu, data->option);
 	}
 }
 
 void decompte(int *temps)
 {
 	static int tmp = 0;
-	if (++tmp == 1000/RafraichissementFenetre)
+	if (++tmp == 1000 / RafraichissementFenetre)
 	{
 		if (temps[1] == 0)
 		{

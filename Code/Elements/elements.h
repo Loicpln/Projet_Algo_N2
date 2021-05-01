@@ -24,3 +24,6 @@ void timer(const int temps[], const int x, const int y);
 void afficheDigit(const Digit digit, const int x, const int y);
 //Affiche tout les Users
 void afficheUsers(const Select *const select, const Users *const maUsers, const int teinte);
+
+//Sous traitance mutateur
+void AfficheMutateur(Data *const data);

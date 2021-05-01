@@ -1,16 +1,16 @@
 #include "moteur.h"
 
-Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG()}, {initScore(), NULL, initRaquetteD()}}, chargeUsersDepuisFichier(), initOptions(), Cinq_Min, ""}; }
+Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG(LONG_RAQUETTE)}, {initScore(), NULL, initRaquetteD(LONG_RAQUETTE)}}, chargeUsersDepuisFichier(), initOptions(), Cinq_Min, ""}; }
 
 Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_ACCEUIL, V_ACCEUIL, V_ACCEUIL, fabsf(V_BALLE)}; }
 
-Raquette initRaquetteG() { return (Raquette){LONG_RAQUETTE, LARG_RAQUETTE, X_RAQUETTE_LEFT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'a', 'q'}; }
+Raquette initRaquetteG(int longeur) { return (Raquette){longeur, LARG_RAQUETTE, X_RAQUETTE_LEFT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'a', 'q'}; }
 
-Raquette initRaquetteD() { return (Raquette){LONG_RAQUETTE, LARG_RAQUETTE, X_RAQUETTE_RIGHT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'p', 'm'}; }
+Raquette initRaquetteD(int longeur) { return (Raquette){longeur, LARG_RAQUETTE, X_RAQUETTE_RIGHT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'p', 'm'}; }
 
 Balle initBalleJeu() { return (Balle){MID_X, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, R_BALLE, V_BALLE, VH_BALLE, fabsf(V_BALLE)}; }
 
-Options initOptions() { return (Options){ContreLaMontre, Cinq_Min, NBVIES, (52*Ux)/2 - absBar1, (148*Ux)/2 - absBar2}; }
+Options initOptions() { return (Options){ContreLaMontre, Cinq_Min, NBVIES, (52 * Ux) / 2 - absBar1, (148 * Ux) / 2 - absBar2,1}; }
 
 Users *chargeUsersDepuisFichier()
 {
@@ -57,10 +57,17 @@ void resetTimer(int *const timer, const Options options)
 	timer[1] = options.temps[1];
 }
 
-void resetRaquette(Joueur *const joueur)
+void resetRaquette(Joueur *const joueur, const Options options)
 {
+	int longueur;
+	if (options.raquette == 0)
+		longueur = 2 * LONG_RAQUETTE / 3;
+	else if (options.raquette == 1)
+		longueur = LONG_RAQUETTE;
+	else if (options.raquette == 2)
+		longueur = 3 * LONG_RAQUETTE / 2;
 	for (int i = 0; i < NB_JOUEUR; i++)
-		joueur[i].raquette = (i % 2) ? initRaquetteD() : initRaquetteG();
+		joueur[i].raquette = (i % 2) ? initRaquetteD(longueur) : initRaquetteG(longueur);
 }
 
 void resetScore(Joueur *const joueur)
@@ -69,12 +76,12 @@ void resetScore(Joueur *const joueur)
 		joueur[i].score = initScore();
 }
 
-void resetBalle(Balle *const balle, const Options *const options)
+void resetBalle(Balle *const balle, const Options options)
 {
 	balle->x = MID_X;
 	balle->y = (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2;
-	balle->r = R_BALLE * options->triangle2 / (90*Ux - absBar2) + 8;
-	balle->v0 = V_BALLE * options->triangle1 / (42*Ux - absBar1);
+	balle->r = R_BALLE * options.triangle2 / (90 * Ux - absBar2) + 8;
+	balle->v0 = V_BALLE * options.triangle1 / (42 * Ux - absBar1);
 	balle->vx = rand() % 2 ? -balle->v0 : balle->v0;
 	balle->vy = VH_BALLE;
 }

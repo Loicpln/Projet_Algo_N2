@@ -2,18 +2,18 @@
 
 Data init();
 Balle initBallesAccueil();
-Raquette initRaquetteG();
-Raquette initRaquetteD();
+Raquette initRaquetteG(int longeur);
+Raquette initRaquetteD(int longeur);
 Balle initBalleJeu();
 Users *chargeUsersDepuisFichier();
 Options initOptions();
 int initScore();
 void resetSelect(Select *const select);
 void resetUsers(Joueur *const joueur);
-void resetRaquette(Joueur *const joueur);
+void resetRaquette(Joueur *const joueur, const Options options);
 void resetScore(Joueur *const joueur);
 void resetTimer(int *const timer, const Options options);
-void resetBalle(Balle * const balle, const Options *const options);
+void resetBalle(Balle *const balle, const Options options);
 
 void selectBouton(Select *const select, const int x1, const int x2, const int y1, const int y2);
 void selectRouage(Select *const select, const int x, const int y, const int r);
@@ -53,3 +53,9 @@ void decompte(int *temps);
 void IA(Raquette *const raquette, const Balle *const balle, const bool side);
 
 
+//Sous traitance 
+//mutateur
+void ClicMutateur(Data *const data);
+//taille raquette
+float modifTriangle1(float triangle);
+float modifTriangle2(float triangle);

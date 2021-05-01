@@ -205,6 +205,7 @@ typedef struct
     int nbButs;
     float triangle1;
     float triangle2;
+    int raquette;
 } Options;
 
 // Page page |Balle balle[MAX_BALLE] |Balle balleJeu |Joueur joueurs[NB_JOUEUR] |User *users |char newPseudo[15]
