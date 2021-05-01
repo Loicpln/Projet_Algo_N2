@@ -110,7 +110,7 @@ int signe(const float val) { return val / fabsf(val); }
 void hitbox(Balle *const balle, const Raquette *const raquette)
 {
 	for (float i = 0.f; i < 2 * M_PI; i += 0.01f)
-		if (raquette->x - raquette->largeur / 2 < X_BALLE < raquette->x + raquette->largeur / 2 &&
+		if (raquette->x - raquette->largeur / 2 - balle->vx < X_BALLE < raquette->x + raquette->largeur / 2 - balle->vx &&
 			raquette->y - raquette->longueur / 2 -raquette->vy < Y_BALLE < raquette->y + raquette->longueur / 2 +raquette->vy)
 		{						
 			if (balle->x + balle->vx > raquette->x + raquette->largeur/2|| balle->x + balle->vx < raquette->x -raquette->largeur/2)
