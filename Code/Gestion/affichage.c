@@ -199,9 +199,7 @@ void AfficheMutateur(Data *const data)
     rectangle(45 * Ux, 18 * Uy,55 * Ux, 10 * Uy);
     rectangle(57 * Ux, 18 * Uy,67 * Ux, 10 * Uy);
 
-    couleurSelect(&data->page.select[15],190,70,70);
-    couleurSelect(&data->page.select[16],190,70,70);
-    couleurSelect(&data->page.select[17],190,70,70);
+    
     bouton(data->page.select[15],33*Ux,10*Uy,43*Ux,18*Uy);
     bouton(data->page.select[16],45*Ux,10*Uy,55*Ux,18*Uy);
     bouton(data->page.select[17],57*Ux,10*Uy,67*Ux,18*Uy);
@@ -211,18 +209,18 @@ void AfficheMutateur(Data *const data)
     
 	couleurCourante(255, 190, 180);
     afficheChaine("S", 30, 37* Ux, 12*Uy);
-    couleurCourante(150,56,53);
+ 
     couleurCourante(255, 190, 180);
     afficheChaine("M", 30, 49 * Ux, 12* Uy);
-    couleurCourante(150,56,53);
+    
     couleurCourante(255, 190, 180);
     afficheChaine("L", 30, 61 * Ux, 12 * Uy);
-    couleurCourante(150,56,53);
+    
     
 
 	couleurCourante(168,168,168);
 	rectangle(absBar1, 55 * Uy, 42 * Ux  , 53* Uy);
-	couleurCourante(255,0,0);
+	
 	
 	couleurCourante(168,168,168);
 	rectangle(absBar2, 55 * Uy , 90 * Ux, 53* Uy);

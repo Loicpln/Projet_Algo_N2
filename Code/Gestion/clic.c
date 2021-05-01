@@ -179,19 +179,20 @@ void ClicMutateur(Data *const data)
 
             data->joueurs[0].raquette.longueur = 2 * LONG_RAQUETTE / 3;
             data->joueurs[1].raquette.longueur = 2 * LONG_RAQUETTE / 3;
-            selectBouton(&data->page.select[15], 33 * Ux, 43 * Ux, 10 * Uy, 18 * Uy);
+            
         }
         else if (abscisseSouris() >= 45 * Ux && abscisseSouris() <= 55 * Ux && ordonneeSouris() >= 10 * Uy && ordonneeSouris() <= 18 * Uy)
         {
             data->joueurs[0].raquette.longueur = LONG_RAQUETTE;
             data->joueurs[1].raquette.longueur = LONG_RAQUETTE;
-            selectBouton(&data->page.select[16], 45 * Ux, 55 * Ux, 10 * Uy, 18 * Uy);
+            
+            
         }
         else if ((abscisseSouris() >= 57 * Ux && abscisseSouris() <= 67 * Ux && ordonneeSouris() >= 10 * Uy && ordonneeSouris() <= 18 * Uy))
         {
             data->joueurs[0].raquette.longueur = 3 * LONG_RAQUETTE / 2;
             data->joueurs[1].raquette.longueur = 3 * LONG_RAQUETTE / 2;
-            selectBouton(&data->page.select[17], 57 * Ux, 67 * Ux, 10 * Uy, 18 * Uy);
+            
         }
     }
     resetBalle(&data->balleJeu, &data->option);

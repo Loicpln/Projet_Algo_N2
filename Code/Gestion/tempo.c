@@ -53,10 +53,25 @@ void TempoSelection(Data *const data)
 		couleurSelect(&data->page.select[47], 0, 255, 0);
 	}
 	else
+	{
 		couleurSelect(&data->page.select[47], 255, 255, 255);
+		if (data->joueurs[1].raquette.longueur == 2 * LONG_RAQUETTE / 3 )
+		{
+			couleurSelect(&data->page.select[15],0,0,255);
+		}
+		else if (data->joueurs[1].raquette.longueur == LONG_RAQUETTE)
+		{
+			couleurSelect(&data->page.select[16],0,0,255);
+		}
+		else if (data->joueurs[1].raquette.longueur == 3*LONG_RAQUETTE/2)
+		{
+			couleurSelect(&data->page.select[17],0,0,255);
+		}
+	}
 	couleurSelect(&data->page.select[id_Rouage], 255, 255, 255);
 	selectRouage(&data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
 	selectBouton(&data->page.select[47], 87 * Ux, 95 * Ux, 85 * Uy, 95 * Uy);
+	
 	if (data->joueurs[0].user != NULL)
 	{
 		couleurSelect(data->page.select + data->joueurs[0].user->id, 0, 0, teinte);
@@ -81,7 +96,18 @@ void TempoJeu(Data *const data)
 	else
 		selectRouage(&data->page.select[id_Rouage], MID_X, 90 * Uy, r_Rouage);
 	
-
+	if (data->joueurs[1].raquette.longueur == 2 * LONG_RAQUETTE / 3 )
+		{
+			couleurSelect(&data->page.select[15],0,0,255);
+		}
+		else if (data->joueurs[1].raquette.longueur == LONG_RAQUETTE)
+		{
+			couleurSelect(&data->page.select[16],0,0,255);
+		}
+		else if (data->joueurs[1].raquette.longueur == 3*LONG_RAQUETTE/2)
+		{
+			couleurSelect(&data->page.select[17],0,0,255);
+		}
 }	
 
 void TempoEntrainement(Data *const data)
@@ -97,6 +123,18 @@ void TempoEntrainement(Data *const data)
 	else
 		selectPause(data->page.select);
 	selectRouage(&data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
+	if (data->joueurs[1].raquette.longueur == 2 * LONG_RAQUETTE / 3 )
+		{
+			couleurSelect(&data->page.select[15],0,0,255);
+		}
+		else if (data->joueurs[1].raquette.longueur == LONG_RAQUETTE)
+		{
+			couleurSelect(&data->page.select[16],0,0,255);
+		}
+		else if (data->joueurs[1].raquette.longueur == 3*LONG_RAQUETTE/2)
+		{
+			couleurSelect(&data->page.select[17],0,0,255);
+		}
 }
 
 void TempoResultats(Data *const data)
