@@ -54,7 +54,7 @@ void clicAddUsers(Page *const page);
 User *creeUser(const int id, const char *const pseudo, const int nbGame, const int nbWin, const int nbLose);
 //Ajoute à la liste Users un element User
 Users *ajouteUsers(Users *users, User *const nouv);
-//Supprime un element User dans la liste Users selon l'id 
+//Supprime un element User dans la liste Users selon l'id
 Users *supprimeDansUsers(Users *users, const int id);
 //Reajuste les id de la liste [0,1,2,4,5,7]->[0,1,2,3,4,5]
 Users *changeId(Users *users);
@@ -71,7 +71,7 @@ void couleurSelect(Select *const select, const int R, const int V, const int B);
 void mouvementBalle(Balle *const balle);
 //Gère le rebond de la balle
 void rebond(Balle *const balle, const int min_x, const int min_y, const int max_x, const int max_y);
-//Accelere la vitesse de la balle 
+//Accelere la vitesse de la balle
 void accelereBalle(Balle *const balle, const float facteur);
 //Si la touche 'g' et appuyée la pause se déclanche
 void touchePause(Page *const page);
@@ -98,8 +98,7 @@ void decompte(int *temps);
 //Gère les calculs de l'IA pour déplacer la raquette
 void IA(Raquette *const raquette, const Balle *const balle, const bool side);
 
-
-//Sous traitance 
+//Sous traitance
 //mutateur
 void ClicMutateur(Data *const data);
 //taille raquette

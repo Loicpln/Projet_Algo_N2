@@ -49,7 +49,7 @@
 #define Gauche false
 #define Droite true
 
-#define V_ACCEUIL rand()%2 ? 5.f : -5.f
+#define V_ACCEUIL rand() % 2 ? 5.f : -5.f
 #define V_BALLE 10.f
 #define VH_BALLE 0.00001
 #define R_ACCEUIL 10
@@ -103,12 +103,12 @@
 #define BattleRoyal 1
 
 #define Cinq_Min \
-    {        \
-        5, 0 \
+    {            \
+        5, 0     \
     }
 #define Deux_Min \
-    {        \
-        2, 0 \
+    {            \
+        2, 0     \
     }
 #define NBVIES 3
 
@@ -123,12 +123,12 @@
 #define Entrainement 6
 #define Resultats 7
 
+//sous-traitance
+#define absBar1 10 * Ux
+#define absBar2 58 * Ux
 
 #ifndef STRUCT
 #define STRUCT
-//sous-traitance
-#define absBar1 10*Ux
-#define absBar2 58 * Ux
 
 // bool haut |bool hautGauche |bool hautDroite |bool milieu |bool basGauche |bool basDroite |bool bas
 typedef struct
@@ -224,8 +224,7 @@ typedef struct
     Options option;
     int timer[2];
     char newPseudo[15];
-    
-} Data;
 
+} Data;
 
 #endif

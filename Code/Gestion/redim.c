@@ -10,10 +10,10 @@ void Redim(Data *const data)
 
 void redimBalle(Balle *const balle)
 {
-	if (balle->x >= largeurFenetre())
-		balle->x = largeurFenetre() - 1;
-	if (balle->y >= hauteurFenetre())
-		balle->y = hauteurFenetre() - 1;
+    if (balle->x >= largeurFenetre())
+        balle->x = largeurFenetre() - 1;
+    if (balle->y >= hauteurFenetre())
+        balle->y = hauteurFenetre() - 1;
 }
 
 void redimRaquette(Raquette *const raquette, const int i)

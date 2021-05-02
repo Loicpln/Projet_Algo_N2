@@ -37,8 +37,6 @@ void ClicJeu(Data *const data);
 //Gestion Clic page Resultats
 void ClicResultats(Data *const data);
 
-
-
 //Gestion Tempo page d'Accueil
 void TempoAccueil(Data *const data);
 //Gestion Tempo page Menu
@@ -56,7 +54,7 @@ void TempoResultats(Data *const data);
 
 //Gestion Redimensionnement
 void Redim(Data *const data);
-//Redimensionnement de la balle 
+//Redimensionnement de la balle
 void redimBalle(Balle *const balle);
-//Redimensionnement de la raquette 
+//Redimensionnement de la raquette
 void redimRaquette(Raquette *const raquette, const int i);

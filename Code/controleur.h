@@ -3,21 +3,21 @@
 typedef struct
 {
     //Page 1
-    void (*f1)(Data * const);
+    void (*f1)(Data *const);
     //Page 2
-    void (*f2)(Data * const);
+    void (*f2)(Data *const);
     //Page 3
-    void (*f3)(Data * const);
+    void (*f3)(Data *const);
     //Page 4
-    void (*f4)(Data * const);
+    void (*f4)(Data *const);
     //Page 5
-    void (*f5)(Data * const);
+    void (*f5)(Data *const);
     //Page 6
-    void (*f6)(Data * const);
+    void (*f6)(Data *const);
     //Page 7
-    void (*f7)(Data * const);
+    void (*f7)(Data *const);
     //page 8 mutateur
-    void (*f8)(Data * const);
+    void (*f8)(Data *const);
 } Gestion;
 
 //fonction nulle

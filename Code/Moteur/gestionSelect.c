@@ -20,8 +20,6 @@ void selectPause(Select *const select)
     selectBouton(&select[2], 35 * Ux, 65 * Ux, 15 * Uy, 25 * Uy);
 }
 
-
-
 void selectUsers(Select *const select)
 {
     for (int i = 0; i < NB_USERS; i++)
