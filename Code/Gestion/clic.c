@@ -110,7 +110,7 @@ void ClicResultats(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
-        clicRouage(&data->page, 12 * Ux, 90 * Uy, r_Rouage);
+        
         if (!data->page.pause)
         {
             if (30 * Ux < X_SOURIS < 70 * Ux && 20 * Uy < Y_SOURIS < 30 * Uy)

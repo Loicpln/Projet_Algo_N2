@@ -132,7 +132,7 @@ void afficheUsers(const Select *const select, const Users *const users, const in
     const User *tmp = users->premier;
     for (int i = 0; tmp != NULL; i++, tmp = tmp->userSuivant)
     {
-        sprintf(Game, "G %d", tmp->nbWin);
+        sprintf(Game, "G %d", tmp->nbGame);
         sprintf(Win, "W %d", tmp->nbWin);
         sprintf(Lose, "L %d", tmp->nbLose);
         bouton(select[i], 2 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 83 * Uy - 35 * floor(i / 5) * Uy);

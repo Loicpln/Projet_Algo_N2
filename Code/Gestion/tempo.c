@@ -137,6 +137,26 @@ void TempoResultats(Data *const data)
 		selectBouton(&data->page.select[0], 30 * Ux, 70 * Ux, 20 * Uy, 30 * Uy);
 		selectBouton(&data->page.select[1], 30 * Ux, 70 * Ux, 5 * Uy, 15 * Uy);
 	}
-	couleurSelect(&data->page.select[id_Rouage], 255, 255, 255);
-	selectRouage(&data->page.select[id_Rouage], 12 * Ux, 90 * Uy, r_Rouage);
+	
+
+
+	if (data->joueurs[0].score > data-> joueurs[1].score )
+	{
+		data->joueurs[0].user->nbWin += 1;
+		data->joueurs[1].user->nbLose += 1;
+		data->joueurs[0].user->nbGame += 1;
+		data->joueurs[1].user->nbGame += 1;
+		
+	}
+	else if (data->joueurs[0].score < data-> joueurs[1].score)
+	{
+		data->joueurs[1].user->nbWin += 1;
+		data->joueurs[0].user->nbLose += 1;
+		data->joueurs[0].user->nbGame += 1;
+		data->joueurs[1].user->nbGame += 1;
+	}
+	resetScore(data->joueurs);
+	enregistreUsersFichier(data->users);
+	
+
 }
