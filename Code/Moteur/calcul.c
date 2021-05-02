@@ -1,11 +1,11 @@
 #include "moteur.h"
-
+//Mouvement de le balle
 void mouvementBalle(Balle *const balle)
 {
 	balle->x += balle->vx;
 	balle->y += balle->vy;
 }
-
+//Rebond de la balle
 void rebond(Balle *const balle, const int min_x, const int min_y, const int max_x, const int max_y)
 {
 	if (balle->x - balle->r < min_x || balle->x + balle->r > max_x)
@@ -13,26 +13,26 @@ void rebond(Balle *const balle, const int min_x, const int min_y, const int max_
 	if (balle->y - balle->r < min_y || balle->y + balle->r > max_y)
 		balle->vy = -balle->vy;
 }
-
+//Acceleration de la balle
 void accelereBalle(Balle *const balle, const float facteur)
 {
 	balle->vx *= facteur;
 	balle->vy *= facteur;
 }
-
+//Coloration des bordures de boutons
 void couleurSelect(Select *const select, const int R, const int V, const int B)
 {
 	select->couleur[0] = R;
 	select->couleur[1] = V;
 	select->couleur[2] = B;
 }
-
+//Raccourci du menu pause
 void touchePause(Page *const page)
 {
 	if (caractereClavier() == 'g' || caractereClavier() == 'G')
 		page->pause = (page->pause) ? false : true;
 }
-
+//Ecriture du nouveau pseudo
 void ecrire(char *newPseudo)
 {
 	char a[15] = "";
@@ -51,7 +51,7 @@ void ecrire(char *newPseudo)
 				break;
 			}
 }
-
+//mouvement de la raquette
 void touches(Raquette *const raquette)
 {
 	if (caractereClavier() == raquette->up)
@@ -59,7 +59,7 @@ void touches(Raquette *const raquette)
 	else if (caractereClavier() == raquette->down)
 		down(raquette);
 }
-
+//Si la touche pour up est séléctionne la raquette monte
 void up(Raquette *const raquette)
 {
 	if (raquette->y + raquette->vy + raquette->longueur / 2 >= MAX_Y_PLATEAU)
@@ -67,7 +67,7 @@ void up(Raquette *const raquette)
 	else if (raquette->y + raquette->longueur / 2 <= MAX_Y_PLATEAU)
 		raquette->y += raquette->vy;
 }
-
+//Si la touche pour down est séléctionne la raquette descend
 void down(Raquette *const raquette)
 {
 	if (raquette->y - raquette->vy - raquette->longueur / 2 <= MIN_Y_PLATEAU)
@@ -75,13 +75,13 @@ void down(Raquette *const raquette)
 	else if (raquette->y - raquette->longueur / 2 >= MIN_Y_PLATEAU)
 		raquette->y -= raquette->vy;
 }
-
+//Change un nombre 'int' en 'Digit'
 Digit nombre(const int score)
 {
 	switch (score)
 	{
 	case 0:
-		return DIGIT_0;
+		return DIGIT_0;//Chaque digit est créé dans "lib.h" (Ctrl + clic droit sur DIGIT_0 pour emmener au fichier sur VSC)
 	case 1:
 		return DIGIT_1;
 	case 2:
@@ -104,9 +104,9 @@ Digit nombre(const int score)
 		return DIGIT_ERROR;
 	}
 }
-
+//Recupère le signe de la variable
 int signe(const float val) { return val / fabsf(val); }
-
+//Gère la hitbox entre la balle et la raquette
 void hitbox(Balle *const balle, const Raquette *const raquette)
 {
 	for (float i = 0.f; i < 2 * M_PI; i += 0.01f)
@@ -130,7 +130,7 @@ void hitbox(Balle *const balle, const Raquette *const raquette)
 			break;
 		}
 }
-
+//Gère si il y a un but selon le joueur
 void but(Balle *const balle, Joueur *const joueur)
 {
 	if (balle->x + balle->r < MIN_X_PLATEAU || balle->x - balle->r > MAX_X_PLATEAU)
@@ -150,7 +150,7 @@ void but(Balle *const balle, Joueur *const joueur)
 		balle->vy = VH_BALLE;
 	}
 }
-
+//Gère l'évènement de jeu
 void jeu(Data *const data)
 {
 	mouvementBalle(&data->balleJeu);
@@ -180,7 +180,7 @@ void jeu(Data *const data)
 		resetBalle(&data->balleJeu, data->option);
 	}
 }
-
+//Fait le décompte chaque seconde du temps
 void decompte(int *temps)
 {
 	static int tmp = 0;
@@ -196,7 +196,7 @@ void decompte(int *temps)
 		tmp = 0;
 	}
 }
-
+//Gère les calculs de l'IA pour déplacer la raquette
 void IA(Raquette *const raquette, const Balle *const balle, const bool side)
 {
 	float x = balle->x, y = balle->y, vy = balle->vy;

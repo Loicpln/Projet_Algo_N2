@@ -95,7 +95,7 @@ void but(Balle *const balle, Joueur *const joueur);
 void jeu(Data *const data);
 //Fait le décompte chaque seconde du temps
 void decompte(int *temps);
-//Gère les calculs de l'IA pourdéplacer la raquette
+//Gère les calculs de l'IA pour déplacer la raquette
 void IA(Raquette *const raquette, const Balle *const balle, const bool side);
 
 

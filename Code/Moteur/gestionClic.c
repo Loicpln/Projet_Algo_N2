@@ -1,11 +1,11 @@
 #include "moteur.h"
-
+//Gestion du clic sur les rouages (parametres)
 void clicRouage(Page *const page, const int x, const int y, const int r)
 {
     if (abs(abscisseSouris() - x) < r && abs(ordonneeSouris() - y) < r)
         page->pause = (page->pause == true) ? false : true;
 }
-
+//Gestion du clic sur les users
 void clicUsers(Joueur *const joueur, const Joueur autre, Users *const users)
 {
     const User *tmp = users->premier;
@@ -20,7 +20,7 @@ void clicUsers(Joueur *const joueur, const Joueur autre, Users *const users)
     if (42 * Ux < X_SOURIS < 58 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
         joueur->user = creeUser(id_IA, "IA", -1, -1, -1);
 }
-
+//Gestion du clic de suppression des utilisateurs
 void clicSupprUsers(Joueur *const joueur, Users *users)
 {
     const User *tmp = users->premier;
@@ -32,13 +32,13 @@ void clicSupprUsers(Joueur *const joueur, Users *users)
             joueur[1].user = NULL;
         }
 }
-
+//Gestino du clic sur le bouton d'ajout des utilisateurs
 void clicAddUsers(Page *const page)
 {
     if (87 * Ux < X_SOURIS < 95 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
         page->pause = (page->pause == 2) ? false : 2;
 }
-
+//Gestino du clic sur le bouton pause
 void clicPause(Data *const data)
 {
     if (35 * Ux < X_SOURIS < 65 * Ux && 55 * Uy < Y_SOURIS < 65 * Uy)

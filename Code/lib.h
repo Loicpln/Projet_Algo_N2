@@ -61,7 +61,7 @@
 
 #define L_SELECT 5
 #define NB_SELECT 50
-
+//OUTIL D'AFFICHAGE D'UNE GRILLE POUR FACILITER LES MESURES
 #define GRILLE                               \
     for (int i = 1; i < 100; i++)            \
     {                                        \
@@ -74,7 +74,7 @@
         ligne(i *Ux, 0, i *Ux, 100 * Uy);    \
         ligne(0, i *Uy, 100 * Ux, i * Uy);   \
     }
-
+//METHODE D'AFFICHAGE DU SCORE
 #define DIGIT_0 \
     (Digit) { true, true, true, false, true, true, true }
 #define DIGIT_1 \
@@ -121,7 +121,7 @@
 
 #ifndef STRUCT
 #define STRUCT
-//sous traitance
+//sous-traitance
 #define absBar1 10*Ux
 #define absBar2 58 * Ux
 

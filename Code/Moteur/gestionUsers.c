@@ -1,5 +1,5 @@
 #include "moteur.h"
-
+//Création des utilisateurs
 User *creeUser(const int id, const char *const pseudo, const int nbGame, const int nbWin, const int nbLose)
 {
     User *elem = malloc(sizeof(User));
@@ -11,7 +11,7 @@ User *creeUser(const int id, const char *const pseudo, const int nbGame, const i
     elem->userSuivant = NULL;
     return elem;
 }
-
+//Ajout des utilisateurs
 Users *ajouteUsers(Users *users, User *const nouv)
 {
     if (users->premier == NULL)
@@ -26,7 +26,7 @@ Users *ajouteUsers(Users *users, User *const nouv)
     users = changeId(users);
     return users;
 }
-
+//Suppression des utilisateurs
 Users *supprimeDansUsers(Users *users, const int id)
 {
     User *tmp = users->premier;
@@ -43,7 +43,7 @@ Users *supprimeDansUsers(Users *users, const int id)
     users = changeId(users);
     return users;
 }
-
+//Changement de l'ID des utilisateurs lors de la suppression
 Users *changeId(Users *users)
 {
     User *tmp = users->premier;
@@ -52,7 +52,7 @@ Users *changeId(Users *users)
         tmp->id = i++;
     return users;
 }
-
+//Recherche des joueurs
 User *rechercheUser(Users *users, const int id)
 {
     User *tmp = users->premier;
@@ -61,7 +61,7 @@ User *rechercheUser(Users *users, const int id)
     }
     return tmp;
 }
-
+//Compte le nombre d'utilisateurs
 int compteUsers(Users *users)
 {
     User *tmp = users->premier;
@@ -70,7 +70,7 @@ int compteUsers(Users *users)
         i++;
     return i;
 }
-
+//Enregistre les utilisateurs dans le fichier texte
 void enregistreUsersFichier(Users *users)
 {
     FILE *file = fopen("./Sauvegarde/Users.txt", "w");

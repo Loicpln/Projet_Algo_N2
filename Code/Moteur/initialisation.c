@@ -1,17 +1,17 @@
 #include "moteur.h"
-
+//Initialisation
 Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG(LONG_RAQUETTE)}, {initScore(), NULL, initRaquetteD(LONG_RAQUETTE)}}, chargeUsersDepuisFichier(), initOptions(), Cinq_Min, ""}; }
-
+//Initialisation des balles de décoration de l'accueil
 Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_ACCEUIL, V_ACCEUIL, V_ACCEUIL, fabsf(V_BALLE)}; }
-
+//Initialisation de la raquette de gauche
 Raquette initRaquetteG(int longeur) { return (Raquette){longeur, LARG_RAQUETTE, X_RAQUETTE_LEFT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'a', 'q'}; }
-
+//Initialisation de la raquette de droite
 Raquette initRaquetteD(int longeur) { return (Raquette){longeur, LARG_RAQUETTE, X_RAQUETTE_RIGHT, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, V_RAQUETTE, 'p', 'm'}; }
-
+//Initialisation de la balle de jeu
 Balle initBalleJeu() { return (Balle){MID_X, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, R_BALLE, V_BALLE, VH_BALLE, fabsf(V_BALLE)}; }
-
+//Initialisation du menu des modes de jeu
 Options initOptions() { return (Options){ContreLaMontre, Cinq_Min, NBVIES, (42 * Ux - absBar1) / 2, (90 * Ux - absBar2) / 2, 1}; }
-
+//Fonction de chargement depuis un fichier texte
 Users *chargeUsersDepuisFichier()
 {
 	Users *users = NULL;
@@ -31,9 +31,9 @@ Users *chargeUsersDepuisFichier()
 	}
 	return users;
 }
-
+//Initialisation du score
 int initScore() { return (int)0; }
-
+//Reinitialisation des selects
 void resetSelect(Select *const select)
 {
 	for (int i = 0; i < NB_SELECT; i++)
@@ -44,19 +44,19 @@ void resetSelect(Select *const select)
 		select[i].couleur[2] = 255;
 	}
 }
-
+//Réinitialisation des joueurs
 void resetUsers(Joueur *const joueur)
 {
 	for (int i = 0; i < NB_JOUEUR; i++)
 		joueur[i].user = NULL;
 }
-
+//Réinitialisation du timer
 void resetTimer(int *const timer, const Options options)
 {
 	timer[0] = options.temps[0];
 	timer[1] = options.temps[1];
 }
-
+//Réinitialisation des raquettes
 void resetRaquette(Joueur *const joueur, const Options options)
 {
 	int longueur;
@@ -69,13 +69,13 @@ void resetRaquette(Joueur *const joueur, const Options options)
 	for (int i = 0; i < NB_JOUEUR; i++)
 		joueur[i].raquette = (i % 2) ? initRaquetteD(longueur) : initRaquetteG(longueur);
 }
-
+//Réinitialisation du score
 void resetScore(Joueur *const joueur)
 {
 	for (int i = 0; i < NB_JOUEUR; i++)
 		joueur[i].score = initScore();
 }
-
+//Réinitialisation de la balle
 void resetBalle(Balle *const balle, const Options options)
 {
 	balle->x = MID_X;
