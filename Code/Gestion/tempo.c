@@ -55,6 +55,8 @@ void TempoSelection(Data *const data)
 	else
 	{
 		couleurSelect(&data->page.select[47], 255, 255, 255);
+		rebond(&data->balleJeu, 5 * Ux, 5 * Uy, 95 * Ux, MAX_Y);
+		mouvementBalle(&data->balleJeu);
 		selectBouton(&data->page.select[25], 33 * Ux, 43 * Ux, 10 * Uy, 18 * Uy);
 		selectBouton(&data->page.select[26], 45 * Ux, 55 * Ux, 10 * Uy, 18 * Uy);
 		selectBouton(&data->page.select[27], 57 * Ux, 67 * Ux, 10 * Uy, 18 * Uy);
@@ -83,6 +85,8 @@ void TempoJeu(Data *const data)
 		jeu(data);
 	else if (data->page.pause == 2)
 	{
+		rebond(&data->balleJeu, 5 * Ux, 5 * Uy, 95 * Ux, MAX_Y);
+		mouvementBalle(&data->balleJeu);
 		selectBouton(&data->page.select[25], 33 * Ux, 43 * Ux, 10 * Uy, 18 * Uy);
 		selectBouton(&data->page.select[26], 45 * Ux, 55 * Ux, 10 * Uy, 18 * Uy);
 		selectBouton(&data->page.select[27], 57 * Ux, 67 * Ux, 10 * Uy, 18 * Uy);

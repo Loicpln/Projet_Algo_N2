@@ -55,12 +55,15 @@ void clicPause(Data *const data)
     if (35 * Ux < X_SOURIS < 65 * Ux && 29 * Uy < Y_SOURIS < 39 * Uy)
     {
         data->page.pause = 2;
+        resetRaquette(data->joueurs, data->option);
+        resetBalle(&data->balleJeu, data->option);
     }
 
     if (35 * Ux < X_SOURIS < 65 * Ux && 15 * Uy < Y_SOURIS < 25 * Uy)
     {
         data->page.pause = false;
         data->page.numero = Menu;
+        data->option = initOptions();
         resetBalle(&data->balleJeu, data->option);
         resetUsers(data->joueurs);
         resetRaquette(data->joueurs, data->option);
@@ -80,23 +83,11 @@ void ClicMutateur(Data *const data)
         data->option.triangle2 = modifTriangle2(data->option.triangle2); // CHOIX TAILLE BALLE ET RENVOI % (0 TAILLE MINIMALE, 100 TAILLE MAXIMALE)
 
         if (33 * Ux < X_SOURIS < 43 * Ux && 10 * Uy < Y_SOURIS < 18 * Uy)
-        {
             data->option.raquette = 0;
-            data->joueurs[0].raquette.longueur = 2 * LONG_RAQUETTE / 3;
-            data->joueurs[1].raquette.longueur = 2 * LONG_RAQUETTE / 3;
-        }
         else if (45 * Ux < X_SOURIS < 55 * Ux && 10 * Uy < Y_SOURIS < 18 * Uy)
-        {
             data->option.raquette = 1;
-            data->joueurs[0].raquette.longueur = LONG_RAQUETTE;
-            data->joueurs[1].raquette.longueur = LONG_RAQUETTE;
-        }
         else if (57 * Ux < X_SOURIS < 67 * Ux && 10 * Uy < Y_SOURIS < 18 * Uy)
-        {
             data->option.raquette = 2;
-            data->joueurs[0].raquette.longueur = 3 * LONG_RAQUETTE / 2;
-            data->joueurs[1].raquette.longueur = 3 * LONG_RAQUETTE / 2;
-        }
     }
     resetBalle(&data->balleJeu, data->option);
     resetRaquette(data->joueurs, data->option);

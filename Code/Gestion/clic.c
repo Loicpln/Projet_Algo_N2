@@ -73,6 +73,7 @@ void ClicSelection(Data *const data)
                 if (data->joueurs[0].user != NULL && data->joueurs[1].user != NULL)
                 {
                     data->page.numero = Jeu;
+                    resetBalle(&data->balleJeu, data->option);
                     resetTimer(data->timer, data->option);
                 }
             if (75 * Ux < X_SOURIS < 95 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
@@ -88,17 +89,19 @@ void ClicJeu(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
-        if (data->option.mode == ContreLaMontre || data->option.mode == Entrainement)
-            clicRouage(&data->page, 88 * Ux, 90 * Uy, r_Rouage);
-        else
-            clicRouage(&data->page, MID_X, 90 * Uy, r_Rouage);
-
-        if (data->page.pause == 2)
+        if (!data->page.pause)
+        {
+            if (data->option.mode == ContreLaMontre || data->option.mode == Entrainement)
+                clicRouage(&data->page, 88 * Ux, 90 * Uy, r_Rouage);
+            else
+                clicRouage(&data->page, MID_X, 90 * Uy, r_Rouage);
+        }
+        else if (data->page.pause == 2)
         {
             ClicMutateur(data);
             clicRouage(&data->page, 88 * Ux, 90 * Uy, r_Rouage);
         }
-        else if (data->page.pause)
+        else
             clicPause(data);
     }
 }

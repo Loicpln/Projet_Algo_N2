@@ -16,7 +16,7 @@ void rouage(const Select select, const int x, const int y, const int r)
     ligne(x - sqrt(2) * r / 2, y - sqrt(2) * r / 2, x + sqrt(2) * r / 2, y + sqrt(2) * r / 2);
     ligne(x, y - r, x, y + r);
     ligne(x - sqrt(2) * r / 2, y + sqrt(2) * r / 2, x + sqrt(2) * r / 2, y - sqrt(2) * r / 2);
-    cercle(x, y, 6 * r /7 - select.largeur / 2);
+    cercle(x, y, 6 * r / 7 - select.largeur / 2);
     couleurCourante(0, 0, 0);
     cercle(x, y, r / 3 + select.largeur / 2);
 }
@@ -151,78 +151,70 @@ void afficheUsers(const Select *const select, const Users *const users, const in
 // sous traitance
 void AfficheMutateur(Data *const data)
 {
-    
     // TEXTE MUTATEUR
     couleurCourante(0, 0, 0);
-    bouton(data->page.select[35],5*Ux,5*Uy,95*Ux,MAX_Y);
+    bouton(data->page.select[35], 5 * Ux, 5 * Uy, 95 * Ux, MAX_Y);
     couleurCourante(255, 255, 255);
+    cercle(data->balleJeu.x, data->balleJeu.y, data->balleJeu.r);
+    for (int i = 0; i < NB_JOUEUR; i++)
+        raquette(data->joueurs[i].raquette, 255);
     epaisseurDeTrait(6);
-    afficheChaine("MUTATEUR", 60, 30* Ux, 80* Uy);
-    
+    afficheChaine("MUTATEUR", 60, 30 * Ux, 80 * Uy);
+
     // RECTANGLE VITESSE BALLE
     couleurCourante(140, 20, 20);
     rectangle(10 * Ux, 75 * Uy, 42 * Ux, 62 * Uy);
     epaisseurDeTrait(3);
     couleurCourante(255, 190, 180);
     afficheChaine("Vitesse balle", 30, 12 * Ux, 67 * Uy);
-    
+
     //RECTANGLE TAILLE BALLE
     couleurCourante(140, 20, 20);
     rectangle(58 * Ux, 75 * Uy, 90 * Ux, 62 * Uy);
     epaisseurDeTrait(3);
     couleurCourante(255, 190, 180);
-    afficheChaine("Taille balle", 30, 64* Ux, 67 * Uy);
-    
+    afficheChaine("Taille balle", 30, 64 * Ux, 67 * Uy);
+
     // RECTANGLE TAILLE RAQUETTE
     couleurCourante(140, 20, 20);
     rectangle(34 * Ux, 35 * Uy, 66 * Ux, 22 * Uy);
     epaisseurDeTrait(3);
     couleurCourante(255, 190, 180);
     afficheChaine("Taille raquette", 30, 37 * Ux, 26 * Uy);
-    
+
     // RECTANGLE S M L
     couleurCourante(190, 70, 70);
-    rectangle(33 * Ux, 18 * Uy,43 * Ux, 10 * Uy);
-    rectangle(45 * Ux, 18 * Uy,55 * Ux, 10 * Uy);
-    rectangle(57 * Ux, 18 * Uy,67 * Ux, 10 * Uy);
+    rectangle(33 * Ux, 18 * Uy, 43 * Ux, 10 * Uy);
+    rectangle(45 * Ux, 18 * Uy, 55 * Ux, 10 * Uy);
+    rectangle(57 * Ux, 18 * Uy, 67 * Ux, 10 * Uy);
 
-    
-    bouton(data->page.select[25],33*Ux,10*Uy,43*Ux,18*Uy);
-    bouton(data->page.select[26],45*Ux,10*Uy,55*Ux,18*Uy);
-    bouton(data->page.select[27],57*Ux,10*Uy,67*Ux,18*Uy);
+    bouton(data->page.select[25], 33 * Ux, 10 * Uy, 43 * Ux, 18 * Uy);
+    bouton(data->page.select[26], 45 * Ux, 10 * Uy, 55 * Ux, 18 * Uy);
+    bouton(data->page.select[27], 57 * Ux, 10 * Uy, 67 * Ux, 18 * Uy);
 
-    
     // FONCTION AFFICHAGE DES SLIDERS
-    
-	couleurCourante(255, 190, 180);
-    afficheChaine("S", 30, 37* Ux, 12*Uy);
- 
+
     couleurCourante(255, 190, 180);
-    afficheChaine("M", 30, 49 * Ux, 12* Uy);
-    
+    afficheChaine("S", 30, 37 * Ux, 12 * Uy);
+
+    couleurCourante(255, 190, 180);
+    afficheChaine("M", 30, 49 * Ux, 12 * Uy);
+
     couleurCourante(255, 190, 180);
     afficheChaine("L", 30, 61 * Ux, 12 * Uy);
-    
-    
 
-	couleurCourante(168,168,168);
-	rectangle(absBar1, 55 * Uy, 42 * Ux  , 53* Uy);
-	
-	
-	couleurCourante(168,168,168);
-	rectangle(absBar2, 55 * Uy , 90 * Ux, 53* Uy);
-	couleurCourante(255,0,0);
+    couleurCourante(168, 168, 168);
+    rectangle(absBar1, 55 * Uy, 42 * Ux, 53 * Uy);
 
-    
+    couleurCourante(168, 168, 168);
+    rectangle(absBar2, 55 * Uy, 90 * Ux, 53 * Uy);
+    couleurCourante(255, 0, 0);
+
     // FONCTION AFFICHAGE CURSEUR GAUCHE
 
-	triangle(8* Ux+data->option.triangle1, 58*Uy, 10 * Ux+data->option.triangle1, 55* Uy, 12*Ux+data->option.triangle1, 58*Uy);
-
+    triangle(8 * Ux + data->option.triangle1, 58 * Uy, 10 * Ux + data->option.triangle1, 55 * Uy, 12 * Ux + data->option.triangle1, 58 * Uy);
 
     // FONCTION AFFICHAGE CURSEUR DROITE
 
-
-	triangle( 56* Ux+data->option.triangle2, 58*Uy, 58 * Ux+data->option.triangle2, 55* Uy, 60*Ux+data->option.triangle2, 58*Uy);
-
-
+    triangle(56 * Ux + data->option.triangle2, 58 * Uy, 58 * Ux + data->option.triangle2, 55 * Uy, 60 * Ux + data->option.triangle2, 58 * Uy);
 }
