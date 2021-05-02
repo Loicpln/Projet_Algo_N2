@@ -54,7 +54,9 @@ void TempoEntrainement(Data *const data);
 //Gestion Tempo page Resultats
 void TempoResultats(Data *const data);
 
-//Gestion Redim page d'Accueil
+//Gestion Redimensionnement
 void Redim(Data *const data);
+//Redimensionnement de la balle 
 void redimBalle(Balle *const balle);
+//Redimensionnement de la raquette 
 void redimRaquette(Raquette *const raquette, const int i);

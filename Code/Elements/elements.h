@@ -1,12 +1,15 @@
 #include "../lib.h"
 #include "../Moteur/moteur.h"
 
+//Affiche l'élément bouton
 void bouton(const Select select, const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite);
 //Affiche l'élément rouage
 void rouage(const Select select, const int x, const int y, const int r);
 //Affiche le plateau
 void plateau(const int teinte);
+//Affiche un plus (+)
 void plus(const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite);
+//Affiche un coeur
 void coeur(const int x, const int y, const float r);
 //Affiche le menu pause
 void affichePause(const Select *const select);
@@ -19,8 +22,9 @@ void balle(const Balle balleJeu, const int teinte);
 //Affiche l'élément les digit selon le score
 void score(const int score, const int x, const int y);
 
+//Affiche le timer (type int)
 void timer(const int temps[], const int x, const int y);
-//Affiche l'élément Digit
+//Affiche un digit (type Digit)
 void afficheDigit(const Digit digit, const int x, const int y);
 //Affiche tout les Users
 void afficheUsers(const Select *const select, const Users *const maUsers, const int teinte);
