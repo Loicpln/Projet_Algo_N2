@@ -10,7 +10,7 @@ Raquette initRaquetteD(int longeur) { return (Raquette){longeur, LARG_RAQUETTE, 
 
 Balle initBalleJeu() { return (Balle){MID_X, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, R_BALLE, V_BALLE, VH_BALLE, fabsf(V_BALLE)}; }
 
-Options initOptions() { return (Options){ContreLaMontre, Cinq_Min, NBVIES, (52 * Ux) / 2 - absBar1, (148 * Ux) / 2 - absBar2, 1}; }
+Options initOptions() { return (Options){ContreLaMontre, Cinq_Min, NBVIES, (42 * Ux - absBar1) / 2, (90 * Ux - absBar2) / 2, 1}; }
 
 Users *chargeUsersDepuisFichier()
 {
