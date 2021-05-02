@@ -105,6 +105,10 @@
     {        \
         5, 0 \
     }
+#define Deux_Min \
+    {        \
+        2, 0 \
+    }
 #define NBVIES 3
 
 #define id_IA 20

@@ -1,6 +1,6 @@
 #include "moteur.h"
 //Initialisation
-Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG(LONG_RAQUETTE)}, {initScore(), NULL, initRaquetteD(LONG_RAQUETTE)}}, chargeUsersDepuisFichier(), initOptions(), Cinq_Min, ""}; }
+Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {{0, 0, 0, 0, 0, 0}}, initBalleJeu(), {{initScore(), NULL, initRaquetteG(LONG_RAQUETTE)}, {initScore(), NULL, initRaquetteD(LONG_RAQUETTE)}}, chargeUsersDepuisFichier(), initOptions(), Deux_Min, ""}; }
 //Initialisation des balles de décoration de l'accueil
 Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_ACCEUIL, V_ACCEUIL, V_ACCEUIL, fabsf(V_BALLE)}; }
 //Initialisation de la raquette de gauche
@@ -10,7 +10,7 @@ Raquette initRaquetteD(int longeur) { return (Raquette){longeur, LARG_RAQUETTE, 
 //Initialisation de la balle de jeu
 Balle initBalleJeu() { return (Balle){MID_X, (MAX_Y_PLATEAU + MIN_Y_PLATEAU) / 2, R_BALLE, V_BALLE, VH_BALLE, fabsf(V_BALLE)}; }
 //Initialisation du menu des modes de jeu
-Options initOptions() { return (Options){ContreLaMontre, Cinq_Min, NBVIES, (42 * Ux - absBar1) / 2, (90 * Ux - absBar2) / 2, 1}; }
+Options initOptions() { return (Options){ContreLaMontre, Deux_Min, NBVIES, (42 * Ux - absBar1) / 2, (90 * Ux - absBar2) / 2, 1}; }
 //Fonction de chargement depuis un fichier texte
 Users *chargeUsersDepuisFichier()
 {

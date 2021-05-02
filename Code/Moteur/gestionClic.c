@@ -18,7 +18,7 @@ void clicUsers(Joueur *const joueur, const Joueur autre, Users *const users)
                 joueur->user = rechercheUser(users, i);
         }
     if (42 * Ux < X_SOURIS < 58 * Ux && 85 * Uy < Y_SOURIS < 95 * Uy)
-        joueur->user = creeUser(id_IA, "IA", -1, -1, -1);
+        joueur->user = creeUser(id_IA, "IA", 0, 0, 0);
 }
 //Gestion du clic de suppression des utilisateurs
 void clicSupprUsers(Joueur *const joueur, Users *users)
