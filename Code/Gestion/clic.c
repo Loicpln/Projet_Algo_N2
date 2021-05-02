@@ -110,21 +110,17 @@ void ClicResultats(Data *const data)
 {
     if (etatBoutonSouris() == GaucheAppuye)
     {
-        
-        if (!data->page.pause)
+        if (30 * Ux < X_SOURIS < 70 * Ux && 20 * Uy < Y_SOURIS < 30 * Uy)
         {
-            if (30 * Ux < X_SOURIS < 70 * Ux && 20 * Uy < Y_SOURIS < 30 * Uy)
-            {
-                data->page.numero = Jeu;
-                resetScore(data->joueurs);
-            }
-            if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
-            {
-                data->page.numero = Menu;
-                resetUsers(data->joueurs);
-                resetScore(data->joueurs);
-                data->option = initOptions();
-            }
+            data->page.numero = Jeu;
+            resetScore(data->joueurs);
+        }
+        if (30 * Ux < X_SOURIS < 70 * Ux && 5 * Uy < Y_SOURIS < 15 * Uy)
+        {
+            data->page.numero = Menu;
+            resetUsers(data->joueurs);
+            resetScore(data->joueurs);
+            data->option = initOptions();
         }
     }
 }

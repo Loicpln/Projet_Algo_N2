@@ -128,35 +128,8 @@ void TempoEntrainement(Data *const data)
 
 void TempoResultats(Data *const data)
 {
-	int teinte = (data->page.pause) ? 150 : 255;
 	resetSelect(data->page.select);
-	for (int i = 0; i < NB_SELECT; i++)
-		couleurSelect(data->page.select + i, teinte, teinte, teinte);
-	if (!data->page.pause)
-	{
-		selectBouton(&data->page.select[0], 30 * Ux, 70 * Ux, 20 * Uy, 30 * Uy);
-		selectBouton(&data->page.select[1], 30 * Ux, 70 * Ux, 5 * Uy, 15 * Uy);
-	}
-	
-
-
-	if (data->joueurs[0].score > data-> joueurs[1].score )
-	{
-		data->joueurs[0].user->nbWin += 1;
-		data->joueurs[1].user->nbLose += 1;
-		data->joueurs[0].user->nbGame += 1;
-		data->joueurs[1].user->nbGame += 1;
-		
-	}
-	else if (data->joueurs[0].score < data-> joueurs[1].score)
-	{
-		data->joueurs[1].user->nbWin += 1;
-		data->joueurs[0].user->nbLose += 1;
-		data->joueurs[0].user->nbGame += 1;
-		data->joueurs[1].user->nbGame += 1;
-	}
-	resetScore(data->joueurs);
+	selectBouton(&data->page.select[0], 30 * Ux, 70 * Ux, 20 * Uy, 30 * Uy);
+	selectBouton(&data->page.select[1], 30 * Ux, 70 * Ux, 5 * Uy, 15 * Uy);
 	enregistreUsersFichier(data->users);
-	
-
 }

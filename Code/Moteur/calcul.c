@@ -54,9 +54,9 @@ void ecrire(char *newPseudo)
 //mouvement de la raquette
 void touches(Raquette *const raquette)
 {
-	if (caractereClavier() == raquette->up)
+	if (caractereClavier() == raquette->up || caractereClavier() == raquette->up - 32)
 		up(raquette);
-	else if (caractereClavier() == raquette->down)
+	else if (caractereClavier() == raquette->down || caractereClavier() == raquette->down - 32)
 		down(raquette);
 }
 //Si la touche pour up est séléctionne la raquette monte
@@ -81,7 +81,7 @@ Digit nombre(const int score)
 	switch (score)
 	{
 	case 0:
-		return DIGIT_0;//Chaque digit est créé dans "lib.h" (Ctrl + clic droit sur DIGIT_0 pour emmener au fichier sur VSC)
+		return DIGIT_0; //Chaque digit est créé dans "lib.h" (Ctrl + clic droit sur DIGIT_0 pour emmener au fichier sur VSC)
 	case 1:
 		return DIGIT_1;
 	case 2:
@@ -171,6 +171,18 @@ void jeu(Data *const data)
 			resetBalle(&data->balleJeu, data->option);
 			resetRaquette(data->joueurs, data->option);
 			resetTimer(data->timer, data->option);
+			if (data->joueurs[0].score > data->joueurs[1].score)
+			{
+				data->joueurs[0].user->nbWin++;
+				data->joueurs[1].user->nbLose++;
+			}
+			else if (data->joueurs[0].score < data->joueurs[1].score)
+			{
+				data->joueurs[1].user->nbWin++;
+				data->joueurs[0].user->nbLose++;
+			}
+			data->joueurs[0].user->nbGame++;
+			data->joueurs[1].user->nbGame++;
 		}
 	}
 	else if (data->joueurs[0].score == data->option.nbButs || data->joueurs[1].score == data->option.nbButs)
@@ -178,6 +190,20 @@ void jeu(Data *const data)
 		data->page.numero = Resultats;
 		resetRaquette(data->joueurs, data->option);
 		resetBalle(&data->balleJeu, data->option);
+		if (data->joueurs[0].score > data->joueurs[1].score)
+		{
+			data->joueurs[0].user->nbWin += 1;
+			data->joueurs[1].user->nbLose += 1;
+			data->joueurs[0].user->nbGame += 1;
+			data->joueurs[1].user->nbGame += 1;
+		}
+		else if (data->joueurs[0].score < data->joueurs[1].score)
+		{
+			data->joueurs[1].user->nbWin += 1;
+			data->joueurs[0].user->nbLose += 1;
+			data->joueurs[0].user->nbGame += 1;
+			data->joueurs[1].user->nbGame += 1;
+		}
 	}
 }
 //Fait le décompte chaque seconde du temps

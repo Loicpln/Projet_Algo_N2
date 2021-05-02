@@ -81,7 +81,7 @@ void AfficheSelection(Data *const data)
     afficheChaine("Vs", 25, 12 * Ux, 8 * Uy);
     if (data->page.pause == 2)
         zoneText(data->page.select, data->newPseudo);
-    if(data->page.pause==1)
+    if (data->page.pause == 1)
         AfficheMutateur(data);
     rouage(data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
     bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
@@ -91,7 +91,7 @@ void AfficheSelection(Data *const data)
 
 void AfficheJeu(Data *const data)
 {
-    int teinte =  (!data->page.pause) ? 255 : 150;
+    int teinte = (!data->page.pause) ? 255 : 150;
     plateau(teinte);
     for (int i = 0; i < NB_JOUEUR; i++)
         raquette(data->joueurs[i].raquette, teinte);
@@ -145,102 +145,33 @@ void AfficheEntrainement(Data *const data)
     {
         affichePause(data->page.select);
         rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
-    }        
+    }
 }
 
 void AfficheResultats(Data *const data)
 {
     char Game[10] = "", Win[10] = "", Lose[10] = "";
-    int teinte = (data->page.pause) ? 150 : 255;
     bouton(data->page.select[0], 30 * Ux, 20 * Uy, 70 * Ux, 30 * Uy);
     bouton(data->page.select[1], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);
-   
-    EPAISSEUR_2;
-    couleurCourante(teinte, teinte, teinte); 
-
-    afficheChaine(data->joueurs[0].user->pseudo, 30, 15 * Ux, 73 * Uy);
-    if (data->joueurs[0].user->nbGame < 2)
+    CC_BLANC;
+    ligne(MID_X, 80 * Uy, MID_X, 35 * Uy);
+    for (int i = 0; i < NB_JOUEUR; i++)
     {
-        sprintf(Game, "%d Game ", data->joueurs[0].user->nbGame);
+        score(data->joueurs[i].score, 43 * Ux + i * 18 * Ux, 76 * Uy);
+        EPAISSEUR_2;
+        CC_BLANC;
+        afficheChaine(data->joueurs[i].user->pseudo, 30, 15 * Ux + i * 55 * Ux, 73 * Uy);
+        (data->joueurs[i].user->nbGame < 2) ? sprintf(Game, "%d Game", data->joueurs[i].user->nbGame)
+                                            : sprintf(Game, "%d Games", data->joueurs[i].user->nbGame);
+        (data->joueurs[i].user->nbWin < 2) ? sprintf(Win, "%d Win", data->joueurs[i].user->nbWin)
+                                           : sprintf(Win, "%d Wins", data->joueurs[i].user->nbWin);
+        (data->joueurs[i].user->nbLose < 2) ? sprintf(Lose, "%d Lose", data->joueurs[i].user->nbLose)
+                                            : sprintf(Lose, "%d Loses", data->joueurs[i].user->nbLose);
+        afficheChaine(Game, 20, 15 * Ux + i * 55 * Ux, 60 * Uy);
+        afficheChaine(Win, 20, 15 * Ux + i * 55 * Ux, 50 * Uy);
+        afficheChaine(Lose, 20, 15 * Ux + i * 55 * Ux, 40 * Uy);
     }
-    else  
-    {
-        sprintf(Game, "%d Games ", data->joueurs[0].user->nbGame);
-    }
-    
-
-    if (data->joueurs[0].user->nbWin < 2)
-    {
-        sprintf(Win, "%d Win ", data->joueurs[0].user->nbWin);
-    }
-    else  
-    {
-        sprintf(Win, "%d Wins ", data->joueurs[0].user->nbWin);
-    }
-
-    if (data->joueurs[0].user->nbLose < 2)
-    {
-        sprintf(Lose, "%d Lose ", data->joueurs[0].user->nbLose);
-    }
-    else 
-    {
-        sprintf(Lose, "%d Loses ", data->joueurs[0].user->nbLose);
-    }
-
-    afficheChaine(Game, 20, 15 * Ux, 60 * Uy );
-    afficheChaine(Win, 20, 15 * Ux, 50 * Uy );
-    afficheChaine(Lose, 20, 15 * Ux, 40 * Uy ); 
-    
-    
-    
-    
-    
-    afficheChaine(data->joueurs[1].user->pseudo, 30, 70 * Ux, 73 * Uy);
-    if (data->joueurs[1].user->nbGame < 2)
-    {
-        sprintf(Game, "%d Game ", data->joueurs[1].user->nbGame);
-    }
-    else  
-    {
-        sprintf(Game, "%d Games ", data->joueurs[1].user->nbGame);
-    }
-
-    if (data->joueurs[1].user->nbWin < 2)
-    {
-        sprintf(Win, "%d Win ", data->joueurs[1].user->nbWin);
-    }
-    else  
-    {
-        sprintf(Win, "%d Wins ", data->joueurs[1].user->nbWin);
-    }
-
-    if (data->joueurs[1].user->nbLose < 2)
-    {
-        sprintf(Lose, "%d Lose ", data->joueurs[1].user->nbLose);
-    }
-    else 
-    {
-        sprintf(Lose, "%d Loses ", data->joueurs[1].user->nbLose);
-    }
-
-    afficheChaine(Game, 20, 70 * Ux, 60 * Uy );
-    afficheChaine(Win, 20, 70 * Ux, 50 * Uy );
-    afficheChaine(Lose, 20, 70 * Ux, 40 * Uy ); 
-
-
-    
     EPAISSEUR_3;
     afficheChaine("Rejouer", 30, 43 * Ux, 23 * Uy);
     afficheChaine("Retour au Menu", 30, 33 * Ux, 8 * Uy);
 }
-
-
-
-
-
-
-
-
-
-
-
