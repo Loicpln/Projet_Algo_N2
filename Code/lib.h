@@ -102,15 +102,11 @@
 #define ContreLaMontre 0
 #define BattleRoyal 1
 
-#define Cinq_Min \
-    {            \
-        5, 0     \
-    }
 #define Deux_Min \
     {            \
         2, 0     \
     }
-#define NBVIES 3
+#define NBVIES 5
 
 #define id_IA 20
 #define id_Rouage 45

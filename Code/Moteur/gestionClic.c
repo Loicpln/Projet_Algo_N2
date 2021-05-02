@@ -89,9 +89,43 @@ void ClicMutateur(Data *const data)
             data->option.raquette = 1;
         else if (57 * Ux < X_SOURIS < 67 * Ux && 10 * Uy < Y_SOURIS < 18 * Uy)
             data->option.raquette = 2;
+        if (data->page.numero != Jeu)
+        {
+            if (data->option.mode == ContreLaMontre)
+            {
+
+                if (74 * Ux < X_SOURIS < 78 * Ux && 30 * Uy < Y_SOURIS < 33 * Uy)
+                    if (data->option.temps[0] < 9)
+                        data->option.temps[0]++;
+                if (82 * Ux < X_SOURIS < 86 * Ux && 30 * Uy < Y_SOURIS < 33 * Uy)
+                    if (data->option.temps[1] < 50)
+                        data->option.temps[1] += 10;
+                if (86 * Ux < X_SOURIS < 90 * Ux && 30 * Uy < Y_SOURIS < 33 * Uy)
+                    if (data->option.temps[1] < 59)
+                        data->option.temps[1]++;
+                if (74 * Ux < X_SOURIS < 78 * Ux && 17 * Uy < Y_SOURIS < 20 * Uy)
+                    if (0 < data->option.temps[0])
+                        data->option.temps[0]--;
+                if (82 * Ux < X_SOURIS < 86 * Ux && 17 * Uy < Y_SOURIS < 20 * Uy)
+                    if (0 < data->option.temps[1])
+                        data->option.temps[1] -= 10;
+                if (86 * Ux < X_SOURIS < 90 * Ux && 17 * Uy < Y_SOURIS < 20 * Uy)
+                    if (0 < data->option.temps[1])
+                        data->option.temps[1]--;
+            }
+            else if (data->option.mode == BattleRoyal)
+            {
+                if (76 * Ux < X_SOURIS < 79 * Ux && 19 * Uy < Y_SOURIS < 22 * Uy)
+                    if (1 < data->option.nbButs)
+                        data->option.nbButs--;
+                if (83 * Ux < X_SOURIS < 86 * Ux && 19 * Uy < Y_SOURIS < 22 * Uy)
+                    if (data->option.nbButs < 10)
+                        data->option.nbButs++;
+            }
+        }
+        resetBalle(&data->balleJeu, data->option);
+        resetRaquette(data->joueurs, data->option);
     }
-    resetBalle(&data->balleJeu, data->option);
-    resetRaquette(data->joueurs, data->option);
 }
 
 // FONCTION MODIFICATION POSITION CURSEUR GAUCHE

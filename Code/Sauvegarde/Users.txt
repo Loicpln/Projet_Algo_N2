@@ -1,4 +1,4 @@
 [id=0 |pseudo=Loic |nbGame=2 |nbWin=1 |nbLose=1]
-[id=1 |pseudo=Melvin |nbGame=8 |nbWin=4 |nbLose=4]
-[id=2 |pseudo=William |nbGame=6 |nbWin=3 |nbLose=3]
+[id=1 |pseudo=Melvin |nbGame=11 |nbWin=6 |nbLose=4]
+[id=2 |pseudo=William |nbGame=9 |nbWin=3 |nbLose=5]
 [id=3 |pseudo=Heloise |nbGame=0 |nbWin=0 |nbLose=0]

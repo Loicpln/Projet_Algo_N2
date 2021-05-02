@@ -57,10 +57,7 @@ void TempoSelection(Data *const data)
 		couleurSelect(&data->page.select[47], 255, 255, 255);
 		rebond(&data->balleJeu, 5 * Ux, 5 * Uy, 95 * Ux, MAX_Y);
 		mouvementBalle(&data->balleJeu);
-		selectBouton(&data->page.select[25], 33 * Ux, 43 * Ux, 10 * Uy, 18 * Uy);
-		selectBouton(&data->page.select[26], 45 * Ux, 55 * Ux, 10 * Uy, 18 * Uy);
-		selectBouton(&data->page.select[27], 57 * Ux, 67 * Ux, 10 * Uy, 18 * Uy);
-		couleurSelect(&data->page.select[25 + data->option.raquette], 0, 0, 255);
+		selectMutateur(data->page.select, data->option);
 	}
 	couleurSelect(&data->page.select[id_Rouage], 255, 255, 255);
 	selectRouage(&data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
@@ -83,15 +80,12 @@ void TempoJeu(Data *const data)
 	{
 		rebond(&data->balleJeu, 5 * Ux, 5 * Uy, 95 * Ux, MAX_Y);
 		mouvementBalle(&data->balleJeu);
-		selectBouton(&data->page.select[25], 33 * Ux, 43 * Ux, 10 * Uy, 18 * Uy);
-		selectBouton(&data->page.select[26], 45 * Ux, 55 * Ux, 10 * Uy, 18 * Uy);
-		selectBouton(&data->page.select[27], 57 * Ux, 67 * Ux, 10 * Uy, 18 * Uy);
-		couleurSelect(&data->page.select[25 + data->option.raquette], 0, 0, 255);
+		selectMutateur(data->page.select, data->option);
 	}
 	else
 		selectPause(data->page.select);
 
-	if (data->option.mode == ContreLaMontre || data->option.mode == Entrainement)
+	if (data->option.mode == ContreLaMontre || data->option.mode == Entrainement || data->page.pause == 2)
 		selectRouage(&data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
 	else
 		selectRouage(&data->page.select[id_Rouage], MID_X, 90 * Uy, r_Rouage);
@@ -111,10 +105,7 @@ void TempoEntrainement(Data *const data)
 	{
 		rebond(&data->balleJeu, 5 * Ux, 5 * Uy, 95 * Ux, MAX_Y);
 		mouvementBalle(&data->balleJeu);
-		selectBouton(&data->page.select[25], 33 * Ux, 43 * Ux, 10 * Uy, 18 * Uy);
-		selectBouton(&data->page.select[26], 45 * Ux, 55 * Ux, 10 * Uy, 18 * Uy);
-		selectBouton(&data->page.select[27], 57 * Ux, 67 * Ux, 10 * Uy, 18 * Uy);
-		couleurSelect(&data->page.select[25 + data->option.raquette], 0, 0, 255);
+		selectMutateur(data->page.select, data->option);
 	}
 	else
 		selectPause(data->page.select);

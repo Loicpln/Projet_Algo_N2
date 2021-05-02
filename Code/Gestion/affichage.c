@@ -85,6 +85,7 @@ void AfficheSelection(Data *const data)
     rouage(data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
     bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
     CC_BLANC;
+    EPAISSEUR_TITRE;
     plus(89 * Ux, 87 * Uy, 93 * Ux, 93 * Uy);
 }
 
@@ -109,10 +110,9 @@ void AfficheJeu(Data *const data)
     else
     {
         rouage(data->page.select[id_Rouage], MID_X, 90 * Uy, r_Rouage);
-        for (int i = 0; i < (data->option.nbButs - data->joueurs[1].score); i++)
-            coeur(10 * Ux + 40 / data->option.nbButs * i * Ux, 92 * Uy, 3 * Ux);
-        for (int i = 0; i < (data->option.nbButs - data->joueurs[0].score); i++)
-            coeur(90 * Ux - 40 / data->option.nbButs * i * Ux, 92 * Uy, 3 * Ux);
+        for (int i = 0; i < NB_JOUEUR; i++)
+            for (int j = 0; j < (data->option.nbButs - data->joueurs[i].score); j++)
+                coeur((i) ? (10 * Ux + 7 * (j % 5) * Ux) : (90 * Ux - 7 * (j % 5) * Ux), 89 * Uy + 7 * floor(j / 5) * Uy, 3 * Ux);
     }
     balle(data->balleJeu, teinte);
     if (data->page.pause)

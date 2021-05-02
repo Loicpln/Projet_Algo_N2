@@ -38,6 +38,8 @@ void selectRouage(Select *const select, const int x, const int y, const int r);
 void selectPause(Select *const select);
 //Select des Users
 void selectUsers(Select *const select);
+//Select du Mutateur
+void selectMutateur(Select *const select, const Options option);
 
 //Clic pour le rouage
 void clicRouage(Page *const page, const int x, const int y, const int r);

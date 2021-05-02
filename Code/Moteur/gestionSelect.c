@@ -31,3 +31,27 @@ void selectUsers(Select *const select)
     selectBouton(&select[48], 30 * Ux, 70 * Ux, 5 * Uy, 15 * Uy);
     selectBouton(&select[49], 75 * Ux, 95 * Ux, 5 * Uy, 15 * Uy);
 }
+
+void selectMutateur(Select *const select, const Options option)
+{
+    for (int i = 25; i < 34; i++)
+        couleurSelect(&select[i], 255, 255, 255);
+    selectBouton(&select[25], 33 * Ux, 43 * Ux, 10 * Uy, 18 * Uy);
+    selectBouton(&select[26], 45 * Ux, 55 * Ux, 10 * Uy, 18 * Uy);
+    selectBouton(&select[27], 57 * Ux, 67 * Ux, 10 * Uy, 18 * Uy);
+    couleurSelect(&select[25 + option.raquette], 0, 0, 255);
+    if (option.mode == ContreLaMontre)
+    {
+        selectBouton(&select[28], 74 * Ux, 78 * Ux, 30 * Uy, 33 * Uy);
+        selectBouton(&select[29], 82 * Ux, 86 * Ux, 30 * Uy, 33 * Uy);
+        selectBouton(&select[30], 86 * Ux, 90 * Ux, 30 * Uy, 33 * Uy);
+        selectBouton(&select[31], 74 * Ux, 78 * Ux, 17 * Uy, 20 * Uy);
+        selectBouton(&select[32], 82 * Ux, 86 * Ux, 17 * Uy, 20 * Uy);
+        selectBouton(&select[33], 86 * Ux, 90 * Ux, 17 * Uy, 20 * Uy);
+    }
+    else if (option.mode == BattleRoyal)
+    {
+        selectBouton(&select[28], 76 * Ux, 79 * Ux, 19 * Uy, 22 * Uy);
+        selectBouton(&select[29], 83 * Ux, 86 * Ux, 19 * Uy, 22 * Uy);
+    }
+}

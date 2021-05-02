@@ -1,6 +1,6 @@
 #include "elements.h"
 
-void bouton(const Select select, const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite)
+void bouton(const Select select, const float xBasGauche, const float yBasGauche, const float xHautDroite, const float yHautDroite)
 {
     couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
     rectangle(xBasGauche, yBasGauche, xHautDroite, yHautDroite);
@@ -8,7 +8,7 @@ void bouton(const Select select, const int xBasGauche, const int yBasGauche, con
     rectangle(xBasGauche + select.largeur, yBasGauche + select.largeur, xHautDroite - select.largeur, yHautDroite - select.largeur);
 }
 
-void rouage(const Select select, const int x, const int y, const int r)
+void rouage(const Select select, const float x, const float y, const float r)
 {
     epaisseurDeTrait(10);
     couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
@@ -21,14 +21,13 @@ void rouage(const Select select, const int x, const int y, const int r)
     cercle(x, y, r / 3 + select.largeur / 2);
 }
 
-void plus(const int xBasGauche, const int yBasGauche, const int xHautDroite, const int yHautDroite)
+void plus(const float xBasGauche, const float yBasGauche, const float xHautDroite, const float yHautDroite)
 {
-    EPAISSEUR_TITRE;
     ligne((xBasGauche + xHautDroite) / 2, yBasGauche, (xBasGauche + xHautDroite) / 2, yHautDroite);
     ligne(xBasGauche, (yBasGauche + yHautDroite) / 2, xHautDroite, (yBasGauche + yHautDroite) / 2);
 }
 
-void plateau(const int teinte)
+void plateau(const float teinte)
 {
     couleurCourante(teinte, teinte, teinte);
     rectangle(MIN_X_PLATEAU - Ux, MIN_Y_PLATEAU - Ux, MAX_X_PLATEAU + Ux, MAX_Y_PLATEAU + Ux);
@@ -40,7 +39,7 @@ void plateau(const int teinte)
         ligne(MID_X, 82 * Uy - 10 * i * Uy, MID_X, 73 * Uy - 10 * i * Uy);
 }
 
-void coeur(const int x, const int y, const float r)
+void coeur(const float x, const float y, const float r)
 {
     couleurCourante(255, 0, 0);
     rectangle(x - r / 2, y - r / 2, x + r / 2, y);
@@ -217,4 +216,35 @@ void AfficheMutateur(Data *const data)
     // FONCTION AFFICHAGE CURSEUR DROITE
 
     triangle(56 * Ux + data->option.triangle2, 58 * Uy, 58 * Ux + data->option.triangle2, 55 * Uy, 60 * Ux + data->option.triangle2, 58 * Uy);
+    if (data->page.numero != Jeu)
+    {
+        if (data->option.mode == ContreLaMontre)
+        {
+            timer(data->option.temps, 80 * Ux, 25 * Uy);
+            bouton(data->page.select[28], 74 * Ux, 30 * Uy, 78 * Ux, 33 * Uy);
+            bouton(data->page.select[29], 82 * Ux, 30 * Uy, 86 * Ux, 33 * Uy);
+            bouton(data->page.select[30], 86 * Ux, 30 * Uy, 90 * Ux, 33 * Uy);
+            bouton(data->page.select[31], 74 * Ux, 17 * Uy, 78 * Ux, 20 * Uy);
+            bouton(data->page.select[32], 82 * Ux, 17 * Uy, 86 * Ux, 20 * Uy);
+            bouton(data->page.select[33], 86 * Ux, 17 * Uy, 90 * Ux, 20 * Uy);
+            CC_BLANC;
+            triangle(75 * Ux, 31 * Uy, 77 * Ux, 31 * Uy, 76 * Ux, 32 * Uy);
+            triangle(83 * Ux, 31 * Uy, 85 * Ux, 31 * Uy, 84 * Ux, 32 * Uy);
+            triangle(87 * Ux, 31 * Uy, 89 * Ux, 31 * Uy, 88 * Ux, 32 * Uy);
+            triangle(75 * Ux, 19 * Uy, 77 * Ux, 19 * Uy, 76 * Ux, 18 * Uy);
+            triangle(83 * Ux, 19 * Uy, 85 * Ux, 19 * Uy, 84 * Ux, 18 * Uy);
+            triangle(87 * Ux, 19 * Uy, 89 * Ux, 19 * Uy, 88 * Ux, 18 * Uy);
+        }
+        else if (data->option.mode == BattleRoyal)
+        {
+            bouton(data->page.select[28], 76 * Ux, 19 * Uy, 79 * Ux, 22 * Uy);
+            bouton(data->page.select[29], 83 * Ux, 19 * Uy, 86 * Ux, 22 * Uy);
+            CC_BLANC;
+            EPAISSEUR_2;
+            plus(84 * Ux, 20 * Uy, 85 * Ux, 21 * Uy);
+            ligne(77 * Ux, 20.5 * Uy, 78 * Ux, 20.5 * Uy);
+            for (int i = 0; i < data->option.nbButs; i++)
+                coeur(75 * Ux + 3 * (i % 5) * Ux, 30 * Uy - 3 * floor(i / 5) * Ux, Ux);
+        }
+    }
 }
