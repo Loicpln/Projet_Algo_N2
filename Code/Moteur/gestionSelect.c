@@ -3,13 +3,13 @@
 void selectBouton(Select *const select, const int x1, const int x2, const int y1, const int y2)
 {
     if (x1 < X_SOURIS < x2 && y1 < Y_SOURIS < y2)
-        select->largeur = L_SELECT;
+        select->largeur = L_SELECT_ON;
 }
 
 void selectRouage(Select *const select, const int x, const int y, const int r)
 {
     if (abs(abscisseSouris() - x) < r && abs(ordonneeSouris() - y) < r)
-        select->largeur = L_SELECT;
+        select->largeur = L_SELECT_ON;
 }
 
 void selectPause(Select *const select)

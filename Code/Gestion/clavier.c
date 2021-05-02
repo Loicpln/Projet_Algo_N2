@@ -2,7 +2,7 @@
 
 void ClavierSelect(Data *const data)
 {
-	if (data->page.pause==2)
+	if (data->page.pause == 2)
 	{
 		if (caractereClavier() == 13)
 		{
@@ -27,9 +27,8 @@ void ClavierJeu(Data *const data)
 	touchePause(&data->page);
 	if (!data->page.pause)
 	{
-		if(data->joueurs[0].user->id != id_IA)
-			touches(&data->joueurs[0].raquette);
-		if(data->joueurs[1].user->id != id_IA)
-			touches(&data->joueurs[1].raquette);
+		for (int i = 0; i < NB_JOUEUR; i++)
+			if (data->joueurs[i].user->id != id_IA)
+				touches(&data->joueurs[i].raquette);
 	}
 }

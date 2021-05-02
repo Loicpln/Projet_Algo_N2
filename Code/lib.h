@@ -59,7 +59,8 @@
 #define NB_JOUEUR 2
 #define NB_USERS 10
 
-#define L_SELECT 5
+#define L_SELECT_OFF 1
+#define L_SELECT_ON 5
 #define NB_SELECT 50
 //OUTIL D'AFFICHAGE D'UNE GRILLE POUR FACILITER LES MESURES
 #define GRILLE                               \

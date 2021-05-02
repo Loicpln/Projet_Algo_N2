@@ -66,16 +66,12 @@ void TempoSelection(Data *const data)
 	selectRouage(&data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
 	selectBouton(&data->page.select[47], 87 * Ux, 95 * Ux, 85 * Uy, 95 * Uy);
 
-	if (data->joueurs[0].user != NULL)
-	{
-		couleurSelect(data->page.select + data->joueurs[0].user->id, 0, 0, teinte);
-		couleurSelect(data->page.select + data->joueurs[0].user->id + NB_USERS, 0, 0, teinte);
-	}
-	if (data->joueurs[1].user != NULL)
-	{
-		couleurSelect(data->page.select + data->joueurs[1].user->id, teinte, 0, 0);
-		couleurSelect(data->page.select + data->joueurs[1].user->id + NB_USERS, teinte, 0, 0);
-	}
+	for (int i = 0; i < NB_JOUEUR; i++)
+		if (data->joueurs[i].user != NULL)
+		{
+			couleurSelect(data->page.select + data->joueurs[i].user->id, (i) ? teinte : 0, 0, (i) ? 0 : teinte);
+			couleurSelect(data->page.select + data->joueurs[i].user->id + NB_USERS, (i) ? teinte : 0, 0, (i) ? 0 : teinte);
+		}
 }
 
 void TempoJeu(Data *const data)

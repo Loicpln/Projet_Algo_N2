@@ -28,8 +28,9 @@ void clicSupprUsers(Joueur *const joueur, Users *users)
         if (15 * Ux + 20 * (i % 5) * Ux < X_SOURIS < 18 * Ux + 20 * (i % 5) * Ux && 56 * Uy - 35 * floor(i / 5) * Uy < Y_SOURIS < 60 * Uy - 35 * floor(i / 5) * Uy)
         {
             users = supprimeDansUsers(users, i);
-            joueur[0].user = NULL;
-            joueur[1].user = NULL;
+
+            for (int i = 0; i < NB_JOUEUR; i++)
+                joueur[i].user = NULL;
         }
 }
 //Gestino du clic sur le bouton d'ajout des utilisateurs

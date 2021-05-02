@@ -155,11 +155,11 @@ void jeu(Data *const data)
 {
 	mouvementBalle(&data->balleJeu);
 	for (int i = 0; i < NB_JOUEUR; i++)
+	{
 		hitbox(&data->balleJeu, &data->joueurs[i].raquette);
-	if (data->joueurs[0].user->id == id_IA)
-		IA(&data->joueurs[0].raquette, &data->balleJeu, Gauche);
-	if (data->joueurs[1].user->id == id_IA)
-		IA(&data->joueurs[1].raquette, &data->balleJeu, Droite);
+		if (data->joueurs[i].user->id == id_IA)
+			IA(&data->joueurs[i].raquette, &data->balleJeu, (i) ? Droite : Gauche);
+	}
 	rebond(&data->balleJeu, -MAX_X, MIN_Y_PLATEAU, 2 * MAX_X, MAX_Y_PLATEAU);
 	but(&data->balleJeu, data->joueurs);
 	if (data->option.mode == ContreLaMontre)
@@ -192,18 +192,16 @@ void jeu(Data *const data)
 		resetBalle(&data->balleJeu, data->option);
 		if (data->joueurs[0].score > data->joueurs[1].score)
 		{
-			data->joueurs[0].user->nbWin += 1;
-			data->joueurs[1].user->nbLose += 1;
-			data->joueurs[0].user->nbGame += 1;
-			data->joueurs[1].user->nbGame += 1;
+			data->joueurs[0].user->nbWin++;
+			data->joueurs[1].user->nbLose++;
 		}
 		else if (data->joueurs[0].score < data->joueurs[1].score)
 		{
-			data->joueurs[1].user->nbWin += 1;
-			data->joueurs[0].user->nbLose += 1;
-			data->joueurs[0].user->nbGame += 1;
-			data->joueurs[1].user->nbGame += 1;
+			data->joueurs[1].user->nbWin++;
+			data->joueurs[0].user->nbLose++;
 		}
+		data->joueurs[0].user->nbGame++;
+		data->joueurs[1].user->nbGame++;
 	}
 }
 //Fait le décompte chaque seconde du temps

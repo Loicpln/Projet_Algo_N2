@@ -68,10 +68,9 @@ void AfficheSelection(Data *const data)
     cercle(14 * Ux, 8 * Uy, 2 * Uy);
     couleurCourante(teinte, teinte, teinte);
     EPAISSEUR_2;
-    if (data->joueurs[0].user != NULL)
-        afficheChaine(data->joueurs[0].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[0].user->pseudo) / 5), 3 * Ux, 9 * Uy);
-    if (data->joueurs[1].user != NULL)
-        afficheChaine(data->joueurs[1].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[1].user->pseudo) / 5), 17 * Ux, 9 * Uy);
+    for (int i = 0; i < NB_JOUEUR; i++)
+        if (data->joueurs[i].user != NULL)
+            afficheChaine(data->joueurs[i].user->pseudo, 25 - 7 * floor(strlen(data->joueurs[i].user->pseudo) / 5), 3 * Ux + i * 14 * Ux, 9 * Uy);
     EPAISSEUR_3;
     afficheChaine("IA", 35, 48 * Ux, 88 * Uy);
     afficheChaine("Jouer", 30, 45 * Ux, 8 * Uy);
@@ -97,15 +96,15 @@ void AfficheJeu(Data *const data)
         raquette(data->joueurs[i].raquette, teinte);
     EPAISSEUR_2;
     CC_BLANC;
-    afficheChaine(data->joueurs[0].user->pseudo, 35, 15 * Ux, 73 * Uy);
-    afficheChaine(data->joueurs[1].user->pseudo, 35, 70 * Ux, 73 * Uy);
+    for (int i = 0; i < NB_JOUEUR; i++)
+        afficheChaine(data->joueurs[i].user->pseudo, 35, 15 * Ux + i * 55 * Ux, 73 * Uy);
 
     if (data->option.mode == ContreLaMontre)
     {
         rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
         timer(data->timer, MID_X, 90 * Uy);
-        score(data->joueurs[0].score, 43 * Ux, 76 * Uy);
-        score(data->joueurs[1].score, 61 * Ux, 76 * Uy);
+        for (int i = 0; i < NB_JOUEUR; i++)
+            score(data->joueurs[i].score, 43 * Ux + i * 18 * Ux, 76 * Uy);
     }
     else
     {

@@ -38,7 +38,7 @@ void resetSelect(Select *const select)
 {
 	for (int i = 0; i < NB_SELECT; i++)
 	{
-		select[i].largeur = 1;
+		select[i].largeur = L_SELECT_OFF;
 		select[i].couleur[0] = 255;
 		select[i].couleur[1] = 255;
 		select[i].couleur[2] = 255;
