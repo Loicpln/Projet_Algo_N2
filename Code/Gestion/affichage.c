@@ -1,13 +1,16 @@
 #include "gestion.h"
 
+//Ensemble des fonctions d'affichage
+
 void AfficheAccueil(Data *const data)
 {
     couleurCourante(255, 0, 0);
-    for (int i = 0; i < NB_BALLE; i++)
+
+    for (int i = 0; i < NB_BALLE; i++) // Balles en arrière plan
         cercle(data->balle[i].x, data->balle[i].y, data->balle[i].r);
-    bouton(data->page.select[0], 30 * Ux, 65 * Uy, 70 * Ux, 80 * Uy);
-    bouton(data->page.select[1], 35 * Ux, 45 * Uy, 65 * Ux, 60 * Uy);
-    bouton(data->page.select[2], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
+    bouton(data->page.select[0], 30 * Ux, 65 * Uy, 70 * Ux, 80 * Uy); // Jouer
+    bouton(data->page.select[1], 35 * Ux, 45 * Uy, 65 * Ux, 60 * Uy); // Reglement
+    bouton(data->page.select[2], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);  // Retour
     CC_BLANC;
     EPAISSEUR_TITRE;
     afficheChaine("PONG", 60, 40 * Ux, 87 * Uy);
@@ -20,12 +23,13 @@ void AfficheAccueil(Data *const data)
 void AfficheMenu(Data *const data)
 {
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
-    for (int i = 0; i < NB_BALLE; i++)
+
+    for (int i = 0; i < NB_BALLE; i++) // Balles en arrière plan
         cercle(data->balle[i].x, data->balle[i].y, data->balle[i].r);
-    bouton(data->page.select[0], 25 * Ux, 67 * Uy, 75 * Ux, 80 * Uy); //JcJ
-    bouton(data->page.select[1], 25 * Ux, 50 * Uy, 75 * Ux, 63 * Uy); //contreIA
-    bouton(data->page.select[2], 25 * Ux, 33 * Uy, 75 * Ux, 46 * Uy); //entrainement
-    bouton(data->page.select[3], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);  //Quitter
+    bouton(data->page.select[0], 25 * Ux, 67 * Uy, 75 * Ux, 80 * Uy); // Contre la montre
+    bouton(data->page.select[1], 25 * Ux, 50 * Uy, 75 * Ux, 63 * Uy); // Battle royal
+    bouton(data->page.select[2], 25 * Ux, 33 * Uy, 75 * Ux, 46 * Uy); // Entrainement
+    bouton(data->page.select[3], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);  // Retour
     couleurCourante(rand() % 255, rand() % 255, rand() % 255);
     EPAISSEUR_TITRE;
     afficheChaine("PONG", 60, 40 * Ux, 87 * Uy);
@@ -39,7 +43,7 @@ void AfficheMenu(Data *const data)
 
 void AfficheRegles(Data *const data)
 {
-    bouton(data->page.select[0], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
+    bouton(data->page.select[0], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy); // Retour
     CC_BLANC;
     EPAISSEUR_TITRE;
     afficheChaine("Reglement", 60, 31 * Ux, 79 * Uy);
@@ -55,9 +59,10 @@ void AfficheSelection(Data *const data)
 {
     int teinte = (data->page.pause) ? 150 : 255;
     afficheUsers(data->page.select, data->users, teinte);
-    bouton(data->page.select[id_IA], 42 * Ux, 85 * Uy, 58 * Ux, 95 * Uy);
-    bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);
-    bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);
+    bouton(data->page.select[id_IA], 42 * Ux, 85 * Uy, 58 * Ux, 95 * Uy); // IA
+    bouton(data->page.select[48], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);     // Jouer
+    bouton(data->page.select[49], 75 * Ux, 5 * Uy, 95 * Ux, 15 * Uy);     // Retour
+    // Affichage des joueurs
     couleurCourante(0, 0, teinte);
     rectangle(2 * Ux, 6 * Uy, 14 * Ux, 14 * Uy);
     couleurCourante(teinte, 0, 0);
@@ -78,12 +83,13 @@ void AfficheSelection(Data *const data)
     couleurCourante(teinte, teinte, 0);
     epaisseurDeTrait(5);
     afficheChaine("Vs", 25, 12 * Ux, 8 * Uy);
+    //Selon l'état de la pause les elements supplémentaires sont affichées
     if (data->page.pause == 2)
         zoneText(data->page.select, data->newPseudo);
     if (data->page.pause == 1)
         AfficheMutateur(data);
     rouage(data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
-    bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy);
+    bouton(data->page.select[47], 87 * Ux, 85 * Uy, 95 * Ux, 95 * Uy); // Affichage du bouton de l'ajout d'utilisateur
     CC_BLANC;
     EPAISSEUR_TITRE;
     plus(89 * Ux, 87 * Uy, 93 * Ux, 93 * Uy);
@@ -97,27 +103,25 @@ void AfficheJeu(Data *const data)
         raquette(data->joueurs[i].raquette, teinte);
     EPAISSEUR_2;
     CC_BLANC;
-    for (int i = 0; i < NB_JOUEUR; i++)
+    for (int i = 0; i < NB_JOUEUR; i++) // Affiche le nom des joueurs
         afficheChaine(data->joueurs[i].user->pseudo, 35, 15 * Ux + i * 55 * Ux, 73 * Uy);
-
     if (data->option.mode == ContreLaMontre)
     {
         rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
         timer(data->timer, MID_X, 90 * Uy);
-        for (int i = 0; i < NB_JOUEUR; i++)
+        for (int i = 0; i < NB_JOUEUR; i++) // Affiche le score
             score(data->joueurs[i].score, 43 * Ux + i * 18 * Ux, 76 * Uy);
     }
     else
     {
         rouage(data->page.select[id_Rouage], MID_X, 90 * Uy, r_Rouage);
-        for (int i = 0; i < NB_JOUEUR; i++)
+        for (int i = 0; i < NB_JOUEUR; i++) // Affiche le nombre de coeur restant
             for (int j = 0; j < (data->option.nbButs - data->joueurs[i].score); j++)
                 coeur((i) ? (10 * Ux + 7 * (j % 5) * Ux) : (90 * Ux - 7 * (j % 5) * Ux), 89 * Uy + 7 * floor(j / 5) * Uy, 3 * Ux);
     }
     balle(data->balleJeu, teinte);
     if (data->page.pause)
         affichePause(data->page.select);
-
     if (data->page.pause == 2)
     {
         AfficheMutateur(data);
@@ -127,31 +131,26 @@ void AfficheJeu(Data *const data)
 
 void AfficheEntrainement(Data *const data)
 {
+    int teinte = (data->page.pause) ? 150 : 255;
     CC_BLANC;
     EPAISSEUR_TITRE;
     afficheChaine("Entrainement", 70, 20 * Ux, 88 * Uy);
     rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
-    int teinte = (data->page.pause) ? 150 : 255;
     plateau(teinte);
     raquette(data->joueurs[0].raquette, teinte);
     balle(data->balleJeu, teinte);
-    if (data->page.pause == 2)
-    {
-        AfficheMutateur(data);
-        rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
-    }
-    else if (data->page.pause)
-    {
+    if (data->page.pause)
         affichePause(data->page.select);
-        rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
-    }
+    else if (data->page.pause == 2)
+        AfficheMutateur(data);
+    rouage(data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
 }
 
 void AfficheResultats(Data *const data)
 {
     char Game[10] = "", Win[10] = "", Lose[10] = "";
-    bouton(data->page.select[0], 30 * Ux, 20 * Uy, 70 * Ux, 30 * Uy);
-    bouton(data->page.select[1], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);
+    bouton(data->page.select[0], 30 * Ux, 20 * Uy, 70 * Ux, 30 * Uy); // Rejouer
+    bouton(data->page.select[1], 30 * Ux, 5 * Uy, 70 * Ux, 15 * Uy);  // Retour au menu
     CC_BLANC;
     ligne(MID_X, 80 * Uy, MID_X, 35 * Uy);
     for (int i = 0; i < NB_JOUEUR; i++)

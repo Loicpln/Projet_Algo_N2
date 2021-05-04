@@ -18,7 +18,7 @@ void AfficheEntrainement(Data *const data);
 void AfficheResultats(Data *const data);
 
 //Gestion Clavier page Select
-void ClavierSelect(Data *const data);
+void ClavierSelection(Data *const data);
 //Gestion Clavier page Jeu
 void ClavierJeu(Data *const data);
 //Gestion Clavier page Entrainement

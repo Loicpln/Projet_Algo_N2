@@ -1,5 +1,7 @@
 #include "gestion.h"
 
+//Ensemble des fonctions de temporisation
+
 void TempoAccueil(Data *const data)
 {
 	resetSelect(data->page.select);
@@ -26,7 +28,7 @@ void TempoMenu(Data *const data)
 		mouvementBalle(data->balle + i);
 	}
 	for (int i = 0; i < NB_SELECT; i++)
-		couleurSelect(data->page.select + i, rand() % 256, rand() % 256, rand() % 256);
+		couleurSelect(data->page.select + i, rand() % 255, rand() % 255, rand() % 255);
 }
 
 void TempoRegles(Data *const data)
@@ -37,9 +39,9 @@ void TempoRegles(Data *const data)
 
 void TempoSelection(Data *const data)
 {
-	int teinte = (data->page.pause == 2 || data->page.pause) ? 150 : 255;
+	int teinte = (data->page.pause) ? 150 : 255;
 	resetSelect(data->page.select);
-	for (int i = 0; i < NB_SELECT; i++)
+	for (int i = 0; i < NB_SELECT; i++) // Met toutes les bordures Gris si il y a une pause, Blanc sinon
 		couleurSelect(data->page.select + i, teinte, teinte, teinte);
 	if (!data->page.pause)
 	{
@@ -49,23 +51,23 @@ void TempoSelection(Data *const data)
 	}
 	else if (data->page.pause == 2)
 	{
-		couleurSelect(&data->page.select[46], 255, 255, 255);
-		couleurSelect(&data->page.select[47], 0, 255, 0);
+		couleurSelect(&data->page.select[46], 255, 255, 255); // Select de la zone de text en Blanc 
+		couleurSelect(&data->page.select[47], 0, 255, 0); // Select du bouton Ajout User en Vert
 	}
 	else
 	{
-		couleurSelect(&data->page.select[47], 255, 255, 255);
+		couleurSelect(&data->page.select[47], 255, 255, 255); // Select du bouton Ajout User en Blanc
 		rebond(&data->balleJeu, 5 * Ux, 5 * Uy, 95 * Ux, MAX_Y);
 		mouvementBalle(&data->balleJeu);
 		selectMutateur(data->page.select, data->option);
 	}
 	couleurSelect(&data->page.select[id_Rouage], 255, 255, 255);
-	selectRouage(&data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage);
-	selectBouton(&data->page.select[47], 87 * Ux, 95 * Ux, 85 * Uy, 95 * Uy);
-
+	selectRouage(&data->page.select[id_Rouage], 9 * Ux, 90 * Uy, r_Rouage); // Select du rouage
+	selectBouton(&data->page.select[47], 87 * Ux, 95 * Ux, 85 * Uy, 95 * Uy); //Select du bouton Ajout User
 	for (int i = 0; i < NB_JOUEUR; i++)
 		if (data->joueurs[i].user != NULL)
 		{
+			// Select correspondant aux joueurs (Bleu si 1er joueur| Rouge si 2eme joueur )
 			couleurSelect(data->page.select + data->joueurs[i].user->id, (i) ? teinte : 0, 0, (i) ? 0 : teinte);
 			couleurSelect(data->page.select + data->joueurs[i].user->id + NB_USERS, (i) ? teinte : 0, 0, (i) ? 0 : teinte);
 		}
@@ -84,7 +86,7 @@ void TempoJeu(Data *const data)
 	}
 	else
 		selectPause(data->page.select);
-
+	// Positionne le Select à differents endroits selon le mode ou la pause
 	if (data->option.mode == ContreLaMontre || data->option.mode == Entrainement || data->page.pause == 2)
 		selectRouage(&data->page.select[id_Rouage], 88 * Ux, 90 * Uy, r_Rouage);
 	else

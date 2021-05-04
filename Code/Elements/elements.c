@@ -1,5 +1,7 @@
 #include "elements.h"
 
+//Ensemble des éléments graphiques utilisées dans le projet
+
 void bouton(const Select select, const float xBasGauche, const float yBasGauche, const float xHautDroite, const float yHautDroite)
 {
     couleurCourante(select.couleur[0], select.couleur[1], select.couleur[2]);
@@ -35,7 +37,7 @@ void plateau(const float teinte)
     rectangle(MIN_X_PLATEAU, MIN_Y_PLATEAU, MAX_X_PLATEAU, MAX_Y_PLATEAU);
     couleurCourante(teinte, teinte, teinte);
     EPAISSEUR_3;
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 8; i++) // ligne pointillée
         ligne(MID_X, 82 * Uy - 10 * i * Uy, MID_X, 73 * Uy - 10 * i * Uy);
 }
 
@@ -87,14 +89,14 @@ void balle(const Balle balleJeu, const int teinte)
     cercle(balleJeu.x, balleJeu.y, balleJeu.r);
 }
 
-void score(const int score, const int x, const int y)
+void score(const int score, const float x, const float y)
 {
     Digit digit[2] = {nombre(score - 10 * floor(score / 10)), nombre(floor(score / 10))};
     for (int i = 0; i < 2; i++)
         afficheDigit(digit[i], x - 4 * i * Ux, y);
 }
 
-void timer(const int temps[], const int x, const int y)
+void timer(const int temps[], const float x, const float y)
 {
     Digit minutes = nombre(temps[0]);
     Digit secondes[2] = {nombre(floor(temps[1] / 10)), nombre(temps[1] - 10 * floor(temps[1] / 10))};
@@ -102,39 +104,44 @@ void timer(const int temps[], const int x, const int y)
     cercle(x, y + Uy, 3);
     cercle(x, y - Uy, 3);
     afficheDigit(minutes, x - 4 * Ux, y);
-    for (int i = 1; i < 3; i++)
-        afficheDigit(secondes[i - 1], x + 4 * i * Ux, y);
+    for (int i = 0; i < 2; i++)
+        afficheDigit(secondes[i], x + 4 * Ux + 4 * i * Ux, y);
 }
 
-void afficheDigit(const Digit digit, const int x, const int y)
+void afficheDigit(const Digit digit, const float x, const float y)
 {
     epaisseurDeTrait(5);
-    (digit.hautGauche) ? CC_BLANC : CC_NOIR;
-    ligne(x - Ux, y + 2 * Ux, x - Ux, y);
-    (digit.hautDroite) ? CC_BLANC : CC_NOIR;
-    ligne(x + Ux, y, x + Ux, y + 2 * Ux);
-    (digit.basGauche) ? CC_BLANC : CC_NOIR;
-    ligne(x - Ux, y, x - Ux, y - 2 * Ux);
-    (digit.basDroite) ? CC_BLANC : CC_NOIR;
-    ligne(x + Ux, y, x + Ux, y - 2 * Ux);
-    (digit.haut) ? CC_BLANC : CC_NOIR;
-    ligne(x - Ux, y + 2 * Ux, x + Ux, y + 2 * Ux);
-    (digit.milieu) ? CC_BLANC : CC_NOIR;
-    ligne(x - Ux, y, x + Ux, y);
-    (digit.bas) ? CC_BLANC : CC_NOIR;
-    ligne(x - Ux, y - 2 * Ux, x + Ux, y - 2 * Ux);
+    CC_BLANC;
+    //Selon si le segment est true ou false le segment s'affiche
+    if (digit.hautGauche)
+        ligne(x - Ux, y + 2 * Ux, x - Ux, y);
+    if (digit.hautDroite)
+        ligne(x + Ux, y, x + Ux, y + 2 * Ux);
+    if (digit.basGauche)
+        ligne(x - Ux, y, x - Ux, y - 2 * Ux);
+    if (digit.basDroite)
+        ligne(x + Ux, y, x + Ux, y - 2 * Ux);
+    if (digit.haut)
+        ligne(x - Ux, y + 2 * Ux, x + Ux, y + 2 * Ux);
+    if (digit.milieu)
+        ligne(x - Ux, y, x + Ux, y);
+    if (digit.bas)
+        ligne(x - Ux, y - 2 * Ux, x + Ux, y - 2 * Ux);
 }
 
 void afficheUsers(const Select *const select, const Users *const users, const int teinte)
 {
     char Game[10] = "", Win[10] = "", Lose[10] = "";
     const User *tmp = users->premier;
+    //Parcours toute la liste des utilisateurs et affiche chacun selon le format (2 lignes, 5 colones)
     for (int i = 0; tmp != NULL; i++, tmp = tmp->userSuivant)
     {
         sprintf(Game, "G %d", tmp->nbGame);
         sprintf(Win, "W %d", tmp->nbWin);
         sprintf(Lose, "L %d", tmp->nbLose);
+        // Case d'un utilisateur
         bouton(select[i], 2 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 83 * Uy - 35 * floor(i / 5) * Uy);
+        // Bouton supprimer
         bouton(select[i + NB_USERS], 15 * Ux + 20 * (i % 5) * Ux, 56 * Uy - 35 * floor(i / 5) * Uy, 18 * Ux + 20 * (i % 5) * Ux, 60 * Uy - 35 * floor(i / 5) * Uy);
         EPAISSEUR_2;
         couleurCourante(teinte, teinte, teinte);
