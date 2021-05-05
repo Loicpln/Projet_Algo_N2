@@ -1,6 +1,5 @@
 #include "../lib.h"
 
-
 //Ensemble des fonctions d'initialisation
 //Initialisation des data
 Data init();

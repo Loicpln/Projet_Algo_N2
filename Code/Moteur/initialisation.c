@@ -1,5 +1,7 @@
 #include "moteur.h"
 
+//Ensemble des fonctions d'initialisation
+
 Data init() { return (Data){{Acceuil, false, {{1, {255}}}}, {initBallesAccueil()}, initBalleJeu(), {{initScore(), NULL, initRaquetteG(LONG_RAQUETTE)}, {initScore(), NULL, initRaquetteD(LONG_RAQUETTE)}}, chargeUsersDepuisFichier(), initOptions(), Deux_Min, ""}; }
 
 Balle initBallesAccueil() { return (Balle){rand() % MAX_X, rand() % MAX_Y, R_ACCEUIL, V_ACCEUIL, V_ACCEUIL, fabsf(V_ACCEUIL)}; }

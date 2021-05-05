@@ -10,13 +10,16 @@
 //#include <SDL/SDL.h>
 //#include <SDL/SDL_mixer.h>
 
+// Taille de la fenêtre
 #define LargeurFenetre 800
 #define HauteurFenetre 600
 #define RafraichissementFenetre 20
 
+// Unitée (Hauteur et Largeur)
 #define Ux largeurFenetre() / 100
 #define Uy hauteurFenetre() / 100
 
+// Gestion de l'interface de jeu
 #define MAX_X 100 * Ux
 #define MAX_Y 100 * Uy
 #define MID_X 50 * Ux
@@ -32,6 +35,7 @@
 #define X_SOURIS abscisseSouris() && abscisseSouris()
 #define Y_SOURIS ordonneeSouris() && ordonneeSouris()
 
+// Raccourcis pour la couleur et le trait
 #define CC_BLANC couleurCourante(255, 255, 255)
 #define CC_NOIR couleurCourante(0, 0, 0)
 #define EPAISSEUR_1 epaisseurDeTrait(1)
@@ -52,7 +56,6 @@
 #define Gauche false
 #define Droite true
 
-
 #define V_ACCEUIL rand() % 2 ? 5.f : -5.f
 #define V_BALLE rand() % 2 ? 10.f : -10.f
 #define VH_BALLE 0.00001
@@ -66,7 +69,8 @@
 #define NB_SELECT 50
 #define L_SELECT_OFF 1
 #define L_SELECT_ON 5
-//OUTIL D'AFFICHAGE D'UNE GRILLE POUR FACILITER LES MESURES
+
+// Outil d'affichage d'une grille pour faciliter les mesures
 #define GRILLE                               \
     for (int i = 1; i < 100; i++)            \
     {                                        \
@@ -79,7 +83,8 @@
         ligne(i *Ux, 0, i *Ux, 100 * Uy);    \
         ligne(0, i *Uy, 100 * Ux, i * Uy);   \
     }
-//METHODE D'AFFICHAGE DU SCORE
+
+// Méthode de l'affichage d'un digit (true ou false si le segment doit être affiché)
 #define DIGIT_0 \
     (Digit) { true, true, true, false, true, true, true }
 #define DIGIT_1 \
@@ -103,18 +108,20 @@
 #define DIGIT_ERROR \
     (Digit) { true, true, false, true, true, false, true }
 
+// Modes de jeu
 #define ContreLaMontre 0
 #define BattleRoyal 1
 
+// Tableau pour le temps
 #define Deux_Min \
     {            \
         2, 0     \
     }
-#define NBVIES 5
+#define NBVIES 5     // Nombre de vie par défaut
+#define id_IA 20     // id de l'IA par défaut
+#define id_Rouage 45 // id du rouage par défaut
 
-#define id_IA 20
-#define id_Rouage 45
-
+// Definition de numero pour les pages
 #define Acceuil 1
 #define Regles 2
 #define Menu 3
@@ -123,14 +130,14 @@
 #define Entrainement 6
 #define Resultats 7
 
-//sous-traitance
+// sous-traitance
 #define absBar1 10 * Ux
 #define absBar2 58 * Ux
 
 #ifndef STRUCT
 #define STRUCT
 
-// bool haut |bool hautGauche |bool hautDroite |bool milieu |bool basGauche |bool basDroite |bool bas
+// Contient chaques segments du Digit
 typedef struct
 {
     bool haut;
@@ -142,7 +149,7 @@ typedef struct
     bool bas;
 } Digit;
 
-// float x |float y |float r |float vx |float vy |float v0
+// Contient chaques elements pour dessiner et gérer une balle
 typedef struct
 {
     float x;
@@ -153,7 +160,7 @@ typedef struct
     float v0;
 } Balle;
 
-// float longueur |float largeur |float x |float y |float vy |char up |char down
+// Contient chaques elements pour dessiner et gérer une raquette
 typedef struct
 {
     float longueur;
@@ -165,8 +172,8 @@ typedef struct
     char down;
 } Raquette;
 
+// Contient chaques elements pour sauvegarder les données d'un utilisateur
 typedef struct User User;
-// int id |char pseudo[15] |int nbGame |int nbWin |int nbLose |User *userSuivant
 struct User
 {
     int id;
@@ -176,18 +183,21 @@ struct User
     int nbLose;
     User *userSuivant;
 };
-// User *premier
+
+// Contient la racine de la liste
 typedef struct
 {
     User *premier;
 } Users;
-// int largeur |int couleur[3]
+
+// Contient les éléments pour gérer un 'hover' et la couleur des bordures
 typedef struct
 {
     int largeur;
     int couleur[3];
 } Select;
-// int numero |bool pause |Select select[NB_SELECT]
+
+// Contient chaques elements pour gérer l'état de la page actuelle
 typedef struct
 {
     int numero;
@@ -195,7 +205,7 @@ typedef struct
     Select select[NB_SELECT];
 } Page;
 
-// int score |User *user |Raquette raquette
+// Contient chaques joueurs (son Score, le User séléctionné, et sa Raquette)
 typedef struct
 {
     int score;
@@ -203,6 +213,7 @@ typedef struct
     Raquette raquette;
 } Joueur;
 
+// Contient chaques elements des Options de jeu
 typedef struct
 {
     int mode;
@@ -213,7 +224,7 @@ typedef struct
     int raquette;
 } Options;
 
-// Page page |Balle balle[MAX_BALLE] |Balle balleJeu |Joueur joueurs[NB_JOUEUR] |User *users |char newPseudo[15]
+// Contient chaques elements racine (Réutilisable dans toute l'application | Structure Global)
 typedef struct
 {
     Page page;
@@ -224,7 +235,5 @@ typedef struct
     Options option;
     int timer[2];
     char newPseudo[15];
-
 } Data;
-
 #endif

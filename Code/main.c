@@ -11,38 +11,38 @@ int main(int argc, char **argv)
 
 void gestionEvenement(EvenementGfx evenement)
 {
-	static Data data;
+	static Data data; // Variable Global
 
 	switch (evenement)
 	{
 	case Initialisation:
 		data = init();
-		for (int i = 0; i < NB_BALLE; i++)
+		for (int i = 0; i < NB_BALLE; i++) // Initialisation des balles de l'acceuil
 			data.balle[i] = initBallesAccueil();
-		activeGestionDeplacementPassifSouris();
-		demandeTemporisation(20);
+		activeGestionDeplacementPassifSouris(); // Active le survol de la souris
+		demandeTemporisation(RafraichissementFenetre);
 		break;
 
 	case Temporisation:
-		gestion(&data, fTempo());
+		gestion(&data, fTempo()); // Fonction de gestion appelée avec la liste de fonctions Tempo
 		rafraichisFenetre();
 		break;
 
 	case Affichage:
 		effaceFenetre(0, 0, 0);
-		gestion(&data, fAffiche());
+		gestion(&data, fAffiche()); // Fonction de gestion appelée avec la liste de fonctions Affiche
 		//GRILLE;
 		break;
 
 	case Clavier:
-		gestion(&data, fClavier());
+		gestion(&data, fClavier()); // Fonction de gestion appelée avec la liste de fonctions Clavier
 		break;
 
 	case ClavierSpecial:
 		break;
 
 	case BoutonSouris:
-		gestion(&data, fClic());
+		gestion(&data, fClic()); // Fonction de gestion appelée avec la liste de fonctions Clic
 		break;
 
 	case Souris:
@@ -52,7 +52,7 @@ void gestionEvenement(EvenementGfx evenement)
 		break;
 
 	case Redimensionnement:
-		Redim(&data);
+		Redim(&data); // Fonction de Redimensinnement
 		break;
 	}
 }

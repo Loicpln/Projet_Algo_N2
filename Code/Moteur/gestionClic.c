@@ -1,5 +1,7 @@
 #include "moteur.h"
 
+//Ensemble des fonctions de clic
+
 void clicRouage(Page *const page, const int x, const int y, const int r)
 {
     if (abs(abscisseSouris() - x) < r && abs(ordonneeSouris() - y) < r) // Si le clic est dans le rouage

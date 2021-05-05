@@ -1,5 +1,7 @@
 #include "moteur.h"
 
+//Ensemble des fonctions qui gèrent les Users
+
 User *creeUser(const int id, const char *const pseudo, const int nbGame, const int nbWin, const int nbLose)
 {
     User *elem = malloc(sizeof(User));

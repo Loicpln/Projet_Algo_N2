@@ -1,5 +1,7 @@
 #include "moteur.h"
 
+//Ensemble des fonctions de calcul
+
 void mouvementBalle(Balle *const balle)
 {
 	balle->x += balle->vx;

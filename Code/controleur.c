@@ -1,5 +1,7 @@
 #include "controleur.h"
 
+// Controlleur de fonctions + Liste de fonction seon l'évènement
+
 void gestion(Data *const data, const Gestion type)
 {
     switch (data->page.numero)

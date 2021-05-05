@@ -1,5 +1,7 @@
 #include "moteur.h"
 
+//Ensemble des fonctions de select
+
 void selectBouton(Select *const select, const int x1, const int x2, const int y1, const int y2)
 {
     if (x1 < X_SOURIS < x2 && y1 < Y_SOURIS < y2) // Si on survole le bouton la bordure s'agrandit
