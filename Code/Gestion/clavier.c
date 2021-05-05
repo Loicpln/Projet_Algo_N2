@@ -13,7 +13,7 @@ void ClavierSelection(Data *const data)
 			data->page.pause = false;
 		}
 		ecrire(data->newPseudo);
-	}
+	}	
 }
 
 void ClavierEntrainement(Data *const data)

@@ -1,5 +1,5 @@
 #include "controleur.h"
-//GESTION DES PAGES
+
 void gestion(Data *const data, const Gestion type)
 {
     switch (data->page.numero)

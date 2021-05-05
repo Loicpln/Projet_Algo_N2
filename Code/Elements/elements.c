@@ -218,11 +218,11 @@ void AfficheMutateur(Data *const data)
 
     // FONCTION AFFICHAGE CURSEUR GAUCHE
 
-    triangle(8 * Ux + data->option.triangle1, 58 * Uy, 10 * Ux + data->option.triangle1, 55 * Uy, 12 * Ux + data->option.triangle1, 58 * Uy);
+    triangle(8 * Ux + data->option.v0, 58 * Uy, 10 * Ux + data->option.v0, 55 * Uy, 12 * Ux + data->option.v0, 58 * Uy);
 
     // FONCTION AFFICHAGE CURSEUR DROITE
 
-    triangle(56 * Ux + data->option.triangle2, 58 * Uy, 58 * Ux + data->option.triangle2, 55 * Uy, 60 * Ux + data->option.triangle2, 58 * Uy);
+    triangle(56 * Ux + data->option.r, 58 * Uy, 58 * Ux + data->option.r, 55 * Uy, 60 * Ux + data->option.r, 58 * Uy);
     if (data->page.numero != Jeu)
     {
         if (data->option.mode == ContreLaMontre)

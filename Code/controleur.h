@@ -16,7 +16,7 @@ typedef struct
     void (*f6)(Data *const);
     //Page 7
     void (*f7)(Data *const);
-    //page 8 mutateur
+    //page 8
     void (*f8)(Data *const);
 } Gestion;
 

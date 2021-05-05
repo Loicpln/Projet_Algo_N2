@@ -21,13 +21,11 @@ void raquette(const Raquette raquette, const int teinte);
 void balle(const Balle balleJeu, const int teinte);
 //Affiche l'élément les digit selon le score
 void score(const int score, const float x, const float y);
-
 //Affiche le timer (type int)
 void timer(const int temps[], const float x, const float y);
 //Affiche un digit (type Digit)
 void afficheDigit(const Digit digit, const float x, const float y);
 //Affiche tout les Users
 void afficheUsers(const Select *const select, const Users *const maUsers, const int teinte);
-
 //Sous traitance mutateur
 void AfficheMutateur(Data *const data);

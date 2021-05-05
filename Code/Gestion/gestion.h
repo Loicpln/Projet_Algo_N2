@@ -2,6 +2,7 @@
 #include "../Moteur/moteur.h"
 #include "../Elements/elements.h"
 
+//Ensemble des fonctions d'affichage
 //Gestion Affichage page d'Accueil
 void AfficheAccueil(Data *const data);
 //Gestion Affichage page Menu
@@ -17,6 +18,7 @@ void AfficheEntrainement(Data *const data);
 //Gestion Affichage page de Resultats
 void AfficheResultats(Data *const data);
 
+//Ensemble des fonctions de clavier
 //Gestion Clavier page Select
 void ClavierSelection(Data *const data);
 //Gestion Clavier page Jeu
@@ -24,6 +26,7 @@ void ClavierJeu(Data *const data);
 //Gestion Clavier page Entrainement
 void ClavierEntrainement(Data *const data);
 
+//Ensemble des fonctions de clic
 //Gestion Clic page d'Accueil
 void ClicAccueil(Data *const data);
 //Gestion Clic page Menu
@@ -37,6 +40,7 @@ void ClicJeu(Data *const data);
 //Gestion Clic page Resultats
 void ClicResultats(Data *const data);
 
+//Ensemble des fonctions de temporisation
 //Gestion Tempo page d'Accueil
 void TempoAccueil(Data *const data);
 //Gestion Tempo page Menu
@@ -52,6 +56,7 @@ void TempoEntrainement(Data *const data);
 //Gestion Tempo page Resultats
 void TempoResultats(Data *const data);
 
+//Ensemble des fonctions de redimensionnement
 //Gestion Redimensionnement
 void Redim(Data *const data);
 //Redimensionnement de la balle

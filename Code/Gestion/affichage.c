@@ -1,5 +1,4 @@
 #include "gestion.h"
-
 //Ensemble des fonctions d'affichage
 
 void AfficheAccueil(Data *const data)

@@ -1,5 +1,7 @@
 #include "../lib.h"
 
+
+//Ensemble des fonctions d'initialisation
 //Initialisation des data
 Data init();
 //Initialisation des balles de l'acceuil
@@ -17,6 +19,7 @@ Options initOptions();
 //Initialisation du score
 int initScore();
 
+//Ensemble des fonctions de reset
 //Reinitialisation des Select
 void resetSelect(Select *const select);
 //Reinitialisation des Users
@@ -30,6 +33,7 @@ void resetTimer(int *const timer, const Options options);
 //Reinitialisation de la Balle
 void resetBalle(Balle *const balle, const Options options);
 
+//Ensemble des fonctions de select
 //Select du Bouton
 void selectBouton(Select *const select, const int x1, const int x2, const int y1, const int y2);
 //Select du Rouage
@@ -41,6 +45,7 @@ void selectUsers(Select *const select);
 //Select du Mutateur
 void selectMutateur(Select *const select, const Options option);
 
+//Ensemble des fonctions de clic
 //Clic pour le rouage
 void clicRouage(Page *const page, const int x, const int y, const int r);
 //Clic pour la pause
@@ -52,6 +57,7 @@ void clicSupprUsers(Joueur *const joueur, Users *users);
 //Clic pour l'ajout des Users
 void clicAddUsers(Page *const page);
 
+//Ensemble des fonctions qui gèrent les Users
 //Cree un element User
 User *creeUser(const int id, const char *const pseudo, const int nbGame, const int nbWin, const int nbLose);
 //Ajoute à la liste Users un element User
@@ -67,12 +73,13 @@ int compteUsers(Users *users);
 //Enregistre la liste dans un fichier txt
 void enregistreUsersFichier(Users *users);
 
-//Change la couleur d'un select
+//Ensemble des fonctions de calcul
+//Change la couleur du select selon R V B
 void couleurSelect(Select *const select, const int R, const int V, const int B);
 //Fait bouger x et y de la balle selon vx et vy
 void mouvementBalle(Balle *const balle);
 //Gère le rebond de la balle
-void rebond(Balle *const balle, const int min_x, const int min_y, const int max_x, const int max_y);
+void rebond(Balle *const balle, const float min_x, const float min_y, const float max_x, const float max_y);
 //Accelere la vitesse de la balle
 void accelereBalle(Balle *const balle, const float facteur);
 //Si la touche 'g' et appuyée la pause se déclanche
